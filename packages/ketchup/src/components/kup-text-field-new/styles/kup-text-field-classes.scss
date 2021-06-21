@@ -1,0 +1,33 @@
+/*-------------------------------------------------*/
+/*        C o m p o n e n t   C l a s s e s        */
+/*-------------------------------------------------*/
+:host(.kup-full-height) {
+  height: 100%;
+  #kup-component,
+  .f-text-field-new-wrapper,
+  .text-field {
+    height: 100%;
+  }
+}
+
+:host(.kup-shaped) {
+  #kup-component {
+    .text-field.text-field--filled {
+      border-radius: 16px 16px 0 0;
+    }
+
+    .text-field.text-field--outlined
+      .notched-outline
+      .notched-outline__leading {
+      border-radius: 28px 0 0 28px;
+      width: 28px;
+    }
+
+    .text-field.mdc-text-field--outlined
+      .notched-outline
+      .notched-outline__trailing {
+      border-radius: 0 28px 28px 0;
+      width: 28px;
+    }
+  }
+}

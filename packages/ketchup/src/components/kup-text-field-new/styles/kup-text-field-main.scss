@@ -1,0 +1,11 @@
+:host {
+  display: block;
+  font-size: var(--kup-font-size);
+}
+
+:host([full-width]) {
+  width: 100%;
+  #kup-component {
+    width: 100%;
+  }
+}

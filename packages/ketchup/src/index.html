@@ -213,6 +213,28 @@
             }
         }
     </script>
+        <script>
+            let datePicker1 = document.getElementsByTagName('kup-date-picker')[0];
+            datePicker1.data = {
+                "text-field-new": {
+                    initialValue: '1979-11-13',
+                }
+            }
+    
+            let timePicker1 = document.getElementsByTagName('kup-time-picker')[0];
+            timePicker1.data = {
+                "text-field-new": {
+                    initialValue: '01:00:00',
+                }
+            }
+    
+            let timePicker2 = document.getElementsByTagName('kup-time-picker')[1];
+            timePicker2.data = {
+                "text-field-new": {
+                    initialValue: '03:10:00',
+                }
+            }
+        </script>
     <br /><br /><br /><br />
     <h1>Simple text field</h1>
     <kup-text-field id="int1" is-clearable initial-value="ciao"></kup-text-field>
@@ -239,6 +261,35 @@
     <kup-checkbox checked></kup-checkbox>
     <kup-checkbox disabled></kup-checkbox>
     <kup-checkbox disabled checked></kup-checkbox>
+    <h4>Text Field New</h4>
+    <!-- <kup-text-field-new icon="favorite" outlined label="I am a label"></kup-text-field-new> -->
+    <kup-text-field-new></kup-text-field-new>
+    <kup-text-field-new label="I am a label"></kup-text-field-new>
+    <kup-text-field-new outlined label="I am a label"></kup-text-field-new>
+    <kup-text-field-new disabled label="I am a label"></kup-text-field-new>
+    <!-- <kup-text-field-new icon="favorite"></kup-text-field-new>
+    <kup-text-field-new shaped icon="favorite"></kup-text-field-new>
+    <kup-text-field-new is-clearable icon="favorite"></kup-text-field-new>
+    <kup-text-field-new trailing-icon is-clearable icon="favorite"></kup-text-field-new>
+    <kup-text-field-new trailing-icon icon="favorite"></kup-text-field-new>
+    <kup-text-field-new helper="I am a helper text"></kup-text-field-new>
+    <kup-text-field-new helper-when-focused helper="I am a helper text"></kup-text-field-new>
+    <kup-text-field-new helper-when-focused max-length="10" helper="I am a helper text"></kup-text-field-new>
+    <kup-text-field-new max-length="10" helper="I am a helper text"></kup-text-field-new>
+    <kup-text-field-new full-width text-area></kup-text-field-new>
+    <kup-text-field-new max-length="10" full-width text-area></kup-text-field-new>
+    <kup-text-field-new leading-label label="I am a label left"></kup-text-field-new>
+    <kup-text-field-new trailing-label label="I am a label right"></kup-text-field-new>
+    <kup-text-field-new label="I am a label"></kup-text-field-new>
+    <kup-text-field-new outlined label="I am a label"></kup-text-field-new>
+    <kup-text-field-new outlined shaped label="I am a label"></kup-text-field-new>
+    <kup-text-field-new text-area></kup-text-field-new>
+    <kup-text-field-new text-area label="I am a label"></kup-text-field-new>
+    <kup-text-field-new full-width label="I am a label"></kup-text-field-new>
+    <kup-text-field-new disabled label="I am a label"></kup-text-field-new>
+    <kup-text-field-new disabled label="I am a label" initial-value="yooooo"></kup-text-field-new>
+    <kup-text-field-new label="I am a label" initial-value="yooooo"></kup-text-field-new>
+    <kup-text-field-new input-type="number" label="I'm a numeric text field" initial-value="22" step=0.01></kup-text-field-new> -->
     <h4>Material Text Field (widget)</h4>
     <kup-text-field icon="favorite" outlined label="I am a label"></kup-text-field>
     <kup-text-field></kup-text-field>

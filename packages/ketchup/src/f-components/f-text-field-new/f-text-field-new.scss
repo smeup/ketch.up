@@ -1,0 +1,167 @@
+.f-text-field-new-wrapper {
+  .text-field {
+    border-top-left-radius: 4px;
+
+    border-top-right-radius: 4px;
+
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    display: inline-flex;
+    align-items: baseline;
+    padding: 0 16px;
+    position: relative;
+    box-sizing: border-box;
+    overflow: hidden;
+    will-change: opacity, transform, color;
+    &.text-field--filled {
+      height: 56px;
+      :not(.text-field--disabled) {
+        background-color: whitesmoke;
+      }
+    }
+  }
+}
+
+.f-text-field-new-wrapper
+  .text-field.text-field--filled:not(.text-field--disabled) {
+  background-color: var(--kup-field-background-color);
+}
+
+.f-text-field-new-wrapper
+  .text-field:not(.text-field--outlined):not(.text-field--textarea) {
+  height: 40px;
+}
+
+.text-field__input {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-family: Roboto, sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.009375em;
+  text-decoration: inherit;
+  text-transform: inherit;
+  height: 28px;
+  transition: opacity 150ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
+  width: 100%;
+  min-width: 0;
+  border: none;
+  border-radius: 0;
+  background: none;
+  appearance: none;
+  padding: 0;
+}
+
+.text-field .text-field__input {
+  caret-color: #6200ee;
+}
+
+.text-field:not(.text-field--disabled) .text-field__input {
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.text-field--filled.text-field--no-label .text-field__input {
+  height: 100%;
+}
+
+.f-text-field-new-wrapper .text-field input,
+.f-text-field-new-wrapper .text-field label {
+  font-family: var(--kup-font-family);
+  font-size: 1em;
+}
+
+.f-text-field-new-wrapper
+  .text-field:not(.text-field--disabled)
+  .text-field__input,
+.f-text-field-new-wrapper
+  .text-field:not(.text-field--disabled)
+  .floating-label,
+.f-text-field-new-wrapper
+  .text-field:not(.text-field--disabled)
+  .text-field__input::placeholder,
+.f-text-field-new-wrapper
+  .text-field:not(.text-field--disabled)
+  .text-field-character-counter,
+.f-text-field-new-wrapper
+  .text-field:not(.text-field--disabled)
+  + .text-field-helper-line
+  .text-field-character-counter,
+.f-text-field-new-wrapper
+  .text-field:not(.text-field--disabled)
+  + .text-field-helper-line
+  .text-field-helper-text {
+  color: var(--kup-text-color);
+}
+
+.floating-label {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-family: Roboto, sans-serif;
+  font-size: 1rem;
+
+  font-weight: 400;
+
+  letter-spacing: 0.009375em;
+
+  text-decoration: inherit;
+
+  text-transform: inherit;
+
+  position: absolute;
+  left: 0;
+  -webkit-transform-origin: left top;
+  transform-origin: left top;
+  line-height: 1.15rem;
+  text-align: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: text;
+  overflow: hidden;
+  will-change: transform;
+  transition: transform 150ms cubic-bezier(0.4, 0, 0.2, 1),
+    color 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.f-text-field-new-wrapper
+  .text-field:not(.text-field--outlined):not(.text-field--textarea)
+  label.floating-label {
+  display: block;
+}
+
+.f-text-field-new-wrapper
+  .text-field:not(.text-field--outlined):not(.text-field--textarea)
+  .floating-label {
+  display: none;
+}
+
+.f-text-field-new-wrapper
+  .text-field.text-field--disabled:not(.text-field--outlined)
+  label {
+  color: var(--kup-disabled-color);
+  background: var(--kup-disabled-background-color);
+}
+
+.f-text-field-new-wrapper .ext-field input,
+#kup-component .f-text-field-new-wrapper .text-field label {
+  font-family: var(--kup-font-family);
+  font-size: 1em;
+}
+
+.text-field--disabled .floating-label {
+  cursor: default;
+}
+
+.text-field--disabled .floating-label {
+  color: rgba(0, 0, 0, 0.38);
+}
+
+.text-field--filled .floating-label {
+  left: 16px;
+  right: initial;
+}
+
+.text-field .floating-label {
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}

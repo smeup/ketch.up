@@ -1,0 +1,65 @@
+:host {
+  display: block;
+  font-size: var(--kup-font-size);
+  outline: none;
+}
+
+.list {
+  font-size: 1em;
+
+  .list-item {
+    & .list-item__text,
+    & .list-item__primary-text,
+    & .list-item__secondary-text {
+      font-family: var(--kup-font-family);
+    }
+
+    & .list-item__text {
+      padding-bottom: 4px;
+      padding-top: 4px;
+    }
+
+    & .list-item__graphic + .list-item__text {
+      padding-top: 10px;
+    }
+  }
+
+  &:not(.list--non-interactive) .list-item {
+    &:not(.list-item--selected):hover {
+      background-color: var(--kup-hover-background-color);
+      color: var(--kup-hover-color);
+    }
+  }
+
+  &.list--non-interactive .list-item {
+    cursor: auto;
+  }
+}
+
+.list.text-hidden {
+  & .list-item__text {
+    display: none;
+  }
+}
+
+.list:not(.list--two-line) {
+  @include list-deprecated-single-line-density(0);
+
+  & .list-item:not(.list-item--selected) .list-item__text {
+    color: var(--kup-text-color);
+  }
+}
+
+.list-item__secondary-text {
+  color: var(--kup-text-color);
+  opacity: 0.75;
+}
+
+.icon-container {
+  margin: 0;
+  margin-right: 0.25em;
+}
+
+kup-checkbox {
+  margin: 0;
+}

@@ -16,6 +16,7 @@ import {
     KupListProps,
 } from './kup-list-declarations-new';
 import { KupRadio } from '../kup-radio/kup-radio';
+import { MDCList } from '@material/list';
 import { KupCheckbox } from '../kup-checkbox/kup-checkbox';
 import { ItemsDisplayMode } from './kup-list-declarations-new';
 import { getValueOfItemByDisplayMode } from './kup-list-declarations-new';
@@ -91,7 +92,7 @@ export class KupList {
     static ROLE_CHECKBOX: string = 'group';
 
     private filteredItems: ComponentListElement[] = [];
-    // private listComponent: MDCList = null;
+    private listComponent: MDCList = null;
     /**
      * Instance of the KupManager class.
      */
@@ -394,7 +395,7 @@ export class KupList {
                 </span>,
                 imageTag,
                 <label
-                    class="mdc-list-item__text"
+                    class="list-item__text"
                     htmlFor={this.rootElement.id + '_' + index}
                 >
                     {primaryTextTag}
@@ -411,10 +412,10 @@ export class KupList {
             };
 
             innerSpanTag = [
-                <span class="mdc-list-item__graphic">
+                <span class="list-item__graphic">
                     <input type="checkbox" style={trickForMDC} />
                     <kup-checkbox
-                        class="mdc-checkbox"
+                        class="checkbox"
                         id={this.rootElement.id + '_' + index}
                         checked={checkedAttr}
                         ref={(el) => (this.checkboxes[index] = el as any)}
@@ -422,7 +423,7 @@ export class KupList {
                 </span>,
                 imageTag,
                 <label
-                    class="mdc-list-item__text"
+                    class="list-item__text"
                     htmlFor={this.rootElement.id + '_' + index}
                 >
                     {primaryTextTag}
@@ -472,7 +473,7 @@ export class KupList {
             <FImage
                 {...propsFImage}
                 resource={icon}
-                wrapperClass={`mdc-icon-button__icon icon-container material-icons`}
+                wrapperClass={`icon-button__icon icon-container material-icons`}
             />
         );
     }

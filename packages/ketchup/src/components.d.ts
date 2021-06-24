@@ -24,6 +24,7 @@ import { EchartTitle } from "./components/kup-echart/kup-echart-declarations";
 import { KupFldChangeEvent, KupFldSubmitEvent } from "./components/kup-field/kup-field-declarations";
 import { KupBadge } from "./components/kup-badge/kup-badge";
 import { FImageData } from "./f-components/f-image/f-image-declarations";
+import { ComponentListElement as ComponentListElement1, ItemsDisplayMode as ItemsDisplayMode1 } from "./components/kup-list-new/kup-list-declarations-new";
 import { MagicBoxData } from "./components/kup-magic-box/kup-magic-box-declarations";
 import { ComponentNavBarData, ComponentNavBarMode } from "./components/kup-nav-bar/kup-nav-bar-declarations";
 import { PaginatorMode } from "./components/kup-paginator/kup-paginator-declarations";
@@ -1524,6 +1525,68 @@ export namespace Components {
          */
         "twoLine": boolean;
     }
+    interface KupListNew {
+        /**
+          * Used to navigate the list when it's bound to a text field, i.e.: autocomplete.
+         */
+        "arrowDown": boolean;
+        "arrowUp": boolean;
+        /**
+          * Custom style of the component. For more information: https://ketchup.smeup.com/ketchup-showcase/#/customization
+         */
+        "customStyle": string;
+        /**
+          * The data of the list.
+         */
+        "data": ComponentListElement[];
+        /**
+          * Selects how the items must display their label and how they can be filtered for.
+         */
+        "displayMode": ItemsDisplayMode;
+        /**
+          * Keeps string for filtering elements when filter mode is active
+         */
+        "filter": string;
+        /**
+          * Used to retrieve component's props values.
+          * @param descriptions - When provided and true, the result will be the list of props with their description.
+          * @returns List of props as object, each key will be a prop.
+         */
+        "getProps": (descriptions?: boolean) => Promise<GenericObject>;
+        /**
+          * Hides rows' text, ideally to display a list of icons only.
+         */
+        "hideText": boolean;
+        /**
+          * Defines whether the list is a menu or not.
+         */
+        "isMenu": boolean;
+        /**
+          * Sets the status of the menu, when false it's hidden otherwise it's visible.
+         */
+        "menuVisible": boolean;
+        /**
+          * This method is used to trigger a new render of the component.
+         */
+        "refresh": () => Promise<void>;
+        "resetFilter": (newFilter: string) => Promise<void>;
+        /**
+          * Defines the type of selection. Values accepted: listbox, radiogroup or group.
+         */
+        "roleType"?: string;
+        /**
+          * Defines whether items are selectable or not.
+         */
+        "selectable": boolean;
+        /**
+          * Displays the icons associated to each row when set to true.
+         */
+        "showIcons": boolean;
+        /**
+          * The list elements descriptions will be arranged in two lines.
+         */
+        "twoLine": boolean;
+    }
     interface KupMagicBox {
         /**
           * Custom style of the component.
@@ -2427,6 +2490,12 @@ declare global {
         prototype: HTMLKupListElement;
         new (): HTMLKupListElement;
     };
+    interface HTMLKupListNewElement extends Components.KupListNew, HTMLStencilElement {
+    }
+    var HTMLKupListNewElement: {
+        prototype: HTMLKupListNewElement;
+        new (): HTMLKupListNewElement;
+    };
     interface HTMLKupMagicBoxElement extends Components.KupMagicBox, HTMLStencilElement {
     }
     var HTMLKupMagicBoxElement: {
@@ -2568,6 +2637,7 @@ declare global {
         "kup-layout": HTMLKupLayoutElement;
         "kup-lazy": HTMLKupLazyElement;
         "kup-list": HTMLKupListElement;
+        "kup-list-new": HTMLKupListNewElement;
         "kup-magic-box": HTMLKupMagicBoxElement;
         "kup-modal": HTMLKupModalElement;
         "kup-nav-bar": HTMLKupNavBarElement;
@@ -4264,6 +4334,80 @@ declare namespace LocalJSX {
          */
         "twoLine"?: boolean;
     }
+    interface KupListNew {
+        /**
+          * Used to navigate the list when it's bound to a text field, i.e.: autocomplete.
+         */
+        "arrowDown"?: boolean;
+        "arrowUp"?: boolean;
+        /**
+          * Custom style of the component. For more information: https://ketchup.smeup.com/ketchup-showcase/#/customization
+         */
+        "customStyle"?: string;
+        /**
+          * The data of the list.
+         */
+        "data"?: ComponentListElement[];
+        /**
+          * Selects how the items must display their label and how they can be filtered for.
+         */
+        "displayMode"?: ItemsDisplayMode;
+        /**
+          * Keeps string for filtering elements when filter mode is active
+         */
+        "filter"?: string;
+        /**
+          * Hides rows' text, ideally to display a list of icons only.
+         */
+        "hideText"?: boolean;
+        /**
+          * Defines whether the list is a menu or not.
+         */
+        "isMenu"?: boolean;
+        /**
+          * Sets the status of the menu, when false it's hidden otherwise it's visible.
+         */
+        "menuVisible"?: boolean;
+        /**
+          * Events.
+         */
+        "onKupListBlur"?: (event: CustomEvent<{
+        selected: ComponentListElement;
+        el: EventTarget;
+    }>) => void;
+        "onKupListChange"?: (event: CustomEvent<{
+        selected: ComponentListElement;
+        el: EventTarget;
+    }>) => void;
+        "onKupListClick"?: (event: CustomEvent<{
+        selected: ComponentListElement;
+        el: EventTarget;
+    }>) => void;
+        "onKupListFocus"?: (event: CustomEvent<{
+        selected: ComponentListElement;
+        el: EventTarget;
+    }>) => void;
+        "onKupListInput"?: (event: CustomEvent<{
+        selected: ComponentListElement;
+        el: EventTarget;
+    }>) => void;
+        /**
+          * Defines the type of selection. Values accepted: listbox, radiogroup or group.
+         */
+        "roleType"?: string;
+        /**
+          * Defines whether items are selectable or not.
+         */
+        "selectable"?: boolean;
+        /**
+          * Displays the icons associated to each row when set to true.
+         */
+        "showIcons"?: boolean;
+        /**
+          * The list elements descriptions will be arranged in two lines.
+         */
+        "twoLine"?: boolean;
+    }
     interface KupMagicBox {
         /**
           * Custom style of the component.
@@ -5152,6 +5296,7 @@ declare namespace LocalJSX {
         "kup-layout": KupLayout;
         "kup-lazy": KupLazy;
         "kup-list": KupList;
+        "kup-list-new": KupListNew;
         "kup-magic-box": KupMagicBox;
         "kup-modal": KupModal;
         "kup-nav-bar": KupNavBar;
@@ -5208,6 +5353,7 @@ declare module "@stencil/core" {
             "kup-layout": LocalJSX.KupLayout & JSXBase.HTMLAttributes<HTMLKupLayoutElement>;
             "kup-lazy": LocalJSX.KupLazy & JSXBase.HTMLAttributes<HTMLKupLazyElement>;
             "kup-list": LocalJSX.KupList & JSXBase.HTMLAttributes<HTMLKupListElement>;
+            "kup-list-new": LocalJSX.KupListNew & JSXBase.HTMLAttributes<HTMLKupListNewElement>;
             "kup-magic-box": LocalJSX.KupMagicBox & JSXBase.HTMLAttributes<HTMLKupMagicBoxElement>;
             "kup-modal": LocalJSX.KupModal & JSXBase.HTMLAttributes<HTMLKupModalElement>;
             "kup-nav-bar": LocalJSX.KupNavBar & JSXBase.HTMLAttributes<HTMLKupNavBarElement>;

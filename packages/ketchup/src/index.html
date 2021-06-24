@@ -315,12 +315,6 @@
     <kup-list is-filterable="false" selectable="true" role-type="radiogroup" field-id="pippo3"></kup-list>
     <kup-list is-filterable="false" selectable="true" role-type="group" field-id="pippo4"></kup-list>
     <kup-list is-filterable="false" selectable="true" field-id="pippo5" show-icon="true"></kup-list>
-    <h4>Material ListBox NEW(widget)</h4>
-    <kup-list-new is-filterable="false" selectable="false" field-id="pippo1"></kup-list-new>
-    <kup-list-new is-filterable="false" selectable="true" field-id="pippo2"></kup-list-new>
-    <kup-list-new is-filterable="false" selectable="true" role-type="radiogroup" field-id="pippo3"></kup-list-new>
-    <kup-list-new is-filterable="false" selectable="true" role-type="group" field-id="pippo4"></kup-list-new>
-    <kup-list-new is-filterable="false" selectable="true" field-id="pippo5" show-icon="true"></kup-list-new>
 
     <h4>Material Select (widget)</h4>
     <kup-combobox is-filterable="false" field-id="pluto1" is-select="true"></kup-combobox>
@@ -525,60 +519,6 @@
                 checked: true
             },
         ];
-        let listBox1New = document.getElementsByTagName('kup-list-new')[0];
-        let listBox2New = document.getElementsByTagName('kup-list-new')[1];
-        let listBox3New = document.getElementsByTagName('kup-list-new')[2];
-        let listBox4New = document.getElementsByTagName('kup-list-new')[3];
-        let listBox5New = document.getElementsByTagName('kup-list-new')[4];
-
-        let itemsForListBoxNew = [
-            {
-                text: 'Text 1',
-                secondaryText: 'Secondary text 1',
-                value: 'txt1',
-                icon: '3d_rotation'
-            },
-            {
-                text: 'Text 2',
-                value: 'txt2',
-                icon: 'ac_unit'
-            },
-            {
-                text: 'Text 3',
-                value: 'txt3',
-                icon: 'accessibility'
-            },
-            {
-                text: null,
-                value: null,
-                isSeparator: true,
-            },
-            {
-                text: 'Text 4',
-                value: 'txt4',
-                icon: 'account_box'
-            },
-            {
-                text: 'Text 5',
-                value: 'txt5',
-                /*selected: true,*/
-                /*icon: 'add_alert'*/
-            },
-        ];
-        listBox1New.data = JSON.parse(JSON.stringify(itemsForListBoxNew));
-        listBox1New.data[0].selected = true;
-        listBox2New.data = JSON.parse(JSON.stringify(itemsForListBoxNew));
-        listBox2New.data[1].selected = true;
-        listBox3New.data = JSON.parse(JSON.stringify(itemsForListBoxNew));
-        listBox3New.data[2].selected = true;
-        listBox4New.data = JSON.parse(JSON.stringify(itemsForListBoxNew));
-        listBox4New.data[0].selected = true;
-        listBox5New.data = JSON.parse(JSON.stringify(itemsForListBoxNew));
-        listBox5New.data[2].selected = true;
-
-        let listBoxDataNew = { data: { 'kup-list-new': { data: {} } } };
-        listBoxDataNew.data['kup-list-new'].data = itemsForListBoxNew;
-
         let listBox1 = document.getElementsByTagName('kup-list')[0];
         let listBox2 = document.getElementsByTagName('kup-list')[1];
         let listBox3 = document.getElementsByTagName('kup-list')[2];

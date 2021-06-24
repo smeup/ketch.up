@@ -56,6 +56,7 @@ Type: `Promise<void>`
  - [kup-fab](../kup-fab)
  - [kup-image](../kup-image)
  - [kup-list](../kup-list)
+ - [kup-list-new](../kup-list-new)
  - [kup-magic-box](../kup-magic-box)
  - [kup-paginator](../kup-paginator)
 
@@ -76,6 +77,7 @@ graph TD;
   kup-fab --> kup-badge
   kup-image --> kup-badge
   kup-list --> kup-badge
+  kup-list-new --> kup-badge
   kup-magic-box --> kup-badge
   kup-paginator --> kup-badge
   style kup-badge fill:#f9f,stroke:#333,stroke-width:4px

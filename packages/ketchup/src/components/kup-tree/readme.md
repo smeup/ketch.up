@@ -237,6 +237,7 @@ graph TD;
   kup-data-table --> kup-date-picker
   kup-data-table --> kup-image
   kup-data-table --> kup-button
+  kup-data-table --> kup-btn
   kup-data-table --> kup-chart
   kup-data-table --> kup-color-picker
   kup-data-table --> kup-gauge
@@ -247,6 +248,9 @@ graph TD;
   kup-data-table --> kup-switch
   kup-data-table --> kup-combobox
   kup-data-table --> kup-badge
+  kup-btn --> kup-dropdown-button
+  kup-btn --> kup-badge
+  kup-dropdown-button --> kup-list
   kup-paginator --> kup-combobox
   kup-paginator --> kup-badge
   style kup-tree fill:#f9f,stroke:#333,stroke-width:4px

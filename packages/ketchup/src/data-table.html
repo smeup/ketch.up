@@ -1,276 +1,251 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
-    <head>
-        <meta charset="utf-8" />
 
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"
-        />
+<head>
+    <meta charset="utf-8" />
 
-        <title>Ketchup data table</title>
-        <link
-        rel="stylesheet"
-        href="https://fonts.googleapis.com/icon?family=Material+Icons"
-        ></link>
-        <script src="https://d3js.org/d3-path.v1.min.js"></script>
-        <script src="https://d3js.org/d3-shape.v1.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
 
-        <link
-            href="https://cdn.materialdesignicons.com/4.5.95/css/materialdesignicons.min.css"
-            rel="stylesheet"
-            type="text/css"
-        />
+    <title>Ketchup data table</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    </link>
 
-        <script type="module" src="/build/ketchup.esm.js"></script>
-        <script nomodule src="/build/ketchup.js"></script>
+    <link href="https://cdn.materialdesignicons.com/4.5.95/css/materialdesignicons.min.css" rel="stylesheet"
+        type="text/css" />
 
-        <link
-            href="https://fonts.googleapis.com/css?family=Lato"
-            rel="stylesheet"
-        />
+    <script type="module" src="/build/ketchup.esm.js"></script>
+    <script nomodule src="/build/ketchup.js"></script>
 
-        <script
-            type="text/javascript"
-            src="https://www.gstatic.com/charts/loader.js"
-        ></script>
-        <style>
-            * {
-                box-sizing: border-box;
-                transition: all .125s ease;
-            }
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" />
 
-            :focus {
-                outline: none;
-            }
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+            transition: all .125s ease;
+        }
 
-            html {
-                background-color: var(--kup-background-color);
-                color: var(--kup-text-color);
-                font-family: var(--kup-font-family);
-                font-size: var(--kup-font-size);
-                padding: 1rem;
-            }
+        :focus {
+            outline: none;
+        }
 
-            .options {
-                margin-bottom: 1rem;
-            }
+        html {
+            background-color: var(--kup-background-color);
+            color: var(--kup-text-color);
+            font-family: var(--kup-font-family);
+            font-size: var(--kup-font-size);
+            padding: 1rem;
+        }
 
-            hr {
-                margin: 2rem 0;
-            }
+        .options {
+            margin-bottom: 1rem;
+        }
 
-            .btn-options {
-                margin-bottom: 1rem;
-                display: grid;
-                grid-template-columns: 1fr 1fr 1fr;
-                grid-gap: 0.5rem;
-            }
+        hr {
+            margin: 2rem 0;
+        }
 
-            .BTN {
-                display: block;
-            }
+        .btn-options {
+            margin-bottom: 1rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-gap: 0.5rem;
+        }
 
-            #theme-tester {
-                position: fixed;
-                right: 0;
-                top: 0;
-                margin: 5px;
-                padding: 20px 10px 20px 10px;
-                box-shadow: 0px 0px 7.5px 0px rgba(128, 128, 128, 0.5);
-                z-index: 100;
-            }
-        </style>
-    </head>
+        .BTN {
+            display: block;
+        }
 
-    <body>
-        <script>
-            document.documentElement['ketchupInit'] = { debug: { active: true, logLimit: 10000 } };
-        </script>
-        <div class="data-examples">
-            <h1>Text field</h1>
-            <kup-data-table show-footer show-customization lazy-load-rows="false" id="text-field" show-filters rows-per-page="2"></kup-data-table>
+        #theme-tester {
+            position: fixed;
+            right: 0;
+            top: 0;
+            margin: 5px;
+            padding: 20px 10px 20px 10px;
+            box-shadow: 0px 0px 7.5px 0px rgba(128, 128, 128, 0.5);
+            z-index: 100;
+        }
+    </style>
+</head>
 
-            <h1>Row actions</h1>
-            <kup-data-table selection="multiple-checkbox" show-footer show-groups lazy-load-rows="false" id="row-actions" show-filters rows-per-page="20"></kup-data-table>
-
-            <h1>Radio in cell</h1> 
-            <kup-data-table lazy-load-rows="false" id="temp-data-table-radio"></kup-data-table>
-
-            <h1>Order grouped rows</h1>
-            <kup-data-table lazy-load-rows="false" id="order-group-test" paginator-pos="Top" expand-groups></kup-data-table>
-
-            <h1>temp test</h1>
-            <kup-data-table lazy-load-rows="false" id="temp-data-table-test" show-filters></kup-data-table>
-
-            <h1>temp test data type</h1>
-            <kup-data-table lazy-load-rows="false" id="temp-data-table-test-data-type" show-filters></kup-data-table>
-
-            <h1>temp test data type 2</h1>
-            <kup-data-table lazy-load-rows="false" id="temp-data-table-test-data-type2" scroll-on-hover rows-per-page="100" show-filters></kup-data-table>
-
-            <h1>No data</h1>
-            <kup-data-table lazy-load-rows="false" density="small" show-load-more></kup-data-table>
-
-            <h1>Only columns</h1>
-            <kup-data-table
-                id="only-cols"
-                paginator-pos="Both"
-                lazy-load-rows="false"
-                drop-enabled
-                drag-enabled
-            ></kup-data-table>
-
-            <h1>Columns and rows</h1>
-            <div style="width: 800px;">
-                <kup-data-table
-                    id="basic-data"
-                    enable-sortable-columns
-                    drag-enabled
-                    lazy-load-rows="false"
-                    show-footer
-                    show-groups
-                    selection="single"
-                    ></kup-data-table
-                    ></div>
-                    
-                    <h1>Columns and rows with removable columns</h1>
-                    <div style="width: 800px;">
-                        <kup-data-table
-                        id="basic-data-rem-cols"
-                        enable-sortable-columns
-                        lazy-load-rows="false"
-                        removable-columns="true"
-                        drop-enabled
-                        show-footer
-                        show-groups
-                ></kup-data-table
-            ></div>
+<body>
+    <script>
+        document.documentElement['ketchupInit'] = { debug: { active: true, logLimit: 10000 } };
+    </script>
+    <div class="data-examples">
 
 
-            <h1>Radio buttons</h1>
-            <kup-data-table lazy-load-rows="false" id="radio-buttons"></kup-data-table>
-        </div>
-        <div class="filter-examples">
-            <h1>Filters</h1>
-            <kup-data-table lazy-load-rows="false" id="show-filter"></kup-data-table>
+        <h1>Text field</h1>
+        <kup-data-table show-footer show-customization lazy-load-rows="false" id="text-field" show-filters
+            rows-per-page="2"></kup-data-table>
 
-            <h1>Filters on checkboxes</h1>
-            <kup-data-table lazy-load-rows="false" id="show-filter-and-checkbox"></kup-data-table>
+        <h1>Row actions</h1>
+        <kup-data-table selection="multiple-checkbox" show-footer show-groups lazy-load-rows="false" id="row-actions"
+            show-filters rows-per-page="20"></kup-data-table>
 
-            <h1>Filters with initial value</h1>
-            <kup-data-table lazy-load-rows="false" id="filter"></kup-data-table>
+        <h1>Radio in cell</h1>
+        <kup-data-table lazy-load-rows="false" id="temp-data-table-radio"></kup-data-table>
 
-            <h1>Filters with global filter</h1>
-            <kup-data-table lazy-load-rows="false" id="global-filter"></kup-data-table>
+        <h1>CodVer in cell</h1>
+        <kup-data-table lazy-load-rows="false" id="temp-data-table-codver"></kup-data-table>
 
-            <h1>Filter column value or object </h1>
-            <kup-data-table lazy-load-rows="false" id="filter-object-value"></kup-data-table>
+
+        <h1>Order grouped rows</h1>
+        <kup-data-table lazy-load-rows="false" id="order-group-test" paginator-pos="Top" expand-groups></kup-data-table>
+
+        <h1>temp test</h1>
+        <kup-data-table lazy-load-rows="false" id="temp-data-table-test" show-filters></kup-data-table>
+
+        <h1>temp test data type</h1>
+        <kup-data-table lazy-load-rows="false" id="temp-data-table-test-data-type" show-filters></kup-data-table>
+
+        <h1>temp test data type 2</h1>
+        <kup-data-table lazy-load-rows="false" id="temp-data-table-test-data-type2" scroll-on-hover rows-per-page="100"
+            show-filters></kup-data-table>
+
+        <h1>No data</h1>
+        <kup-data-table lazy-load-rows="false" density="small" show-load-more></kup-data-table>
+
+        <h1>Only columns</h1>
+        <kup-data-table id="only-cols" paginator-pos="Both" lazy-load-rows="false" drop-enabled drag-enabled>
+        </kup-data-table>
+
+        <h1>Columns and rows</h1>
+        <div style="width: 800px;">
+            <kup-data-table id="basic-data" enable-sortable-columns drag-enabled lazy-load-rows="false" show-footer
+                show-groups selection="single"></kup-data-table>
         </div>
 
-        <div class="sort-examples">
-            <h1>Sort disabled</h1>
-            <kup-data-table lazy-load-rows="false" sort-enabled="false" id="no-sort"></kup-data-table>
-
-            <h1>DftSort</h1>
-            <p>
-                Sort ascending on first column, sort descending on second column
-            </p>
-            <kup-data-table lazy-load-rows="false" id="dft-sort"></kup-data-table>
-        </div>
-        <div class="pagination-examples">
-            <h1>Pagination</h1>
-            <div>
-                <label for="cols">Number of columns</label>
-                <input id="cols" type="number" value="10" />
-
-                <label for="rows">Number of rows</label>
-                <input id="rows" type="number" value="100" />
-
-                <button type="button" onclick="updatePaginationTable()"
-                    >Submit</button
-                >
-            </div>
-            <kup-data-table lazy-load-rows="false" paginator-pos="Top" id="pagination"></kup-data-table>
-
-            <h1>Pagination bottom</h1>
-            <kup-data-table lazy-load-rows="false" paginator-pos="Bottom" id="pagination-bottom"></kup-data-table>
-
-            <h1>Pagination both</h1>
-            <kup-data-table lazy-load-rows="false" paginator-pos="Both" id="pagination-both"></kup-data-table>
-
-            <h1>Totals test</h1>
-            <kup-data-table lazy-load-rows="false" id="totals-test"></kup-data-table>
-
-            <h1>Average test</h1>
-            <kup-data-table lazy-load-rows="false" id="average-test" expand-groups show-groups></kup-data-table>
-
-            <h1>Math Formulas test</h1>
-            <kup-data-table lazy-load-rows="false" id="math-test" expand-groups></kup-data-table>
+        <h1>Columns and rows with removable columns</h1>
+        <div style="width: 800px;">
+            <kup-data-table id="basic-data-rem-cols" enable-sortable-columns lazy-load-rows="false"
+                removable-columns="true" drop-enabled show-footer show-groups></kup-data-table>
         </div>
 
-        <h1>Custom columns width (Column A = 100px / Column C = 300px)</h1>
-        <kup-data-table lazy-load-rows="false" id="custom-columns-width"></kup-data-table>
 
-        <h1>Hidden header</h1>
-        <kup-data-table lazy-load-rows="false" show-header="false" id="hidden-header"></kup-data-table>
+        <h1>Radio buttons</h1>
+        <kup-data-table lazy-load-rows="false" id="radio-buttons"></kup-data-table>
+    </div>
+    <div class="filter-examples">
+        <h1>Filters</h1>
+        <kup-data-table lazy-load-rows="false" id="show-filter"></kup-data-table>
 
-        <h1>Hidden grid</h1>
-        <kup-data-table lazy-load-rows="false" show-grid="false" id="hidden-grid"></kup-data-table>
+        <h1>Filters on checkboxes</h1>
+        <kup-data-table lazy-load-rows="false" id="show-filter-and-checkbox"></kup-data-table>
 
-        <h1>SelectRow</h1>
-        <kup-data-table lazy-load-rows="false" select-row="3" id="select-row"></kup-data-table>
+        <h1>Filters with initial value</h1>
+        <kup-data-table lazy-load-rows="false" id="filter"></kup-data-table>
 
-        <h1>Graphic cells</h1>
-        <kup-data-table lazy-load-rows="false" id="graphic-cells"></kup-data-table>
+        <h1>Filters with global filter</h1>
+        <kup-data-table lazy-load-rows="false" id="global-filter"></kup-data-table>
 
-        <h1>Rating</h1>
-        <kup-data-table lazy-load-rows="false" id="rating-test"></kup-data-table>      
+        <h1>Filter column value or object </h1>
+        <kup-data-table lazy-load-rows="false" id="filter-object-value"></kup-data-table>
+    </div>
 
-        <h1>Color</h1>
-        <kup-data-table lazy-load-rows="false" id="color-test"></kup-data-table>      
+    <div class="sort-examples">
+        <h1>Sort disabled</h1>
+        <kup-data-table lazy-load-rows="false" sort-enabled="false" id="no-sort"></kup-data-table>
 
-        <h1>JL</h1>
-        <kup-data-table lazy-load-rows="false" id="jl-test"></kup-data-table>  
-            
-        <h1>Gauge</h1>
-        <kup-data-table lazy-load-rows="false" id="gauge-test"></kup-data-table>
+        <h1>DftSort</h1>
+        <p>
+            Sort ascending on first column, sort descending on second column
+        </p>
+        <kup-data-table lazy-load-rows="false" id="dft-sort"></kup-data-table>
+    </div>
+    <div class="pagination-examples">
+        <h1>Pagination</h1>
+        <div>
+            <label for="cols">Number of columns</label>
+            <input id="cols" type="number" value="10" />
 
-        <h1>Images</h1>
-        <kup-data-table lazy-load-rows="false" id="image-shape-test"></kup-data-table>      
- 
-        <script src="/assets/data-table.js"></script>
-        <!-- <script src="/assets/index.js"></script>-->
-        <style>
-            :root {
-                --kup-background-color: #ffffff;
-                --kup-nav-bar-background-color: #2e2e2e;
-                --kup-drawer-background-color: #ffffff;
-                --kup-primary-color: #d64325;
-                --kup-font-family: 'Oswald', sans-serif;
-                --kup-font-size: 16px;
-                --kup-text-on-primary-color: #ffffff;
-                --kup-text-color: #2e2e2e;
-                --kup-icon-color: #505050;
-                --kup-hover-background-color: #f0f0f0;
-                --kup-hover-color: #545454;
-                --kup-border-color: #e0e0e0;
-                --kup-disabled-color: #5c5c5c;
-                --kup-disabled-background-color: #eaeaea;
-                --kup-field-background-color: #fafafa;
-                --kup-chip-background-color: #eaeaea;
-                --kup-spinner-color: #eaa710;
-                --kup-title-background-color: #f1f3f4;
+            <label for="rows">Number of rows</label>
+            <input id="rows" type="number" value="100" />
 
-                --mdc-theme-primary: var(--kup-primary-color);
-                --mdc-theme-on-primary: var(--kup-text-on-primary-color);
-                --mdc-theme-secondary: var(--kup-primary-color);
-                --mdc-theme-on-secondary: var(--kup-text-on-primary-color);
-                --mdc-theme-surface: var(--kup-background-color);
-                --mdc-theme-on-surface: var(--kup-text-color);
-                --mdc-theme-background: var(--kup-background-color);
-                --mdc-theme-text-primary-on-background: var(--kup-text-color);
-            }
-        </style>
-    </body>
+            <button type="button" onclick="updatePaginationTable()">Submit</button>
+        </div>
+        <kup-data-table lazy-load-rows="false" paginator-pos="Top" id="pagination"></kup-data-table>
+
+        <h1>Pagination bottom</h1>
+        <kup-data-table lazy-load-rows="false" paginator-pos="Bottom" id="pagination-bottom"></kup-data-table>
+
+        <h1>Pagination both</h1>
+        <kup-data-table lazy-load-rows="false" paginator-pos="Both" id="pagination-both"></kup-data-table>
+
+        <h1>Totals test</h1>
+        <kup-data-table lazy-load-rows="false" id="totals-test"></kup-data-table>
+
+        <h1>Average test</h1>
+        <kup-data-table lazy-load-rows="false" id="average-test" expand-groups show-groups></kup-data-table>
+
+        <h1>Math Formulas test</h1>
+        <kup-data-table lazy-load-rows="false" id="math-test" expand-groups></kup-data-table>
+    </div>
+
+    <h1>Custom columns width (Column A = 100px / Column C = 300px)</h1>
+    <kup-data-table lazy-load-rows="false" id="custom-columns-width"></kup-data-table>
+
+    <h1>Hidden header</h1>
+    <kup-data-table lazy-load-rows="false" show-header="false" id="hidden-header"></kup-data-table>
+
+    <h1>Hidden grid</h1>
+    <kup-data-table lazy-load-rows="false" show-grid="false" id="hidden-grid"></kup-data-table>
+
+    <h1>SelectRow</h1>
+    <kup-data-table lazy-load-rows="false" select-row="3" id="select-row"></kup-data-table>
+
+    <h1>Graphic cells</h1>
+    <kup-data-table lazy-load-rows="false" id="graphic-cells"></kup-data-table>
+
+    <h1>Rating</h1>
+    <kup-data-table lazy-load-rows="false" id="rating-test"></kup-data-table>
+
+    <h1>Color</h1>
+    <kup-data-table lazy-load-rows="false" id="color-test"></kup-data-table>
+
+    <h1>JL</h1>
+    <kup-data-table lazy-load-rows="false" id="jl-test"></kup-data-table>
+
+    <h1>Gauge</h1>
+    <kup-data-table lazy-load-rows="false" id="gauge-test"></kup-data-table>
+
+    <h1>Images</h1>
+    <kup-data-table lazy-load-rows="false" id="image-shape-test"></kup-data-table>
+
+
+    <script src="/assets/data-table.js"></script>
+    <!-- <script src="/assets/index.js"></script>-->
+    <style>
+        :root {
+            --kup-background-color: #ffffff;
+            --kup-nav-bar-background-color: #2e2e2e;
+            --kup-drawer-background-color: #ffffff;
+            --kup-primary-color: #d64325;
+            --kup-font-family: 'Oswald', sans-serif;
+            --kup-font-size: 16px;
+            --kup-text-on-primary-color: #ffffff;
+            --kup-text-color: #2e2e2e;
+            --kup-icon-color: #505050;
+            --kup-hover-background-color: #f0f0f0;
+            --kup-hover-color: #545454;
+            --kup-border-color: #e0e0e0;
+            --kup-disabled-color: #5c5c5c;
+            --kup-disabled-background-color: #eaeaea;
+            --kup-field-background-color: #fafafa;
+            --kup-chip-background-color: #eaeaea;
+            --kup-spinner-color: #eaa710;
+            --kup-title-background-color: #f1f3f4;
+
+            --mdc-theme-primary: var(--kup-primary-color);
+            --mdc-theme-on-primary: var(--kup-text-on-primary-color);
+            --mdc-theme-secondary: var(--kup-primary-color);
+            --mdc-theme-on-secondary: var(--kup-text-on-primary-color);
+            --mdc-theme-surface: var(--kup-background-color);
+            --mdc-theme-on-surface: var(--kup-text-color);
+            --mdc-theme-background: var(--kup-background-color);
+            --mdc-theme-text-primary-on-background: var(--kup-text-color);
+        }
+    </style>
+</body>
+
 </html>

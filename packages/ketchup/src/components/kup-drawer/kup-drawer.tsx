@@ -8,7 +8,6 @@ import {
     Host,
     Method,
     Prop,
-    State,
     Watch,
 } from '@stencil/core';
 

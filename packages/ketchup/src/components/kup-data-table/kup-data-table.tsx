@@ -3166,10 +3166,7 @@ export class KupDataTable {
             columnClass.number = true;
         }
 
-        if (
-            this.kupManager.objects.isIcon(column.obj) ||
-            this.kupManager.objects.isVoCodver(column.obj)
-        ) {
+        if (this.kupManager.objects.isIcon(column.obj)) {
             columnClass.icon = true;
         }
         // For fixed cells styles and classes
@@ -4967,6 +4964,14 @@ export class KupDataTable {
                     cell
                 );
                 return <kup-button {...props}></kup-button>;
+            case 'btn':
+                classObj['is-centered'] = true;
+                props['data-storage'] = {
+                    cell: cell,
+                    row: row,
+                    column: column,
+                };
+                return <kup-btn {...props}></kup-btn>;
             case 'chart':
                 classObj['is-centered'] = true;
                 return <kup-chart {...props} />;

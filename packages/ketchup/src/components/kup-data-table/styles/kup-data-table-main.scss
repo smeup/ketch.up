@@ -367,9 +367,8 @@ tbody {
 
       &.number {
         .cell-content {
-          display: block;
           font-family: var(--kup-font-family-monospace);
-          text-align: right;
+          justify-content: flex-end;
         }
       }
 
@@ -582,4 +581,15 @@ th.obj:hover span:not(.overlay-action) {
 
 .customize-element:nth-child(1) {
   padding-top: 1em;
+}
+
+.f-image--wrapper.cell-info {
+  margin: auto 0.5em auto 0.25em;
+}
+
+[kup-dialog] {
+  background-color: var(--kup-background-color);
+  margin: 0;
+  position: fixed;
+  transition: none;
 }

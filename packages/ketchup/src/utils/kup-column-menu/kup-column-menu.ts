@@ -45,6 +45,7 @@ import {
 } from '../../f-components/f-chip/f-chip-declarations';
 
 const dom: KupDom = document.documentElement as KupDom;
+
 /**
  * Definition and events of the column menu card.
  * @module KupColumnMenu
@@ -329,15 +330,17 @@ export class KupColumnMenu {
     prepSwitch(comp: KupDataTable | KupTree, column: Column): GenericObject[] {
         const props: GenericObject[] = [];
         if (!FiltersColumnMenu.isTree(comp)) {
-            props.push({
-                'data-storage': {
-                    columnName: column.name,
-                },
-                checked: column.isKey ? true : false,
-                id: KupColumnMenuIds.SWITCH_KEY,
-                label: dom.ketchup.language.translate(KupLanguageRow.KEY),
-                leadingLabel: true,
-            });
+            if (!dom.ketchup.objects.isEmptySmeupObject(column.obj)) {
+                props.push({
+                    'data-storage': {
+                        columnName: column.name,
+                    },
+                    checked: column.isKey ? true : false,
+                    id: KupColumnMenuIds.SWITCH_KEY,
+                    label: dom.ketchup.language.translate(KupLanguageRow.KEY),
+                    leadingLabel: true,
+                });
+            }
             if ((comp as KupDataTable).showGroups) {
                 const isGroupActive: boolean =
                     comp.getGroupByName(column.name) != null;

@@ -385,6 +385,7 @@ export class KupCard {
         root.addEventListener('kupAddColumn', this.cardEvent);
         root.addEventListener('kupAutocompleteBlur', this.cardEvent);
         root.addEventListener('kupAutocompleteChange', this.cardEvent);
+        root.addEventListener('kupAutocompleteInput', this.cardEvent);
         root.addEventListener('kupAutocompleteItemClick', this.cardEvent);
         root.addEventListener('kupButtonClick', this.cardEvent);
         root.addEventListener('kupCheckboxChange', this.cardEvent);

@@ -20,17 +20,17 @@
 
 ## Events
 
-| Event                            | Description    | Type                                                                     |
-| -------------------------------- | -------------- | ------------------------------------------------------------------------ |
-| `kupAutocompleteBlur`            | Event example. | `CustomEvent<{ value: any; id: string; }>`                               |
-| `kupAutocompleteChange`          |                | `CustomEvent<{ value: any; id: string; }>`                               |
-| `kupAutocompleteClick`           |                | `CustomEvent<{ value: any; id: string; }>`                               |
-| `kupAutocompleteFilterChanged`   |                | `CustomEvent<{ filter: string; matchesMinimumCharsRequired: boolean; }>` |
-| `kupAutocompleteFocus`           |                | `CustomEvent<{ value: any; id: string; }>`                               |
-| `kupAutocompleteIconClick`       |                | `CustomEvent<{ value: any; id: string; }>`                               |
-| `kupAutocompleteInput`           |                | `CustomEvent<{ value: any; id: string; }>`                               |
-| `kupAutocompleteItemClick`       |                | `CustomEvent<{ value: any; id: string; }>`                               |
-| `kupAutocompleteTextFieldSubmit` |                | `CustomEvent<{ value: any; id: string; }>`                               |
+| Event                            | Description    | Type                                                                                            |
+| -------------------------------- | -------------- | ----------------------------------------------------------------------------------------------- |
+| `kupAutocompleteBlur`            | Event example. | `CustomEvent<{ value: any; id: string; comp: KupAutocomplete; }>`                               |
+| `kupAutocompleteChange`          |                | `CustomEvent<{ value: any; id: string; comp: KupAutocomplete; }>`                               |
+| `kupAutocompleteClick`           |                | `CustomEvent<{ value: any; id: string; comp: KupAutocomplete; }>`                               |
+| `kupAutocompleteFilterChanged`   |                | `CustomEvent<{ filter: string; matchesMinimumCharsRequired: boolean; comp: KupAutocomplete; }>` |
+| `kupAutocompleteFocus`           |                | `CustomEvent<{ value: any; id: string; comp: KupAutocomplete; }>`                               |
+| `kupAutocompleteIconClick`       |                | `CustomEvent<{ value: any; id: string; comp: KupAutocomplete; }>`                               |
+| `kupAutocompleteInput`           |                | `CustomEvent<{ value: any; id: string; comp: KupAutocomplete; }>`                               |
+| `kupAutocompleteItemClick`       |                | `CustomEvent<{ value: any; id: string; comp: KupAutocomplete; }>`                               |
+| `kupAutocompleteTextFieldSubmit` |                | `CustomEvent<{ value: any; id: string; comp: KupAutocomplete; }>`                               |
 
 
 ## Methods

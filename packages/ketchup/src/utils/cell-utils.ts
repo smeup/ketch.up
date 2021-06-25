@@ -323,7 +323,7 @@ export function getCellType(cell: Cell) {
         return 'gauge';
     } else if (isKnob(cell, null)) {
         return 'knob';
-    } else if (kupObjects.isIcon(obj) || kupObjects.isVoCodver(obj)) {
+    } else if (kupObjects.isIcon(obj)) {
         return 'icon';
     } else if (isImage(cell, null)) {
         return 'image';
@@ -347,6 +347,8 @@ export function getCellType(cell: Cell) {
         return 'time';
     } else if (kupObjects.isTextField(obj)) {
         return 'text-field';
+    } else if (kupObjects.isVoCodver(obj)) {
+        return 'btn';
     } else {
         return 'string';
     }

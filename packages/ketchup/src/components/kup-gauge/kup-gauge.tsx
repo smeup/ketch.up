@@ -17,7 +17,7 @@ import {
 import { unformattedStringToFormattedStringNumber } from '../../utils/utils';
 import { KupGaugeProps } from './kup-gauge-declarations';
 
-declare const d3: any;
+import { arc } from 'd3-shape';
 
 @Component({
     tag: 'kup-gauge',
@@ -117,7 +117,7 @@ export class KupGauge {
 
     //---- Internal not reactive state ----
     // Arcs generator
-    private arcGenerator = d3.arc();
+    private arcGenerator = arc();
 
     /**
      * Holds the maximum positive interval.

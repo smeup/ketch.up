@@ -1,4 +1,5 @@
 import { Identifiable } from '../../types/GenericTypes';
+import type { KupDataTable } from './kup-data-table';
 /**
  * Props of the kup-data-table component.
  * Used to export every prop in an object.
@@ -68,21 +69,33 @@ export interface CellData {
 }
 
 export interface Cell {
+    value: string;
+    cardID?: number;
+    cssClass?: string;
+    data?: CellData;
+    displayedValue?: string;
+    icon?: string;
+    info?: KupCellInfo;
+    isEditable?: boolean;
     obj?: {
         t: string;
         p: string;
         k: string;
     };
-    value: string;
-    displayedValue?: string;
-    style?: GenericMap;
     shape?: string;
-    data?: CellData;
-    cardID?: number;
-    cssClass?: string;
-    icon?: string;
+    style?: GenericMap;
     title?: string;
-    isEditable?: boolean;
+}
+/**
+ * Information about the cell, displayed before the content.
+ *
+ * @export
+ * @interface KupCellInfo
+ */
+export interface KupCellInfo {
+    color?: string;
+    icon?: string;
+    message: string;
 }
 
 export interface CellsHolder {
@@ -223,12 +236,14 @@ export enum ShowGrid {
 // }
 
 export interface KupDataTableCellButtonClick {
+    comp: KupDataTable;
     cell: Cell;
     column: Column;
     row: Row;
 }
 
 export interface KupDataTableCellTextFieldInput {
+    comp: KupDataTable;
     cell: Cell;
     column: Column;
     row: Row;

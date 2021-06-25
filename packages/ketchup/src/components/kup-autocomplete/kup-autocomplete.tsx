@@ -91,6 +91,7 @@ export class KupAutocomplete {
     kupBlur: EventEmitter<{
         value: any;
         id: string;
+        comp: KupAutocomplete;
     }>;
 
     @Event({
@@ -102,6 +103,7 @@ export class KupAutocomplete {
     kupChange: EventEmitter<{
         value: any;
         id: string;
+        comp: KupAutocomplete;
     }>;
 
     @Event({
@@ -113,6 +115,7 @@ export class KupAutocomplete {
     kupClick: EventEmitter<{
         value: any;
         id: string;
+        comp: KupAutocomplete;
     }>;
 
     @Event({
@@ -124,6 +127,7 @@ export class KupAutocomplete {
     kupFocus: EventEmitter<{
         value: any;
         id: string;
+        comp: KupAutocomplete;
     }>;
 
     @Event({
@@ -135,6 +139,7 @@ export class KupAutocomplete {
     kupInput: EventEmitter<{
         value: any;
         id: string;
+        comp: KupAutocomplete;
     }>;
 
     @Event({
@@ -146,6 +151,7 @@ export class KupAutocomplete {
     kupIconClick: EventEmitter<{
         value: any;
         id: string;
+        comp: KupAutocomplete;
     }>;
 
     @Event({
@@ -157,6 +163,7 @@ export class KupAutocomplete {
     kupItemClick: EventEmitter<{
         value: any;
         id: string;
+        comp: KupAutocomplete;
     }>;
 
     @Event({
@@ -168,6 +175,7 @@ export class KupAutocomplete {
     kupFilterChanged: EventEmitter<{
         filter: string;
         matchesMinimumCharsRequired: boolean;
+        comp: KupAutocomplete;
     }>;
 
     @Event({
@@ -179,6 +187,7 @@ export class KupAutocomplete {
     kupTextFieldSubmit: EventEmitter<{
         value: any;
         id: string;
+        comp: KupAutocomplete;
     }>;
 
     /**
@@ -270,6 +279,7 @@ export class KupAutocomplete {
         this.kupBlur.emit({
             value: target.value,
             id: this.rootElement.id,
+            comp: this,
         });
     }
 
@@ -279,6 +289,7 @@ export class KupAutocomplete {
         this.kupChange.emit({
             value: this.value,
             id: this.rootElement.id,
+            comp: this,
         });
     }
 
@@ -287,6 +298,7 @@ export class KupAutocomplete {
         this.kupClick.emit({
             value: target.value,
             id: this.rootElement.id,
+            comp: this,
         });
     }
 
@@ -295,6 +307,7 @@ export class KupAutocomplete {
         this.kupFocus.emit({
             value: target.value,
             id: this.rootElement.id,
+            comp: this,
         });
     }
 
@@ -307,6 +320,7 @@ export class KupAutocomplete {
         this.kupInput.emit({
             value: this.value,
             id: this.rootElement.id,
+            comp: this,
         });
     }
 
@@ -321,6 +335,7 @@ export class KupAutocomplete {
         this.kupIconClick.emit({
             value: target.value,
             id: this.rootElement.id,
+            comp: this,
         });
     }
 
@@ -331,11 +346,13 @@ export class KupAutocomplete {
         this.kupChange.emit({
             value: this.value,
             id: this.rootElement.id,
+            comp: this,
         });
 
         this.kupItemClick.emit({
             value: this.value,
             id: this.rootElement.id,
+            comp: this,
         });
     }
 
@@ -345,6 +362,7 @@ export class KupAutocomplete {
             matchesMinimumCharsRequired:
                 newFilter && newFilter.length >= this.minimumChars,
             el: eventTarget,
+            comp: this,
         };
         if (this.serverHandledFilter && this.callBackOnFilterUpdate) {
             this.callBackOnFilterUpdate(detail)

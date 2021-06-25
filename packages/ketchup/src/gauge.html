@@ -8,19 +8,17 @@
         />
         <title>Ketchup gauge</title>
 
-        <script src="https://d3js.org/d3-path.v1.min.js"></script>
-        <script src="https://d3js.org/d3-shape.v1.min.js"></script>
         <script type="module" src="/build/ketchup.esm.js"></script>
         <script nomodule src="/build/ketchup.js"></script>
     </head>
 
     <body>
-        <div style="margin-left: 0;">
+        <div style="margin-left: 0">
             <h1>The gauge</h1>
             <h2>Sforamento parametri</h2>
-            <div style="display:table;">
-                <div style="display: table-row;">
-                    <div style="display:table-cell;">
+            <div style="display: table">
+                <div style="display: table-row">
+                    <div style="display: table-cell">
                         <kup-gauge
                             value="-380"
                             min-value="-200"
@@ -30,7 +28,7 @@
                             value-size="3"
                         ></kup-gauge>
                     </div>
-                    <div style="display:table-cell;">
+                    <div style="display: table-cell">
                         <kup-gauge
                             value="380"
                             min-value="-200"
@@ -40,7 +38,7 @@
                             value-size="3"
                         ></kup-gauge>
                     </div>
-                    <div style="display:table-cell;">
+                    <div style="display: table-cell">
                         <kup-gauge
                             value="-3026"
                             min-value="-200"
@@ -50,14 +48,13 @@
                             value-size="3"
                         ></kup-gauge>
                     </div>
-                    </div>
-        </div>
-
+                </div>
+            </div>
 
             <h2>Decimal number</h2>
-            <div style="display:table;">
-                <div style="display: table-row;">
-                    <div style="display:table-cell;">
+            <div style="display: table">
+                <div style="display: table-row">
+                    <div style="display: table-cell">
                         <kup-gauge
                             value="1538.10"
                             min-value="1000.10"
@@ -67,7 +64,7 @@
                             value-size="3"
                         ></kup-gauge>
                     </div>
-                    <div style="display:table-cell;">
+                    <div style="display: table-cell">
                         <kup-gauge
                             value="0.5678"
                             min-value="0"
@@ -81,9 +78,9 @@
             </div>
 
             <h2>Responsive</h2>
-            <div style="display:table;">
-                <div style="display: table-row;">
-                    <div style="display:table-cell;">
+            <div style="display: table">
+                <div style="display: table-row">
+                    <div style="display: table-cell">
                         <kup-gauge size="300" value="-50"></kup-gauge>
                     </div>
                 </div>
@@ -91,15 +88,19 @@
 
             <h2>Valori positivi e negativi con uno o più thresholds</h2>
 
-            <div style="display:table;">
-                <div style="display: table-row;">
-                    <div style="display:table-cell;">
+            <div style="display: table">
+                <div style="display: table-row">
+                    <div style="display: table-cell">
                         <kup-gauge value="-50" size="300"></kup-gauge>
                     </div>
-                    <div style="display:table-cell;">
-                        <kup-gauge value="0" size="300" first-threshold="-25"></kup-gauge>
+                    <div style="display: table-cell">
+                        <kup-gauge
+                            value="0"
+                            size="300"
+                            first-threshold="-25"
+                        ></kup-gauge>
                     </div>
-                    <div style="display:table-cell;">
+                    <div style="display: table-cell">
                         <kup-gauge
                             value="50"
                             size="300"
@@ -111,9 +112,9 @@
             </div>
 
             <h2>Valori positivi</h2>
-            <div style="display:table;">
-                <div style="display: table-row;">
-                    <div style="display:table-cell;">
+            <div style="display: table">
+                <div style="display: table-row">
+                    <div style="display: table-cell">
                         <kup-gauge
                             value="150"
                             min-value="80"
@@ -127,9 +128,9 @@
             </div>
 
             <h2>Valori negativi</h2>
-            <div style="display:table;">
-                <div style="display: table-row;">
-                    <div style="display:table-cell;">
+            <div style="display: table">
+                <div style="display: table-row">
+                    <div style="display: table-cell">
                         <kup-gauge
                             value="-257"
                             min-value="-500"
@@ -143,9 +144,9 @@
             </div>
 
             <h2>Casi di errore</h2>
-            <div style="display:table;">
-                <div style="display: table-row;">
-                    <div style="display:table-cell;">
+            <div style="display: table">
+                <div style="display: table-row">
+                    <div style="display: table-cell">
                         <kup-gauge
                             value="-257"
                             min-value="-500"
@@ -160,9 +161,9 @@
 
             <h2>Valori negativi e colori invertiti</h2>
 
-            <div style="display:table;">
-                <div style="display: table-row;">
-                    <div style="display:table-cell;">
+            <div style="display: table">
+                <div style="display: table-row">
+                    <div style="display: table-cell">
                         <kup-gauge
                             value="-257"
                             min-value="-500"
@@ -177,21 +178,21 @@
             </div>
 
             <h2>Arc thickness</h2>
-            <div style="display:table;">
-                <div style="display: table-row;">
-                    <div style="display:table-cell;">
+            <div style="display: table">
+                <div style="display: table-row">
+                    <div style="display: table-cell">
                         <kup-gauge value="50" arc-thickness="40"></kup-gauge>
                     </div>
-                    <div style="display:table-cell;">
+                    <div style="display: table-cell">
                         <kup-gauge value="50" arc-thickness="20"></kup-gauge>
                     </div>
                 </div>
             </div>
 
             <h2>Colors</h2>
-            <div style="display:table;">
-                <div style="display: table-row;">
-                    <div style="display:table-cell;">
+            <div style="display: table">
+                <div style="display: table-row">
+                    <div style="display: table-cell">
                         <kup-gauge
                             id="gaucolor"
                             value="150"
@@ -204,11 +205,11 @@
                     </div>
                 </div>
             </div>
-    
+
             <h2>OnlyValue</h2>
-            <div style="display:table;">
-                <div style="display: table-row;">
-                    <div style="display:table-cell;">
+            <div style="display: table">
+                <div style="display: table-row">
+                    <div style="display: table-cell">
                         <kup-gauge
                             only-value="true"
                             value="220"
@@ -222,9 +223,9 @@
                 </div>
             </div>
             <h2>OnlyValue reverted colors</h2>
-            <div style="display:table;">
-                <div style="display: table-row;">
-                    <div style="display:table-cell;">
+            <div style="display: table">
+                <div style="display: table-row">
+                    <div style="display: table-cell">
                         <kup-gauge
                             reverse-colors="true"
                             only-value="true"

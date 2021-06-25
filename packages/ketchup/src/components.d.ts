@@ -2628,38 +2628,47 @@ declare namespace LocalJSX {
         "onKupAutocompleteBlur"?: (event: CustomEvent<{
         value: any;
         id: string;
+        comp: KupAutocomplete;
     }>) => void;
         "onKupAutocompleteChange"?: (event: CustomEvent<{
         value: any;
         id: string;
+        comp: KupAutocomplete;
     }>) => void;
         "onKupAutocompleteClick"?: (event: CustomEvent<{
         value: any;
         id: string;
+        comp: KupAutocomplete;
     }>) => void;
         "onKupAutocompleteFilterChanged"?: (event: CustomEvent<{
         filter: string;
         matchesMinimumCharsRequired: boolean;
+        comp: KupAutocomplete;
     }>) => void;
         "onKupAutocompleteFocus"?: (event: CustomEvent<{
         value: any;
         id: string;
+        comp: KupAutocomplete;
     }>) => void;
         "onKupAutocompleteIconClick"?: (event: CustomEvent<{
         value: any;
         id: string;
+        comp: KupAutocomplete;
     }>) => void;
         "onKupAutocompleteInput"?: (event: CustomEvent<{
         value: any;
         id: string;
+        comp: KupAutocomplete;
     }>) => void;
         "onKupAutocompleteItemClick"?: (event: CustomEvent<{
         value: any;
         id: string;
+        comp: KupAutocomplete;
     }>) => void;
         "onKupAutocompleteTextFieldSubmit"?: (event: CustomEvent<{
         value: any;
         id: string;
+        comp: KupAutocomplete;
     }>) => void;
         /**
           * Sets how to return the selected item value. Suported values: "code", "description", "both".
@@ -2881,6 +2890,7 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         "onKupBtnClick"?: (event: CustomEvent<{
+        comp: KupBtn;
         id: string;
         subId: string;
         obj: any;
@@ -3505,15 +3515,18 @@ declare namespace LocalJSX {
           * @see loadMoreLimit
          */
         "loadMoreStep"?: number;
-        "onKupAddCodeDecodeColumn"?: (event: CustomEvent<{ column: string }>) => void;
+        "onKupAddCodeDecodeColumn"?: (event: CustomEvent<{
+        column: string;
+    }>) => void;
         /**
           * When 'add column' menu item is clicked
          */
-        "onKupAddColumn"?: (event: CustomEvent<{ column: string }>) => void;
+        "onKupAddColumn"?: (event: CustomEvent<{ column: string; comp: KupDataTable }>) => void;
         /**
           * When a row is auto selected via selectRow prop
          */
         "onKupAutoRowSelect"?: (event: CustomEvent<{
+        comp: KupDataTable;
         selectedRow: Row;
     }>) => void;
         "onKupCellButtonClicked"?: (event: CustomEvent<KupDataTableCellButtonClick>) => void;
@@ -3522,6 +3535,7 @@ declare namespace LocalJSX {
           * Emitted when a cell's data has been updated.
          */
         "onKupDataTableCellUpdate"?: (event: CustomEvent<{
+        comp: KupDataTable;
         cell: Cell;
         column: Column;
         id: string;
@@ -3532,12 +3546,14 @@ declare namespace LocalJSX {
           * Generic click event on data table.
          */
         "onKupDataTableClick"?: (event: CustomEvent<{
+        comp: KupDataTable;
         details: EventHandlerDetails;
     }>) => void;
         /**
           * When the column menu is being opened/closed.
          */
         "onKupDataTableColumnMenu"?: (event: CustomEvent<{
+        comp: KupDataTable;
         card: HTMLKupCardElement;
         open: boolean;
     }>) => void;
@@ -3545,40 +3561,45 @@ declare namespace LocalJSX {
           * Generic right click event on data table.
          */
         "onKupDataTableContextMenu"?: (event: CustomEvent<{
+        comp: KupDataTable;
         details: EventHandlerDetails;
     }>) => void;
         /**
           * Generic double click event on data table.
          */
         "onKupDataTableDblClick"?: (event: CustomEvent<{
+        comp: KupDataTable;
         details: EventHandlerDetails;
     }>) => void;
         /**
           * When component load is complete
          */
-        "onKupDidLoad"?: (event: CustomEvent<{}>) => void;
+        "onKupDidLoad"?: (event: CustomEvent<{ comp: KupDataTable }>) => void;
         /**
           * When component unload is complete
          */
-        "onKupDidUnload"?: (event: CustomEvent<{}>) => void;
+        "onKupDidUnload"?: (event: CustomEvent<{ comp: KupDataTable }>) => void;
         "onKupLoadMoreClicked"?: (event: CustomEvent<{
+        comp: KupDataTable;
         loadItems: number;
     }>) => void;
         /**
           * When cell option is clicked
          */
         "onKupOptionClicked"?: (event: CustomEvent<{
+        comp: KupDataTable;
         column: string;
         row: Row;
     }>) => void;
         /**
           * When rows selections reset
          */
-        "onKupResetSelectedRows"?: (event: CustomEvent<{}>) => void;
+        "onKupResetSelectedRows"?: (event: CustomEvent<{ comp: KupDataTable }>) => void;
         /**
           * When a row action is clicked
          */
         "onKupRowActionClicked"?: (event: CustomEvent<{
+        comp: KupDataTable;
         type: 'default' | 'variable' | 'expander';
         row: Row;
         action?: RowAction;
@@ -3588,6 +3609,7 @@ declare namespace LocalJSX {
           * When a row is selected
          */
         "onKupRowSelected"?: (event: CustomEvent<{
+        comp: KupDataTable;
         selectedRows: Array<Row>;
         clickedRow: Row;
         clickedColumn: string;

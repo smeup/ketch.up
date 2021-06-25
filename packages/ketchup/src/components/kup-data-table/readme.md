@@ -93,25 +93,25 @@ If the `sticky` element would be hidden by the scroll, after having specified a 
 
 ## Events
 
-| Event                     | Description                                    | Type                                                                                                          |
-| ------------------------- | ---------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| `kupAddCodeDecodeColumn`  |                                                | `CustomEvent<{ column: string; }>`                                                                            |
-| `kupAddColumn`            | When 'add column' menu item is clicked         | `CustomEvent<{ column: string; }>`                                                                            |
-| `kupAutoRowSelect`        | When a row is auto selected via selectRow prop | `CustomEvent<{ selectedRow: Row; }>`                                                                          |
-| `kupCellButtonClicked`    |                                                | `CustomEvent<KupDataTableCellButtonClick>`                                                                    |
-| `kupCellTextFieldInput`   |                                                | `CustomEvent<KupDataTableCellTextFieldInput>`                                                                 |
-| `kupDataTableCellUpdate`  | Emitted when a cell's data has been updated.   | `CustomEvent<{ cell: Cell; column: Column; id: string; row: Row; event: any; }>`                              |
-| `kupDataTableClick`       | Generic click event on data table.             | `CustomEvent<{ details: EventHandlerDetails; }>`                                                              |
-| `kupDataTableColumnMenu`  | When the column menu is being opened/closed.   | `CustomEvent<{ card: HTMLKupCardElement; open: boolean; }>`                                                   |
-| `kupDataTableContextMenu` | Generic right click event on data table.       | `CustomEvent<{ details: EventHandlerDetails; }>`                                                              |
-| `kupDataTableDblClick`    | Generic double click event on data table.      | `CustomEvent<{ details: EventHandlerDetails; }>`                                                              |
-| `kupDidLoad`              | When component load is complete                | `CustomEvent<{}>`                                                                                             |
-| `kupDidUnload`            | When component unload is complete              | `CustomEvent<{}>`                                                                                             |
-| `kupLoadMoreClicked`      |                                                | `CustomEvent<{ loadItems: number; }>`                                                                         |
-| `kupOptionClicked`        | When cell option is clicked                    | `CustomEvent<{ column: string; row: Row; }>`                                                                  |
-| `kupResetSelectedRows`    | When rows selections reset                     | `CustomEvent<{}>`                                                                                             |
-| `kupRowActionClicked`     | When a row action is clicked                   | `CustomEvent<{ type: "default" \| "variable" \| "expander"; row: Row; action?: RowAction; index?: number; }>` |
-| `kupRowSelected`          | When a row is selected                         | `CustomEvent<{ selectedRows: Row[]; clickedRow: Row; clickedColumn: string; }>`                               |
+| Event                     | Description                                    | Type                                                                                                                              |
+| ------------------------- | ---------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| `kupAddCodeDecodeColumn`  |                                                | `CustomEvent<{ column: string; }>`                                                                                                |
+| `kupAddColumn`            | When 'add column' menu item is clicked         | `CustomEvent<{ column: string; comp: KupDataTable; }>`                                                                            |
+| `kupAutoRowSelect`        | When a row is auto selected via selectRow prop | `CustomEvent<{ comp: KupDataTable; selectedRow: Row; }>`                                                                          |
+| `kupCellButtonClicked`    |                                                | `CustomEvent<KupDataTableCellButtonClick>`                                                                                        |
+| `kupCellTextFieldInput`   |                                                | `CustomEvent<KupDataTableCellTextFieldInput>`                                                                                     |
+| `kupDataTableCellUpdate`  | Emitted when a cell's data has been updated.   | `CustomEvent<{ comp: KupDataTable; cell: Cell; column: Column; id: string; row: Row; event: any; }>`                              |
+| `kupDataTableClick`       | Generic click event on data table.             | `CustomEvent<{ comp: KupDataTable; details: EventHandlerDetails; }>`                                                              |
+| `kupDataTableColumnMenu`  | When the column menu is being opened/closed.   | `CustomEvent<{ comp: KupDataTable; card: HTMLKupCardElement; open: boolean; }>`                                                   |
+| `kupDataTableContextMenu` | Generic right click event on data table.       | `CustomEvent<{ comp: KupDataTable; details: EventHandlerDetails; }>`                                                              |
+| `kupDataTableDblClick`    | Generic double click event on data table.      | `CustomEvent<{ comp: KupDataTable; details: EventHandlerDetails; }>`                                                              |
+| `kupDidLoad`              | When component load is complete                | `CustomEvent<{ comp: KupDataTable; }>`                                                                                            |
+| `kupDidUnload`            | When component unload is complete              | `CustomEvent<{ comp: KupDataTable; }>`                                                                                            |
+| `kupLoadMoreClicked`      |                                                | `CustomEvent<{ comp: KupDataTable; loadItems: number; }>`                                                                         |
+| `kupOptionClicked`        | When cell option is clicked                    | `CustomEvent<{ comp: KupDataTable; column: string; row: Row; }>`                                                                  |
+| `kupResetSelectedRows`    | When rows selections reset                     | `CustomEvent<{ comp: KupDataTable; }>`                                                                                            |
+| `kupRowActionClicked`     | When a row action is clicked                   | `CustomEvent<{ comp: KupDataTable; type: "default" \| "variable" \| "expander"; row: Row; action?: RowAction; index?: number; }>` |
+| `kupRowSelected`          | When a row is selected                         | `CustomEvent<{ comp: KupDataTable; selectedRows: Row[]; clickedRow: Row; clickedColumn: string; }>`                               |
 
 
 ## Methods

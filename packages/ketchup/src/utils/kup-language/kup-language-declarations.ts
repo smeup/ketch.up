@@ -1,3 +1,5 @@
+import type { GenericObject } from '../../types/GenericTypes';
+
 /**
  * Master type extending all subtypes of keys.
  * Remember to edit "languages.json"
@@ -15,6 +17,12 @@ export type KupLanguageKey =
     | KupLanguageRow
     | KupLanguageSearch
     | KupLanguageTotals;
+/**
+ * Interface of the languages JSON.
+ */
+export interface KupLanguageJSON {
+    [index: string]: GenericObject;
+}
 /**
  * Default languages available.
  */

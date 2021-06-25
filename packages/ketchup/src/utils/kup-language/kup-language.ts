@@ -4,6 +4,7 @@ import { KupComponent } from '../../types/GenericTypes';
 import { KupDebugCategory } from '../kup-debug/kup-debug-declarations';
 import {
     KupLanguageDefaults,
+    KupLanguageJSON,
     KupLanguageKey,
 } from './kup-language-declarations';
 
@@ -14,7 +15,7 @@ const dom: KupDom = document.documentElement as KupDom;
  * @module KupLanguage
  */
 export class KupLanguage {
-    list: JSON =
+    list: KupLanguageJSON =
         dom.ketchupInit &&
         dom.ketchupInit.language &&
         dom.ketchupInit.language.list

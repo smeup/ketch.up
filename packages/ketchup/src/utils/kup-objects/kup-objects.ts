@@ -1,5 +1,5 @@
 import type { KupDom } from '../kup-manager/kup-manager-declarations';
-import type { KupObj } from './kup-objects-declarations';
+import type { KupObj, KupObjectsJSON } from './kup-objects-declarations';
 import * as objJson from './obj.json';
 
 const dom: KupDom = document.documentElement as KupDom;
@@ -9,7 +9,7 @@ const dom: KupDom = document.documentElement as KupDom;
  * @module KupObjects
  */
 export class KupObjects {
-    list: JSON =
+    list: KupObjectsJSON =
         dom.ketchupInit && dom.ketchupInit.obj && dom.ketchupInit.obj.list
             ? dom.ketchupInit.obj.list
             : objJson['default'];
@@ -277,5 +277,15 @@ export class KupObjects {
     isVoCodver(obj: KupObj): boolean {
         if (!obj) return false;
         return 'VO' === obj.t && 'COD_VER' === obj.p;
+    }
+
+    /**
+     * Checks whether the object is null or empty
+     * @param obj - Object to check.
+     * @returns {boolean} True when the object is null or empty.
+     */
+    isEmptySmeupObject(obj: KupObj): boolean {
+        if (!obj) return true;
+        return obj.t.trim() == '' && obj.p.trim() == '' && obj.k.trim() == '';
     }
 }

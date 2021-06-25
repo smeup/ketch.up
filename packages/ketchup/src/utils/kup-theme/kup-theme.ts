@@ -1,7 +1,9 @@
 import type { KupDom } from '../kup-manager/kup-manager-declarations';
 import type { GenericObject, KupComponent } from '../../types/GenericTypes';
 import {
+    KupThemeCSSVariables,
     KupThemeIcons,
+    KupThemeJSON,
     KupThemeVariables,
     masterCustomStyle,
 } from './kup-theme-declarations';
@@ -18,7 +20,7 @@ const dom: KupDom = document.documentElement as KupDom;
  */
 export class KupTheme {
     cssVars: Partial<KupThemeVariables> = {};
-    list: JSON =
+    list: KupThemeJSON =
         dom.ketchupInit && dom.ketchupInit.theme && dom.ketchupInit.theme.list
             ? dom.ketchupInit.theme.list
             : themesJson['default'];
@@ -34,7 +36,7 @@ export class KupTheme {
      * Sets the theme using this.name or the function's argument.
      * @param {string} name - When present, this theme will be set.
      */
-    set(name?: string, list?: JSON): void {
+    set(name?: string, list?: KupThemeJSON): void {
         if (name) {
             this.name = name;
         }
@@ -87,7 +89,7 @@ export class KupTheme {
      * Sets the CSS variables of the theme.
      */
     imports(): string {
-        const imports: [] = this.list[this.name].imports
+        const imports: string[] = this.list[this.name].imports
             ? this.list[this.name].imports
             : [];
         let css: string = '';
@@ -100,7 +102,8 @@ export class KupTheme {
      * Sets the CSS variables of the theme.
      */
     cssVariables(): string {
-        const variables: KupThemeVariables = this.list[this.name].cssVariables;
+        const variables: KupThemeCSSVariables =
+            this.list[this.name].cssVariables;
         let css: string = '';
         for (var key in variables) {
             if (variables.hasOwnProperty(key)) {
@@ -270,9 +273,11 @@ export class KupTheme {
      * @param {string} color - Color.
      * @returns {{string, string, string}} Object of color values: hexColor ("#ffffff"), rgbColor ("rgb(255,255,255)"") and rgbValues ("255,255,255").
      */
-    colorCheck(
-        color: string
-    ): { hexColor: string; rgbColor: string; rgbValues: string } {
+    colorCheck(color: string): {
+        hexColor: string;
+        rgbColor: string;
+        rgbValues: string;
+    } {
         //Testing whether the color is transparent, if it is a fall back value will be returned matching the background-color
         if (color === 'transparent') {
             color = this.list[this.name].cssVariables['--kup-background-color'];
@@ -366,9 +371,8 @@ export class KupTheme {
      * @returns {{number, number, number}} Object of color values: hexColor ("#ffffff"), rgbColor ("rgb(255,255,255)"") and rgbValues ("255,255,255").
      */
     hexToRgb(hex: string): { r: number; g: number; b: number } {
-        var result: RegExpExecArray = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(
-            hex
-        );
+        var result: RegExpExecArray =
+            /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
         return result
             ? {
                   r: parseInt(result[1], 16),

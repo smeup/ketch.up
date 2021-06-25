@@ -55,7 +55,7 @@ export interface TreeNode {
 
     children: Array<TreeNode>;
 
-    disabled: boolean;
+    disabled: boolean; // Will be replaced by KupRow.unselectable
 
     expandable: boolean;
 

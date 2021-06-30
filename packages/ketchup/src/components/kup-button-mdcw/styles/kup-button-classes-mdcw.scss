@@ -1,0 +1,19 @@
+/*-------------------------------------------------*/
+/*        C o m p o n e n t   C l a s s e s        */
+/*-------------------------------------------------*/
+/* $kup-class-large => Defined in f-button. */
+/* $kup-class-shaped => Defined in f-button. */
+
+:host(.#{$kup-class-full-height}) {
+  height: 100%;
+  #kup-component {
+    height: 100%;
+  }
+}
+
+:host(.#{$kup-class-full-width}) {
+  width: 100%;
+  #kup-component {
+    width: 100%;
+  }
+}

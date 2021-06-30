@@ -20,6 +20,7 @@ export enum KupCardProps {
 export interface CardData {
     autocomplete?: GenericObject[];
     button?: GenericObject[];
+    buttonmdcw?: GenericObject[];
     chart?: GenericObject[];
     checkbox?: GenericObject[];
     chip?: GenericObject[];

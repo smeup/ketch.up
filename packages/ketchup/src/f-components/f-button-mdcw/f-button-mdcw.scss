@@ -1,0 +1,69 @@
+@import '@material/button/mdc-button';
+@import '@material/icon-button/mdc-icon-button';
+
+#kup-component {
+  .f-button--wrapper {
+    .mdc-button {
+      font-family: var(--kup-font-family);
+      font-size: 0.875em;
+
+      &.mdc-button--outlined:not(:disabled) {
+        border-color: var(--kup-primary-color);
+      }
+
+      &.mdc-button--outlined:disabled {
+        border-color: var(--kup-disabled-color);
+      }
+
+      &.mdc-button--raised:disabled {
+        background: var(--kup-disabled-background-color);
+      }
+
+      &:disabled {
+        color: var(--kup-disabled-color);
+      }
+    }
+
+    .mdc-icon-button {
+      &:after,
+      &:before {
+        background-color: var(--kup-primary-color);
+      }
+    }
+
+    &.kup-full-height {
+      height: 100%;
+      .mdc-button {
+        height: 100%;
+      }
+    }
+
+    &.kup-full-width {
+      width: 100%;
+      .mdc-button {
+        width: 100%;
+      }
+    }
+
+    &.kup-large {
+      .mdc-button {
+        font-size: 1.25em;
+        height: 48px;
+      }
+      .mdc-icon-button {
+        width: 60px;
+        height: 60px;
+      }
+      .f-image--wrapper {
+        font-size: 32px;
+      }
+    }
+
+    &.kup-shaped {
+      .mdc-button,
+      .mdc-button__ripple {
+        border-radius: 18px;
+      }
+    }
+  }
+}

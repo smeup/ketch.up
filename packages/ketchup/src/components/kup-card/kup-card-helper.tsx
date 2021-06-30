@@ -42,6 +42,13 @@ export function compList(
                     <kup-button {...(compArray as GenericObject[])[index]} />
                 );
                 break;
+            case 'buttonmdcw':
+                list.push(
+                    <kup-button-mdcw
+                        {...(compArray as GenericObject[])[index]}
+                    />
+                );
+                break;
             case 'checkbox':
                 list.push(
                     <kup-checkbox {...(compArray as GenericObject[])[index]} />

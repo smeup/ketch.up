@@ -887,6 +887,9 @@ export function create13(component: KupCard): VNode {
     const buttonArray: GenericObject[] = component.data['button']
         ? component.data['button']
         : [];
+    const buttonArrayMdcw: GenericObject[] = component.data['buttonmdcw']
+        ? component.data['buttonmdcw']
+        : [];
     //Combobox list
     const comboboxArray: GenericObject[] = component.data['combobox']
         ? component.data['combobox']
@@ -902,13 +905,18 @@ export function create13(component: KupCard): VNode {
     return (
         <div
             class={`standard-layout-${component.layoutNumber} ${
-                buttonArray.length > 0 ? KupCardCSSClasses.HAS_ACTIONS : ''
+                buttonArray.length > 0 || buttonArrayMdcw.length > 0
+                    ? KupCardCSSClasses.HAS_ACTIONS
+                    : ''
             }`}
         >
             <div>
-                {buttonArray.length > 0 || textfieldArray.length > 0 ? (
+                {buttonArray.length > 0 ||
+                buttonArrayMdcw.length > 0 ||
+                textfieldArray.length > 0 ? (
                     <div class="section-1">
                         {compList(buttonArray, 'button')}
+                        {compList(buttonArrayMdcw, 'buttonmdcw')}
                         {compList(textfieldArray, 'textfield')}
                         {compList(comboboxArray, 'combobox')}
                     </div>

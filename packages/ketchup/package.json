@@ -39,6 +39,8 @@
         "@fullcalendar/daygrid": "^4.4.2",
         "@fullcalendar/interaction": "^4.4.2",
         "@fullcalendar/timegrid": "^4.4.2",
+        "@material/button": "^11.0.0",
+        "@material/icon-button": "^11.0.0",
         "@material/form-field": "^11.0.0",
         "@material/list": "^11.0.0",
         "@material/menu": "^11.0.0",

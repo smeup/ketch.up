@@ -4,18 +4,18 @@ import {
     forceUpdate,
     Host,
     h,
-    JSX,
     Method,
     Prop,
-    State,
+    VNode,
 } from '@stencil/core';
 
-import { GenericObject, KupComponent } from '../../types/GenericTypes';
+import type { GenericObject, KupComponent } from '../../types/GenericTypes';
 import { KupDebugCategory } from '../../utils/kup-debug/kup-debug-declarations';
 import {
     KupManager,
     kupManagerInstance,
 } from '../../utils/kup-manager/kup-manager';
+import { getProps, setProps } from '../../utils/utils';
 import { KupGridProps } from './kup-grid-declarations';
 
 @Component({
@@ -24,28 +24,44 @@ import { KupGridProps } from './kup-grid-declarations';
     shadow: true,
 })
 export class KupGrid {
+    /**
+     * References the root HTML element of the component (<kup-grid>).
+     */
     @Element() rootElement: HTMLElement;
+
+    /*-------------------------------------------------*/
+    /*                    P r o p s                    */
+    /*-------------------------------------------------*/
 
     /**
      * The number of columns displayed by the grid, the default behavior is 12.
+     * @default 12
      */
     @Prop() columns: number = 12;
     /**
-     * Custom style of the component. For more information: https://ketchup.smeup.com/ketchup-showcase/#/customization
+     * Custom style of the component.
+     * @default ""
+     * @see https://ketchup.smeup.com/ketchup-showcase/#/customization
      */
     @Prop() customStyle: string = '';
     /**
      * When set to true, forces the content on a single line.
+     * @default false
      */
     @Prop() singleLine: boolean = false;
 
-    private elStyle = undefined;
+    /*-------------------------------------------------*/
+    /*       I n t e r n a l   V a r i a b l e s       */
+    /*-------------------------------------------------*/
+
     /**
      * Instance of the KupManager class.
      */
     private kupManager: KupManager = kupManagerInstance();
 
-    //---- Methods ----
+    /*-------------------------------------------------*/
+    /*           P u b l i c   M e t h o d s           */
+    /*-------------------------------------------------*/
 
     /**
      * Used to retrieve component's props values.
@@ -54,17 +70,15 @@ export class KupGrid {
      */
     @Method()
     async getProps(descriptions?: boolean): Promise<GenericObject> {
-        let props: GenericObject = {};
-        if (descriptions) {
-            props = KupGridProps;
-        } else {
-            for (const key in KupGridProps) {
-                if (Object.prototype.hasOwnProperty.call(KupGridProps, key)) {
-                    props[key] = this[key];
-                }
-            }
-        }
-        return props;
+        return getProps(this, KupGridProps, descriptions);
+    }
+    /**
+     * Sets the props to the component.
+     * @param {GenericObject} props - Object containing props that will be set to the component.
+     */
+    @Method()
+    async setProps(props: GenericObject): Promise<void> {
+        setProps(this, KupGridProps, props);
     }
     /**
      * This method is used to trigger a new render of the component.
@@ -74,7 +88,9 @@ export class KupGrid {
         forceUpdate(this);
     }
 
-    //---- Lifecycle hooks ----
+    /*-------------------------------------------------*/
+    /*          L i f e c y c l e   H o o k s          */
+    /*-------------------------------------------------*/
 
     componentWillLoad() {
         this.kupManager.debug.logLoad(this, false);
@@ -94,68 +110,63 @@ export class KupGrid {
     }
 
     render() {
-        let slots = this.rootElement.children;
+        const slots: HTMLCollection = this.rootElement.children;
         if (!slots || slots.length === 0) {
-            let message = 'Missing slots, not rendering!';
             this.kupManager.debug.logMessage(
                 this,
-                message,
+                'Missing slots, not rendering!',
                 KupDebugCategory.WARNING
             );
             return;
         }
 
-        let componentClass = '';
-        let contentClass = '';
-        if (this.singleLine) {
-            componentClass = 'flex-layout';
-            contentClass = 'flex-layout__inner';
-        } else {
-            componentClass = 'mdc-layout-grid';
-            contentClass = 'mdc-layout-grid__inner';
-        }
-
-        this.elStyle = undefined;
-        if (this.columns !== 12) {
-            contentClass += ' custom-grid';
-            this.elStyle = {
-                ['--columns-number']: this.columns,
-            };
-        }
-
-        let el: JSX.Element[] = [];
+        const content: VNode[] = [];
 
         for (let i = 0; i < slots.length; i++) {
-            let content = undefined;
+            let el: VNode = null;
 
             if (this.singleLine) {
-                content = <slot name={`${i}`}></slot>;
+                el = <slot name={`${i}`}></slot>;
             } else {
                 let span: number = 1;
-                let spanClass: string = 'mdc-layout-grid__cell';
                 if (slots[i]['span']) {
                     span = slots[i]['span'];
                 }
-                spanClass += ' mdc-layout-grid__cell--span-' + span;
-                content = (
-                    <div class={spanClass}>
+                el = (
+                    <div
+                        class={`layout-grid__cell layout-grid__cell--span-${span}`}
+                    >
                         <slot name={`${i}`}></slot>
                     </div>
                 );
             }
-            el.push(content);
+            content.push(el);
         }
+
+        const style: GenericObject = {
+            ['--columns']: this.columns,
+        };
 
         const customStyle: string = this.kupManager.theme.setCustomStyle(
             this.rootElement as KupComponent
         );
 
         return (
-            <Host style={this.elStyle}>
+            <Host style={style}>
                 {customStyle ? <style>{customStyle}</style> : null}
                 <div id="kup-component">
-                    <div class={componentClass}>
-                        <div class={contentClass}>{el}</div>
+                    <div
+                        class={this.singleLine ? 'flex-layout' : 'layout-grid'}
+                    >
+                        <div
+                            class={
+                                this.singleLine
+                                    ? 'flex-layout__inner'
+                                    : 'layout-grid__inner'
+                            }
+                        >
+                            {content}
+                        </div>
                     </div>
                 </div>
             </Host>

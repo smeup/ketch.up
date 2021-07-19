@@ -90,7 +90,7 @@ export const cellClassesDataTable = {
             k: '',
           },
           value:
-            "Cell's borders will be shaped (4px border radius). In the example the background is set to teal to see the borders.",
+            "Cell's borders will be shaped (4px border-radius). In the example the background is set to teal to see the borders.",
         },
         EXAMPLE: {
           obj: {

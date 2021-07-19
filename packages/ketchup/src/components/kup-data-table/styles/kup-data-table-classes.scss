@@ -1,7 +1,8 @@
 /*-------------------------------------------------*/
 /*        C o m p o n e n t   C l a s s e s        */
 /*-------------------------------------------------*/
-:host(.kup-cross-selection) {
+
+:host(.#{$kup-class-cross-selection}) {
   #kup-component {
     th.selected {
       box-shadow: inset 0px 4px 0px 0px var(--kup-secondary-color);
@@ -57,7 +58,7 @@
   }
 }
 
-:host(.kup-layout-fixed) {
+:host(.#{$kup-class-layout-fixed}) {
   #kup-component table {
     table-layout: fixed;
     width: 100%;

@@ -22,39 +22,39 @@ export default {
       demoComp: createComp(),
       demoEvents: [
         {
-          name: 'kupDatePickerClick',
+          name: 'kup-datepicker-click',
           type: 'click',
         },
         {
-          name: 'kupDatePickerChange',
+          name: 'kup-datepicker-change',
           type: 'change',
         },
         {
-          name: 'kupDatePickerClearIconClick',
+          name: 'kup-datepicker-cleariconclick',
           type: 'click',
         },
         {
-          name: 'kupDatePickerInput',
+          name: 'kup-datepicker-input',
           type: 'input',
         },
         {
-          name: 'kupDatePickerFocus',
+          name: 'kup-datepicker-focus',
           type: 'focus',
         },
         {
-          name: 'kupDatePickerBlur',
+          name: 'kup-datepicker-blur',
           type: 'blur',
         },
         {
-          name: 'kupDatePickerIconClick',
+          name: 'kup-datepicker-iconclick',
           type: 'click',
         },
         {
-          name: 'kupDatePickerItemClick',
+          name: 'kup-datepicker-itemclick',
           type: 'click',
         },
         {
-          name: 'kupDatePickerTextFieldSubmit',
+          name: 'kup-datepicker-textfieldsubmit',
           type: 'click',
         },
       ],

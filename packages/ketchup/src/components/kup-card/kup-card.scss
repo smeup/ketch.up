@@ -1,5 +1,3 @@
-@import '@material/menu/mdc-menu';
-@import '@material/menu-surface/mdc-menu-surface';
 @import '@material/ripple/mdc-ripple';
 @import 'collapsible/kup-card-collapsible';
 @import 'dialog/kup-card-dialog';
@@ -15,6 +13,19 @@
   height: var(--kup-card-height);
   min-width: var(--kup-card-width);
   width: var(--kup-card-width);
+}
+
+:host([is-menu]) {
+  #kup-component {
+    display: none;
+    animation: fadeInFromNone 0.25s ease-out;
+  }
+}
+
+:host([menu-visible]) {
+  #kup-component {
+    display: block;
+  }
 }
 
 #kup-component {

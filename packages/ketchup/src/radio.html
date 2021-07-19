@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Radio</title>
+
+        <script type="module" src="/build/ketchup.esm.js"></script>
+        <script nomodule src="/build/ketchup.js"></script>
+
+        <link
+            href="https://cdn.materialdesignicons.com/4.5.95/css/materialdesignicons.min.css"
+            rel="stylesheet"
+            type="text/css"
+        />
+
+        <link
+            href="https://fonts.googleapis.com/css?family=Lato"
+            rel="stylesheet"
+        />
+
+        <script
+            type="text/javascript"
+            src="https://www.gstatic.com/charts/loader.js"
+        ></script>
+
+        <style>
+            html {
+                background-color: var(--kup-background-color);
+                color: var(--kup-text-color);
+                font-family: var(--kup-font-family);
+                font-size: var(--kup-font-size);
+                padding: 1rem;
+            }
+        </style>
+    </head>
+    <body
+        ><kup-radio id="event-radio"></kup-radio>
+
+        <script>
+            let eRadio = document.getElementById('event-radio');
+
+            eRadio.addEventListener('kupRadioBlur', (e) => {
+                console.log('event-radio has been BLURRED', e);
+            });
+            eRadio.addEventListener('kupRadioChange', (e) => {
+                console.log('event-radio has been CHANGED', e);
+            });
+            eRadio.addEventListener('kupRadioClick', (e) => {
+                console.log('event-radio has been CLICKED', e);
+            });
+            eRadio.addEventListener('kupRadioFocus', (e) => {
+                console.log('event-radio has been FOCUSED', e);
+            });
+            eRadio.addEventListener('kupRadioInput', (e) => {
+                console.log('event-radio has been INPUTTED, KEK', e);
+            });
+            let radioList = document.getElementsByTagName('kup-radio')[0];
+            radioList.data = [
+                {
+                    value: 'Favorites',
+                    label: 'label 1',
+                    checked: false,
+                },
+                {
+                    value: 'Set alarm clock',
+                    label: 'label 2',
+                    checked: true,
+                },
+                {
+                    value: 'Settings',
+                    label: 'label 3',
+                    checked: false,
+                },
+            ];
+        </script>
+    </body>
+</html>

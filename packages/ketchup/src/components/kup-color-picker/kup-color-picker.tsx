@@ -22,8 +22,13 @@ import {
     KupDynamicPositionElement,
 } from '../../utils/kup-dynamic-position/kup-dynamic-position-declarations';
 import type { GenericObject, KupComponent } from '../../types/GenericTypes';
-import { KupColorPickerProps } from './kup-color-picker-declarations';
+import {
+    KupColorPickerEventPayload,
+    KupColorPickerProps,
+} from './kup-color-picker-declarations';
 import { KupLanguageGeneric } from '../../utils/kup-language/kup-language-declarations';
+import { KupThemeColorValues } from '../../utils/kup-theme/kup-theme-declarations';
+import { getProps, setProps } from '../../utils/utils';
 
 @Component({
     tag: 'kup-color-picker',
@@ -65,24 +70,20 @@ export class KupColorPicker {
     private textfieldEl: KupTextField;
 
     @Event({
-        eventName: 'kupColorPickerChange',
+        eventName: 'kup-colorpicker-change',
         composed: true,
         cancelable: false,
         bubbles: true,
     })
-    kupChange: EventEmitter<{
-        value: any;
-    }>;
+    kupChange: EventEmitter<KupColorPickerEventPayload>;
 
     @Event({
-        eventName: 'kupColorPickerInput',
+        eventName: 'kup-colorpicker-input',
         composed: true,
         cancelable: false,
         bubbles: true,
     })
-    kupInput: EventEmitter<{
-        value: any;
-    }>;
+    kupInput: EventEmitter<KupColorPickerEventPayload>;
 
     //---- Methods ----
 
@@ -108,22 +109,15 @@ export class KupColorPicker {
      */
     @Method()
     async getProps(descriptions?: boolean): Promise<GenericObject> {
-        let props: GenericObject = {};
-        if (descriptions) {
-            props = KupColorPickerProps;
-        } else {
-            for (const key in KupColorPickerProps) {
-                if (
-                    Object.prototype.hasOwnProperty.call(
-                        KupColorPickerProps,
-                        key
-                    )
-                ) {
-                    props[key] = this[key];
-                }
-            }
-        }
-        return props;
+        return getProps(this, KupColorPickerProps, descriptions);
+    }
+    /**
+     * Sets the props to the component.
+     * @param {GenericObject} props - Object containing props that will be set to the component.
+     */
+    @Method()
+    async setProps(props: GenericObject): Promise<void> {
+        setProps(this, KupColorPickerProps, props);
     }
     /**
      * This method is used to trigger a new render of the component.
@@ -138,6 +132,8 @@ export class KupColorPicker {
         this.setHexValue();
 
         this.kupInput.emit({
+            comp: this,
+            id: this.rootElement.id,
             value: this.value,
         });
     }
@@ -163,7 +159,7 @@ export class KupColorPicker {
     private prepTextField() {
         let initialValue = undefined;
         let textfieldData = { ...this.data['kup-text-field'] };
-        let customStyle: string = ` #kup-component .icon-container{box-sizing: border-box; border: 3px solid rgba(var(--kup-text-color-rgb),.575); border-radius: 50%; background-color:${this.value}!important;}`;
+        let customStyle: string = ` #kup-component .icon-container{box-sizing: border-box; border: 3px solid rgba(var(${KupThemeColorValues.TEXT}-rgb), .575); border-radius: 50%; background-color:${this.value}!important;}`;
         if (!textfieldData['icon']) {
             textfieldData['icon'] = 'brightness-1';
         }
@@ -200,7 +196,7 @@ export class KupColorPicker {
                 {...textfieldData}
                 disabled={this.disabled}
                 initialValue={initialValue}
-                onKupTextFieldInput={(e: any) => this.onKupInput(e)}
+                onkup-textfield-input={(e: any) => this.onKupInput(e)}
                 ref={(el) => (this.textfieldEl = el as any)}
             ></kup-text-field>
         );
@@ -238,6 +234,8 @@ export class KupColorPicker {
                     colorPicker.dropdownEl as KupDynamicPositionElement
                 );
                 colorPicker.kupChange.emit({
+                    comp: colorPicker,
+                    id: colorPicker.rootElement.id,
                     value: colorPicker.value,
                 });
             };

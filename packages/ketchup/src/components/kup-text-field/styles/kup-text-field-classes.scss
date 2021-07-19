@@ -1,7 +1,8 @@
 /*-------------------------------------------------*/
 /*        C o m p o n e n t   C l a s s e s        */
 /*-------------------------------------------------*/
-:host(.kup-full-height) {
+
+:host(.#{$kup-class-full-height}) {
   height: 100%;
   #kup-component,
   .f-text-field--wrapper,
@@ -10,7 +11,7 @@
   }
 }
 
-:host(.kup-shaped) {
+:host(.#{$kup-class-shaped}) {
   #kup-component {
     .mdc-text-field.mdc-text-field--filled {
       border-radius: 16px 16px 0 0;

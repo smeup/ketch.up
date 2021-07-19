@@ -8,7 +8,6 @@ import {
     Host,
     Method,
     Prop,
-    State,
 } from '@stencil/core';
 import { FImage } from '../../f-components/f-image/f-image';
 import { GenericObject, KupComponent } from '../../types/GenericTypes';
@@ -17,7 +16,9 @@ import {
     KupManager,
     kupManagerInstance,
 } from '../../utils/kup-manager/kup-manager';
-import { KupBadgeProps } from './kup-badge-declarations';
+import { KupThemeColorValues } from '../../utils/kup-theme/kup-theme-declarations';
+import { KupBadgeEventPayload, KupBadgeProps } from './kup-badge-declarations';
+import { getProps, setProps } from '../../utils/utils';
 
 @Component({
     tag: 'kup-badge',
@@ -41,14 +42,12 @@ export class KupBadge {
     @Prop() text: string = undefined;
 
     @Event({
-        eventName: 'kupBadgeClick',
+        eventName: 'kup-badge-click',
         composed: true,
         cancelable: false,
         bubbles: true,
     })
-    kupClick: EventEmitter<{
-        el: EventTarget;
-    }>;
+    kupClick: EventEmitter<KupBadgeEventPayload>;
 
     /**
      * Instance of the KupManager class.
@@ -64,17 +63,15 @@ export class KupBadge {
      */
     @Method()
     async getProps(descriptions?: boolean): Promise<GenericObject> {
-        let props: GenericObject = {};
-        if (descriptions) {
-            props = KupBadgeProps;
-        } else {
-            for (const key in KupBadgeProps) {
-                if (Object.prototype.hasOwnProperty.call(KupBadgeProps, key)) {
-                    props[key] = this[key];
-                }
-            }
-        }
-        return props;
+        return getProps(this, KupBadgeProps, descriptions);
+    }
+    /**
+     * Sets the props to the component.
+     * @param {GenericObject} props - Object containing props that will be set to the component.
+     */
+    @Method()
+    async setProps(props: GenericObject): Promise<void> {
+        setProps(this, KupBadgeProps, props);
     }
     /**
      * This method is used to trigger a new render of the component.
@@ -86,6 +83,8 @@ export class KupBadge {
 
     onKupClick(e: Event) {
         this.kupClick.emit({
+            comp: this,
+            id: this.rootElement.id,
             el: e.target,
         });
     }
@@ -130,7 +129,9 @@ export class KupBadge {
                 this.imageData['sizeY'] = '1em';
             }
             if (!this.imageData['color']) {
-                this.imageData['color'] = 'var(--kup-text-on-primary-color)';
+                this.imageData[
+                    'color'
+                ] = `var(${KupThemeColorValues.TEXT_ON_PRIMARY})`;
             }
             imageEl = <FImage {...this.imageData}></FImage>;
         }

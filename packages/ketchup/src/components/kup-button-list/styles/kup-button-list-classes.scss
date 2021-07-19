@@ -1,10 +1,11 @@
 /*-------------------------------------------------*/
 /*        C o m p o n e n t   C l a s s e s        */
 /*-------------------------------------------------*/
-:host(.kup-full-width) {
+
+:host(.#{$kup-class-full-width}) {
   width: 100%;
 
-  .btn-container {
+  .button-list--container {
     width: 100%;
   }
 }

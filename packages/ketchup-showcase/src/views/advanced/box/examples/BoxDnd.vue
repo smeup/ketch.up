@@ -8,7 +8,7 @@
           <label>enable multiselect:</label>
           <kup-checkbox
             :checked.prop="multi1"
-            @kupCheckboxChange="changeMulti1"
+            @kup-checkbox-change="changeMulti1"
           />
         </div>
         <kup-box
@@ -27,17 +27,17 @@
           <label>enable multiselect:</label>
           <kup-checkbox
             :checked.prop="multi2"
-            @kupCheckboxChange="changeMulti2"
+            @kup-checkbox-change="changeMulti2"
           />
           <label>empty data:</label>
           <kup-checkbox
             :checked.prop="empty2"
-            @kupCheckboxChange="changeEmpty2"
+            @kup-checkbox-change="changeEmpty2"
           />
           <label>enable drop on section:</label>
           <kup-checkbox
             :checked.prop="dropOnSection2"
-            @kupCheckboxChange="changeDropOnSection2"
+            @kup-checkbox-change="changeDropOnSection2"
           />
         </div>
         <kup-box

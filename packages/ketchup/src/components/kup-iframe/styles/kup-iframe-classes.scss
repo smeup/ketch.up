@@ -1,7 +1,8 @@
 /*-------------------------------------------------*/
 /*        C o m p o n e n t   C l a s s e s        */
 /*-------------------------------------------------*/
-:host(.kup-iframe-version) {
+
+:host([is-iframe]) {
   box-sizing: border-box;
   display: block;
   height: 100%;

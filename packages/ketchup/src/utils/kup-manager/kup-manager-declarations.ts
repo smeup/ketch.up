@@ -38,19 +38,61 @@ export interface KupManager {
     toggleMagicBox: () => void;
 }
 /**
- * Interface for the KupManager override settings.
- */
-export interface KupManagerInitialization {
-    debug?: { active?: boolean; autoPrint?: boolean; logLimit?: number };
-    dialog?: { zIndex?: number };
-    language?: { list?: KupLanguageJSON; name?: string };
-    obj?: { list?: KupObjectsJSON };
-    scrollOnHover?: { delay?: number; step?: number };
-    theme?: { list?: KupThemeJSON; name?: string };
-}
-/**
  * Interface for the KupManager utilities.
  */
 export interface KupManagerUtilities {
     lastMouseDownPath: EventTarget[];
+}
+
+/**
+ * Interface for the KupManager override settings.
+ */
+export interface KupManagerInitialization {
+    debug?: KupManagerDebugSettings;
+    dialog?: KupManagerDialogSettings;
+    language?: KupManagerLanguageSettings;
+    obj?: KupManagerObjectsSettings;
+    scrollOnHover?: KupManagerScrollOnHoverSettings;
+    theme?: KupManagerThemeSettings;
+}
+/**
+ * KupDebug initialization settings.
+ */
+export interface KupManagerDebugSettings {
+    active?: boolean;
+    autoPrint?: boolean;
+    logLimit?: number;
+}
+/**
+ * KupDialog initialization settings.
+ */
+export interface KupManagerDialogSettings {
+    zIndex?: number;
+}
+/**
+ * KupLanguage initialization settings.
+ */
+export interface KupManagerLanguageSettings {
+    list?: KupLanguageJSON;
+    name?: string;
+}
+/**
+ * KupObjects initialization settings.
+ */
+export interface KupManagerObjectsSettings {
+    list?: KupObjectsJSON;
+}
+/**
+ * KupScrollOnHover initialization settings.
+ */
+export interface KupManagerScrollOnHoverSettings {
+    delay?: number;
+    step?: number;
+}
+/**
+ * KupTheme initialization settings.
+ */
+export interface KupManagerThemeSettings {
+    list?: KupThemeJSON;
+    name?: string;
 }

@@ -137,7 +137,7 @@ export class KupSearch {
         }
     }
 
-    //TODO: manage all datatable events, like kupLoadMoreClicked, kupAddColumn...
+    //TODO: manage all datatable events, like kup-datatable-loadmoreclicked, KupDatatableAddColumn...
 
     private onSearchCancelled(event) {
         event.stopPropagation();
@@ -189,11 +189,11 @@ export class KupSearch {
                 <kup-text-field
                     initialValue={this.value}
                     disabled={this.disabled}
-                    onKupTextFieldChange={(e) => this.onSearchInputChanged(e)}
+                    onkup-textfield-change={(e) => this.onSearchInputChanged(e)}
                 ></kup-text-field>
                 <kup-button
                     icon="magnify"
-                    onKupButtonClick={(e) => this.onSearchClicked(e)}
+                    onkup-button-click={(e) => this.onSearchClicked(e)}
                 ></kup-button>
                 <kup-modal
                     ref={(el) => (this.modal = el)}
@@ -203,13 +203,13 @@ export class KupSearch {
                         <div>
                             <kup-text-field
                                 initialValue={this.value}
-                                onKupTextFieldChange={(e) =>
+                                onkup-textfield-change={(e) =>
                                     this.onSearchInputChanged(e)
                                 }
                             ></kup-text-field>
                             <kup-button
                                 icon="magnify"
-                                onKupButtonClick={(e) =>
+                                onkup-button-click={(e) =>
                                     this.onSearchDialogClicked(e)
                                 }
                             ></kup-button>
@@ -223,7 +223,9 @@ export class KupSearch {
                         }
                         data={this.data}
                         showFilters={true}
-                        onKupRowSelected={(e) => this.onRowSelected(e)}
+                        onkup-datatable-rowselected={(e) =>
+                            this.onRowSelected(e)
+                        }
                     ></kup-data-table>
                 </kup-modal>
             </div>

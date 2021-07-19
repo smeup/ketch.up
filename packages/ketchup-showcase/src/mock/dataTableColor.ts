@@ -18,7 +18,6 @@ export const colorObjectsDataTable = {
             k: '',
           },
           value: '',
-          options: false,
         },
       },
     },

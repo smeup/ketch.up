@@ -179,7 +179,6 @@ export function fldConfigFactory(
       { prop: 'trailingIcon', value: true },
       { prop: 'icon', value: 'arrow_drop_down' },
       { prop: 'label', value: 'Select a team member' },
-      /* { prop: 'leadingLabel', value: true }, */
     ],
   };
   propToChange.forEach((prop) => {

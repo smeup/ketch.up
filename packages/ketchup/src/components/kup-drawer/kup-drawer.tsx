@@ -11,11 +11,16 @@ import {
     Watch,
 } from '@stencil/core';
 
-import { GenericObject, KupComponent } from '../../types/GenericTypes';
+import {
+    GenericObject,
+    KupComponent,
+    KupEventPayload,
+} from '../../types/GenericTypes';
 import {
     KupManager,
     kupManagerInstance,
 } from '../../utils/kup-manager/kup-manager';
+import { getProps, setProps } from '../../utils/utils';
 import { KupDrawerProps } from './kup-drawer-declarations';
 
 @Component({
@@ -45,16 +50,16 @@ export class KupDrawer {
     @Watch('opened')
     onOpenedChange(newValue: boolean) {
         if (newValue) {
-            this.kupDrawerOpen.emit();
+            this.kupDrawerOpen.emit({ comp: this, id: this.rootElement.id });
         } else {
-            this.kupDrawerClose.emit();
+            this.kupDrawerClose.emit({ comp: this, id: this.rootElement.id });
         }
     }
 
     //---- Events ----
 
-    @Event() kupDrawerClose: EventEmitter;
-    @Event() kupDrawerOpen: EventEmitter;
+    @Event() kupDrawerClose: EventEmitter<KupEventPayload>;
+    @Event() kupDrawerOpen: EventEmitter<KupEventPayload>;
 
     //---- Methods ----
 
@@ -83,17 +88,15 @@ export class KupDrawer {
      */
     @Method()
     async getProps(descriptions?: boolean): Promise<GenericObject> {
-        let props: GenericObject = {};
-        if (descriptions) {
-            props = KupDrawerProps;
-        } else {
-            for (const key in KupDrawerProps) {
-                if (Object.prototype.hasOwnProperty.call(KupDrawerProps, key)) {
-                    props[key] = this[key];
-                }
-            }
-        }
-        return props;
+        return getProps(this, KupDrawerProps, descriptions);
+    }
+    /**
+     * Sets the props to the component.
+     * @param {GenericObject} props - Object containing props that will be set to the component.
+     */
+    @Method()
+    async setProps(props: GenericObject): Promise<void> {
+        setProps(this, KupDrawerProps, props);
     }
     /**
      * This method is used to trigger a new render of the component.

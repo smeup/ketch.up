@@ -22,15 +22,15 @@ export default {
       demoComp: createComp(),
       demoEvents: [
         {
-          name: 'kupSwitchChange',
+          name: 'kup-switch-change',
           type: 'change',
         },
         {
-          name: 'kupSwitchFocus',
+          name: 'kup-switch-focus',
           type: 'focus',
         },
         {
-          name: 'kupSwitchBlur',
+          name: 'kup-switch-blur',
           type: 'blur',
         },
       ],

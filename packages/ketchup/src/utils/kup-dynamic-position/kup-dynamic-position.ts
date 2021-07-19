@@ -15,7 +15,13 @@ const dom: KupDom = document.documentElement as KupDom;
  * @module KupDynamicPosition
  */
 export class KupDynamicPosition {
-    managedElements: Set<KupDynamicPositionElement> = new Set();
+    managedElements: Set<KupDynamicPositionElement>;
+    /**
+     * Initializes KupDynamicPosition.
+     */
+    constructor() {
+        this.managedElements = new Set();
+    }
     /**
      * Function used to check whether the anchor point is an HTMLElement or a set of coordinates.
      * @param {KupDynamicPositionAnchor} anchor - Anchor point.
@@ -47,7 +53,7 @@ export class KupDynamicPosition {
         }
         el.style.position = 'fixed';
         el.style.zIndex = '1000';
-        el.dynamicPosition = {
+        el.kupDynamicPosition = {
             anchor: anchorEl,
             margin: margin ? margin : 0,
             position: position ? position : KupDynamicPositionPlacement.AUTO,
@@ -81,7 +87,7 @@ export class KupDynamicPosition {
      * @param {HTMLElement} anchorEl - New anchor point.
      */
     changeAnchor(el: KupDynamicPositionElement, anchorEl: HTMLElement): void {
-        el.dynamicPosition.anchor = anchorEl;
+        el.kupDynamicPosition.anchor = anchorEl;
     }
     /**
      * Removes the element from dynamic position management.
@@ -123,11 +129,11 @@ export class KupDynamicPosition {
     run(el: KupDynamicPositionElement): void {
         if (!el.isConnected) {
             dom.ketchup.dynamicPosition.managedElements.delete(el);
-            cancelAnimationFrame(el.dynamicPosition.rAF);
+            cancelAnimationFrame(el.kupDynamicPosition.rAF);
             return;
         }
         if (!el.classList.contains(kupDynamicPositionActiveClass)) {
-            cancelAnimationFrame(el.dynamicPosition.rAF);
+            cancelAnimationFrame(el.kupDynamicPosition.rAF);
             return;
         }
         // Reset placement
@@ -137,12 +143,12 @@ export class KupDynamicPosition {
         el.style.left = '';
         // Fixed position (usually from mouse events).
         // When anchor doesn't have the tagName property, anchor is considered as a set of coordinates.
-        if (!this.anchorIsHTMLElement(el.dynamicPosition.anchor)) {
-            const x: number = el.dynamicPosition.anchor.x;
-            const y: number = el.dynamicPosition.anchor.y;
+        if (!this.anchorIsHTMLElement(el.kupDynamicPosition.anchor)) {
+            const x: number = el.kupDynamicPosition.anchor.x;
+            const y: number = el.kupDynamicPosition.anchor.y;
             if (
                 el.offsetWidth >
-                window.innerWidth - el.dynamicPosition.anchor.x
+                window.innerWidth - el.kupDynamicPosition.anchor.x
             ) {
                 el.style.left = x - el.offsetWidth + 'px';
             } else {
@@ -150,7 +156,7 @@ export class KupDynamicPosition {
             }
             if (
                 el.offsetHeight >
-                window.innerHeight - el.dynamicPosition.anchor.y
+                window.innerHeight - el.kupDynamicPosition.anchor.y
             ) {
                 el.style.top = y - el.offsetHeight + 'px';
             } else {
@@ -161,50 +167,56 @@ export class KupDynamicPosition {
         const offsetH: number = el.clientHeight;
         const offsetW: number = el.clientWidth;
         const rect: DOMRect = (
-            el.dynamicPosition.anchor as HTMLElement
+            el.kupDynamicPosition.anchor as HTMLElement
         ).getBoundingClientRect();
         // Vertical position
         if (
-            el.dynamicPosition.position === KupDynamicPositionPlacement.TOP ||
-            el.dynamicPosition.position ===
+            el.kupDynamicPosition.position ===
+                KupDynamicPositionPlacement.TOP ||
+            el.kupDynamicPosition.position ===
                 KupDynamicPositionPlacement.TOP_LEFT ||
-            el.dynamicPosition.position ===
+            el.kupDynamicPosition.position ===
                 KupDynamicPositionPlacement.TOP_RIGHT
         ) {
             el.style.bottom = `${
-                window.innerHeight - rect.top + el.dynamicPosition.margin
+                window.innerHeight - rect.top + el.kupDynamicPosition.margin
             }px`;
         } else if (
-            el.dynamicPosition.position ===
+            el.kupDynamicPosition.position ===
                 KupDynamicPositionPlacement.BOTTOM ||
-            el.dynamicPosition.position ===
+            el.kupDynamicPosition.position ===
                 KupDynamicPositionPlacement.BOTTOM_LEFT ||
-            el.dynamicPosition.position ===
+            el.kupDynamicPosition.position ===
                 KupDynamicPositionPlacement.BOTTOM_RIGHT
         ) {
-            el.style.top = `${rect.bottom + el.dynamicPosition.margin}px`;
+            el.style.top = `${rect.bottom + el.kupDynamicPosition.margin}px`;
         } else {
             if (window.innerHeight - rect.bottom < offsetH) {
                 el.style.bottom = `${
-                    window.innerHeight - rect.top + el.dynamicPosition.margin
+                    window.innerHeight - rect.top + el.kupDynamicPosition.margin
                 }px`;
             } else {
-                el.style.top = `${rect.bottom + el.dynamicPosition.margin}px`;
+                el.style.top = `${
+                    rect.bottom + el.kupDynamicPosition.margin
+                }px`;
             }
         }
         // Horizontal position
         if (
-            el.dynamicPosition.position === KupDynamicPositionPlacement.LEFT ||
-            el.dynamicPosition.position ===
+            el.kupDynamicPosition.position ===
+                KupDynamicPositionPlacement.LEFT ||
+            el.kupDynamicPosition.position ===
                 KupDynamicPositionPlacement.BOTTOM_LEFT ||
-            el.dynamicPosition.position === KupDynamicPositionPlacement.TOP_LEFT
+            el.kupDynamicPosition.position ===
+                KupDynamicPositionPlacement.TOP_LEFT
         ) {
             el.style.left = `${rect.left}px`;
         } else if (
-            el.dynamicPosition.position === KupDynamicPositionPlacement.RIGHT ||
-            el.dynamicPosition.position ===
+            el.kupDynamicPosition.position ===
+                KupDynamicPositionPlacement.RIGHT ||
+            el.kupDynamicPosition.position ===
                 KupDynamicPositionPlacement.BOTTOM_RIGHT ||
-            el.dynamicPosition.position ===
+            el.kupDynamicPosition.position ===
                 KupDynamicPositionPlacement.TOP_RIGHT
         ) {
             let scrollbarWidth: number =
@@ -230,8 +242,8 @@ export class KupDynamicPosition {
             }
         }
         // Recursive
-        if (!el.dynamicPosition.detached) {
-            el.dynamicPosition.rAF = requestAnimationFrame(function () {
+        if (!el.kupDynamicPosition.detached) {
+            el.kupDynamicPosition.rAF = requestAnimationFrame(function () {
                 dom.ketchup.dynamicPosition.run(el);
             });
         }

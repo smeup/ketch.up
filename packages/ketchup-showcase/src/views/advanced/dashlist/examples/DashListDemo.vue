@@ -27,7 +27,7 @@ export default {
       demoComp: createComp(),
       demoEvents: [
         {
-          name: 'ketchupDashClicked',
+          name: 'kup-dash-click',
           type: 'CustomEvent<{ idx: number; }>',
         },
       ],

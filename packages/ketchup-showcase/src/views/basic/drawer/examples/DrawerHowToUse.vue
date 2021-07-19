@@ -23,7 +23,7 @@
       <br />
       <kup-button
         align="center"
-        v-on:kupButtonClick="openDrawer"
+        v-on:kup-button-click="openDrawer"
         label="Toggle drawer"
         id="side-drawer-btn"
         icon-off
@@ -63,7 +63,7 @@ export default {
         'const example_drawer = document.querySelector("kup-drawer");',
       markupBasic3: 'function openDrawerExample(() => example_drawer.open());',
       markupBasic4:
-        'example_btn.addEventListener("kupButtonClick", openDrawerExample);',
+        'example_btn.addEventListener("kup-button-click", openDrawerExample);',
       listdata: [
         {
           text: 'First choice',

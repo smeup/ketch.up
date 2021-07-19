@@ -7,6 +7,9 @@
         objects which support the following properties.
         <br />
         <br />
+        <span class="code-word">value</span> is mandatory and used to identify a
+        unique tab.
+        <br />
         <span class="code-word">text</span> is mandatory and defines the label
         of the tab.
         <br />
@@ -36,11 +39,13 @@ export default {
     return {
       data: [
         {
+          value: 'Favorites',
           text: 'Favorites',
           icon: '',
           active: true,
         },
         {
+          value: 'Settings',
           text: 'Settings',
           icon: '',
           active: false,
@@ -48,7 +53,7 @@ export default {
       ],
       markupBasic: '<kup-tab-bar></kup-tab-bar>',
       markupObject:
-        "{ text: 'Favorites', icon: '', active: true }, { text: 'Settings', icon: '', active: false}",
+        "{ value: 'Favorites', text: 'Favorites', icon: '', active: true }, { value: 'Settings',text: 'Settings', icon: '', active: false}",
     };
   },
 };

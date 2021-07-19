@@ -14,7 +14,8 @@ import {
     KupManager,
     kupManagerInstance,
 } from '../../utils/kup-manager/kup-manager';
-import { KupLazyProps } from './kup-lazy-declarations';
+import { getProps, setProps } from '../../utils/utils';
+import { KupLazyProps, KupLazyRender } from './kup-lazy-declarations';
 
 @Component({
     tag: 'kup-lazy',
@@ -22,33 +23,65 @@ import { KupLazyProps } from './kup-lazy-declarations';
     shadow: true,
 })
 export class KupLazy {
+    /**
+     * References the root HTML element of the component (<kup-button>).
+     */
     @Element() rootElement: HTMLElement;
+
+    /*-------------------------------------------------*/
+    /*                   S t a t e s                   */
+    /*-------------------------------------------------*/
+
     @State() isInViewport: boolean = false;
+
+    /*-------------------------------------------------*/
+    /*                    P r o p s                    */
+    /*-------------------------------------------------*/
 
     /**
      * Sets the tag name of the component to be lazy loaded.
+     * @default null
      */
-    @Prop() componentName: string = undefined;
+    @Prop() componentName: string = null;
     /**
-     * Custom style of the component. For more information: https://ketchup.smeup.com/ketchup-showcase/#/customization
+     * Custom style of the component.
+     * @default ""
+     * @see https://ketchup.smeup.com/ketchup-showcase/#/customization
      */
     @Prop() customStyle: string = '';
     /**
      * Sets the data of the component to be lazy loaded.
+     * @default null
      */
-    @Prop() data: {} = undefined;
+    @Prop() data: GenericObject = null;
+    /**
+     * Decides when the sub-component should be rendered.
+     * By default when both the component props exist and the component is in the viewport.
+     * @default KupLazyRender.BOTH
+     */
+    @Prop() renderMode: KupLazyRender = KupLazyRender.BOTH;
     /**
      * Displays an animated SVG placeholder until the component is loaded.
+     * @default true
      */
     @Prop() showPlaceholder: boolean = true;
 
-    private intObserver: IntersectionObserver = undefined;
+    /*-------------------------------------------------*/
+    /*       I n t e r n a l   V a r i a b l e s       */
+    /*-------------------------------------------------*/
+
+    /**
+     * Instance of the intersection observer.
+     */
+    private intObserver: IntersectionObserver = null;
     /**
      * Instance of the KupManager class.
      */
     private kupManager: KupManager = kupManagerInstance();
 
-    //---- Methods ----
+    /*-------------------------------------------------*/
+    /*           P u b l i c   M e t h o d s           */
+    /*-------------------------------------------------*/
 
     /**
      * Used to retrieve component's props values.
@@ -57,17 +90,15 @@ export class KupLazy {
      */
     @Method()
     async getProps(descriptions?: boolean): Promise<GenericObject> {
-        let props: GenericObject = {};
-        if (descriptions) {
-            props = KupLazyProps;
-        } else {
-            for (const key in KupLazyProps) {
-                if (Object.prototype.hasOwnProperty.call(KupLazyProps, key)) {
-                    props[key] = this[key];
-                }
-            }
-        }
-        return props;
+        return getProps(this, KupLazyProps, descriptions);
+    }
+    /**
+     * Sets the props to the component.
+     * @param {GenericObject} props - Object containing props that will be set to the component.
+     */
+    @Method()
+    async setProps(props: GenericObject): Promise<void> {
+        setProps(this, KupLazyProps, props);
     }
     /**
      * This method is used to trigger a new render of the component.
@@ -77,7 +108,11 @@ export class KupLazy {
         forceUpdate(this);
     }
 
-    setObserver() {
+    /*-------------------------------------------------*/
+    /*           P r i v a t e   M e t h o d s         */
+    /*-------------------------------------------------*/
+
+    setObserver(): void {
         let callback: IntersectionObserverCallback = (
             entries: IntersectionObserverEntry[]
         ) => {
@@ -100,7 +135,9 @@ export class KupLazy {
         this.intObserver = new IntersectionObserver(callback, options);
     }
 
-    //---- Lifecycle hooks ----
+    /*-------------------------------------------------*/
+    /*          L i f e c y c l e   H o o k s          */
+    /*-------------------------------------------------*/
 
     componentWillLoad() {
         this.kupManager.debug.logLoad(this, false);
@@ -246,7 +283,13 @@ export class KupLazy {
                 );
                 break;
         }
-        if (this.isInViewport) {
+        if (
+            (this.renderMode === KupLazyRender.VIEWPORT && this.isInViewport) ||
+            (this.renderMode === KupLazyRender.PROPS && this.data) ||
+            (this.renderMode === KupLazyRender.BOTH &&
+                this.data &&
+                this.isInViewport)
+        ) {
             let Tag = this.componentName;
             content = <Tag {...this.data}></Tag>;
             className += ' kup-loaded';

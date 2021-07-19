@@ -1,5 +1,10 @@
-import { DataTable } from '../kup-data-table/kup-data-table-declarations';
-import { TreeNode } from '../kup-tree/kup-tree-declarations';
+import { KupEventPayload } from '../../types/GenericTypes';
+import {
+    Column,
+    DataTable,
+} from '../kup-data-table/kup-data-table-declarations';
+import { KupTree } from '../kup-tree/kup-tree';
+import { TreeNode, TreeNodePath } from '../kup-tree/kup-tree-declarations';
 /**
  * Props of the kup-tooltip component.
  * Used to export every prop in an object.
@@ -59,4 +64,53 @@ export interface TooltipCellOptions extends TreeNode {
 export enum ViewMode {
     TOOLTIP = 'tip',
     CELL_OPTIONS = 'cellopt',
+}
+
+export interface KupTooltipLoadEventPayload extends KupEventPayload {
+    relatedObject: TooltipRelatedObject;
+}
+
+export interface KupTooltipActionCommandClickEventPayload
+    extends KupEventPayload {
+    actionCommand: TooltipAction;
+    relatedObject: TooltipRelatedObject;
+}
+
+export interface KupTooltipDefaultEventPayload extends KupEventPayload {
+    obj: TooltipObject;
+}
+
+export interface KupTooltipTreeNodeExpandEventPayload extends KupEventPayload {
+    treeNodePath: TreeNodePath;
+    treeNode: TreeNode;
+    usesDynamicExpansion?: boolean;
+    dynamicExpansionRequireChildren?: boolean;
+    tree: KupTree;
+}
+
+export interface KupTooltipTreeNodeSelectedEventPayload
+    extends KupEventPayload {
+    treeNodePath: TreeNodePath;
+    treeNode: TreeNode;
+    columnName: string;
+    auto: boolean;
+    tree: KupTree;
+}
+
+export interface KupTooltipTreeNodeButtonClickEventPayload
+    extends KupTooltipTreeNodeSelectedEventPayload {
+    column: Column;
+}
+
+export interface KupTooltipTreeNodeDblClickEventPayload
+    extends KupEventPayload {
+    treeNodePath: TreeNodePath;
+    treeNode: TreeNode;
+}
+
+export interface KupTooltipTreeDynamicMassExpansionEventPayload
+    extends KupEventPayload {
+    treeNodePath?: TreeNodePath;
+    treeNode?: TreeNode;
+    expandAll?: boolean;
 }

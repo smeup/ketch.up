@@ -4,7 +4,7 @@
     <div id="sample-specs">
       <kup-tab-bar
         id="demo-tab-bar"
-        @kupTabBarClick="tabSelection"
+        @kup-tabbar-click="tabSelection"
       ></kup-tab-bar>
       <div id="sample-specs-container">
         <table
@@ -42,14 +42,14 @@
               <td class="switch-cell" v-if="propList.try === 'switch'">
                 <kup-switch
                   v-bind:id="propList.prop"
-                  @kupSwitchChange="updateDemoSwitch"
+                  @kup-switch-change="updateDemoSwitch"
                 ></kup-switch>
               </td>
               <td class="text-cell" v-if="propList.try === 'field'">
                 <kup-text-field
                   full-width
                   v-bind:id="propList.prop"
-                  @kupTextFieldInput="updateDemoField"
+                  @kup-textfield-input="updateDemoField"
                 ></kup-text-field>
               </td>
               <td class="text-cell" v-if="propList.try === 'array'">
@@ -58,8 +58,8 @@
                   trailing-icon
                   icon="add"
                   v-bind:id="propList.prop"
-                  @kupTextFieldChange="updateDemoFieldArray"
-                  @kupTextFieldIconClick="updateDemoFieldArray"
+                  @kup-textfield-change="updateDemoFieldArray"
+                  @kup-textfield-iconclick="updateDemoFieldArray"
                 ></kup-text-field>
               </td>
             </tr>
@@ -86,7 +86,7 @@
               <td class="switch-cell">
                 <kup-switch
                   v-bind:id="classList.class"
-                  @kupSwitchChange="updateDemoClass"
+                  @kup-switch-change="updateDemoClass"
                 ></kup-switch>
               </td>
             </tr>
@@ -130,11 +130,11 @@
             icon="arrow-collapse"
             trailing-icon
             helper-when-focused
-            @kupTextFieldIconClick="jsonSetSwitch"
-            @kupTextFieldInput="jsonSet"
+            @kup-textfield-iconclick="jsonSetSwitch"
+            @kup-textfield-input="jsonSet"
           ></kup-text-field>
           <kup-button
-            @kupButtonClick="jsonSetSwitch"
+            @kup-button-click="jsonSetSwitch"
             id="json-setter-opener"
             icon="settings"
             title="Show prop field"
@@ -156,7 +156,7 @@
       </div>
       <div id="split-container">
         <kup-button
-          @kupButtonClick="menuTrigger"
+          @kup-button-click="menuTrigger"
           id="menu-trigger"
           toggable
           style="--kup-primary-color: var(--kup-text-on-primary-color)"
@@ -165,7 +165,7 @@
           title="Open/close side panel"
         ></kup-button>
         <kup-button
-          @kupButtonClick="swapView"
+          @kup-button-click="swapView"
           id="view-swapper"
           toggable
           style="--kup-primary-color: var(--kup-text-on-primary-color)"
@@ -174,7 +174,7 @@
           title="Toggle/disable full screen"
         ></kup-button>
         <kup-button
-          @kupButtonClick="splitView"
+          @kup-button-click="splitView"
           id="view-splitter"
           toggable
           style="
@@ -213,29 +213,32 @@ export default {
       }
     },
     initTabs() {
-      let demoComponent = document.querySelector('#demo-component');
       let tabBar = document.querySelector('#demo-tab-bar');
       let data = [];
 
       if (this.demoProps) {
         data.push({
+          value: 'Props',
           text: 'Props',
           title: 'List of props available to the component.',
         });
       }
       if (this.demoClasses) {
         data.push({
+          value: 'Classes',
           text: 'Classes',
           title: 'List of classes available to the component.',
         });
       }
       if (this.demoEvents) {
         data.push({
+          value: 'Events',
           text: 'Events',
           title: 'List of events available to the component.',
         });
       }
       data.push({
+        value: 'json',
         text: 'JSON',
         icon: 'json',
         title: 'Here you can change props values manually.',
@@ -244,6 +247,7 @@ export default {
         for (let i = 0; i < this.demoProps.length; i++) {
           if (this.demoProps[i].prop === 'customStyle') {
             data.push({
+              value: 'CSS',
               text: 'CSS',
               icon: 'style',
               title:
@@ -257,7 +261,7 @@ export default {
       } else {
         tabBar.data = data;
         data[0]['active'] = true;
-        this.handleTab(demoComponent, 0);
+        this.handleTab(0);
       }
     },
 
@@ -311,7 +315,7 @@ export default {
                   .insertAdjacentHTML('beforebegin', newEntry);
                 document
                   .querySelector('#' + newEntryId)
-                  .addEventListener('kupButtonClick', (e) => {
+                  .addEventListener('kup-button-click', (e) => {
                     this.updateDemoFieldArrayRemove(e);
                   });
                 document.querySelector('#' + newEntryId).styling = 'flat';
@@ -425,7 +429,7 @@ export default {
       e.target.value = '';
       document
         .querySelector('#' + newEntryId)
-        .addEventListener('kupButtonClick', (e) => {
+        .addEventListener('kup-button-click', (e) => {
           this.updateDemoFieldArrayRemove(e);
         });
     },
@@ -445,12 +449,11 @@ export default {
     },
 
     tabSelection(e) {
-      let demoComponent = document.querySelector('#demo-component');
       let i = e.detail.index;
-      this.handleTab(demoComponent, i);
+      this.handleTab(i);
     },
 
-    handleTab(demoComponent, i) {
+    handleTab(i) {
       let tabBar = document.querySelector('#demo-tab-bar');
       let propsTab = document.querySelector('#props-tab');
       let classesTab = document.querySelector('#classes-tab');
@@ -527,7 +530,7 @@ export default {
         lineWrapping: true,
         foldGutter: true,
         gutters: ['CodeMirror-linenumbers', 'CodeMirror-foldgutter'],
-      }).on('change', function(cm) {
+      }).on('change', function (cm) {
         cm.save();
         let demoComponent = document.querySelector('#demo-component');
         let prop = demoComponent.currentJSONprop;
@@ -556,7 +559,7 @@ export default {
         lineWrapping: true,
         foldGutter: true,
         gutters: ['CodeMirror-linenumbers', 'CodeMirror-foldgutter'],
-      }).on('change', function(cm) {
+      }).on('change', function (cm) {
         cm.save();
         let demoComponent = document.querySelector('#demo-component');
         demoComponent['customStyle'] = cssTextarea.value;

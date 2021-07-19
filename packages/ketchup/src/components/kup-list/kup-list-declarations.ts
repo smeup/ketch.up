@@ -1,3 +1,4 @@
+import { KupEventPayload } from '../../types/GenericTypes';
 import { ValueDisplayedValue as vdv } from '../../utils/filters/filters-declarations';
 
 /**
@@ -191,4 +192,9 @@ export function getItemByDisplayMode(
         }
     }
     return getItemByValue(listData, value, setSelected);
+}
+
+export interface KupListEventPayload extends KupEventPayload {
+    selected: ComponentListElement;
+    el: EventTarget;
 }

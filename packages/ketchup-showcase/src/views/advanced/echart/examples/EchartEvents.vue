@@ -5,7 +5,7 @@
         :axis.prop="axis"
         :data.prop="baseData"
         :types.prop="types"
-        @kupEchartClicked="onBarChartClicked"
+        @kupEchartClick="onBarChartClick"
       />
     </div>
     <div id="event">click on the graph to trigger the event</div>
@@ -14,7 +14,7 @@
         :axis.prop="axis"
         :data.prop="baseData"
         :types.prop="types1"
-        @kupEchartClicked="onPieChartClicked()"
+        @kupEchartClick="onPieChartClick()"
       />
     </div>
     <div id="event1">click on the graph to trigger the event</div>
@@ -37,16 +37,16 @@ export default {
   },
 
   methods: {
-    onBarChartClicked() {
+    onBarChartClick() {
       this.cnt++;
       document.getElementById('event').innerHTML =
-        'kupEchartClicked event received' + '<br>' + 'N:' + this.cnt;
+        'kupEchartClick event received' + '<br>' + 'N:' + this.cnt;
     },
 
-    onPieChartClicked() {
+    onPieChartClick() {
       this.cnt1++;
       document.getElementById('event1').innerHTML =
-        'kupEchartClicked event received' + '<br>' + 'N:' + this.cnt1;
+        'kupEchartClick event received' + '<br>' + 'N:' + this.cnt1;
     },
   },
 };

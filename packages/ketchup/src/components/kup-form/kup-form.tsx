@@ -107,7 +107,7 @@ export class KupForm {
     // -------------------------------------------------------------------------
 
     @Event({
-        eventName: 'kupFormActionSubmitted',
+        eventName: 'kup-form-actionsubmitted',
         composed: true,
         cancelable: false,
         bubbles: true,
@@ -115,7 +115,7 @@ export class KupForm {
     kupFormActionSubmitted: EventEmitter<FormActionEventDetail>;
 
     @Event({
-        eventName: 'kupFormFieldFocused',
+        eventName: 'kup-form-fieldfocused',
         composed: true,
         cancelable: false,
         bubbles: true,
@@ -123,7 +123,7 @@ export class KupForm {
     kupFormFieldFocused: EventEmitter<FormFieldEventDetail>;
 
     @Event({
-        eventName: 'kupFormFieldBlurred',
+        eventName: 'kup-form-fieldblurred',
         composed: true,
         cancelable: false,
         bubbles: true,
@@ -131,7 +131,7 @@ export class KupForm {
     kupFormFieldBlurred: EventEmitter<FormFieldEventDetail>;
 
     @Event({
-        eventName: 'kupFormFieldChanged',
+        eventName: 'kup-form-fieldchanged',
         composed: true,
         cancelable: false,
         bubbles: true,
@@ -431,13 +431,13 @@ export class KupForm {
                         <kup-combobox
                             data={data}
                             {...field.config}
-                            onKupComboboxItemClick={(e) =>
+                            onkup-combobox-itemclick={(e) =>
                                 this.onSimpleValueFieldChanged(e, field.key)
                             }
-                            onKupComboboxFocus={() =>
+                            onkup-combobox-focus={() =>
                                 this.onFieldFocused(field.key)
                             }
-                            onKupComboboxBlur={() =>
+                            onkup-combobox-blur={() =>
                                 this.onFieldBlurred(field.key)
                             }
                         ></kup-combobox>
@@ -500,16 +500,16 @@ export class KupForm {
                         <kup-autocomplete
                             data={data}
                             {...field.config}
-                            onKupAutocompleteItemClick={(e) =>
+                            onkup-autocomplete-itemclick={(e) =>
                                 this.onAutocompleteFieldChanged(e, field.key)
                             }
-                            onKupAutocompleteFocus={() =>
+                            onkup-autocomplete-focus={() =>
                                 this.onFieldFocused(field.key)
                             }
-                            onKupAutocompleteBlur={() =>
+                            onkup-autocomplete-blur={() =>
                                 this.onFieldBlurred(field.key)
                             }
-                            onKupAutocompleteFilterChanged={(e) =>
+                            onkup-autocomplete-filterchanged={(e) =>
                                 this.onAutocompleteFieldChanged(e, field.key)
                             }
                             callBackOnFilterUpdate={
@@ -560,8 +560,6 @@ export class KupForm {
                     );
                 } else if (isInputTextInForm(cell, field)) {
                     const wrapperStyle = {};
-                    wrapperStyle['--kup-text-field_border-color--selected'] =
-                        '#66D3FA';
 
                     // NB: not updated field value using onInput() event, but using onChange().
                     // The onChange of an input text fires when the element loses focus, not immediately after the modification
@@ -571,13 +569,13 @@ export class KupForm {
                             input-type="text"
                             initialValue={cell && cell.value}
                             disabled={field.readonly}
-                            onKupTextFieldChange={(e) =>
+                            onkup-textfield-change={(e) =>
                                 this.onSimpleValueFieldChanged(e, field.key)
                             }
-                            onKupTextFieldFocus={() =>
+                            onkup-textfield-focus={() =>
                                 this.onFieldFocused(field.key)
                             }
-                            onKupTextFieldBlur={() =>
+                            onkup-textfield-blur={() =>
                                 this.onFieldBlurred(field.key)
                             }
                         ></kup-text-field>
@@ -675,7 +673,7 @@ export class KupForm {
                         actionField.title,
                         actionField.config
                     )}
-                    onKupButtonClick={() =>
+                    onkup-button-click={() =>
                         this.onFormActionSubmitted(actionField)
                     }
                 />

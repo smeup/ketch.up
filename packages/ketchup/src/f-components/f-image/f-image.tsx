@@ -1,6 +1,10 @@
 import type { KupBadge } from '../../components/kup-badge/kup-badge';
+import type { KupDom } from '../../utils/kup-manager/kup-manager-declarations';
 import { FImageProps, FImageData, FImageShape } from './f-image-declarations';
 import { FunctionalComponent, getAssetPath, h, JSX } from '@stencil/core';
+import { KupThemeColorValues } from '../../utils/kup-theme/kup-theme-declarations';
+
+const dom: KupDom = document.documentElement as KupDom;
 
 /*-------------------------------------------------*/
 /*                C o m p o n e n t                */
@@ -71,7 +75,9 @@ export const FImage: FunctionalComponent<FImageProps> = (
 function createIcon(props: FImageProps): HTMLDivElement {
     let path = getAssetPath(`./assets/svg/${props.resource}.svg`);
     let style = {
-        background: props.color ? props.color : 'var(--kup-icon-color)',
+        background: props.color
+            ? props.color
+            : `var(${KupThemeColorValues.ICON})`,
         mask: `url('${path}') no-repeat center`,
         webkitMask: `url('${path}') no-repeat center`,
     };

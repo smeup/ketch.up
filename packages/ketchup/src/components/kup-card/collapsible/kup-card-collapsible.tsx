@@ -1,9 +1,13 @@
 import { h, VNode } from '@stencil/core';
 import type { KupCard } from '../kup-card';
 import type { GenericObject } from '../../../types/GenericTypes';
+import type { KupDom } from '../../../utils/kup-manager/kup-manager-declarations';
 import { FImage } from '../../../f-components/f-image/f-image';
 import { collapsibleBar } from '../kup-card-helper';
 import { KupCardCSSClasses } from '../kup-card-declarations';
+import { KupThemeColorValues } from '../../../utils/kup-theme/kup-theme-declarations';
+
+const dom: KupDom = document.documentElement as KupDom;
 
 /**
  * 1st collapsible card layout, left bar and collapsible chips.
@@ -28,7 +32,7 @@ export function create1(component: KupCard): VNode {
     let CSSVariables: GenericObject = {
         [`--color-0`]: colorArray[0]
             ? colorArray[0]
-            : 'var(--kup-primary-color)',
+            : `var(${KupThemeColorValues.PRIMARY})`,
     };
     return (
         <div
@@ -91,7 +95,7 @@ export function create2(component: KupCard): VNode {
     let CSSVariables: GenericObject = {
         [`--color-0`]: colorArray[0]
             ? colorArray[0]
-            : 'var(--kup-primary-color)',
+            : `var(${KupThemeColorValues.PRIMARY})`,
     };
     return (
         <div

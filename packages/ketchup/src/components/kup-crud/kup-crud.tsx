@@ -298,7 +298,7 @@ export class KupCrud {
         let updateButtonContent = this.hasRowUpdateAction() ? (
             <kup-button
                 icon="pencil"
-                onKupButtonClick={(e) =>
+                onkup-button-click={(e) =>
                     this.onUpdateRecordClicked(e, record.id)
                 }
             ></kup-button>
@@ -309,7 +309,7 @@ export class KupCrud {
         let deleteButtonContent = this.hasRowDeleteAction() ? (
             <kup-button
                 icon="delete"
-                onKupButtonClick={(e) =>
+                onkup-button-click={(e) =>
                     this.onDeleteRecordClicked(e, record.id)
                 }
             ></kup-button>
@@ -374,7 +374,7 @@ export class KupCrud {
             <kup-button
                 label="Add"
                 icon="plus"
-                onKupButtonClick={(e) => this.onInsertRecordClicked(e)}
+                onkup-button-click={(e) => this.onInsertRecordClicked(e)}
             ></kup-button>
         ) : (
             ''
@@ -405,14 +405,14 @@ export class KupCrud {
             <kup-button
                 id="open-modal"
                 label="Configure"
-                onKupButtonClick={(e) =>
+                onkup-button-click={(e) =>
                     this.onUpdateRecordClicked(
                         e,
                         this.records && this.records[0].id
                     )
                 }
-                onKupButtonBlur={(e) => this.onCrudBlurred(e)}
-                onKupButtonFocus={(e) => this.onCrudFocused(e)}
+                onkup-button-blur={(e) => this.onCrudBlurred(e)}
+                onkup-button-focus={(e) => this.onCrudFocused(e)}
             >
                 Configure
             </kup-button>
@@ -447,10 +447,10 @@ export class KupCrud {
                             sections={this.sections}
                             extraMessages={this.extraMessages}
                             actions={this.actions}
-                            onKupFormActionSubmitted={(e) =>
+                            onkup-form-actionsubmitted={(e) =>
                                 this.onFormActionSubmitted(e)
                             }
-                            onKupFormFieldChanged={(e) =>
+                            onkup-form-fieldchanged={(e) =>
                                 this.onFormFieldChanged(e)
                             }
                             autocompleteCallBackOnFilterUpdate={

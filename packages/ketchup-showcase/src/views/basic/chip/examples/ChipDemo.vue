@@ -22,19 +22,19 @@ export default {
       demoComp: createComp(),
       demoEvents: [
         {
-          name: 'kupChipClick',
+          name: 'kup-chip-click',
           type: 'click',
         },
         {
-          name: 'kupChipFocus',
+          name: 'kup-chip-focus',
           type: 'focus',
         },
         {
-          name: 'kupChipBlur',
+          name: 'kup-chip-blur',
           type: 'blur',
         },
         {
-          name: 'kupChipIconClick',
+          name: 'kup-chip-iconclick',
           type: 'click',
         },
       ],

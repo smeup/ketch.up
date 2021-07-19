@@ -23,23 +23,23 @@ export default {
       demoComp: createComp(),
       demoEvents: [
         {
-          name: 'kupTreeNodeCollapse',
+          name: 'kup-tree-nodecollapse',
           type: 'custom',
         },
         {
-          name: 'kupTreeNodeExpand',
+          name: 'kup-tree-nodeexpand',
           type: 'custom',
         },
         {
-          name: 'kupTreeNodeSelected',
+          name: 'kup-tree-nodeselected',
           type: 'custom',
         },
         {
-          name: 'kupTreeNodeDblClick',
+          name: 'kup-tree-nodedblclick',
           type: 'dblclick',
         },
         {
-          name: 'kupTreeDynamicMassExpansion',
+          name: 'kup-tree-dynamicmassexpansion',
           type: 'custom',
         },
       ],

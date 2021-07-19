@@ -23,11 +23,17 @@ import {
 import { FTextField } from '../../f-components/f-text-field/f-text-field';
 import { FTextFieldMDC } from '../../f-components/f-text-field/f-text-field-mdc';
 import { GenericObject, KupComponent } from '../../types/GenericTypes';
-import { KupAutocompleteProps } from './kup-autocomplete-declarations';
+import {
+    KupAutocompleteEventPayload,
+    kupAutocompleteFilterChangedEventPayload,
+    KupAutocompleteProps,
+} from './kup-autocomplete-declarations';
 import {
     ItemsDisplayMode,
     consistencyCheck,
 } from '../kup-list/kup-list-declarations';
+import { KupThemeIconValues } from '../../utils/kup-theme/kup-theme-declarations';
+import { getProps, setProps } from '../../utils/utils';
 
 @Component({
     tag: 'kup-autocomplete',
@@ -83,112 +89,76 @@ export class KupAutocomplete {
      */
 
     @Event({
-        eventName: 'kupAutocompleteBlur',
+        eventName: 'kup-autocomplete-blur',
         composed: true,
         cancelable: false,
         bubbles: true,
     })
-    kupBlur: EventEmitter<{
-        value: any;
-        id: string;
-        comp: KupAutocomplete;
-    }>;
+    kupBlur: EventEmitter<KupAutocompleteEventPayload>;
 
     @Event({
-        eventName: 'kupAutocompleteChange',
+        eventName: 'kup-autocomplete-change',
         composed: true,
         cancelable: false,
         bubbles: true,
     })
-    kupChange: EventEmitter<{
-        value: any;
-        id: string;
-        comp: KupAutocomplete;
-    }>;
+    kupChange: EventEmitter<KupAutocompleteEventPayload>;
 
     @Event({
-        eventName: 'kupAutocompleteClick',
+        eventName: 'kup-autocomplete-click',
         composed: true,
         cancelable: false,
         bubbles: true,
     })
-    kupClick: EventEmitter<{
-        value: any;
-        id: string;
-        comp: KupAutocomplete;
-    }>;
+    kupClick: EventEmitter<KupAutocompleteEventPayload>;
 
     @Event({
-        eventName: 'kupAutocompleteFocus',
+        eventName: 'kup-autocomplete-focus',
         composed: true,
         cancelable: false,
         bubbles: true,
     })
-    kupFocus: EventEmitter<{
-        value: any;
-        id: string;
-        comp: KupAutocomplete;
-    }>;
+    kupFocus: EventEmitter<KupAutocompleteEventPayload>;
 
     @Event({
-        eventName: 'kupAutocompleteInput',
+        eventName: 'kup-autocomplete-input',
         composed: true,
         cancelable: false,
         bubbles: true,
     })
-    kupInput: EventEmitter<{
-        value: any;
-        id: string;
-        comp: KupAutocomplete;
-    }>;
+    kupInput: EventEmitter<KupAutocompleteEventPayload>;
 
     @Event({
-        eventName: 'kupAutocompleteIconClick',
+        eventName: 'kup-autocomplete-iconclick',
         composed: true,
         cancelable: false,
         bubbles: true,
     })
-    kupIconClick: EventEmitter<{
-        value: any;
-        id: string;
-        comp: KupAutocomplete;
-    }>;
+    kupIconClick: EventEmitter<KupAutocompleteEventPayload>;
 
     @Event({
-        eventName: 'kupAutocompleteItemClick',
+        eventName: 'kup-autocomplete-itemclick',
         composed: true,
         cancelable: false,
         bubbles: true,
     })
-    kupItemClick: EventEmitter<{
-        value: any;
-        id: string;
-        comp: KupAutocomplete;
-    }>;
+    kupItemClick: EventEmitter<KupAutocompleteEventPayload>;
 
     @Event({
-        eventName: 'kupAutocompleteFilterChanged',
+        eventName: 'kup-autocomplete-filterchanged',
         composed: true,
         cancelable: false,
         bubbles: true,
     })
-    kupFilterChanged: EventEmitter<{
-        filter: string;
-        matchesMinimumCharsRequired: boolean;
-        comp: KupAutocomplete;
-    }>;
+    kupFilterChanged: EventEmitter<kupAutocompleteFilterChangedEventPayload>;
 
     @Event({
-        eventName: 'kupAutocompleteTextFieldSubmit',
+        eventName: 'kup-autocomplete-textfieldsubmit',
         composed: true,
         cancelable: false,
         bubbles: true,
     })
-    kupTextFieldSubmit: EventEmitter<{
-        value: any;
-        id: string;
-        comp: KupAutocomplete;
-    }>;
+    kupTextFieldSubmit: EventEmitter<KupAutocompleteEventPayload>;
 
     /**
      * Function that can be invoked when the filter is updated, but only if in serverHandledFilter mode. It returns the items filtered.
@@ -255,31 +225,24 @@ export class KupAutocomplete {
      */
     @Method()
     async getProps(descriptions?: boolean): Promise<GenericObject> {
-        let props: GenericObject = {};
-        if (descriptions) {
-            props = KupAutocompleteProps;
-        } else {
-            for (const key in KupAutocompleteProps) {
-                if (
-                    Object.prototype.hasOwnProperty.call(
-                        KupAutocompleteProps,
-                        key
-                    )
-                ) {
-                    props[key] = this[key];
-                }
-            }
-        }
-        return props;
+        return getProps(this, KupAutocompleteProps, descriptions);
+    }
+    /**
+     * Sets the props to the component.
+     * @param {GenericObject} props - Object containing props that will be set to the component.
+     */
+    @Method()
+    async setProps(props: GenericObject): Promise<void> {
+        setProps(this, KupAutocompleteProps, props);
     }
 
     onKupBlur(e: UIEvent & { target: HTMLInputElement }) {
         this.closeList();
         const { target } = e;
         this.kupBlur.emit({
-            value: target.value,
-            id: this.rootElement.id,
             comp: this,
+            id: this.rootElement.id,
+            value: target.value,
         });
     }
 
@@ -287,27 +250,27 @@ export class KupAutocomplete {
         this.doConsistencyCheck = true;
         this.consistencyCheck(undefined, e.target.value);
         this.kupChange.emit({
-            value: this.value,
-            id: this.rootElement.id,
             comp: this,
+            id: this.rootElement.id,
+            value: this.value,
         });
     }
 
     onKupClick(e: UIEvent & { target: HTMLInputElement }) {
         const { target } = e;
         this.kupClick.emit({
-            value: target.value,
-            id: this.rootElement.id,
             comp: this,
+            id: this.rootElement.id,
+            value: target.value,
         });
     }
 
     onKupFocus(e: UIEvent & { target: HTMLInputElement }) {
         const { target } = e;
         this.kupFocus.emit({
-            value: target.value,
-            id: this.rootElement.id,
             comp: this,
+            id: this.rootElement.id,
+            value: target.value,
         });
     }
 
@@ -318,9 +281,9 @@ export class KupAutocomplete {
             this.handleFilterChange(this.displayedValue, e.target);
         }
         this.kupInput.emit({
-            value: this.value,
-            id: this.rootElement.id,
             comp: this,
+            id: this.rootElement.id,
+            value: this.value,
         });
     }
 
@@ -333,9 +296,9 @@ export class KupAutocomplete {
             this.openList(true);
         }
         this.kupIconClick.emit({
-            value: target.value,
-            id: this.rootElement.id,
             comp: this,
+            id: this.rootElement.id,
+            value: target.value,
         });
     }
 
@@ -344,25 +307,26 @@ export class KupAutocomplete {
         this.consistencyCheck(e);
         this.closeList();
         this.kupChange.emit({
-            value: this.value,
-            id: this.rootElement.id,
             comp: this,
+            id: this.rootElement.id,
+            value: this.value,
         });
 
         this.kupItemClick.emit({
-            value: this.value,
-            id: this.rootElement.id,
             comp: this,
+            id: this.rootElement.id,
+            value: this.value,
         });
     }
 
     private handleFilterChange(newFilter: string, eventTarget: EventTarget) {
         let detail = {
+            comp: this,
+            id: this.rootElement.id,
             filter: newFilter,
             matchesMinimumCharsRequired:
                 newFilter && newFilter.length >= this.minimumChars,
             el: eventTarget,
-            comp: this,
         };
         if (this.serverHandledFilter && this.callBackOnFilterUpdate) {
             this.callBackOnFilterUpdate(detail)
@@ -442,7 +406,7 @@ export class KupAutocomplete {
                 {...this.data['kup-list']}
                 displayMode={this.displayMode}
                 isMenu={true}
-                onKupListClick={(e) => this.onKupItemClick(e)}
+                onkup-list-click={(e) => this.onKupItemClick(e)}
                 ref={(el) => (this.listEl = el as any)}
             ></kup-list>
         );
@@ -543,7 +507,7 @@ export class KupAutocomplete {
                         disabled={this.disabled}
                         fullHeight={fullHeight}
                         fullWidth={fullWidth}
-                        icon="--kup-expanded-icon"
+                        icon={KupThemeIconValues.EXPANDED}
                         trailingIcon={true}
                         value={this.displayedValue}
                     />

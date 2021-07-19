@@ -22,39 +22,39 @@ export default {
       demoComp: createComp(),
       demoEvents: [
         {
-          name: 'kupTimePickerClick',
+          name: 'kup-timepicker-click',
           type: 'click',
         },
         {
-          name: 'kupTimePickerChange',
+          name: 'kup-timepicker-change',
           type: 'change',
         },
         {
-          name: 'kupTimePickerClearIconClick',
+          name: 'kup-timepicker-cleariconclick',
           type: 'click',
         },
         {
-          name: 'kupTimePickerInput',
+          name: 'kup-timepicker-input',
           type: 'input',
         },
         {
-          name: 'kupTimePickerFocus',
+          name: 'kup-timepicker-focus',
           type: 'focus',
         },
         {
-          name: 'kupTimePickerBlur',
+          name: 'kup-timepicker-blur',
           type: 'blur',
         },
         {
-          name: 'kupTimePickerIconClick',
+          name: 'kup-timepicker-iconclick',
           type: 'click',
         },
         {
-          name: 'kupTimePickerItemClick',
+          name: 'kup-timepicker-itemclick',
           type: 'click',
         },
         {
-          name: 'kupTimePickerTextFieldSubmit',
+          name: 'kup-timepicker-textfieldsubmit',
           type: 'click',
         },
       ],

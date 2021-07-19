@@ -1,4 +1,4 @@
-import { GenericObject } from '../../types/GenericTypes';
+import { GenericObject, KupEventPayload } from '../../types/GenericTypes';
 import {
     Cell,
     CellsHolder,
@@ -106,4 +106,44 @@ export interface EventHandlerDetails {
     td: HTMLTableDataCellElement;
     th: HTMLTableHeaderCellElement;
     tr: HTMLTableRowElement;
+}
+
+export interface KupTreeNodeCollapseEventPayload extends KupEventPayload {
+    treeNodePath: TreeNodePath;
+    treeNode: TreeNode;
+}
+
+export interface KupTreeNodeExpandEventPayload
+    extends KupTreeNodeCollapseEventPayload {
+    usesDynamicExpansion?: boolean;
+    dynamicExpansionRequireChildren?: boolean;
+}
+
+export interface KupTreeNodeSelectedEventPayload
+    extends KupTreeNodeCollapseEventPayload {
+    columnName: string;
+    auto: boolean;
+}
+
+export interface KupTreeNodeButtonClickEventPayload
+    extends KupTreeNodeCollapseEventPayload {
+    column: Column;
+    columnName: string;
+    auto: boolean;
+}
+
+export interface KupTreeContextMenuEventPayload extends KupEventPayload {
+    details: EventHandlerDetails;
+}
+
+export interface KupTreeColumnMenuEventPayload extends KupEventPayload {
+    card: HTMLKupCardElement;
+    open: boolean;
+}
+
+export interface KupTreeDynamicMassExpansionEventPayload
+    extends KupEventPayload {
+    treeNodePath?: TreeNodePath;
+    treeNode?: TreeNode;
+    expandAll?: boolean;
 }

@@ -23,19 +23,19 @@ export default {
       demoComp: createComp(),
       demoEvents: [
         {
-          name: 'kupAutoBoxSelect',
+          name: 'kup-box-autoselect',
           type: 'CustomEvent',
         },
         {
-          name: 'kupBoxClicked',
+          name: 'kup-box-click',
           type: 'CustomEvent',
         },
         {
-          name: 'kupBoxDragEnded',
+          name: 'kup-box-dragended',
           type: 'CustomEvent',
         },
         {
-          name: 'kupBoxDragStarted',
+          name: 'kup-box-dragstarted',
           type: 'CustomEvent',
         },
         {
@@ -43,15 +43,15 @@ export default {
           type: 'CustomEvent',
         },
         {
-          name: 'kupBoxSelected',
+          name: 'kup-box-selected',
           type: 'CustomEvent',
         },
         {
-          name: 'kupRowActionClicked',
+          name: 'kup-box-rowactionclick',
           type: 'CustomEvent',
         },
         {
-          name: 'kupRowActionMenuClicked',
+          name: 'kup-box-rowactionmenuclick',
           type: 'CustomEvent',
         },
       ],

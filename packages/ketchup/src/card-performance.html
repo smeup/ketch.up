@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+    <head>
+        <meta charset="utf-8" />
+
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"
+        />
+
+        <title>Ketchup card</title>
+
+        <script type="module" src="/build/ketchup.esm.js"></script>
+        <script nomodule src="/build/ketchup.js"></script>
+
+        <link
+            href="https://fonts.googleapis.com/css?family=Lato"
+            rel="stylesheet"
+        />
+
+        <script
+            type="text/javascript"
+            src="https://www.gstatic.com/charts/loader.js"
+        ></script>
+        <style>
+            * {
+                box-sizing: border-box;
+                transition: all 0.125s ease;
+            }
+
+            :focus {
+                outline: none;
+            }
+
+            html {
+                background-color: var(--kup-background-color);
+                color: var(--kup-text-color);
+                font-family: var(--kup-font-family);
+                font-size: var(--kup-font-size);
+                padding: 1rem;
+            }
+
+            .options {
+                margin-bottom: 1rem;
+            }
+
+            hr {
+                margin: 2rem 0;
+            }
+
+            #card-wrapper {
+                border: 1px solid var(--kup-border-color, black);
+            }
+        </style>
+        <!-- Versione jQuery 2.2.4, usata dalle JSF in WebUP -->
+        <script
+            src="https://code.jquery.com/jquery-2.2.4.js"
+            integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+            crossorigin="anonymous"
+        ></script>
+    </head>
+
+    <body>
+        <script>
+            document.documentElement['ketchupInit'] = {
+                debug: { active: true, logLimit: 20000 },
+            };
+        </script>
+        <h1>Card performance</h1>
+        <div id="card-wrapper"></div>
+        <kup-button
+            id="card-generator"
+            icon="wrench"
+            styling="floating"
+            style="position: fixed; bottom: 10px; left: 10px"
+        ></kup-button>
+    </body>
+    <script src="/assets/card-performance.js"></script>
+</html>

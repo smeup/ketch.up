@@ -341,11 +341,18 @@
 
     <div class="demo-wrapper">
       <p>
-        <span class="code-word">Layout 12</span> configuration:
+        <span class="code-word">Layout 12</span> configuration (this layout
+        covers a very specific use-case, so it's less dynamic than the average):
         <br />
         <br />
-        <span class="code-word">- button[0 to n]</span>: Action list, displayed
-        above.
+        <span class="code-word">- button[special IDs]</span>: Action list,
+        displayed above. Supported IDs are:
+        <br />
+        - "add"
+        <br />
+        - "group"
+        <br />
+        - "remove"
         <br />
         <span class="code-word">- checkbox[0 to n]</span>: Checkbox list, this
         section will be scrollable with an height limit of 20vh in order to

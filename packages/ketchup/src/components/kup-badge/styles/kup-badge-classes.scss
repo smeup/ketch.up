@@ -1,7 +1,8 @@
 /*-------------------------------------------------*/
 /*        C o m p o n e n t   C l a s s e s        */
 /*-------------------------------------------------*/
-:host(.kup-top-right) {
+
+:host(.#{$kup-class-top-right}) {
   top: 0;
   right: 0;
   bottom: unset;
@@ -9,7 +10,7 @@
   transform: translate(50%, -50%);
 }
 
-:host(.kup-bottom-right) {
+:host(.#{$kup-class-bottom-right}) {
   top: unset;
   right: 0;
   bottom: 0;
@@ -17,7 +18,7 @@
   transform: translate(50%, 50%);
 }
 
-:host(.kup-bottom-left) {
+:host(.#{$kup-class-bottom-left}) {
   top: unset;
   right: unset;
   bottom: 0;

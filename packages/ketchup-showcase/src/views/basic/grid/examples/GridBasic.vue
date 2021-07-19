@@ -19,8 +19,8 @@
         The default behavior of the grid displays rows which are made of 12
         columns on pc, 8 columns on tablet and 4 on phone. The number of the
         rows can be changed through the
-        <span class="code-word">columns</span> prop and when this happens, the
-        responsiveness is lost.
+        <span class="code-word">columns</span> but responsiveness will be
+        preserved.
       </p>
       <br />
       <p class="centered">Sample markup</p>

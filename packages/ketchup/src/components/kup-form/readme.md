@@ -30,7 +30,7 @@ If you want to add a server side check everytime a field value is changed you ca
 
 As default, if actions prop is empty, a submit button and a reset button (not yet implemented) will be rendered in the bottom right of the form. The reset will empty all fields when clicked.
 
-If you want to add actions or customize submit and/or reset buttons (or hide them) you have to set actions prop. You have to define both actions fields (they are button widget so you can add all the attributes of a BTN shape or J4BTN object field while the value will be the title) and actions sections. There are only four possibile sections with position: TL (top left), TR (top right), BL (bottom left), BR (bottom right). As a form field an action field must have a unique key. Submit action has "submit" key, reset action has "reset" key. Performing an action will generate a kupFormActionSubmitted event.
+If you want to add actions or customize submit and/or reset buttons (or hide them) you have to set actions prop. You have to define both actions fields (they are button widget so you can add all the attributes of a BTN shape or J4BTN object field while the value will be the title) and actions sections. There are only four possibile sections with position: TL (top left), TR (top right), BL (bottom left), BR (bottom right). As a form field an action field must have a unique key. Submit action has "submit" key, reset action has "reset" key. Performing an action will generate a kup-form-actionsubmitted event.
 
 ## Extra messages
 
@@ -67,12 +67,12 @@ When a FormActionEvent or a FormFieldEvent is sent you will obtain in the payloa
 
 ## Events
 
-| Event                    | Description | Type                                 |
-| ------------------------ | ----------- | ------------------------------------ |
-| `kupFormActionSubmitted` |             | `CustomEvent<FormActionEventDetail>` |
-| `kupFormFieldBlurred`    |             | `CustomEvent<FormFieldEventDetail>`  |
-| `kupFormFieldChanged`    |             | `CustomEvent<FormFieldEventDetail>`  |
-| `kupFormFieldFocused`    |             | `CustomEvent<FormFieldEventDetail>`  |
+| Event                      | Description | Type                                 |
+| -------------------------- | ----------- | ------------------------------------ |
+| `kup-form-actionsubmitted` |             | `CustomEvent<FormActionEventDetail>` |
+| `kup-form-fieldblurred`    |             | `CustomEvent<FormFieldEventDetail>`  |
+| `kup-form-fieldchanged`    |             | `CustomEvent<FormFieldEventDetail>`  |
+| `kup-form-fieldfocused`    |             | `CustomEvent<FormFieldEventDetail>`  |
 
 
 ## Methods
@@ -157,6 +157,7 @@ graph TD;
   kup-data-table --> kup-date-picker
   kup-data-table --> kup-image
   kup-data-table --> kup-button
+  kup-data-table --> kup-button-list
   kup-data-table --> kup-chart
   kup-data-table --> kup-color-picker
   kup-data-table --> kup-gauge
@@ -190,6 +191,7 @@ graph TD;
   kup-time-picker --> kup-text-field
   kup-time-picker --> kup-button
   kup-time-picker --> kup-list
+  kup-tab-bar --> kup-badge
   kup-tree --> kup-image
   kup-tree --> kup-button
   kup-tree --> kup-chart
@@ -210,6 +212,10 @@ graph TD;
   kup-tooltip --> kup-button
   kup-tooltip --> kup-card
   kup-tooltip --> kup-tree
+  kup-button-list --> kup-dropdown-button
+  kup-button-list --> kup-badge
+  kup-dropdown-button --> kup-list
+  kup-dropdown-button --> kup-badge
   kup-paginator --> kup-combobox
   kup-paginator --> kup-badge
   style kup-form fill:#f9f,stroke:#333,stroke-width:4px

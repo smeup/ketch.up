@@ -15,7 +15,6 @@ export const jlObjectsDataTable = {
             k: '',
           },
           value: '',
-          options: false,
         },
       },
     },

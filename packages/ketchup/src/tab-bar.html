@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Events Testing</title>
+
+        <script type="module" src="/build/ketchup.esm.js"></script>
+        <script nomodule src="/build/ketchup.js"></script>
+
+        <link
+            href="https://cdn.materialdesignicons.com/4.5.95/css/materialdesignicons.min.css"
+            rel="stylesheet"
+            type="text/css"
+        />
+
+        <link
+            href="https://fonts.googleapis.com/css?family=Lato"
+            rel="stylesheet"
+        />
+
+        <script
+            type="text/javascript"
+            src="https://www.gstatic.com/charts/loader.js"
+        ></script>
+
+        <style>
+            html {
+                background-color: var(--kup-background-color);
+                color: var(--kup-text-color);
+                font-family: var(--kup-font-family);
+                font-size: var(--kup-font-size);
+                padding: 1rem;
+            }
+        </style>
+    </head>
+    <body>
+        <h4>Events testing</h4>
+        <kup-tab-bar id="event-tabbar"></kup-tab-bar>
+
+        <script>
+            let tabBar = document.getElementsByTagName('kup-tab-bar')[0];
+            tabBar.data = [
+                {
+                    value: '1',
+                    text: 'Favorites',
+                    icon: 'favorite',
+                    active: true,
+                },
+                {
+                    value: '2',
+                    text: 'Set alarm clock',
+                    icon: 'alarm_on',
+                    active: false,
+                },
+                {
+                    value: '3',
+                    text: 'Settings',
+                    icon: 'build',
+                    active: false,
+                },
+                {
+                    value: '4',
+                    text: 'Iconless',
+                    icon: '',
+                    active: false,
+                },
+            ];
+        </script></body
+    >
+</html>

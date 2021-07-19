@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+    <head>
+        <meta charset="utf-8" />
+
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"
+        />
+
+        <title>Ketchup bottoniera</title>
+        <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        ></link>
+       
+        <link
+            href="https://cdn.materialdesignicons.com/4.5.95/css/materialdesignicons.min.css"
+            rel="stylesheet"
+            type="text/css"
+        />
+
+        <script type="module" src="/build/ketchup.esm.js"></script>
+        <script nomodule src="/build/ketchup.js"></script>
+
+        <link
+            href="https://fonts.googleapis.com/css?family=Lato"
+            rel="stylesheet"
+        />
+        
+        <style>
+            * {
+                box-sizing: border-box;
+                transition: all .125s ease;
+            }
+
+            :focus {
+                outline: none;
+            }
+
+            html {
+                background-color: var(--kup-background-color);
+                color: var(--kup-text-color);
+                font-family: var(--kup-font-family);
+                font-size: var(--kup-font-size);
+                padding: 1rem;
+            }
+
+            .options {
+                margin-bottom: 1rem;
+            }
+
+            hr {
+                margin: 2rem 0;
+            }
+
+            .button-list-options {
+                margin-bottom: 1rem;
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                grid-gap: 0.5rem;
+            }
+
+            .button-list {
+                display: block;
+            }
+
+            #theme-tester {
+                position: fixed;
+                right: 0;
+                top: 0;
+                margin: 5px;
+                padding: 20px 10px 20px 10px;
+                box-shadow: 0px 0px 7.5px 0px rgba(128, 128, 128, 0.5);
+                z-index: 100;
+            }
+        </style>
+    </head>
+
+    <body>
+        <script>
+            document.documentElement['ketchupInit'] = {
+                debug: { active: true, logLimit: 10000 },
+            };
+        </script>
+        <div class="data-examples">
+            <h1>Bottoniera orizzontale flat</h1>
+            <kup-button-list id="button-list-orizzontale" styling="flat" class="kup-full-width"></kup-button-list>
+
+            <h1>Bottoniera verticale outlined</h1>
+            <kup-button-list id="button-list-verticale" styling="outlined" class="kup-full-width"></kup-button-list>
+
+            <h1>Bottoniera 3 colonne raised</h1>
+            <kup-button-list id="button-list-3-col" styling="raised" class="kup-shaped"></kup-button-list>
+
+            <h1>Bottoniera collapsed</h1>
+            <kup-button-list id="button-list-collapsed"></kup-button-list>
+            <h4>Playground bottoniera</h4>
+            <div class="button-list">
+                <div class="button-list-options">
+                    <div>
+                        <kup-checkbox
+                            label="Show text"
+                            leading-label
+                            checked
+                            name="button-list-showtext"
+                            id="button-list-showtext"
+                        />
+                    </div>
+                    <script>
+                        const checkField1 = document.querySelector('#button-list-showtext');
+                        checkField1.addEventListener('kupCheckboxChange', (e) => {
+                            togglebutton-listShowtext(e);
+                        });
+                    </script>
+    
+                    <div>
+                        <kup-checkbox
+                            label="Fillspace"
+                            leading-label
+                            name="button-list-fillspace"
+                            id="button-list-fillspace"
+                        />
+                    </div>
+                    <script>
+                        const checkField2 =
+                            document.querySelector('#button-list-fillspace');
+                        checkField2.addEventListener('kupCheckboxChange', (e) => {
+                            togglebutton-listFillspace(e);
+                        });
+                    </script>
+    
+                    <div>
+                        <kup-checkbox
+                            label="Horizontal"
+                            leading-label
+                            name="button-list-horizontal"
+                            id="button-list-horizontal"
+                        />
+                    </div>
+                    <script>
+                        const checkField3 =
+                            document.querySelector('#button-list-horizontal');
+                        checkField3.addEventListener('kupCheckboxChange', (e) => {
+                            togglebutton-listHorizontal(e);
+                        });
+                    </script>
+    
+                    <div>
+                        <kup-checkbox
+                            label="Show icon"
+                            leading-label
+                            checked
+                            name="button-list-showicon"
+                            id="button-list-showicon"
+                        />
+                    </div>
+                    <script>
+                        const checkField4 = document.querySelector('#button-list-showicon');
+                        checkField4.addEventListener('kupCheckboxChange', (e) => {
+                            togglebutton-listShowicon(e);
+                        });
+                    </script>
+    
+                    <div>
+                        <kup-checkbox
+                            label="Rounded"
+                            leading-label
+                            name="button-list-rounded"
+                            id="button-list-rounded"
+                        />
+                    </div>
+                    <script>
+                        const checkField5 = document.querySelector('#button-list-rounded');
+                        checkField5.addEventListener('kupCheckboxChange', (e) => {
+                            togglebutton-listRounded(e);
+                        });
+                    </script>
+    
+                    <div>
+                        <kup-checkbox
+                            label="TextMode='Hint'"
+                            leading-label
+                            name="button-list-hinttextmode"
+                            id="button-list-hinttextmode"
+                        />
+                    </div>
+                    <script>
+                        const checkField6 =
+                            document.querySelector('#button-list-hinttextmode');
+                        checkField6.addEventListener('kupCheckboxChange', (e) => {
+                            togglebutton-listTextModeHint(e);
+                        });
+                    </script>
+    
+                    <div>
+                        <kup-checkbox
+                            label="Transparent"
+                            leading-label
+                            name="button-list-transparent"
+                            id="button-list-transparent"
+                        />
+                    </div>
+                    <script>
+                        const checkField7 =
+                            document.querySelector('#button-list-transparent');
+                        checkField7.addEventListener('kupCheckboxChange', (e) => {
+                            togglebutton-listTransparent(e);
+                        });
+                    </script>
+    
+                    <div>
+                        <label for="button-list-bordercolor">Border color</label>
+                        <input
+                            type="color"
+                            name="button-list-bordercolor"
+                            id="button-list-bordercolor"
+                            onchange="onBorderColorChange(event)"
+                        />
+                    </div>
+    
+                    <div>
+                        <label for="button-list-buttonclass">Button class</label>
+                        <select
+                            name="button-list-buttonclass"
+                            id="button-list-buttonclass"
+                            onchange="onBorderButtonClassChange(event)"
+                        >
+                            <option value=""></option>
+                            <option value="button-list-info">button-list-info</option>
+                            <option value="button-list-danger">button-list-danger</option>
+                            <option value="button-list-warning">button-list-warning</option>
+                            <option value="button-list-selected">button-list-selected</option>
+                        </select>
+                    </div>
+    
+                    <div>
+                        <kup-checkbox
+                            label="Flat"
+                            leading-label
+                            name="button-list-flat"
+                            id="button-list-flat"
+                        />
+                    </div>
+                    <script>
+                        const checkField8 = document.querySelector('#button-list-flat');
+                        checkField8.addEventListener('kupCheckboxChange', (e) => {
+                            togglebutton-listFlat(e);
+                        });
+                    </script>
+    
+                    <div>
+                        <kup-checkbox
+                            label="Show Selection"
+                            leading-label
+                            name="button-list-showselection"
+                            id="button-list-showselection"
+                        />
+                    </div>
+                    <script>
+                        const checkField9 =
+                            document.querySelector('#button-list-showselection');
+                        checkField9.addEventListener('kupCheckboxChange', (e) => {
+                            togglebutton-listShowSelection(e);
+                        });
+                    </script>
+    
+                    <div>
+                        <label for="button-list-columns">Columns</label>
+                        <input
+                            type="number"
+                            name="button-list-columns"
+                            id="button-list-columns"
+                            onchange="togglebutton-listColumns(event)"
+                        />
+                    </div>
+    
+                    <div>
+                        <label for="button-list-align">Align</label>
+                        <select
+                            name="button-list-align"
+                            id="button-list-align"
+                            onchange="onbutton-listAlignChange(event)"
+                        >
+                            <option value=""></option>
+                            <option value="left">left</option>
+                            <option value="right">right</option>
+                        </select>
+                    </div>
+    
+                    <div>
+                        <kup-checkbox
+                            label="Bold font"
+                            leading-label
+                            name="button-list-fontbold"
+                            id="button-list-fontbold"
+                        />
+                    </div>
+                    <script>
+                        const checkField10 =
+                            document.querySelector('#button-list-fontbold');
+                        checkField10.addEventListener('kupCheckboxChange', (e) => {
+                            togglebutton-listStyle(e);
+                        });
+                    </script>
+    
+                    <div>
+                        <kup-checkbox
+                            label="Italic font"
+                            leading-label
+                            name="button-list-fontitalic"
+                            id="button-list-fontitalic"
+                        />
+                    </div>
+                    <script>
+                        const checkField11 =
+                            document.querySelector('#button-list-fontitalic');
+                        checkField11.addEventListener('kupCheckboxChange', (e) => {
+                            togglebutton-listStyle(e);
+                        });
+                    </script>
+    
+                    <div>
+                        <kup-checkbox
+                            label="Underline font"
+                            leading-label
+                            name="button-list-fontunderline"
+                            id="button-list-fontunderline"
+                        />
+                    </div>
+                    <script>
+                        const checkField12 =
+                            document.querySelector('#button-list-fontunderline');
+                        checkField12.addEventListener('kupCheckboxChange', (e) => {
+                            togglebutton-listStyle(e);
+                        });
+                    </script>
+    
+                    <div>
+                        <label for="button-list-fontcolor">Font color</label>
+                        <input
+                            type="color"
+                            value="#FFFFFF"
+                            name="button-list-fontcolor"
+                            id="button-list-fontcolor"
+                            onchange="togglebutton-listStyle()"
+                        />
+                    </div>
+    
+                    <div>
+                        <label for="button-list-bckcolor">Background color</label>
+                        <input
+                            type="color"
+                            value="#4e908f"
+                            name="button-list-bckcolor"
+                            id="button-list-bckcolor"
+                            onchange="togglebutton-listStyle()"
+                        />
+                    </div>
+    
+                    <div>
+                        <label for="button-list-font">Font</label>
+                        <select
+                            name="button-list-font"
+                            id="button-list-font"
+                            onchange="togglebutton-listStyle()"
+                        >
+                            <option value=""></option>
+                            <option value="Verdana">Verdana</option>
+                            <option value="Courier">Courier</option>
+                        </select>
+                    </div>
+    
+                    <div>
+                        <label for="button-list-fontsize">Font size</label>
+                        <input
+                            id="button-list-fontsize"
+                            type="number"
+                            onchange="togglebutton-listStyle()"
+                            value="14"
+                        />
+                    </div>
+                </div>
+    
+                <kup-button-list></kup-button-list>
+    
+                <p id="button-list-label"></p> </div>
+        </div>
+
+        <script src="/assets/button-list.js"></script>
+    </body>
+</html>

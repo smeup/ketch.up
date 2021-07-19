@@ -22,23 +22,23 @@ export default {
       demoComp: createComp(),
       demoEvents: [
         {
-          name: 'kupListClick',
+          name: 'kup-list-click',
           type: 'click',
         },
         {
-          name: 'kupListChange',
+          name: 'kup-list-change',
           type: 'change',
         },
         {
-          name: 'kupListInput',
+          name: 'kup-list-input',
           type: 'input',
         },
         {
-          name: 'kupListFocus',
+          name: 'kup-list-focus',
           type: 'focus',
         },
         {
-          name: 'kupListBlur',
+          name: 'kup-list-blur',
           type: 'blur',
         },
       ],

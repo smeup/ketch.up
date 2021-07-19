@@ -191,7 +191,7 @@ export default {
       },
     };
     // Events handling
-    combobox.addEventListener('kupComboboxItemClick', () => {
+    combobox.addEventListener('kup-combobox-itemclick', () => {
       runTests();
     });
     printButton.onclick = () => runTests();

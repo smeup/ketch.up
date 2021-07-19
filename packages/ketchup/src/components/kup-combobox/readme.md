@@ -18,16 +18,16 @@
 
 ## Events
 
-| Event                        | Description    | Type                                       |
-| ---------------------------- | -------------- | ------------------------------------------ |
-| `kupComboboxBlur`            | Event example. | `CustomEvent<{ value: any; }>`             |
-| `kupComboboxChange`          |                | `CustomEvent<{ value: any; }>`             |
-| `kupComboboxClick`           |                | `CustomEvent<{ id: string; value: any; }>` |
-| `kupComboboxFocus`           |                | `CustomEvent<{ value: any; }>`             |
-| `kupComboboxIconClick`       |                | `CustomEvent<{ value: any; }>`             |
-| `kupComboboxInput`           |                | `CustomEvent<{ value: any; }>`             |
-| `kupComboboxItemClick`       |                | `CustomEvent<{ id: string; value: any; }>` |
-| `kupComboboxTextFieldSubmit` |                | `CustomEvent<{ value: any; }>`             |
+| Event                          | Description    | Type                                   |
+| ------------------------------ | -------------- | -------------------------------------- |
+| `kup-combobox-blur`            | Event example. | `CustomEvent<KupComboboxEventPayload>` |
+| `kup-combobox-change`          |                | `CustomEvent<KupComboboxEventPayload>` |
+| `kup-combobox-click`           |                | `CustomEvent<KupComboboxEventPayload>` |
+| `kup-combobox-focus`           |                | `CustomEvent<KupComboboxEventPayload>` |
+| `kup-combobox-iconclick`       |                | `CustomEvent<KupComboboxEventPayload>` |
+| `kup-combobox-input`           |                | `CustomEvent<KupComboboxEventPayload>` |
+| `kup-combobox-itemclick`       |                | `CustomEvent<KupComboboxEventPayload>` |
+| `kup-combobox-textfieldsubmit` |                | `CustomEvent<KupComboboxEventPayload>` |
 
 
 ## Methods
@@ -65,6 +65,16 @@ Type: `Promise<void>`
 ### `setFocus() => Promise<void>`
 
 
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `setProps(props: GenericObject) => Promise<void>`
+
+Sets the props to the component.
 
 #### Returns
 

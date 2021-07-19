@@ -43,18 +43,16 @@
 
 ## Events
 
-| Event                     | Description                                               | Type                                                                             |
-| ------------------------- | --------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `kupAutoBoxSelect`        | Triggered when a box is auto selected via selectBox prop  | `CustomEvent<{ row: BoxRow; }>`                                                  |
-| `kupBoxClicked`           | Triggered when a box is clicked                           | `CustomEvent<{ row: BoxRow; column?: string; }>`                                 |
-| `kupBoxContextMenu`       | Generic right click event on box.                         | `CustomEvent<{ details: GenericObject; }>`                                       |
-| `kupBoxDragEnded`         | Triggered when a box dragging is ended                    | `CustomEvent<{ fromId: string; fromRow: BoxRow; fromSelectedRows?: BoxRow[]; }>` |
-| `kupBoxDragStarted`       | Triggered when a box dragging is started                  | `CustomEvent<{ fromId: string; fromRow: BoxRow; fromSelectedRows?: BoxRow[]; }>` |
-| `kupBoxSelected`          | Triggered when the multi selection checkbox changes value | `CustomEvent<{ rows: BoxRow[]; }>`                                               |
-| `kupDidLoad`              |                                                           | `CustomEvent<void>`                                                              |
-| `kupDidUnload`            | Triggered when stop propagation event                     | `CustomEvent<void>`                                                              |
-| `kupRowActionClicked`     | When the row menu action icon is clicked                  | `CustomEvent<{ row: BoxRow; action: RowAction; index: number; }>`                |
-| `kupRowActionMenuClicked` | When the row menu action icon is clicked                  | `CustomEvent<{ row: BoxRow; }>`                                                  |
+| Event                        | Description                                               | Type                                            |
+| ---------------------------- | --------------------------------------------------------- | ----------------------------------------------- |
+| `kup-box-autoselect`         | Triggered when a box is auto selected via selectBox prop  | `CustomEvent<KupBoxAutoSelectEventPayload>`     |
+| `kup-box-click`              | Triggered when a box is clicked                           | `CustomEvent<KupBoxClickEventPayload>`          |
+| `kup-box-contextmenu`        | Generic right click event on box.                         | `CustomEvent<KupBoxContextMenuEventPayload>`    |
+| `kup-box-didload`            |                                                           | `CustomEvent<KupEventPayload>`                  |
+| `kup-box-didunload`          | Triggered when stop propagation event                     | `CustomEvent<KupEventPayload>`                  |
+| `kup-box-rowactionclick`     | When the row menu action icon is click                    | `CustomEvent<KupBoxRowActionClickEventPayload>` |
+| `kup-box-rowactionmenuclick` | When the row menu action icon is click                    | `CustomEvent<KupBoxAutoSelectEventPayload>`     |
+| `kup-box-selected`           | Triggered when the multi selection checkbox changes value | `CustomEvent<KupBoxSelectedEventPayload>`       |
 
 
 ## Methods
@@ -82,6 +80,16 @@ Type: `Promise<void>`
 ### `refresh() => Promise<void>`
 
 This method is used to trigger a new render of the component.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `setProps(props: GenericObject) => Promise<void>`
+
+Sets the props to the component.
 
 #### Returns
 
@@ -163,6 +171,7 @@ graph TD;
   kup-data-table --> kup-date-picker
   kup-data-table --> kup-image
   kup-data-table --> kup-button
+  kup-data-table --> kup-button-list
   kup-data-table --> kup-chart
   kup-data-table --> kup-color-picker
   kup-data-table --> kup-gauge
@@ -193,8 +202,13 @@ graph TD;
   kup-image --> kup-spinner
   kup-image --> kup-badge
   kup-color-picker --> kup-text-field
+  kup-button-list --> kup-dropdown-button
+  kup-button-list --> kup-badge
+  kup-dropdown-button --> kup-list
+  kup-dropdown-button --> kup-badge
   kup-paginator --> kup-combobox
   kup-paginator --> kup-badge
+  kup-tab-bar --> kup-badge
   kup-magic-box --> kup-box
   style kup-box fill:#f9f,stroke:#333,stroke-width:4px
 ```

@@ -176,11 +176,11 @@ export const mockedDefaultData = {
         },
         VALUE: {
           obj: {
-            k: '-100,0',
+            k: '-101,0',
             p: '',
             t: 'NR',
           },
-          value: '-100',
+          value: '-101',
         },
       },
       object: '',

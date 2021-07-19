@@ -9,14 +9,13 @@ import {
     Prop,
 } from '@stencil/core';
 
-import { PaginatorMode } from './kup-paginator-declarations';
+import { KupPaginatorPageChangedEventPayload, KupPaginatorRowsPerPageChangedEventPayload, PaginatorMode } from './kup-paginator-declarations';
 import { isNumber } from '../../utils/utils';
 import {
     KupManager,
     kupManagerInstance,
 } from '../../utils/kup-manager/kup-manager';
 import { FButton } from '../../f-components/f-button/f-button';
-import { FButtonMDC } from '../../f-components/f-button/f-button-mdc';
 import {
     KupLanguagePage,
     KupLanguageRow,
@@ -51,23 +50,23 @@ export class KupPaginator {
      * When the current page change
      */
     @Event({
-        eventName: 'kupPageChanged',
+        eventName: 'kup-paginator-pagechanged',
         composed: true,
         cancelable: false,
         bubbles: true,
     })
-    kupPageChanged: EventEmitter<{ newPage: number }>;
+    kupPaginatorPageChanged: EventEmitter<KupPaginatorPageChangedEventPayload>;
 
     /**
      * When the rows per page change
      */
     @Event({
-        eventName: 'kupRowsPerPageChanged',
+        eventName: 'kup-paginator-rowsperpagechanged',
         composed: true,
         cancelable: false,
         bubbles: true,
     })
-    kupRowsPerPageChanged: EventEmitter<{ newRowsPerPage: number }>;
+    kupRowsPerPageChanged: EventEmitter<KupPaginatorRowsPerPageChangedEventPayload>;
 
     /**
      * This method is used to trigger a new render of the component.
@@ -99,8 +98,10 @@ export class KupPaginator {
                 if (tmpNewPage < 1) {
                     tmpNewPage = 1;
                 }
-                this.kupPageChanged.emit({
+                this.kupPaginatorPageChanged.emit({
                     newPage: tmpNewPage,
+                    id: this.rootElement.id,
+                    comp: this,
                 });
             }
         }
@@ -112,8 +113,10 @@ export class KupPaginator {
         }
 
         // fire next page event
-        this.kupPageChanged.emit({
+        this.kupPaginatorPageChanged.emit({
             newPage: this.currentPage - 1,
+            id: this.rootElement.id,
+            comp: this,
         });
     }
 
@@ -123,8 +126,10 @@ export class KupPaginator {
         }
 
         // fire next page event
-        this.kupPageChanged.emit({
+        this.kupPaginatorPageChanged.emit({
             newPage: this.currentPage + 1,
+            id: this.rootElement.id,
+            comp: this,
         });
     }
 
@@ -142,6 +147,8 @@ export class KupPaginator {
                 }
                 this.kupRowsPerPageChanged.emit({
                     newRowsPerPage: tmpRowsPerPage,
+                    id: this.rootElement.id,
+                    comp: this,
                 });
             }
         }
@@ -212,22 +219,18 @@ export class KupPaginator {
                 '.f-button--wrapper.prev-page'
             );
             if (nextButton) {
-                const buttonEl: HTMLButtonElement = nextButton.querySelector(
-                    'button'
-                );
+                const buttonEl: HTMLButtonElement =
+                    nextButton.querySelector('button');
                 if (buttonEl) {
                     buttonEl.onclick = () => this.onNextPage();
                 }
-                FButtonMDC(nextButton);
             }
             if (prevButton) {
-                const buttonEl: HTMLButtonElement = prevButton.querySelector(
-                    'button'
-                );
+                const buttonEl: HTMLButtonElement =
+                    prevButton.querySelector('button');
                 if (buttonEl) {
                     buttonEl.onclick = () => this.onPrevPage();
                 }
-                FButtonMDC(prevButton);
             }
         }
     }
@@ -314,11 +317,11 @@ export class KupPaginator {
                             class="page-selector"
                             data={dataPageSelector}
                             initialValue={this.currentPage.toString()}
-                            onKupComboboxItemClick={(e) => this.onPageChange(e)}
-                            onKupComboboxTextFieldSubmit={(e) =>
+                            onkup-combobox-itemclick={(e) => this.onPageChange(e)}
+                            onkup-combobox-textfieldsubmit={(e) =>
                                 this.onPageChange(e)
                             }
-                            onKupComboboxBlur={(e) => this.onPageChange(e)}
+                            onkup-combobox-blur={(e) => this.onPageChange(e)}
                             ref={(el) => (this.comboPageSelectorEl = el as any)}
                         />
                         <FButton
@@ -333,13 +336,13 @@ export class KupPaginator {
                             class="rows-selector"
                             data={dataRowsSelector}
                             initialValue={this.perPage.toString()}
-                            onKupComboboxItemClick={(e) =>
+                            onkup-combobox-itemclick={(e) =>
                                 this.onRowsPerPage(e)
                             }
-                            onKupComboboxTextFieldSubmit={(e) =>
+                            onkup-combobox-textfieldsubmit={(e) =>
                                 this.onRowsPerPage(e)
                             }
-                            onKupComboboxBlur={(e) => this.onRowsPerPage(e)}
+                            onkup-combobox-blur={(e) => this.onRowsPerPage(e)}
                             ref={(el) => (this.comboRowsSelectorEl = el as any)}
                         />
                         <slot name="right" />

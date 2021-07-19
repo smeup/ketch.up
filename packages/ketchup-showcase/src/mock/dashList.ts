@@ -202,11 +202,11 @@ export const defaultData = {
         },
         INTVAL: {
           obj: {
-            k: '4000,',
+            k: '5000,',
             p: '',
             t: 'NR',
           },
-          value: '4,000',
+          value: '5,000',
         },
         UM: {
           obj: {

@@ -44,9 +44,9 @@ export const baseData = {
           obj: {
             t: 'NR',
             p: '',
-            k: '100.60',
+            k: '100.50',
           },
-          value: '100.60',
+          value: '100.50',
         },
         Col4: {
           obj: {

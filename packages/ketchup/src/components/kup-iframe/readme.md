@@ -16,10 +16,10 @@
 
 ## Events
 
-| Event            | Description | Type               |
-| ---------------- | ----------- | ------------------ |
-| `kupIframeError` |             | `CustomEvent<any>` |
-| `kupIframeLoad`  |             | `CustomEvent<any>` |
+| Event              | Description | Type                           |
+| ------------------ | ----------- | ------------------------------ |
+| `kup-iframe-error` |             | `CustomEvent<KupEventPayload>` |
+| `kup-iframe-load`  |             | `CustomEvent<KupEventPayload>` |
 
 
 ## Methods
@@ -37,6 +37,16 @@ Type: `Promise<GenericObject>`
 ### `refresh() => Promise<void>`
 
 This method is used to trigger a new render of the component.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `setProps(props: GenericObject) => Promise<void>`
+
+Sets the props to the component.
 
 #### Returns
 

@@ -28,23 +28,26 @@ export default {
     return {
       data: [
         {
+          value: 'Favorites',
           text: 'Favorites',
           icon: 'favorite',
           active: true,
         },
         {
+          value: 'Settings',
           text: 'Settings',
           icon: 'build',
           active: false,
         },
         {
+          value: 'Iconless',
           text: 'Iconless',
           icon: '',
           active: false,
         },
       ],
       markupObject:
-        "{ text: 'Favorites', icon: 'favorite', active: true }, { text: 'Settings', icon: 'build', active: false}",
+        "{ value: 'Favorites', text: 'Favorites', icon: 'favorite', active: true }, { value: 'Settings', text: 'Settings', icon: 'build', active: false}",
     };
   },
 };

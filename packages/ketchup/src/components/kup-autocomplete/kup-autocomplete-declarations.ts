@@ -1,3 +1,6 @@
+import { KupEventPayload } from '../../types/GenericTypes';
+import { KupAutocomplete } from './kup-autocomplete';
+
 /**
  * Props of the kup-autocomplete component.
  * Used to export every prop in an object.
@@ -16,3 +19,14 @@ export enum AutocompleteDisplayMode {
     DESCRIPTION = 'description',
     DESCRIPTION_AND_CODE = 'both',
 }
+
+export interface KupAutocompleteEventPayload extends KupEventPayload {
+    value: any;
+}
+
+
+export interface kupAutocompleteFilterChangedEventPayload extends KupEventPayload {
+    filter: string;
+    matchesMinimumCharsRequired: boolean;
+}
+

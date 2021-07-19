@@ -8,41 +8,44 @@ const dom: KupDom = document.documentElement as KupDom;
  * @module KupToolbar
  */
 export class KupToolbar {
-    active: boolean = false;
-    modifiers: KupToolbarModifierKeys[] = [
-        KupToolbarModifierKeys.ALT,
-        KupToolbarModifierKeys.CTRL,
-    ];
-    managedElements: Set<HTMLElement> = new Set();
-    #keyEvent: (this: Document, ev: KeyboardEvent) => any = function (
-        e: KeyboardEvent
-    ) {
-        const toolbar: KupToolbar = dom.ketchup.toolbar;
-        if (toolbar.managedElements) {
-            for (let index = 0; index < toolbar.modifiers.length; index++) {
-                if (
-                    toolbar.modifiers[index] === KupToolbarModifierKeys.CTRL &&
-                    e.metaKey
-                ) {
-                    continue;
-                } else {
-                    if (!e[toolbar.modifiers[index]]) {
-                        {
-                            if (toolbar.active) {
-                                toolbar.hide();
-                            }
-                            return;
-                        }
-                    }
-                }
-            }
-            toolbar.show();
-        }
-    };
+    active: boolean;
+    modifiers: KupToolbarModifierKeys[];
+    managedElements: Set<HTMLElement>;
+    #keyEvent: (this: Document, ev: KeyboardEvent) => void;
     /**
      * Initializes KupToolbar.
      */
     constructor() {
+        this.active = false;
+        this.managedElements = new Set();
+        this.modifiers = [
+            KupToolbarModifierKeys.ALT,
+            KupToolbarModifierKeys.CTRL,
+        ];
+        this.#keyEvent = function (e: KeyboardEvent) {
+            const toolbar: KupToolbar = dom.ketchup.toolbar;
+            if (toolbar.managedElements) {
+                for (let index = 0; index < toolbar.modifiers.length; index++) {
+                    if (
+                        toolbar.modifiers[index] ===
+                            KupToolbarModifierKeys.CTRL &&
+                        e.metaKey
+                    ) {
+                        continue;
+                    } else {
+                        if (!e[toolbar.modifiers[index]]) {
+                            {
+                                if (toolbar.active) {
+                                    toolbar.hide();
+                                }
+                                return;
+                            }
+                        }
+                    }
+                }
+                toolbar.show();
+            }
+        };
         document.addEventListener('keydown', this.#keyEvent);
         document.addEventListener('keyup', this.#keyEvent);
     }
@@ -71,7 +74,6 @@ export class KupToolbar {
     /**
      * Watches the element eligible to move when dragging.
      * @param {HTMLElement} el - Toolbar-supporting element.
-     * @param {HTMLElement} handleEl - Element that must be dragged in order to trigger the movement. When not provided, dragging anywhere on "el" will trigger the movement.
      */
     register(el: HTMLElement): void {
         this.managedElements.add(el);

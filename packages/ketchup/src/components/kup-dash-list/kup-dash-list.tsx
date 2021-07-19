@@ -42,12 +42,12 @@ export class KupDashList {
     data: TableData;
 
     @Event({
-        eventName: 'ketchupDashClicked',
+        eventName: 'kup-dash-click',
         composed: true,
         cancelable: true,
         bubbles: true,
     })
-    dashClicked: EventEmitter<{
+    dashClick: EventEmitter<{
         idx: number;
     }>;
 

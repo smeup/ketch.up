@@ -22,15 +22,15 @@ export default {
       demoComp: createComp(),
       demoEvents: [
         {
-          name: 'kupButtonClick',
+          name: 'kup-button-click',
           type: 'click',
         },
         {
-          name: 'kupButtonFocus',
+          name: 'kup-button-focus',
           type: 'focus',
         },
         {
-          name: 'kupButtonBlur',
+          name: 'kup-button-blur',
           type: 'blur',
         },
       ],
@@ -86,7 +86,7 @@ export default {
         {
           prop: 'styling',
           description:
-            'Defines the style of the button. Styles available: "flat", "outlined" and "raised" which is also the default.',
+            'Defines the style of the button. Styles available: "flat", "outlined", "floating", "icon" and "raised" which is also the default.',
           type: 'FButtonStyling',
           default: 'raised',
           try: 'field',
@@ -131,7 +131,8 @@ export default {
         },
         {
           class: 'kup-large',
-          description: 'The button will have an increased size.',
+          description:
+            'The button will have an increased size (needs a new render to be effective).',
         },
         {
           class: 'kup-secondary',

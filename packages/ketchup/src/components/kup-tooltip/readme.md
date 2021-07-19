@@ -19,20 +19,20 @@
 
 ## Events
 
-| Event                                | Description                                     | Type                                                                                                                                                         |
-| ------------------------------------ | ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `kupActionCommandClicked`            |                                                 | `CustomEvent<{ actionCommand: TooltipAction; relatedObject: TooltipRelatedObject; }>`                                                                        |
-| `kupDefaultActionClicked`            |                                                 | `CustomEvent<{ obj: TooltipObject; }>`                                                                                                                       |
-| `kupDefaultOptionClicked`            |                                                 | `CustomEvent<{ obj: TooltipObject; }>`                                                                                                                       |
-| `kupDefaultPreviewClicked`           |                                                 | `CustomEvent<{ obj: TooltipObject; }>`                                                                                                                       |
-| `kupTooltipLoadCellOptions`          |                                                 | `CustomEvent<{ relatedObject: TooltipRelatedObject; tooltip: KupTooltip; }>`                                                                                 |
-| `kupTooltipLoadData`                 |                                                 | `CustomEvent<{ relatedObject: TooltipRelatedObject; tooltip: KupTooltip; }>`                                                                                 |
-| `kupTooltipLoadDetail`               |                                                 | `CustomEvent<{ relatedObject: TooltipRelatedObject; tooltip: KupTooltip; }>`                                                                                 |
-| `kupTooltipTreeDynamicMassExpansion` |                                                 | `CustomEvent<{ treeNodePath?: TreeNodePath; treeNode?: TreeNode; expandAll?: boolean; }>`                                                                    |
-| `kupTooltipTreeNodeButtonClicked`    |                                                 | `CustomEvent<{ treeNodePath: TreeNodePath; treeNode: TreeNode; column: Column; columnName: string; auto: boolean; tree: KupTree; }>`                         |
-| `kupTooltipTreeNodeDblClick`         |                                                 | `CustomEvent<{ treeNodePath: TreeNodePath; treeNode: TreeNode; }>`                                                                                           |
-| `kupTooltipTreeNodeExpand`           |                                                 | `CustomEvent<{ treeNodePath: TreeNodePath; treeNode: TreeNode; usesDynamicExpansion?: boolean; dynamicExpansionRequireChildren?: boolean; tree: KupTree; }>` |
-| `kupTooltipTreeNodeSelected`         | Fired when a node of the tree has been selected | `CustomEvent<{ treeNodePath: TreeNodePath; treeNode: TreeNode; columnName: string; auto: boolean; tree: KupTree; }>`                                         |
+| Event                                  | Description                                     | Type                                                          |
+| -------------------------------------- | ----------------------------------------------- | ------------------------------------------------------------- |
+| `kup-tooltip-actioncommandclick`       |                                                 | `CustomEvent<KupTooltipActionCommandClickEventPayload>`       |
+| `kup-tooltip-defaultactionclick`       |                                                 | `CustomEvent<KupTooltipDefaultEventPayload>`                  |
+| `kup-tooltip-defaultoptionclick`       |                                                 | `CustomEvent<KupTooltipDefaultEventPayload>`                  |
+| `kup-tooltip-defaultpreviewclick`      |                                                 | `CustomEvent<KupTooltipDefaultEventPayload>`                  |
+| `kup-tooltip-loadcelloptions`          |                                                 | `CustomEvent<KupTooltipLoadEventPayload>`                     |
+| `kup-tooltip-loaddata`                 |                                                 | `CustomEvent<KupTooltipLoadEventPayload>`                     |
+| `kup-tooltip-loaddetail`               |                                                 | `CustomEvent<KupTooltipLoadEventPayload>`                     |
+| `kup-tooltip-treedynamicmassexpansion` |                                                 | `CustomEvent<KupTooltipTreeDynamicMassExpansionEventPayload>` |
+| `kup-tooltip-treenodebuttonclick`      |                                                 | `CustomEvent<KupTooltipTreeNodeButtonClickEventPayload>`      |
+| `kup-tooltip-treenodedblclick`         |                                                 | `CustomEvent<KupTooltipTreeNodeDblClickEventPayload>`         |
+| `kup-tooltip-treenodeexpand`           |                                                 | `CustomEvent<KupTooltipTreeNodeExpandEventPayload>`           |
+| `kup-tooltip-treenodeselected`         | Fired when a node of the tree has been selected | `CustomEvent<KupTooltipTreeNodeSelectedEventPayload>`         |
 
 
 ## Methods
@@ -50,6 +50,16 @@ Type: `Promise<GenericObject>`
 ### `refresh() => Promise<void>`
 
 This method is used to trigger a new render of the component.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `setProps(props: GenericObject) => Promise<void>`
+
+Sets the props to the component.
 
 #### Returns
 
@@ -131,9 +141,14 @@ graph TD;
   kup-data-table --> kup-tooltip
   kup-image --> kup-spinner
   kup-image --> kup-badge
+  kup-button-list --> kup-dropdown-button
+  kup-button-list --> kup-badge
+  kup-dropdown-button --> kup-list
+  kup-dropdown-button --> kup-badge
   kup-color-picker --> kup-text-field
   kup-paginator --> kup-combobox
   kup-paginator --> kup-badge
+  kup-tab-bar --> kup-badge
   kup-tree --> kup-tooltip
   kup-box --> kup-tooltip
   style kup-tooltip fill:#f9f,stroke:#333,stroke-width:4px

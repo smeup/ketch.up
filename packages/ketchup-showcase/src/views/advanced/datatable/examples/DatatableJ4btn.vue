@@ -27,7 +27,7 @@ export default {
       buttonData: {
         data: j4btnData,
         dataCode: 'small',
-        onKupButtonClick: (e) => {
+        ['onkup-button-click']: (e) => {
           console.warn(
             'This message is displayed because the matrix component may not have blocked the button cell event.\n Check the event',
             e
@@ -44,7 +44,7 @@ export default {
       buttonData2: {
         data: j4btnLargeData,
         dataCode: 'large',
-        onKupButtonClick: (e) => {
+        ['onkup-button-click']: (e) => {
           console.warn(
             'This message is displayed because the matrix component may not have blocked the button cell event.\n Check the event',
             e

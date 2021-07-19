@@ -33,15 +33,6 @@
             src="https://www.gstatic.com/charts/loader.js"
         ></script>
         <style>
-            * {
-                box-sizing: border-box;
-                transition: all .125s ease;
-            }
-
-            :focus {
-                outline: none;
-            }
-
             html {
                 background-color: var(--kup-background-color);
                 color: var(--kup-text-color);
@@ -49,85 +40,22 @@
                 font-size: var(--kup-font-size);
                 padding: 1rem;
             }
-
-            .options {
-                margin-bottom: 1rem;
-            }
-
-            hr {
-                margin: 2rem 0;
-            }
-
-            .btn-options {
-                margin-bottom: 1rem;
-                display: grid;
-                grid-template-columns: 1fr 1fr 1fr;
-                grid-gap: 0.5rem;
-            }
-
-            .BTN {
-                display: block;
-            }
-
-            #theme-tester {
-                position: fixed;
-                right: 0;
-                top: 0;
-                margin: 5px;
-                padding: 20px 10px 20px 10px;
-                box-shadow: 0px 0px 7.5px 0px rgba(128, 128, 128, 0.5);
-                z-index: 100;
-            }
         </style>
     </head>
 
     <body>
         <div class="data-examples">
             <h1>Navigation bar</h1>
-            <kup-nav-bar id="navbar"></kup-nav-bar>
+            <kup-nav-bar mode="prominent" id="navbar"></kup-nav-bar>
 
             <br/><br/><br/><br/>
             <kup-checkbox id="itemSelect" label="select me" value="S"></kup-checkbox>
         </div>
-        <!--
         <div class="data-examples">
             <h1>Navigation bar with mode</h1>
             <kup-nav-bar id="navbar-short" mode="short-collapsed" />
         </div>
-    -->
 
         <script src="/assets/nav-bar.js"></script>
-        <!-- <script src="/assets/index.js"></script>-->
-        <style>
-            :root {
-                --kup-background-color: #ffffff;
-                --kup-nav-bar-background-color: #2e2e2e;
-                --kup-drawer-background-color: #ffffff;
-                --kup-primary-color: #d64325;
-                --kup-font-family: 'Oswald', sans-serif;
-                --kup-font-size: 16px;
-                --kup-text-on-primary-color: #ffffff;
-                --kup-text-color: #2e2e2e;
-                --kup-icon-color: #505050;
-                --kup-hover-background-color: #f0f0f0;
-                --kup-hover-color: #545454;
-                --kup-border-color: #e0e0e0;
-                --kup-disabled-color: #5c5c5c;
-                --kup-disabled-background-color: #eaeaea;
-                --kup-field-background-color: #fafafa;
-                --kup-chip-background-color: #eaeaea;
-                --kup-spinner-color: #eaa710;
-                --kup-title-background-color: #f1f3f4;
-
-                --mdc-theme-primary: var(--kup-primary-color);
-                --mdc-theme-on-primary: var(--kup-text-on-primary-color);
-                --mdc-theme-secondary: var(--kup-primary-color);
-                --mdc-theme-on-secondary: var(--kup-text-on-primary-color);
-                --mdc-theme-surface: var(--kup-background-color);
-                --mdc-theme-on-surface: var(--kup-text-color);
-                --mdc-theme-background: var(--kup-background-color);
-                --mdc-theme-text-primary-on-background: var(--kup-text-color);
-            }
-        </style>
     </body>
 </html>

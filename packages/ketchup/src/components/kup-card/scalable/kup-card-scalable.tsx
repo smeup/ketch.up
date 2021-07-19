@@ -1,7 +1,12 @@
-import type { KupCard } from '../kup-card';
 import { h, VNode } from '@stencil/core';
+import type { KupCard } from '../kup-card';
+import type { KupDom } from '../../../utils/kup-manager/kup-manager-declarations';
 import { FImage } from '../../../f-components/f-image/f-image';
 import { GenericObject } from '../../../types/GenericTypes';
+import { KupThemeColorValues } from '../../../utils/kup-theme/kup-theme-declarations';
+
+const dom: KupDom = document.documentElement as KupDom;
+
 /**
  * 1st scalable card layout, column of 2 texts.
  * @param {KupCard} component - Card component.
@@ -72,7 +77,7 @@ export function create2(component: KupCard): VNode {
                             color={
                                 colorArray[0]
                                     ? colorArray[0]
-                                    : 'var(--kup-primary-color)'
+                                    : `var(${KupThemeColorValues.PRIMARY})`
                             }
                             id="image1"
                             {...imageArray[0]}
@@ -158,7 +163,7 @@ export function create4(component: KupCard): VNode {
     let CSSVariables = {
         [`--color-0`]: colorArray[0]
             ? colorArray[0]
-            : 'var(--kup-primary-color)',
+            : `var(${KupThemeColorValues.PRIMARY})`,
         ['--multiplier']: '1',
     };
     return (
@@ -173,7 +178,7 @@ export function create4(component: KupCard): VNode {
                             color={
                                 colorArray[0]
                                     ? colorArray[0]
-                                    : 'var(--kup-primary-color)'
+                                    : `var(${KupThemeColorValues.PRIMARY})`
                             }
                             id="image1"
                             {...imageArray[0]}
@@ -257,7 +262,7 @@ export function create5(component: KupCard): VNode {
                             color={
                                 colorArray[0]
                                     ? colorArray[0]
-                                    : 'var(--kup-primary-color)'
+                                    : `var(${KupThemeColorValues.PRIMARY})`
                             }
                             id="image1"
                             {...imageArray[0]}
@@ -305,7 +310,7 @@ export function create6(component: KupCard): VNode {
                             color={
                                 colorArray[0]
                                     ? colorArray[0]
-                                    : 'var(--kup-primary-color)'
+                                    : `var(${KupThemeColorValues.PRIMARY})`
                             }
                             id="image1"
                             {...imageArray[0]}
@@ -379,7 +384,7 @@ export function create7(component: KupCard): VNode {
                             color={
                                 colorArray[0]
                                     ? colorArray[0]
-                                    : 'var(--kup-primary-color)'
+                                    : `var(${KupThemeColorValues.PRIMARY})`
                             }
                             id="image1"
                             {...imageArray[0]}
@@ -427,7 +432,7 @@ export function create8(component: KupCard): VNode {
                             color={
                                 colorArray[0]
                                     ? colorArray[0]
-                                    : 'var(--kup-primary-color)'
+                                    : `var(${KupThemeColorValues.PRIMARY})`
                             }
                             id="image1"
                             {...imageArray[0]}

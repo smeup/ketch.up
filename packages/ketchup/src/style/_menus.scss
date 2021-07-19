@@ -1,19 +1,19 @@
-div.kup-menu,
-div.mdc-menu {
+div.kup-menu {
   animation: fadeInFromNone 0.25s ease-out;
   background-color: var(--kup-background-color);
   box-shadow: var(--kup-box-shadow);
   color: var(--kup-text-color);
   display: none;
-  opacity: 0;
+  max-height: 33vh;
+  overflow: auto;
   position: relative;
   transform: none;
   transform-origin: unset;
   transition: height 0.2s;
   will-change: unset;
+
   &.visible {
     display: block;
-    opacity: 1;
   }
 }
 

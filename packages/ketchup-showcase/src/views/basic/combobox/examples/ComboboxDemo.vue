@@ -22,35 +22,35 @@ export default {
       demoComp: createComp(),
       demoEvents: [
         {
-          name: 'kupComboboxClick',
+          name: 'kup-combobox-click',
           type: 'click',
         },
         {
-          name: 'kupComboboxChange',
+          name: 'kup-combobox-change',
           type: 'change',
         },
         {
-          name: 'kupComboboxInput',
+          name: 'kup-combobox-input',
           type: 'input',
         },
         {
-          name: 'kupComboboxFocus',
+          name: 'kup-combobox-focus',
           type: 'focus',
         },
         {
-          name: 'kupComboboxBlur',
+          name: 'kup-combobox-blur',
           type: 'blur',
         },
         {
-          name: 'kupComboboxIconClick',
+          name: 'kup-combobox-iconclick',
           type: 'click',
         },
         {
-          name: 'kupComboboxItemClick',
+          name: 'kup-combobox-itemclick',
           type: 'click',
         },
         {
-          name: 'kupComboboxTextFieldSubmit',
+          name: 'kup-combobox-textfieldsubmit',
           type: 'click',
         },
       ],

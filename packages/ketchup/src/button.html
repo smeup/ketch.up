@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Button</title>
+
+        <script type="module" src="/build/ketchup.esm.js"></script>
+        <script nomodule src="/build/ketchup.js"></script>
+
+        <link
+            href="https://cdn.materialdesignicons.com/4.5.95/css/materialdesignicons.min.css"
+            rel="stylesheet"
+            type="text/css"
+        />
+
+        <link
+            href="https://fonts.googleapis.com/css?family=Lato"
+            rel="stylesheet"
+        />
+
+        <script
+            type="text/javascript"
+            src="https://www.gstatic.com/charts/loader.js"
+        ></script>
+
+        <style>
+            html {
+                background-color: var(--kup-background-color);
+                color: var(--kup-text-color);
+                font-family: var(--kup-font-family);
+                font-size: var(--kup-font-size);
+                padding: 1rem;
+            }
+        </style>
+    </head>
+    <body>
+        <h4>Material Buttons (widget)</h4>
+        <span>empty:</span>
+        <kup-button></kup-button>
+        <span>icon:</span>
+        <kup-button icon="favorite"></kup-button>
+        <span>disabled:</span>
+        <kup-button disabled icon="favorite"></kup-button>
+        <span>toggable:</span>
+        <kup-button toggable icon="favorite"></kup-button>
+        <span>toggable+icon-off:</span>
+        <kup-button
+            toggable
+            icon="fullscreen"
+            icon-off="fullscreen_exit"
+        ></kup-button>
+        <span>toggable+checked:</span>
+        <kup-button toggable checked icon="favorite"></kup-button>
+        <span>icon+tooltip:</span>
+        <kup-button icon="favorite"></kup-button>
+
+        <!-- -->
+        <kup-button label="Flat" flat></kup-button>
+        <kup-button label="Raised"></kup-button>
+        <kup-button label="Flat & disabled" flat disabled></kup-button>
+        <kup-button label="Outlined & disabled" disabled outlined></kup-button>
+        <kup-button disabled label="Raised & disabled"></kup-button>
+        <kup-button icon="favorite" label="Raised favorite"></kup-button>
+        <kup-button
+            trailing-icon
+            icon="favorite"
+            label="Raised trailing favorite"
+        ></kup-button>
+        <kup-button outlined label="Outlined"></kup-button>
+        <kup-button shaped disabled label="Shaped & disabled"></kup-button>
+        <kup-button shaped label="Shaped & raised"></kup-button>
+        <kup-button shaped outlined label="Shaped & outlined"></kup-button>
+        <kup-image color="red" resource="favorite"></kup-image>
+        <kup-image resource="favorite"></kup-image>
+
+        <kup-button class="kup-full-width" label="Fill space"></kup-button>
+        <kup-button
+            title="Tooltip"
+            label="With tooltip"
+            icon="favorite"
+        ></kup-button>
+    </body>
+</html>

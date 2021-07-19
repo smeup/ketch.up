@@ -43,3 +43,10 @@ export interface GenericObject {
 export interface Identifiable {
     id?: string;
 }
+/**
+ * Generic payload of a kup event.
+ */
+export interface KupEventPayload {
+    comp: any;
+    id: string;
+}

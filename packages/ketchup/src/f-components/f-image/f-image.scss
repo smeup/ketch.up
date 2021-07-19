@@ -5,7 +5,7 @@
   height: var(--f-image-height, 100%);
   width: var(--f-image-width, 100%);
 
-  &.kup-fit {
+  &.#{$kup-class-fit} {
     img {
       max-width: max-content;
       object-fit: contain;

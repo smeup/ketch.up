@@ -43,17 +43,17 @@ export class KupDash {
     private kupManager: KupManager = kupManagerInstance();
 
     @Event({
-        eventName: 'ketchupDashClicked',
+        eventName: 'kup-dash-click',
         composed: true,
         cancelable: false,
         bubbles: true,
     })
-    dashClicked: EventEmitter<{
+    dashClick: EventEmitter<{
         id: number;
     }>;
 
-    onDshClickedHandler() {
-        this.dashClicked.emit({
+    onDshClickHandler() {
+        this.dashClick.emit({
             id: this.index,
         });
     }
@@ -238,7 +238,7 @@ export class KupDash {
                 id="dash"
                 class={`${this.active ? 'with-dyn' : ''}`}
                 style={style}
-                onClick={() => this.onDshClickedHandler()}
+                onClick={() => this.onDshClickHandler()}
             >
                 <div id="content" class={`layout-${this.layout} `}>
                     {content}

@@ -17,7 +17,11 @@ import {
     KupManager,
     kupManagerInstance,
 } from '../../utils/kup-manager/kup-manager';
-import { KupRatingProps } from './kup-rating-declarations';
+import { getProps, setProps } from '../../utils/utils';
+import {
+    KupRatingClickEventPayload,
+    KupRatingProps,
+} from './kup-rating-declarations';
 
 @Component({
     tag: 'kup-rating',
@@ -50,7 +54,7 @@ export class KupRating {
      */
     private kupManager: KupManager = kupManagerInstance();
 
-    @Event() kupRatingClicked: EventEmitter;
+    @Event() kupRatingClick: EventEmitter<KupRatingClickEventPayload>;
 
     @Watch('value')
     @Watch('maxValue')
@@ -67,17 +71,15 @@ export class KupRating {
      */
     @Method()
     async getProps(descriptions?: boolean): Promise<GenericObject> {
-        let props: GenericObject = {};
-        if (descriptions) {
-            props = KupRatingProps;
-        } else {
-            for (const key in KupRatingProps) {
-                if (Object.prototype.hasOwnProperty.call(KupRatingProps, key)) {
-                    props[key] = this[key];
-                }
-            }
-        }
-        return props;
+        return getProps(this, KupRatingProps, descriptions);
+    }
+    /**
+     * Sets the props to the component.
+     * @param {GenericObject} props - Object containing props that will be set to the component.
+     */
+    @Method()
+    async setProps(props: GenericObject): Promise<void> {
+        setProps(this, KupRatingProps, props);
     }
     /**
      * This method is used to trigger a new render of the component.
@@ -87,11 +89,15 @@ export class KupRating {
         forceUpdate(this);
     }
 
-    onStarClicked(newValue: number) {
+    onStarClick(newValue: number) {
         if (!this.disabled) {
             this.value = newValue;
             this.buildStars(this.value);
-            this.kupRatingClicked.emit({ value: this.value });
+            this.kupRatingClick.emit({
+                comp: this,
+                id: this.rootElement.id,
+                value: this.value,
+            });
         }
     }
 
@@ -117,7 +123,7 @@ export class KupRating {
                         class="rating"
                         onMouseOver={() => this.onMouseOver(i)}
                         onMouseOut={() => this.onMouseOut()}
-                        onClick={() => this.onStarClicked(i)}
+                        onClick={() => this.onStarClick(i)}
                     >
                         &#x2605;
                     </span>
@@ -128,7 +134,7 @@ export class KupRating {
                         class="rating"
                         onMouseOver={() => this.onMouseOver(i)}
                         onMouseOut={() => this.onMouseOut()}
-                        onClick={() => this.onStarClicked(i)}
+                        onClick={() => this.onStarClick(i)}
                     >
                         &#x2606;
                     </span>

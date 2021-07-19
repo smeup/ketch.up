@@ -14,16 +14,7 @@ h3 {
 <script>
 import { defaultDataTable } from '@/mock/dataTable';
 
-import {
-  bornToDie,
-  cellOptionsTree,
-  ultraviolence,
-  honeymoon,
-  lustForLife,
-  imageUrls,
-} from '@/mock/tooltip';
-
-import { j4btnData } from '@/mock/box';
+import { bornToDie, cellOptionsTree, imageUrls } from '@/mock/tooltip';
 
 export default {
   name: 'dataTableBasic',
@@ -33,28 +24,28 @@ export default {
       data: {
         data: defaultDataTable,
 
-        onKupOptionClicked: (e) => {
+        ['onkup-datatable-optionclick']: (e) => {
           this.handleKupOptionClicked(e.detail);
         },
-        onKupTooltipLoadData: (e) => {
+        ['onkup-tooltip-loaddata']: (e) => {
           this.onLoadData(e, 1);
         },
-        onKupTooltipLoadDetail: (e) => {
+        ['onkup-tooltip-loaddetail']: (e) => {
           this.loadBornToDie(e);
         },
-        onKupTooltipLoadCellOptions: (e) => {
+        ['onkup-tooltip-loadcelloptions']: (e) => {
           this.loadCellOptions(e);
         },
-        onKupTreeNodeButtonClicked: (e) => {
+        ['onkup-tree-treenodebuttonclick']: (e) => {
           this.treeNodeButtonClicked(e);
         },
-        onKupTreeNodeSelected: (e) => {
+        ['onkup-tree-treenodeselected']: (e) => {
           this.treeNodeSelected(e);
         },
-        onKupTreeNodeExpand: (e) => {
+        ['onkup-tree-treenodeexpand']: (e) => {
           this.treeNodeExpand(e);
         },
-        onKupTreeNodeCollapse: (e) => {
+        ['onkup-tree-treenodecollapse']: (e) => {
           this.treeNodeCollapse(e);
         },
       },
@@ -87,13 +78,10 @@ export default {
     },
 
     loadBornToDie(event) {
-      setTimeout(() => (event.detail.tooltip.detailData = bornToDie), 400);
+      setTimeout(() => (event.detail.comp.detailData = bornToDie), 400);
     },
     loadCellOptions(event) {
-      setTimeout(
-        () => (event.detail.tooltip.cellOptions = cellOptionsTree),
-        400
-      );
+      setTimeout(() => (event.detail.comp.cellOptions = cellOptionsTree), 400);
     },
 
     onLoadData(event, index) {
@@ -168,7 +156,7 @@ export default {
           break;
       }
       console.log(event);
-      event.detail.tooltip.data = data;
+      event.detail.comp.data = data;
     },
   },
 };

@@ -22,7 +22,7 @@ export default {
       demoComp: createComp(),
       demoEvents: [
         {
-          name: 'kupChartClicked',
+          name: 'kup-chart-click',
           type: 'click',
         },
       ],

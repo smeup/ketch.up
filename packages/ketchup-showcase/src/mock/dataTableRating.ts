@@ -19,7 +19,6 @@ export const ratingDataTable = {
             k: '',
           },
           value: '',
-          options: false,
           shape: 'Rtg',
         },
       },

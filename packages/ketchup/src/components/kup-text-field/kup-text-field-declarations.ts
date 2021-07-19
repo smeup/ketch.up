@@ -1,3 +1,5 @@
+import { KupEventPayload } from "../../types/GenericTypes";
+
 /**
  * Props of the kup-text-field component.
  * Used to export every prop in an object.
@@ -22,4 +24,8 @@ export enum KupTextFieldProps {
     textArea = 'When set to true, the component will be rendered as a textarea.',
     trailingIcon = 'When set, the icon will be shown after the text.',
     trailingLabel = 'When set to true, the label will be on the right of the component.',
+}
+
+export interface KupTextFieldEventPayload extends KupEventPayload {
+    value: string;
 }

@@ -265,7 +265,6 @@ export const cellOptionsTree = {
         p: '',
         t: '',
       },
-      options: false,
       style: {},
       value: 'Dati (Tooltip)',
     },

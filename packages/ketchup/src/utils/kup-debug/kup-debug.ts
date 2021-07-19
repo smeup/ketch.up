@@ -1,8 +1,8 @@
+import type { KupDom } from '../kup-manager/kup-manager-declarations';
+import type { GenericObject, KupComponent } from '../../types/GenericTypes';
 import { CardFamily } from '../../components/kup-card/kup-card-declarations';
 import { ComponentListElement } from '../../components/kup-list/kup-list-declarations';
-import type { GenericObject, KupComponent } from '../../types/GenericTypes';
 import { KupLanguageDebug } from '../kup-language/kup-language-declarations';
-import type { KupDom } from '../kup-manager/kup-manager-declarations';
 import {
     KupDebugCategory,
     KupDebugLog,
@@ -17,28 +17,23 @@ const dom: KupDom = document.documentElement as KupDom;
  * @module KupDebug
  */
 export class KupDebug {
-    active: boolean =
-        dom.ketchupInit && dom.ketchupInit.debug && dom.ketchupInit.debug.active
-            ? dom.ketchupInit.debug.active
-            : false;
-    autoPrint: boolean =
-        dom.ketchupInit &&
-        dom.ketchupInit.debug &&
-        dom.ketchupInit.debug.autoPrint
-            ? dom.ketchupInit.debug.autoPrint
-            : false;
-    logLimit: number =
-        dom.ketchupInit &&
-        dom.ketchupInit.debug &&
-        dom.ketchupInit.debug.logLimit
-            ? dom.ketchupInit.debug.logLimit
-            : 250;
-    logs: KupDebugLog[] = [];
-    #debugWidget: HTMLKupCardElement = null;
+    active: boolean;
+    autoPrint: boolean;
+    logLimit: number;
+    logs: KupDebugLog[];
+    #debugWidget: HTMLKupCardElement;
     /**
      * Initializes KupDebug.
+     * @param {boolean} active - When true, the debug is active on initialization.
+     * @param {boolean} autoprint - When true, logs will be automatically printed inside the debug widget.
+     * @param {number} logLimit - Maximum amount of logs stored, when they exceed the number specified in logLimit the cache will be automatically cleared.
      */
-    constructor() {
+    constructor(active?: boolean, autoprint?: boolean, logLimit?: number) {
+        this.active = active ? true : false;
+        this.autoPrint = autoprint ? true : false;
+        this.logLimit = logLimit ? logLimit : 250;
+        this.logs = [];
+        this.#debugWidget = null;
         document.addEventListener('kupLanguageChange', () => {
             if (this.active && this.#debugWidget) {
                 this.hideWidget();
@@ -95,10 +90,11 @@ export class KupDebug {
                     icon: 'power_settings_new',
                     id: 'kup-debug-off',
                     customStyle:
-                        ':host {border-left: 1px solid var(--kup-border-color); border-right: 1px solid var(--kup-border-color);}',
+                        ':host {--kup-font-size: 0.875em; border-left: 1px solid var(--kup-border-color); border-right: 1px solid var(--kup-border-color);}',
                     title: dom.ketchup.language.translate(KupLanguageDebug.OFF),
                 },
                 {
+                    customStyle: ':host {--kup-font-size: 0.875em;}',
                     icon: 'print',
                     id: 'kup-debug-print',
                     title: dom.ketchup.language.translate(
@@ -106,9 +102,9 @@ export class KupDebug {
                     ),
                 },
                 {
-                    customStyle:
-                        ':host {border-right: 1px solid var(--kup-border-color);}',
                     checked: this.autoPrint,
+                    customStyle:
+                        ':host {--kup-font-size: 0.875em; border-right: 1px solid var(--kup-border-color);}',
                     icon: 'speaker_notes',
                     iconOff: 'speaker_notes_off',
                     id: 'kup-debug-autoprint',
@@ -118,6 +114,7 @@ export class KupDebug {
                     toggable: true,
                 },
                 {
+                    customStyle: ':host {--kup-font-size: 0.875em;}',
                     icon: 'broom',
                     id: 'kup-debug-clear',
                     title: dom.ketchup.language.translate(
@@ -125,6 +122,7 @@ export class KupDebug {
                     ),
                 },
                 {
+                    customStyle: ':host {--kup-font-size: 0.875em;}',
                     icon: 'delete',
                     id: 'kup-debug-delete',
                     title: dom.ketchup.language.translate(
@@ -158,6 +156,7 @@ export class KupDebug {
                     ),
                 },
                 {
+                    customStyle: ':host {--kup-font-size: 0.875em;}',
                     icon: 'auto-fix',
                     id: 'kup-debug-magic-box',
                     title: dom.ketchup.language.translate(
@@ -227,7 +226,7 @@ export class KupDebug {
         debugWidget.layoutNumber = 3;
         debugWidget.sizeX = 'auto';
         debugWidget.sizeY = 'auto';
-        debugWidget.addEventListener('kupCardEvent', (e: CustomEvent) =>
+        debugWidget.addEventListener('kup-card-event', (e: CustomEvent) =>
             this.handleEvents(e)
         );
         document.body.append(debugWidget);
@@ -413,13 +412,13 @@ export class KupDebug {
     }
     /**
      * Listens the card events and handles the related actions.
-     * @param {CustomEvent} e - kupCardEvent.
+     * @param {CustomEvent} e - kup-card-event.
      */
     handleEvents(e: CustomEvent): void {
         const compEvent: CustomEvent = e.detail.event;
         const compID: string = compEvent.detail.id;
         switch (compEvent.type) {
-            case 'kupButtonClick':
+            case 'kup-button-click':
                 switch (compID) {
                     case 'kup-debug-autoprint':
                         this.autoPrint = !this.autoPrint;
@@ -454,7 +453,7 @@ export class KupDebug {
                         break;
                 }
                 break;
-            case 'kupComboboxItemClick':
+            case 'kup-combobox-itemclick':
                 switch (compID) {
                     case 'kup-debug-language-changer':
                         dom.ketchup.language.set(compEvent.detail.value);
@@ -463,7 +462,7 @@ export class KupDebug {
                         dom.ketchup.theme.set(compEvent.detail.value);
                         break;
                 }
-            case 'kupTextFieldInput':
+            case 'kup-textfield-input':
                 switch (compID) {
                     case 'kup-debug-log-limit':
                         if (

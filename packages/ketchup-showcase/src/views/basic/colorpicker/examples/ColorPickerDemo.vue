@@ -22,8 +22,12 @@ export default {
       demoComp: createComp(),
       demoEvents: [
         {
-          name: 'kupColorPickerChange',
+          name: 'kup-colorpicker-change',
           type: 'change',
+        },
+        {
+          name: 'kup-colorpicker-input',
+          type: 'input',
         },
       ],
       demoProps: [

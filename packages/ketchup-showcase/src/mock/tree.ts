@@ -11,7 +11,6 @@ export const performanceTreeData = [
       p: 'COL',
       t: 'CN',
     },
-    options: true,
     style: {},
     value: 'ABBMIC: ABBIATICI MICHELE',
     visible: true,

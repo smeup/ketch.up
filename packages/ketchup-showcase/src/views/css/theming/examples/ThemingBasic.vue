@@ -71,7 +71,7 @@
       <div class="kup-container">
         <kup-text-field
           label="Theme name"
-          @kupTextFieldInput="setTheme"
+          @kup-textfield-input="setTheme"
         ></kup-text-field>
       </div>
     </div>

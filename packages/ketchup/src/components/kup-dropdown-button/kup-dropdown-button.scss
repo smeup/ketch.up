@@ -1,3 +1,47 @@
-@import '@material/button/mdc-button';
 @import 'styles/kup-dropdown-button-main.scss';
 @import 'styles/kup-dropdown-button-classes.scss';
+
+.dropdown-button--wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.f-button--wrapper.dropdown-button__primary-action {
+  .button {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+
+    &.button--outlined {
+      border-right: none;
+    }
+  }
+}
+
+.f-button--wrapper.dropdown-button__dropdown-action.dropdown-only {
+  .button {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+  }
+}
+
+.f-button--wrapper.dropdown-button__dropdown-action {
+  .button {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    box-shadow: grey -2px 0px 2px -2px;
+
+    .button__icon {
+      transition: transform 80ms linear;
+    }
+
+    &.button--outlined {
+      border-left: none;
+    }
+
+    &.toggled {
+      .button__icon {
+        transform: rotate(180deg);
+      }
+    }
+  }
+}

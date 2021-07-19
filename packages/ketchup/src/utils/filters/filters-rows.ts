@@ -104,8 +104,11 @@ export class FiltersRows extends Filters {
                 retValue = false;
                 let _filterIsNegative = this.filterIsNegative(globalFilter);
 
-                // Search among all columns for the global filter
+                // Search among all visible columns for the global filter
                 for (let i = 0; i < columns.length; i++) {
+                    if (columns[i].visible == false) {
+                        continue;
+                    }
                     const cell = cells[columns[i].name];
                     if (cell == null) {
                         continue;

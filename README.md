@@ -45,14 +45,14 @@ npm install @sme.up/ketchup --save
 -   Define Ketch.UP custom elements in your pages:
 
 ```
-import { defineCustomElements } from 'ketchup/dist/loader';
+import { defineCustomElements } from '@sme.up/ketchup/dist/loader';
 defineCustomElements(window);
 ```
 
 -   Use Ketch.UP components in your pages. About components and their props and events see [Ketch.UP Showcase](https://ketchup.smeup.com/). A simple sample for a Ketch.UP button can be:
 
 ```
-<kup-btn :buttons.prop="btnlist" @kupBtnClick="onKupBtnClicked" />
+<kup-button-list :buttons.prop="btnlist" @kup-button-list-click="onkup-button-list-click" />
 ```
 
 ## Contributing

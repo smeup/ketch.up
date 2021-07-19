@@ -27,8 +27,8 @@ if (navBarShort != null) {
 }
 
 document.querySelectorAll('kup-checkbox').forEach((f) => {
-    f.addEventListener('kupCheckboxChange', ({ detail }) => {
-        kupCheckboxChange_listener(detail.checked);
+    f.addEventListener('kup-checkbox-change', ({ detail }) => {
+        kup-checkbox-change_listener(detail.checked);
     });
 });
 
@@ -38,7 +38,7 @@ document.querySelectorAll('kup-nav-bar').forEach((f) => {
     });
 });
 
-function kupCheckboxChange_listener(checked) {
+function kup-checkbox-change_listener(checked) {
     let changedDefaultData = { ...defaultData };
     let customStyle = null;
     if (checked == true) {
@@ -65,7 +65,7 @@ function kupMenuItemClick_listener(value) {
         const checkBox = document.getElementById('itemSelect');
         if (checkBox != null) {
             checkBox.checked = false;
-            kupCheckboxChange_listener(false);
+            kup-checkbox-change_listener(false);
         }
     }
 }

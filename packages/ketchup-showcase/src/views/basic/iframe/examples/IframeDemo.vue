@@ -22,11 +22,11 @@ export default {
       demoComp: createComp(),
       demoEvents: [
         {
-          name: 'kupIframeError',
+          name: 'kup-iframe-error',
           type: 'error',
         },
         {
-          name: 'kupIframeLoad',
+          name: 'kup-iframe-load',
           type: 'load',
         },
       ],

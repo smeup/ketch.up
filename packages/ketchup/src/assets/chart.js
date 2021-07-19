@@ -107,7 +107,7 @@ const baseData = {
 const baseConfig = {
     types: ['Hbar'],
     axis: 'Col1',
-    series: [{code: 'Col2'}, {code: 'Col3'}],
+    series: [{ code: 'Col2' }, { code: 'Col3' }],
 };
 const keys = Object.keys(baseConfig);
 
@@ -139,7 +139,7 @@ for (let k of keys) {
     pie[k] = baseConfig[k];
 }
 pie.types = ['Pie'];
-pie.series = [{code: 'Col2'}];
+pie.series = [{ code: 'Col2' }];
 
 document.getElementById('pie-aspect').addEventListener('change', (e) => {
     pie.asp = e.target.checked ? '3D' : '';
@@ -164,11 +164,11 @@ document.getElementById('size').addEventListener('change', ({ target }) => {
 
     charts.forEach((chart) => {
         if (target.checked) {
-            chart.sizeX = "400px";
-            chart.sizeY = "400px";
+            chart.sizeX = '400px';
+            chart.sizeY = '400px';
         } else {
-            chart.sizeX = "100%";
-            chart.sizeY = "100%";
+            chart.sizeX = '100%';
+            chart.sizeY = '100%';
         }
     });
 });
@@ -178,7 +178,7 @@ document.getElementById('legend').addEventListener('change', ({ target }) => {
     const charts = document.querySelectorAll('kup-chart');
 
     charts.forEach((chart) => {
-        chart.legend = target.checked?'right':'none'
+        chart.legend = target.checked ? 'right' : 'none';
     });
 });
 
@@ -192,7 +192,7 @@ document.getElementById('title').addEventListener('change', ({ target }) => {
             cTitle = {};
         }
         cTitle.value = target.value;
-        chart.chartTitle =  {...cTitle};
+        chart.chartTitle = { ...cTitle };
     });
 });
 
@@ -208,7 +208,7 @@ document
                 cTitle = {};
             }
             cTitle.color = target.value;
-            chart.chartTitle =  {...cTitle};
+            chart.chartTitle = { ...cTitle };
         });
     });
 
@@ -230,6 +230,6 @@ document
                 cTitle = {};
             }
             cTitle.size = Number(target.value);
-            chart.chartTitle = {...cTitle};
+            chart.chartTitle = { ...cTitle };
         });
     });

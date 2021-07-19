@@ -18,17 +18,17 @@
 
 ## Events
 
-| Event                          | Description | Type                                    |
-| ------------------------------ | ----------- | --------------------------------------- |
-| `kupTimePickerBlur`            |             | `CustomEvent<{ id: any; value: any; }>` |
-| `kupTimePickerChange`          |             | `CustomEvent<{ id: any; value: any; }>` |
-| `kupTimePickerClearIconClick`  |             | `CustomEvent<{ id: any; }>`             |
-| `kupTimePickerClick`           |             | `CustomEvent<{ id: any; value: any; }>` |
-| `kupTimePickerFocus`           |             | `CustomEvent<{ id: any; value: any; }>` |
-| `kupTimePickerIconClick`       |             | `CustomEvent<{ id: any; value: any; }>` |
-| `kupTimePickerInput`           |             | `CustomEvent<{ id: any; value: any; }>` |
-| `kupTimePickerItemClick`       |             | `CustomEvent<{ id: any; value: any; }>` |
-| `kupTimePickerTextFieldSubmit` |             | `CustomEvent<{ id: any; value: any; }>` |
+| Event                            | Description | Type                                     |
+| -------------------------------- | ----------- | ---------------------------------------- |
+| `kup-timepicker-blur`            |             | `CustomEvent<KupTimePickerEventPayload>` |
+| `kup-timepicker-change`          |             | `CustomEvent<KupTimePickerEventPayload>` |
+| `kup-timepicker-cleariconclick`  |             | `CustomEvent<KupEventPayload>`           |
+| `kup-timepicker-click`           |             | `CustomEvent<KupTimePickerEventPayload>` |
+| `kup-timepicker-focus`           |             | `CustomEvent<KupTimePickerEventPayload>` |
+| `kup-timepicker-iconclick`       |             | `CustomEvent<KupTimePickerEventPayload>` |
+| `kup-timepicker-input`           |             | `CustomEvent<KupTimePickerEventPayload>` |
+| `kup-timepicker-itemclick`       |             | `CustomEvent<KupTimePickerEventPayload>` |
+| `kup-timepicker-textfieldsubmit` |             | `CustomEvent<KupTimePickerEventPayload>` |
 
 
 ## Methods
@@ -66,6 +66,16 @@ Type: `Promise<void>`
 ### `setFocus() => Promise<void>`
 
 
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `setProps(props: GenericObject) => Promise<void>`
+
+Sets the props to the component.
 
 #### Returns
 

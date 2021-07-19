@@ -16,11 +16,11 @@
 
 ## Events
 
-| Event             | Description                                       | Type                                          |
-| ----------------- | ------------------------------------------------- | --------------------------------------------- |
-| `kupSwitchBlur`   | Triggered when the input element loses focus.     | `CustomEvent<{ value: string; }>`             |
-| `kupSwitchChange` | Triggered when the input element's value changes. | `CustomEvent<{ id: string; value: string; }>` |
-| `kupSwitchFocus`  | Triggered when the input element gets focused.    | `CustomEvent<{ value: string; }>`             |
+| Event               | Description                                       | Type                                 |
+| ------------------- | ------------------------------------------------- | ------------------------------------ |
+| `kup-switch-blur`   | Triggered when the input element loses focus.     | `CustomEvent<KupSwitchEventPayload>` |
+| `kup-switch-change` | Triggered when the input element's value changes. | `CustomEvent<KupSwitchEventPayload>` |
+| `kup-switch-focus`  | Triggered when the input element gets focused.    | `CustomEvent<KupSwitchEventPayload>` |
 
 
 ## Methods
@@ -38,6 +38,16 @@ Type: `Promise<GenericObject>`
 ### `refresh() => Promise<void>`
 
 This method is used to trigger a new render of the component.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `setProps(props: GenericObject) => Promise<void>`
+
+Sets the props to the component.
 
 #### Returns
 

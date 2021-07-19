@@ -1,15 +1,14 @@
 import type { KupDom } from '../kup-manager/kup-manager-declarations';
 import type { GenericObject, KupComponent } from '../../types/GenericTypes';
+import { getAssetPath } from '@stencil/core';
+import * as themesJson from './themes.json';
+import * as themeCSS from './kup-theme.css';
 import {
     KupThemeCSSVariables,
     KupThemeIcons,
     KupThemeJSON,
-    KupThemeVariables,
     masterCustomStyle,
 } from './kup-theme-declarations';
-import { getAssetPath } from '@stencil/core';
-import * as themesJson from './themes.json';
-import * as themeCSS from './kup-theme.css';
 import { KupDebugCategory } from '../kup-debug/kup-debug-declarations';
 
 const dom: KupDom = document.documentElement as KupDom;
@@ -19,19 +18,23 @@ const dom: KupDom = document.documentElement as KupDom;
  * @module KupTheme
  */
 export class KupTheme {
-    cssVars: Partial<KupThemeVariables> = {};
-    list: KupThemeJSON =
-        dom.ketchupInit && dom.ketchupInit.theme && dom.ketchupInit.theme.list
-            ? dom.ketchupInit.theme.list
-            : themesJson['default'];
-    managedComponents: Set<KupComponent> = new Set();
-    name: string =
-        dom.ketchupInit && dom.ketchupInit.theme && dom.ketchupInit.theme.name
-            ? dom.ketchupInit.theme.name
-            : 'ketchup';
-    styleTag: HTMLStyleElement = dom
-        .querySelector('head')
-        .appendChild(document.createElement('style'));
+    cssVars: Partial<KupThemeCSSVariables>;
+    list: KupThemeJSON;
+    managedComponents: Set<KupComponent>;
+    name: string;
+    styleTag: HTMLStyleElement;
+    /**
+     * Initializes KupTheme.
+     */
+    constructor(list?: KupThemeJSON, name?: string) {
+        this.cssVars = {};
+        this.list = list ? list : themesJson['default'];
+        this.managedComponents = new Set();
+        this.name = name ? name : 'ketchup';
+        this.styleTag = dom
+            .querySelector('head')
+            .appendChild(document.createElement('style'));
+    }
     /**
      * Sets the theme using this.name or the function's argument.
      * @param {string} name - When present, this theme will be set.
@@ -182,7 +185,6 @@ export class KupTheme {
     }
     /**
      * Unregisters a KupComponent, so it won't be handled when the theme changes.
-     *
      * @param {any} comp - The component calling this function.
      */
     unregister(comp: any): void {
@@ -392,6 +394,54 @@ export class KupTheme {
         return (
             '#' + this.valueToHex(r) + this.valueToHex(g) + this.valueToHex(b)
         );
+    }
+    /**
+     * Converts a color in RGB format to the corresponding HSL color.
+     * @param {number} r - Red channel value.
+     * @param {number} g - Green channel value.
+     * @param {number} b - Blue channel value.
+     * @returns {string} HSL color.
+     */
+    rgbToHsl(r: number, g: number, b: number): string {
+        // Make r, g, and b fractions of 1
+        r /= 255;
+        g /= 255;
+        b /= 255;
+
+        // Find greatest and smallest channel values
+        let cmin = Math.min(r, g, b),
+            cmax = Math.max(r, g, b),
+            delta = cmax - cmin,
+            h = 0,
+            s = 0,
+            l = 0;
+
+        // Calculate hue
+        // No difference
+        if (delta == 0) h = 0;
+        // Red is max
+        else if (cmax == r) h = ((g - b) / delta) % 6;
+        // Green is max
+        else if (cmax == g) h = (b - r) / delta + 2;
+        // Blue is max
+        else h = (r - g) / delta + 4;
+
+        h = Math.round(h * 60);
+
+        // Make negative hues positive behind 360°
+        if (h < 0) h += 360;
+
+        // Calculate lightness
+        l = (cmax + cmin) / 2;
+
+        // Calculate saturation
+        s = delta == 0 ? 0 : delta / (1 - Math.abs(2 * l - 1));
+
+        // Multiply l and s by 100
+        s = +(s * 100).toFixed(1);
+        l = +(l * 100).toFixed(1);
+
+        return 'hsl(' + h + ',' + s + '%,' + l + '%)';
     }
     /**
      * Converts a single RGB value to the corresponding HEX value.

@@ -1,3 +1,46 @@
+//-----------------------------------------------------//
+//               Components CSS classes                //
+//-----------------------------------------------------//
+
+// Color related variables.
+$kup-class-danger: 'kup-danger'; // Sets the primary color to --kup-danger-color.
+$kup-class-info: 'kup-info'; // Sets the primary color to --kup-info-color.
+$kup-class-secondary: 'kup-secondary'; // Sets the primary color to --kup-secondary-color.
+$kup-class-success: 'kup-success'; // Sets the primary color to --kup-success-color.
+$kup-class-warning: 'kup-warning'; // Sets the primary color to --kup-warning-color.
+
+// Position related variables.
+$kup-class-bottom-aligned: 'kup-bottom-aligned'; // Aligns the content of the component to the bottom.
+$kup-class-bottom-left: 'kup-bottom-left'; // Position the component to the bottom left.
+$kup-class-bottom-right: 'kup-bottom-right'; // Position the component to the bottom right.
+$kup-class-left-aligned: 'kup-left-aligned'; // Aligns the content of the component to the left.
+$kup-class-right: 'kup-right'; // Position the component to the right.
+$kup-class-right-aligned: 'kup-right-aligned'; // Aligns the content of the component to the right.
+$kup-class-top-right: 'kup-top-right'; // Position the component to the top right.
+$kup-class-top-aligned: 'kup-top-aligned'; // Aligns the content of the component to the top.
+
+// Size related variables.
+$kup-class-fit: 'kup-fit'; // The component won't exceed its size in pixels.
+$kup-class-full-height: 'kup-full-height'; // The component will fill all the available vertical space.
+$kup-class-full-width: 'kup-full-width'; // The component will fill all the available horizontal space.
+$kup-class-large: 'kup-large'; // Increases the size of the component.
+$kup-class-layout-fixed: 'kup-layout-fixed'; // Tables' size will be fixed to improve fps (especially on Chrome).
+$kup-class-slim: 'kup-slim'; // Decreases the size of the component.
+
+// Misc variables.
+$kup-class-animated: 'kup-animated'; // The component will display animations.
+$kup-class-borderless: 'kup-borderless'; // The component's borders will be hidden.
+$kup-class-cross-selection: 'kup-cross-selection'; // Displays selection for both rows and columns.
+$kup-class-dashed-sections: 'kup-dashed-sections'; // Dashed borders will be displayed for every section of the component.
+$kup-class-flat-on-hover: 'kup-flat-on-hover'; // Disables box shadow.
+$kup-class-padded: 'kup-padded'; // The component will have additional padding.
+$kup-class-paddingless: 'kup-paddingless'; // The component's padding will be removed.
+$kup-class-permanent: 'kup-permanent'; // The component will always be visible.
+$kup-class-round: 'kup-round'; // Gives the component an exceedingly shaped look by rounding its borders (heavier effect than "kup-shaped").
+$kup-class-shaped: 'kup-shaped'; // Gives the component a shaped look by rounding its borders.
+$kup-class-striped: 'kup-striped'; // Displays a striped texture.
+$kup-class-unclickable: 'kup-unclickable'; // The component will be unclickable.
+
 // MDC
 
 :host {

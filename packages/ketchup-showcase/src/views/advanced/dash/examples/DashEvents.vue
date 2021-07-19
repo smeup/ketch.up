@@ -5,7 +5,7 @@
       <ul>
         <li
           ><span class="code-word">{{ event }}</span
-          >: it is launched every time the drawer is cliked.</li
+          >: it is launched every time the drawer is clicked.</li
         >
       </ul>
     </div>
@@ -17,7 +17,7 @@ export default {
   name: 'DashEvents',
   data() {
     return {
-      event: 'ketchupDashClicked',
+      event: 'kup-dash-clicked',
       type: 'CustomEvent<{ id: number; }>',
     };
   },

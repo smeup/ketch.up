@@ -151,7 +151,7 @@
       </div>
       <v-toolbar-title>Ketch.UP | Showcase</v-toolbar-title>
       <kup-switch
-        @kupSwitchChange="
+        @kup-switch-change="
           (e) => {
             this.changeTheme(e);
           }
@@ -162,7 +162,7 @@
         id="theme-switch"
       ></kup-switch>
       <kup-button
-        @kupButtonClick="
+        @kup-button-click="
           () => {
             this.toggleDebug();
           }

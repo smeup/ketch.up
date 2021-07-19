@@ -1,4 +1,4 @@
-import { KupDom } from '../kup-manager/kup-manager-declarations';
+import type { KupDom } from '../kup-manager/kup-manager-declarations';
 import {
     KupScrollOnHoverElement,
     ScrollOnHoverDirection,
@@ -11,34 +11,37 @@ const dom: KupDom = document.documentElement as KupDom;
  * @module KupScrollOnHover
  */
 export class KupScrollOnHover {
-    #arrowsContainer: HTMLElement = null;
-    #leftArrows: HTMLElement[] = [];
-    #rightArrows: HTMLElement[] = [];
-    #scrollEvent = (event: Event) =>
-        this.updateChildren(event.target as KupScrollOnHoverElement);
-    #mousemoveEvent = (event: MouseEvent) => this.start(event);
-    #mouseleaveEvent = (event: MouseEvent) =>
-        this.stop(event.target as KupScrollOnHoverElement);
-    #rAF: number = null;
-    #timeout: ReturnType<typeof setTimeout> = null;
-    delay: number =
-        dom.ketchupInit &&
-        dom.ketchupInit.scrollOnHover &&
-        dom.ketchupInit.scrollOnHover.delay
-            ? dom.ketchupInit.scrollOnHover.delay
-            : 500;
-    managedElements: Set<KupScrollOnHoverElement> = new Set();
-    step: number =
-        dom.ketchupInit &&
-        dom.ketchupInit.scrollOnHover &&
-        dom.ketchupInit.scrollOnHover.step
-            ? dom.ketchupInit.scrollOnHover.step
-            : 50;
+    delay: number;
+    managedElements: Set<KupScrollOnHoverElement>;
+    step: number;
+    #arrowsContainer: HTMLElement;
+    #leftArrows: HTMLElement[];
+    #rightArrows: HTMLElement[];
+    #scrollEvent: (event: Event) => void;
+    #mousemoveEvent: (event: MouseEvent) => Promise<void>;
+    #mouseleaveEvent: (event: MouseEvent) => Promise<void>;
+    #rAF: number;
+    #timeout: ReturnType<typeof setTimeout>;
     /**
      * Initializes KupScrollOnHover.
+     * @param {number} delay - Sets the time in milliseconds before the scrolling starts when mouse-hovering.
+     * @param {number} step - The amount in pixels for each scroll recursion.
      */
-    constructor() {
+    constructor(delay?: number, step?: number) {
+        this.delay = delay ? delay : 500;
+        this.managedElements = new Set();
+        this.step = step ? step : 50;
         this.#arrowsContainer = document.createElement('div');
+        this.#leftArrows = [];
+        this.#mouseleaveEvent = (event: MouseEvent) =>
+            this.stop(event.target as KupScrollOnHoverElement);
+        this.#mousemoveEvent = (event: MouseEvent) => this.start(event);
+        this.#rAF = null;
+        this.#rightArrows = [];
+        this.#scrollEvent = (event: Event) =>
+            this.updateChildren(event.target as KupScrollOnHoverElement);
+        this.#timeout = null;
+
         this.#arrowsContainer.id = 'container-scrolling-arrow';
         for (let index = 1; index < 4; index++) {
             const arrow: HTMLElement = document.createElement('div');

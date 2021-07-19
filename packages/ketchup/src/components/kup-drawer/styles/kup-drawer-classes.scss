@@ -1,20 +1,21 @@
 /*-------------------------------------------------*/
 /*        C o m p o n e n t   C l a s s e s        */
 /*-------------------------------------------------*/
-:host(.kup-right) {
+
+:host(.#{$kup-class-right}) {
   aside {
     left: unset;
     right: -100%;
   }
 }
 
-:host([opened].kup-right) {
+:host([opened].#{$kup-class-right}) {
   aside {
     right: 0;
   }
 }
 
-:host(.kup-permanent) {
+:host(.#{$kup-class-permanent}) {
   .backdrop {
     display: none;
   }

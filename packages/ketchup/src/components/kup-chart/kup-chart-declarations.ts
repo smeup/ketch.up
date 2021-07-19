@@ -1,3 +1,4 @@
+import { KupEventPayload } from '../../types/GenericTypes';
 import { Column, Row } from '../kup-data-table/kup-data-table-declarations';
 /**
  * Props of the kup-card component.
@@ -44,7 +45,7 @@ export interface ChartAxisViewWindow {
     max?: number;
 }
 
-export interface ChartClickedEvent {
+export interface KupChartClickEvent extends KupEventPayload {
     datetime?: string;
     column?: Column;
     row?: Row;

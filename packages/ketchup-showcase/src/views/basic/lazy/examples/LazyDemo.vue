@@ -43,6 +43,14 @@ export default {
           try: 'json',
         },
         {
+          prop: 'renderMode',
+          description:
+            'Decides when the sub-component should be rendered. By default when both the component props exist and the component is in the viewport.',
+          type: 'string',
+          default: 'both',
+          try: 'field',
+        },
+        {
           prop: 'showPlaceholder',
           description:
             'Displays an animated SVG placeholder until the component is loaded.',

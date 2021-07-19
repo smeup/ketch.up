@@ -22,15 +22,15 @@ export default {
       demoComp: createComp(),
       demoEvents: [
         {
-          name: 'kupTabBarClick',
+          name: 'kup-tabbar-click',
           type: 'click',
         },
         {
-          name: 'kupTabBarFocus',
+          name: 'kup-tabbar-focus',
           type: 'focus',
         },
         {
-          name: 'kupTabBarBlur',
+          name: 'kup-tabbar-blur',
           type: 'blur',
         },
       ],
@@ -47,8 +47,8 @@ export default {
           prop: 'data',
           description:
             'Object array containing the data of the tabs: text to be shown, optional icon and status (if active or not).',
-          type: 'ComponentTabBarElement[]',
-          default: '[]',
+          type: 'KupTabBarData[]',
+          default: 'null',
           try: 'json',
         },
       ],
@@ -87,21 +87,25 @@ function createComp() {
   let comp = document.createElement('kup-tab-bar');
   comp.data = [
     {
+      value: 'First',
       text: 'First',
       icon: 'filter_1',
       active: true,
     },
     {
+      value: 'Second',
       text: 'Second',
       icon: 'filter_2',
       active: false,
     },
     {
+      value: 'Third',
       text: 'Third',
       icon: 'filter_3',
       active: false,
     },
     {
+      value: 'Fourth',
       text: 'Fourth',
       icon: 'filter_4',
       active: false,

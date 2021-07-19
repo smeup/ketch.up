@@ -22,35 +22,35 @@ export default {
       demoComp: createComp(),
       demoEvents: [
         {
-          name: 'kupTextFieldClick',
+          name: 'kup-textfield-click',
           type: 'click',
         },
         {
-          name: 'kupTextFieldChange',
+          name: 'kup-textfield-change',
           type: 'change',
         },
         {
-          name: 'kupTextFieldInput',
+          name: 'kup-textfield-input',
           type: 'input',
         },
         {
-          name: 'kupTextFieldFocus',
+          name: 'kup-textfield-focus',
           type: 'focus',
         },
         {
-          name: 'kupTextFieldBlur',
+          name: 'kup-textfield-blur',
           type: 'blur',
         },
         {
-          name: 'kupTextFieldIconClick',
+          name: 'kup-textfield-iconclick',
           type: 'click',
         },
         {
-          name: 'kupTextFieldClearIconClick',
+          name: 'kup-textfield-cleariconclick',
           type: 'click',
         },
         {
-          name: 'kupTextFieldSubmit',
+          name: 'kup-textfield-submit',
           type: 'click',
         },
       ],

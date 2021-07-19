@@ -1,20 +1,21 @@
 /*-------------------------------------------------*/
 /*        C o m p o n e n t   C l a s s e s        */
 /*-------------------------------------------------*/
-:host(.kup-animated) {
+
+:host(.#{$kup-class-animated}) {
   .progress-bar-percentage {
     animation: running-stripes 2s linear infinite;
   }
 }
 
-:host(.kup-padded) {
+:host(.#{$kup-class-padded}) {
   .progress-bar {
     padding: 0.5em;
     width: calc(100% - 1em);
   }
 }
 
-:host(.kup-slim) {
+:host(.#{$kup-class-slim}) {
   #kup-component {
     .progress-bar {
       border-radius: 9px;
@@ -37,7 +38,7 @@
   }
 }
 
-:host(.kup-striped) {
+:host(.#{$kup-class-striped}) {
   .progress-bar-percentage {
     background-image: linear-gradient(
       -45deg,

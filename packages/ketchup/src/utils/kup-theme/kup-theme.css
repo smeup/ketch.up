@@ -48,7 +48,10 @@
     margin: 0;
     position: fixed;
     transition: none;
+    max-height: 95vh;
+    max-width: 95vw;
 }
+
 [kup-dialog].kup-resizable {
     border: 3px outset var(--kup-title-background-color);
 }

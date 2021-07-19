@@ -146,7 +146,7 @@ export function create4(component: KupCard): VNode {
                     <kup-button
                         {...buttonArray[0]}
                         id={KupCardIds.PREVIOUS_ROW}
-                        onKupButtonClick={() => prevButton(component)}
+                        onkup-button-click={() => prevButton(component)}
                         title={dom.ketchup.language.translate(
                             KupLanguageRow.PREVIOUS
                         )}
@@ -154,7 +154,7 @@ export function create4(component: KupCard): VNode {
                     <kup-button
                         {...buttonArray[1]}
                         id={KupCardIds.NEXT_ROW}
-                        onKupButtonClick={() => nextButton(component)}
+                        onkup-button-click={() => nextButton(component)}
                         title={dom.ketchup.language.translate(
                             KupLanguageRow.NEXT
                         )}

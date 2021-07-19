@@ -22,37 +22,41 @@ export default {
       demoComp: createComp(),
       demoEvents: [
         {
-          name: 'kupAutocompleteClick',
+          name: 'kup-autocomplete-click',
           type: 'click',
         },
         {
-          name: 'kupAutocompleteChange',
+          name: 'kup-autocomplete-change',
           type: 'change',
         },
         {
-          name: 'kupAutocompleteInput',
+          name: 'kup-autocomplete-input',
           type: 'input',
         },
         {
-          name: 'kupAutocompleteFocus',
+          name: 'kup-autocomplete-focus',
           type: 'focus',
         },
         {
-          name: 'kupAutocompleteBlur',
+          name: 'kup-autocomplete-blur',
           type: 'blur',
         },
         {
-          name: 'kupAutocompleteIconClick',
+          name: 'kup-autocomplete-iconclick',
           type: 'click',
         },
         {
-          name: 'kupAutocompleteItemClick',
+          name: 'kup-autocomplete-itemclick',
           type: 'click',
         },
         {
-          name: 'kupAutocompleteFilterChanged',
+          name: 'kup-autocomplete-filterchanged',
           type: 'customEvent',
         },
+        {
+          name: 'kup-autocomplete-textfieldsubmit',
+          type: 'click',
+        }
       ],
       demoProps: [
         {

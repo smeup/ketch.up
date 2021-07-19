@@ -36,8 +36,8 @@
       :columns.prop="fakers.basic.columns"
       :data.prop="fakers.basic.data"
       use-dynamic-expansion
-      @kupTreeNodeCollapse="hdlCollapseNode"
-      @kupTreeNodeExpand="hdlExpandNode($event, 'basic')"
+      @kup-tree-nodecollapse="hdlCollapseNode"
+      @kup-tree-nodeexpand="hdlExpandNode($event, 'basic')"
     />
 
     <h4>Same example as the previous one but with showColumns</h4>
@@ -47,8 +47,8 @@
       show-columns
       show-header
       use-dynamic-expansion
-      @kupTreeNodeCollapse="hdlCollapseNode"
-      @kupTreeNodeExpand="hdlExpandNode($event, 'basicTable')"
+      @kup-tree-nodecollapse="hdlCollapseNode"
+      @kup-tree-nodeexpand="hdlExpandNode($event, 'basicTable')"
     />
 
     <h3>Dynamic expansion with callback set</h3>
@@ -63,8 +63,8 @@
       :data.prop="fakers.useCallback.data"
       use-dynamic-expansion
       :dynamicExpansionCallback.prop="callbacks.useCallback"
-      @kupTreeNodeCollapse="hdlCollapseNode"
-      @kupTreeNodeExpand="
+      @kup-tree-nodecollapse="hdlCollapseNode"
+      @kup-tree-nodeexpand="
         hdlExpandNode($event, 'useCallback', {
           method: treeUpdateMethods.treeHasCallback,
         })
@@ -79,8 +79,8 @@
       show-header
       use-dynamic-expansion
       :dynamicExpansionCallback.prop="callbacks.useCallbackTable"
-      @kupTreeNodeCollapse="hdlCollapseNode"
-      @kupTreeNodeExpand="
+      @kup-tree-nodecollapse="hdlCollapseNode"
+      @kup-tree-nodeexpand="
         hdlExpandNode($event, 'useCallbackTable', {
           method: treeUpdateMethods.treeHasCallback,
         })

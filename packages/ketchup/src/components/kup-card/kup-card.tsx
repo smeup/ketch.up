@@ -15,7 +15,11 @@ import * as collapsibleLayouts from './collapsible/kup-card-collapsible';
 import * as dialogLayouts from './dialog/kup-card-dialog';
 import * as scalableLayouts from './scalable/kup-card-scalable';
 import * as standardLayouts from './standard/kup-card-standard';
-import type { GenericObject, KupComponent } from '../../types/GenericTypes';
+import type {
+    GenericObject,
+    KupComponent,
+    KupEventPayload,
+} from '../../types/GenericTypes';
 import {
     KupManager,
     kupManagerInstance,
@@ -24,6 +28,7 @@ import {
     CardData,
     CardFamily,
     KupCardCSSClasses,
+    KupCardEventPayload,
     KupCardIds,
     KupCardProps,
 } from './kup-card-declarations';
@@ -33,6 +38,7 @@ import { DialogElement } from '../../utils/kup-dialog/kup-dialog-declarations';
 import { KupLanguageGeneric } from '../../utils/kup-language/kup-language-declarations';
 import { layoutSpecificEvents } from './kup-card-helper';
 import { KupDynamicPositionElement } from '../../utils/kup-dynamic-position/kup-dynamic-position-declarations';
+import { getProps, setProps } from '../../utils/utils';
 
 @Component({
     tag: 'kup-card',
@@ -65,7 +71,7 @@ export class KupCard {
      * Works together with menuVisible.
      * @default false
      */
-    @Prop() isMenu: boolean = false;
+    @Prop({ reflect: true }) isMenu: boolean = false;
     /**
      * Sets the type of the card.
      * @default CardFamily.STANDARD
@@ -81,7 +87,7 @@ export class KupCard {
      * Works together with isMenu.
      * @default false
      */
-    @Prop({ mutable: true }) menuVisible: boolean = false;
+    @Prop({ mutable: true, reflect: true }) menuVisible: boolean = false;
     /**
      * The width of the card, defaults to 100%. Accepts any valid CSS format (px, %, vw, etc.).
      * @default "100%"
@@ -98,7 +104,7 @@ export class KupCard {
     /*-------------------------------------------------*/
 
     /**
-     * kupCardEvent callback.
+     * kup-card-event callback.
      */
     private cardEvent: EventListenerOrEventListenerObject = (
         e: CustomEvent
@@ -131,41 +137,35 @@ export class KupCard {
      * Triggered when the card is clicked.
      */
     @Event({
-        eventName: 'kupCardClick',
+        eventName: 'kup-card-click',
         composed: true,
         cancelable: false,
         bubbles: true,
     })
-    kupClick: EventEmitter<{
-        card: KupCard;
-        id: string;
-    }>;
+    kupClick: EventEmitter<KupEventPayload>;
     /**
      * Triggered when a sub-component of the card emits an event.
      */
     @Event({
-        eventName: 'kupCardEvent',
+        eventName: 'kup-card-event',
         composed: true,
         cancelable: false,
         bubbles: true,
     })
-    kupEvent: EventEmitter<{
-        card: KupCard;
-        event: any;
-    }>;
+    kupEvent: EventEmitter<KupCardEventPayload>;
 
     onKupClick(id: string): void {
         this.kupClick.emit({
-            card: this,
+            comp: this,
             id: id,
         });
     }
 
     onKupEvent(e: CustomEvent): void {
         layoutSpecificEvents(this, e);
-
         this.kupEvent.emit({
-            card: this,
+            comp: this,
+            id: this.rootElement.id,
             event: e,
         });
     }
@@ -181,17 +181,15 @@ export class KupCard {
      */
     @Method()
     async getProps(descriptions?: boolean): Promise<GenericObject> {
-        let props: GenericObject = {};
-        if (descriptions) {
-            props = KupCardProps;
-        } else {
-            for (const key in KupCardProps) {
-                if (Object.prototype.hasOwnProperty.call(KupCardProps, key)) {
-                    props[key] = this[key];
-                }
-            }
-        }
-        return props;
+        return getProps(this, KupCardProps, descriptions);
+    }
+    /**
+     * Sets the props to the component.
+     * @param {GenericObject} props - Object containing props that will be set to the component.
+     */
+    @Method()
+    async setProps(props: GenericObject): Promise<void> {
+        setProps(this, KupCardProps, props);
     }
     /**
      * This method is used to trigger a new render of the component.
@@ -377,43 +375,41 @@ export class KupCard {
         }
     }
     /**
-     * Sets the event listeners on the sub-components, in order to properly emit the generic kupCardEvent.
+     * Sets the event listeners on the sub-components, in order to properly emit the generic kup-card-event.
      */
     registerListeners(): void {
         const root: ShadowRoot = this.rootElement.shadowRoot;
-        root.addEventListener('kupAddCodeDecodeColumn', this.cardEvent);
-        root.addEventListener('kupAddColumn', this.cardEvent);
-        root.addEventListener('kupAutocompleteBlur', this.cardEvent);
-        root.addEventListener('kupAutocompleteChange', this.cardEvent);
-        root.addEventListener('kupAutocompleteInput', this.cardEvent);
-        root.addEventListener('kupAutocompleteItemClick', this.cardEvent);
-        root.addEventListener('kupButtonClick', this.cardEvent);
-        root.addEventListener('kupCheckboxChange', this.cardEvent);
-        root.addEventListener('kupChipBlur', this.cardEvent);
-        root.addEventListener('kupChipClick', this.cardEvent);
-        root.addEventListener('kupChipIconClick', this.cardEvent);
-        root.addEventListener('kupComboboxItemClick', this.cardEvent);
-        root.addEventListener('kupDataTableCellUpdate', this.cardEvent);
-        root.addEventListener('kupDatePickerClearIconClick', this.cardEvent);
-        root.addEventListener('kupDatePickerInput', this.cardEvent);
-        root.addEventListener('kupDatePickerItemClick', this.cardEvent);
-        root.addEventListener('kupDatePickerTextFieldSubmit', this.cardEvent);
-        root.addEventListener('kupListClick', this.cardEvent);
-        root.addEventListener('kupSwitchChange', this.cardEvent);
-        root.addEventListener('kupTabBarClick', this.cardEvent);
-        root.addEventListener('kupTextFieldClearIconClick', this.cardEvent);
-        root.addEventListener('kupTextFieldInput', this.cardEvent);
-        root.addEventListener('kupTextFieldSubmit', this.cardEvent);
-        root.addEventListener('kupTimePickerClearIconClick', this.cardEvent);
-        root.addEventListener('kupTimePickerInput', this.cardEvent);
-        root.addEventListener('kupTimePickerItemClick', this.cardEvent);
-        root.addEventListener('kupTimePickerTextFieldSubmit', this.cardEvent);
-        root.addEventListener('kupTreeDynamicMassExpansion', this.cardEvent);
-        root.addEventListener('kupTreeNodeButtonClicked', this.cardEvent);
-        root.addEventListener('kupTreeNodeCollapse', this.cardEvent);
-        root.addEventListener('kupTreeNodeDblClick', this.cardEvent);
-        root.addEventListener('kupTreeNodeExpand', this.cardEvent);
-        root.addEventListener('kupTreeNodeSelected', this.cardEvent);
+        root.addEventListener('kup-autocomplete-blur', this.cardEvent);
+        root.addEventListener('kup-autocomplete-change', this.cardEvent);
+        root.addEventListener('kup-autocomplete-input', this.cardEvent);
+        root.addEventListener('kup-autocomplete-itemclick', this.cardEvent);
+        root.addEventListener('kup-button-click', this.cardEvent);
+        root.addEventListener('kup-checkbox-change', this.cardEvent);
+        root.addEventListener('kup-chip-blur', this.cardEvent);
+        root.addEventListener('kup-chip-click', this.cardEvent);
+        root.addEventListener('kup-chip-iconclick', this.cardEvent);
+        root.addEventListener('kup-combobox-itemclick', this.cardEvent);
+        root.addEventListener('kup-datatable-cellupdate', this.cardEvent);
+        root.addEventListener('kup-datepicker-cleariconclick', this.cardEvent);
+        root.addEventListener('kup-datepicker-input', this.cardEvent);
+        root.addEventListener('kup-datepicker-itemclick', this.cardEvent);
+        root.addEventListener('kup-datepicker-textfieldsubmit', this.cardEvent);
+        root.addEventListener('kup-list-click', this.cardEvent);
+        root.addEventListener('kup-switch-change', this.cardEvent);
+        root.addEventListener('kup-tabbar-click', this.cardEvent);
+        root.addEventListener('kup-textfield-cleariconclick', this.cardEvent);
+        root.addEventListener('kup-textfield-input', this.cardEvent);
+        root.addEventListener('kup-textfield-submit', this.cardEvent);
+        root.addEventListener('kup-timepicker-cleariconclick', this.cardEvent);
+        root.addEventListener('kup-timepicker-input', this.cardEvent);
+        root.addEventListener('kup-timepicker-itemclick', this.cardEvent);
+        root.addEventListener('kup-timepicker-textfieldsubmit', this.cardEvent);
+        root.addEventListener('kup-tree-dynamicmassexpansion', this.cardEvent);
+        root.addEventListener('kup-tree-buttonclick', this.cardEvent);
+        root.addEventListener('kup-tree-nodecollapse', this.cardEvent);
+        root.addEventListener('kup-tree-nodedblclick', this.cardEvent);
+        root.addEventListener('kup-tree-nodeexpand', this.cardEvent);
+        root.addEventListener('kup-tree-nodeselected', this.cardEvent);
     }
     /**
      * This method is invoked by the layout manager when the layout family is scalable.
@@ -505,7 +501,10 @@ export class KupCard {
         if (this.isMenu && this.menuVisible) {
             const dynCard: KupDynamicPositionElement = this
                 .rootElement as KupDynamicPositionElement;
-            if (dynCard.dynamicPosition && dynCard.dynamicPosition.detached) {
+            if (
+                dynCard.kupDynamicPosition &&
+                dynCard.kupDynamicPosition.detached
+            ) {
                 this.kupManager.dynamicPosition.run(dynCard);
             }
         }
@@ -529,13 +528,7 @@ export class KupCard {
         return (
             <Host style={style}>
                 {customStyle ? <style>{customStyle}</style> : null}
-                <div
-                    id="kup-component"
-                    class={`${this.isMenu ? 'mdc-menu mdc-menu-surface' : ''} ${
-                        this.menuVisible ? 'visible' : ''
-                    }`}
-                    onClick={() => this.onKupClick(null)}
-                >
+                <div id="kup-component" onClick={() => this.onKupClick(null)}>
                     {this.getLayout()}
                 </div>
             </Host>

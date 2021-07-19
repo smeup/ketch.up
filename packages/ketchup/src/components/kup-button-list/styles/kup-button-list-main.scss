@@ -3,7 +3,7 @@
   font-size: var(--kup-font-size);
 }
 
-.btn-container {
+.button-list--container {
   display: grid;
   grid-gap: 1em;
   grid-template-columns: var(--grid-columns);
@@ -12,9 +12,9 @@
   &.show-selection {
     .selected {
       --kup-primary-color: var(--kup-secondary-color);
-      --mdc-theme-primary: var(--kup-secondary-color);
+      --kup-primary-color-rgb: var(--kup-secondary-color-rgb);
       --kup-text-on-primary-color: var(--kup-text-on-secondary-color);
-      --mdc-theme-on-primary: var(--kup-text-on-secondary-color);
+      --kup-text-on-primary-color-rgb: var(--kup-text-on-secondary-color-rgb);
     }
   }
 }

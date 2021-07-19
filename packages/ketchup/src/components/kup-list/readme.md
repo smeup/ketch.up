@@ -24,13 +24,13 @@
 
 ## Events
 
-| Event           | Description | Type                                                                |
-| --------------- | ----------- | ------------------------------------------------------------------- |
-| `kupListBlur`   | Events.     | `CustomEvent<{ selected: ComponentListElement; el: EventTarget; }>` |
-| `kupListChange` |             | `CustomEvent<{ selected: ComponentListElement; el: EventTarget; }>` |
-| `kupListClick`  |             | `CustomEvent<{ selected: ComponentListElement; el: EventTarget; }>` |
-| `kupListFocus`  |             | `CustomEvent<{ selected: ComponentListElement; el: EventTarget; }>` |
-| `kupListInput`  |             | `CustomEvent<{ selected: ComponentListElement; el: EventTarget; }>` |
+| Event             | Description | Type                               |
+| ----------------- | ----------- | ---------------------------------- |
+| `kup-list-blur`   | Events.     | `CustomEvent<KupListEventPayload>` |
+| `kup-list-change` |             | `CustomEvent<KupListEventPayload>` |
+| `kup-list-click`  |             | `CustomEvent<KupListEventPayload>` |
+| `kup-list-focus`  |             | `CustomEvent<KupListEventPayload>` |
+| `kup-list-input`  |             | `CustomEvent<KupListEventPayload>` |
 
 
 ## Methods
@@ -58,6 +58,16 @@ Type: `Promise<void>`
 ### `resetFilter(newFilter: string) => Promise<void>`
 
 
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `setProps(props: GenericObject) => Promise<void>`
+
+Sets the props to the component.
 
 #### Returns
 

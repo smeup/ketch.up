@@ -1,3 +1,5 @@
+import { KupEventPayload } from "../../types/GenericTypes";
+
 /**
  * Props of the kup-date-picker component.
  * Used to export every prop in an object.
@@ -13,4 +15,8 @@ export enum SourceEvent {
     DATE = 'date',
     MONTH = 'month',
     YEAR = 'year',
+}
+
+export interface KupDatePickerEventPayload extends KupEventPayload {
+    value: any;
 }

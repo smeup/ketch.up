@@ -2,23 +2,34 @@
   <div>
     <div class="demo-wrapper">
       <p>
-        There are two other ways to render a button in addition to the default
-        styling. The attribute
-        <span class="code-word">flat</span>
-        will render a button without its background, only the text will be
-        visible. On the other hand, the attribute
-        <span class="code-word">outlined</span> will render an outlined button.
-        These attributes are mutually exclusive.
+        There are several other ways to render a button in addition to the
+        default styling, through the usage of the
+        <span class="code-word">styling</span> prop.<br />
+        When set to
+        <span class="code-word">flat</span> the button will be rendered without
+        its background, only the text will be visible.<br />
+        On the other hand, when
+        <span class="code-word">outlined</span>, the button will have an
+        outlined look.<br />
+        If you need a floating action button, commonly used for quick and
+        highlighted user actions, you can set
+        <span class="code-word">floating</span>.
+        <br />
+        <span class="code-word">icon</span> will render an icon button, even if
+        the <span class="code-word">label</span> prop was declared.
       </p>
       <div class="demo-container">
         <div class="kup-container">
           <kup-button styling="flat" label="Flat"></kup-button>
           <kup-button styling="outlined" label="Outlined"></kup-button>
+          <kup-button styling="floating" label="Floating"></kup-button>
         </div>
         <p class="centered">Flat sample markup</p>
         <code class="flat">{{ markupFlat }}</code>
         <p class="centered">Outlined sample markup</p>
         <code class="flat">{{ markupOutlined }}</code>
+        <p class="centered">Floating sample markup</p>
+        <code class="flat">{{ markupFloating }}</code>
       </div>
     </div>
 
@@ -115,6 +126,8 @@ export default {
         '<kup-button class="kup-full-width" label="Full width"></kup-button>',
       markupOutlined:
         '<kup-button styling="outlined" label="Outlined"></kup-button>',
+      markupFloating:
+        '<kup-button styling="floating" label="Floating"></kup-button>',
       markupRounded: '<kup-button class="shaped" label="Shaped"></kup-button>',
       markupIcon: '<kup-button icon="Favorite" label="Favorite"></kup-button>',
     };

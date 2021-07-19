@@ -13,11 +13,11 @@ export const FCheckbox: FunctionalComponent<FCheckboxProps> = (
     };
 
     const classObj: Record<string, boolean> = {
-        'mdc-checkbox': true,
-        'mdc-checkbox--checked':
+        checkbox: true,
+        'checkbox--checked':
             props.checked && !props.indeterminate ? true : false,
-        'mdc-checkbox--disabled': props.disabled ? true : false,
-        'mdc-checkbox--indeterminate': props.indeterminate ? true : false,
+        'checkbox--disabled': props.disabled ? true : false,
+        'checkbox--indeterminate': props.indeterminate ? true : false,
     };
 
     return (
@@ -30,35 +30,29 @@ export const FCheckbox: FunctionalComponent<FCheckboxProps> = (
             title={props.title}
         >
             <div
-                class={`mdc-form-field ${
-                    props.leadingLabel ? 'mdc-form-field--align-end' : ''
+                class={`form-field ${
+                    props.leadingLabel ? 'form-field--align-end' : ''
                 }`}
             >
                 <div class={classObj}>
                     <input
                         type="checkbox"
-                        class="mdc-checkbox__native-control"
+                        class="checkbox__native-control"
                         checked={props.checked}
                         disabled={props.disabled}
                         {...indeterminateAttr}
                         value={props.checked ? 'on' : 'off'}
                     />
-                    <div class="mdc-checkbox__background">
-                        <svg
-                            class="mdc-checkbox__checkmark"
-                            viewBox="0 0 24 24"
-                        >
+                    <div class="checkbox__background">
+                        <svg class="checkbox__checkmark" viewBox="0 0 24 24">
                             <path
-                                class="mdc-checkbox__checkmark-path"
+                                class="checkbox__checkmark-path"
                                 fill="none"
                                 d="M1.73,12.91 8.1,19.28 22.79,4.59"
                             />
                         </svg>
-                        <div class="mdc-checkbox__mixedmark"></div>
+                        <div class="checkbox__mixedmark"></div>
                     </div>
-                    {!props.disabled ? (
-                        <div class="mdc-checkbox__ripple"></div>
-                    ) : undefined}
                 </div>
                 {props.label ? <label>{props.label}</label> : undefined}
             </div>

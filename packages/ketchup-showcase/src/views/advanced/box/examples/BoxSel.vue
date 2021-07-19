@@ -1,7 +1,7 @@
 <template>
   <div>
     <h3>Dynamism</h3>
-    <kup-box :data.prop="basicData" @kupBoxClicked="onBoxClicked"></kup-box>
+    <kup-box :data.prop="basicData" @kup-box-click="onBoxClick"></kup-box>
 
     <p v-if="clickedRow">Selected row: {{ clickedRow }}</p>
     <p v-if="clickedColumn">Selected column: {{ clickedColumn }}</p>
@@ -12,7 +12,7 @@
     <kup-box
       :data.prop="basicData"
       :multiSelection.prop="true"
-      @kupBoxSelected="onBoxSelected"
+      @kup-box-selected="onBoxSelected"
     ></kup-box>
     <div v-if="selectedRows && selectedRows.length > 0">
       <p>Selected rows</p>
@@ -31,7 +31,7 @@
     <kup-box
       :data.prop="basicData"
       :selectBox.prop="2"
-      @kupAutoBoxSelect="onBoxAutoSelection"
+      @kup-box-autoselect="onBoxAutoSelection"
     ></kup-box>
 
     <hr />
@@ -64,7 +64,7 @@ export default {
   },
 
   methods: {
-    onBoxClicked({ detail }) {
+    onBoxClick({ detail }) {
       this.clickedRow = detail.row;
       this.clickedColumn = detail.column;
     },

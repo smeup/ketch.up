@@ -1,3 +1,5 @@
+import { KupEventPayload } from '../../types/GenericTypes';
+
 /**
  * Props of the kup-button component.
  * Used to export every prop in an object.
@@ -12,4 +14,10 @@ export enum KupButtonProps {
     styling = 'Defines the style of the button. Styles available: "flat", "outlined" and "raised" which is also the default.',
     toggable = 'When set to true, the icon button will be toggable on/off.',
     trailingIcon = 'When set, the icon will be shown after the text.',
+}
+/**
+ * Generic payload of a kup event.
+ */
+export interface KupButtonClickEventPayload extends KupEventPayload {
+    value: string;
 }

@@ -16,12 +16,12 @@ import {
     ChartType,
     ChartAspect,
     ChartOptions,
-    ChartClickedEvent,
     ChartAxis,
     ChartOfflineMode,
     ChartSerie,
     ChartTitle,
     KupChartProps,
+    KupChartClickEvent,
 } from './kup-chart-declarations';
 import {
     convertColumns,
@@ -33,10 +33,11 @@ import {
     KupManager,
     kupManagerInstance,
 } from '../../utils/kup-manager/kup-manager';
-import { identify } from '../../utils/utils';
+import { getProps, identify, setProps } from '../../utils/utils';
 import { getColumnByName } from '../../utils/cell-utils';
 import { GenericObject, KupComponent } from '../../types/GenericTypes';
 import { KupDebugCategory } from '../../utils/kup-debug/kup-debug-declarations';
+import { KupThemeColorValues } from '../../utils/kup-theme/kup-theme-declarations';
 
 declare const google: any;
 declare const $: any;
@@ -130,12 +131,12 @@ export class KupChart {
      * Triggered when a chart serie is clicked
      */
     @Event({
-        eventName: 'kupChartClicked',
+        eventName: 'kup-chart-click',
         composed: true,
         cancelable: false,
         bubbles: true,
     })
-    kupChartClicked: EventEmitter<ChartClickedEvent>;
+    kupChartClick: EventEmitter<KupChartClickEvent>;
 
     private chartContainer?: HTMLDivElement;
 
@@ -162,17 +163,15 @@ export class KupChart {
      */
     @Method()
     async getProps(descriptions?: boolean): Promise<GenericObject> {
-        let props: GenericObject = {};
-        if (descriptions) {
-            props = KupChartProps;
-        } else {
-            for (const key in KupChartProps) {
-                if (Object.prototype.hasOwnProperty.call(KupChartProps, key)) {
-                    props[key] = this[key];
-                }
-            }
-        }
-        return props;
+        return getProps(this, KupChartProps, descriptions);
+    }
+    /**
+     * Sets the props to the component.
+     * @param {GenericObject} props - Object containing props that will be set to the component.
+     */
+    @Method()
+    async setProps(props: GenericObject): Promise<void> {
+        setProps(this, KupChartProps, props);
     }
     /**
      * This method is used to trigger a new render of the component.
@@ -424,7 +423,10 @@ export class KupChart {
         const selectedItem = this.gChart.getSelection()[0];
 
         if (selectedItem) {
-            const event: ChartClickedEvent = {};
+            const event: KupChartClickEvent = {
+                comp: this,
+                id: this.rootElement.id,
+            };
 
             if (selectedItem.date) {
                 // calendar chart
@@ -481,8 +483,7 @@ export class KupChart {
                     event.colindex = 0;
                 }
             }
-
-            this.kupChartClicked.emit(event);
+            this.kupChartClick.emit(event);
         }
     }
 
@@ -585,7 +586,8 @@ export class KupChart {
         ) {
             colorArray.push(this.kupManager.theme.cssVars[key + index]);
         }
-        this.themeText = this.kupManager.theme.cssVars['--kup-text-color'];
+        this.themeText =
+            this.kupManager.theme.cssVars[KupThemeColorValues.TEXT];
 
         try {
             for (
@@ -618,6 +620,7 @@ export class KupChart {
     }
 
     componentDidLoad() {
+        this.kupManager.resize.observe(this.rootElement);
         if (!this.offlineMode && (!this.axis || !this.series)) {
             return;
         }
@@ -645,7 +648,6 @@ export class KupChart {
                 console.error(err);
             }
         }
-        this.kupManager.resize.observe(this.rootElement);
         this.kupManager.debug.logLoad(this, true);
     }
 

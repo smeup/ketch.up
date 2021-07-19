@@ -33,6 +33,8 @@ import {
 import { KupDebugCategory } from '../../utils/kup-debug/kup-debug-declarations';
 import { DialogElement } from '../../utils/kup-dialog/kup-dialog-declarations';
 import { KupLanguageGeneric } from '../../utils/kup-language/kup-language-declarations';
+import { KupThemeColorValues } from '../../utils/kup-theme/kup-theme-declarations';
+import { getProps, setProps } from '../../utils/utils';
 
 @Component({
     tag: 'kup-magic-box',
@@ -95,19 +97,15 @@ export class KupMagicBox {
      */
     @Method()
     async getProps(descriptions?: boolean): Promise<GenericObject> {
-        let props: GenericObject = {};
-        if (descriptions) {
-            props = KupMagicBoxProps;
-        } else {
-            for (const key in KupMagicBoxProps) {
-                if (
-                    Object.prototype.hasOwnProperty.call(KupMagicBoxProps, key)
-                ) {
-                    props[key] = this[key];
-                }
-            }
-        }
-        return props;
+        return getProps(this, KupMagicBoxProps, descriptions);
+    }
+    /**
+     * Sets the props to the component.
+     * @param {GenericObject} props - Object containing props that will be set to the component.
+     */
+    @Method()
+    async setProps(props: GenericObject): Promise<void> {
+        setProps(this, KupMagicBoxProps, props);
     }
     /**
      * This method is used to trigger a new render of the component.
@@ -313,9 +311,8 @@ export class KupMagicBox {
         this.rootElement.addEventListener('kup-drop', (e: CustomEvent) =>
             this.updateData(e)
         );
-        this.dragHandler = this.rootElement.shadowRoot.querySelector(
-            '#drag-handle'
-        );
+        this.dragHandler =
+            this.rootElement.shadowRoot.querySelector('#drag-handle');
         this.kupManager.dialog.register(
             this.rootElement as DialogElement,
             this.dragHandler
@@ -374,15 +371,15 @@ export class KupMagicBox {
                                 styling={FButtonStyling.FLAT}
                                 icon="delete"
                                 label="Reset"
-                                onKupButtonClick={() => {
+                                onkup-button-click={() => {
                                     this.data = null;
                                 }}
                             ></kup-button>
                             <kup-button
                                 id="close-dialog"
-                                customStyle=":host{--kup-primary-color: var(--kup-title-color);}"
+                                customStyle={`:host{${KupThemeColorValues.PRIMARY}: var(${KupThemeColorValues.TITLE});}`}
                                 icon="clear"
-                                onKupButtonClick={() => {
+                                onkup-button-click={() => {
                                     this.kupManager.hideMagicBox();
                                 }}
                             ></kup-button>

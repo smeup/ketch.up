@@ -16,7 +16,7 @@
       :columns.prop="firstSelection.columns"
       :data.prop="firstSelection.data"
       :selectedNode.prop="selectedNodes.first"
-      @kupTreeNodeSelected="hdlChangeSelected($event, 'first')"
+      @kup-tree-nodeselected="hdlChangeSelected($event, 'first')"
     />
 
     <h3>With initial selection on 3 item and handler for selection</h3>
@@ -25,7 +25,7 @@
       :columns.prop="complexSelection.columns"
       :data.prop="complexSelection.data"
       :selectedNode.prop="selectedNodes.complex"
-      @kupTreeNodeSelected="hdlChangeSelected($event, 'complex')"
+      @kup-tree-nodeselected="hdlChangeSelected($event, 'complex')"
     />
     <div class="example-container">
       <div

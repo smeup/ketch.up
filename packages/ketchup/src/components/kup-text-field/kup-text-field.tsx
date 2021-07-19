@@ -18,9 +18,17 @@ import {
 import { FTextField } from '../../f-components/f-text-field/f-text-field';
 import { FTextFieldMDC } from '../../f-components/f-text-field/f-text-field-mdc';
 import { FTextFieldProps } from '../../f-components/f-text-field/f-text-field-declarations';
-import { GenericObject, KupComponent } from '../../types/GenericTypes';
-import { KupTextFieldProps } from './kup-text-field-declarations';
+import {
+    GenericObject,
+    KupComponent,
+    KupEventPayload,
+} from '../../types/GenericTypes';
+import {
+    KupTextFieldEventPayload,
+    KupTextFieldProps,
+} from './kup-text-field-declarations';
 import { KupDebugCategory } from '../../utils/kup-debug/kup-debug-declarations';
+import { getProps, setProps } from '../../utils/utils';
 
 @Component({
     tag: 'kup-text-field',
@@ -177,109 +185,87 @@ export class KupTextField {
      * Triggered when the input element loses focus.
      */
     @Event({
-        eventName: 'kupTextFieldBlur',
+        eventName: 'kup-textfield-blur',
         composed: true,
         cancelable: false,
         bubbles: true,
     })
-    kupBlur: EventEmitter<{
-        id: any;
-        value: string;
-    }>;
+    kupBlur: EventEmitter<KupTextFieldEventPayload>;
     /**
      * Triggered when the input element changes.
      */
     @Event({
-        eventName: 'kupTextFieldChange',
+        eventName: 'kup-textfield-change',
         composed: true,
         cancelable: false,
         bubbles: true,
     })
-    kupChange: EventEmitter<{
-        id: any;
-        value: string;
-    }>;
+    kupChange: EventEmitter<KupTextFieldEventPayload>;
     /**
      * Triggered when the input element is clicked.
      */
     @Event({
-        eventName: 'kupTextFieldClick',
+        eventName: 'kup-textfield-click',
         composed: true,
         cancelable: false,
         bubbles: true,
     })
-    kupClick: EventEmitter<{
-        id: any;
-        value: string;
-    }>;
+    kupClick: EventEmitter<KupTextFieldEventPayload>;
     /**
      * Triggered when the input element gets focused.
      */
     @Event({
-        eventName: 'kupTextFieldFocus',
+        eventName: 'kup-textfield-focus',
         composed: true,
         cancelable: false,
         bubbles: true,
     })
-    kupFocus: EventEmitter<{
-        id: any;
-        value: string;
-    }>;
+    kupFocus: EventEmitter<KupTextFieldEventPayload>;
     /**
      * Triggered when the input element receives an input.
      */
     @Event({
-        eventName: 'kupTextFieldInput',
+        eventName: 'kup-textfield-input',
         composed: true,
         cancelable: false,
         bubbles: true,
     })
-    kupInput: EventEmitter<{
-        id: any;
-        value: string;
-    }>;
+    kupInput: EventEmitter<KupTextFieldEventPayload>;
     /**
      * Triggered when the text field's icon is clicked.
      */
     @Event({
-        eventName: 'kupTextFieldIconClick',
+        eventName: 'kup-textfield-iconclick',
         composed: true,
         cancelable: false,
         bubbles: true,
     })
-    kupIconClick: EventEmitter<{
-        id: any;
-        value: string;
-    }>;
+    kupIconClick: EventEmitter<KupTextFieldEventPayload>;
     /**
      * Triggered when the text field's clear icon is clicked.
      */
     @Event({
-        eventName: 'kupTextFieldClearIconClick',
+        eventName: 'kup-textfield-cleariconclick',
         composed: true,
         cancelable: false,
         bubbles: true,
     })
-    kupClearIconClick: EventEmitter<{
-        id: any;
-    }>;
+    kupClearIconClick: EventEmitter<KupEventPayload>;
     /**
      * Triggered when the Enter key is pressed.
      */
     @Event({
-        eventName: 'kupTextFieldSubmit',
+        eventName: 'kup-textfield-submit',
         composed: true,
         cancelable: false,
         bubbles: true,
     })
-    kupTextFieldSubmit: EventEmitter<{
-        id: any;
-        value: string;
-    }>;
+    kupTextFieldSubmit: EventEmitter<KupTextFieldEventPayload>;
 
     onKupBlur(event: FocusEvent & { target: HTMLInputElement }) {
         const { target } = event;
         this.kupBlur.emit({
+            comp: this,
             id: this.rootElement.id,
             value: target.value,
         });
@@ -289,6 +275,7 @@ export class KupTextField {
         const { target } = event;
         this.value = target.value;
         this.kupChange.emit({
+            comp: this,
             id: this.rootElement.id,
             value: target.value,
         });
@@ -297,6 +284,7 @@ export class KupTextField {
     onKupClick(event: MouseEvent & { target: HTMLInputElement }) {
         const { target } = event;
         this.kupClick.emit({
+            comp: this,
             id: this.rootElement.id,
             value: target.value,
         });
@@ -305,6 +293,7 @@ export class KupTextField {
     onKupFocus(event: FocusEvent & { target: HTMLInputElement }) {
         const { target } = event;
         this.kupFocus.emit({
+            comp: this,
             id: this.rootElement.id,
             value: target.value,
         });
@@ -313,6 +302,7 @@ export class KupTextField {
     onKupInput(event: UIEvent & { target: HTMLInputElement }) {
         const { target } = event;
         this.kupInput.emit({
+            comp: this,
             id: this.rootElement.id,
             value: target.value,
         });
@@ -321,6 +311,7 @@ export class KupTextField {
     onKupIconClick(event: MouseEvent & { target: HTMLInputElement }) {
         const { target } = event;
         this.kupIconClick.emit({
+            comp: this,
             id: this.rootElement.id,
             value: target.value,
         });
@@ -330,6 +321,7 @@ export class KupTextField {
         this.value = '';
         this.inputEl.value = '';
         this.kupClearIconClick.emit({
+            comp: this,
             id: this.rootElement.id,
         });
     }
@@ -338,6 +330,7 @@ export class KupTextField {
         if (event.key === 'Enter') {
             if (this.emitSubmitEventOnEnter == true) {
                 this.kupTextFieldSubmit.emit({
+                    comp: this,
                     id: this.rootElement.id,
                     value: this.inputEl.value,
                 });
@@ -356,19 +349,15 @@ export class KupTextField {
      */
     @Method()
     async getProps(descriptions?: boolean): Promise<GenericObject> {
-        let props: GenericObject = {};
-        if (descriptions) {
-            props = KupTextFieldProps;
-        } else {
-            for (const key in KupTextFieldProps) {
-                if (
-                    Object.prototype.hasOwnProperty.call(KupTextFieldProps, key)
-                ) {
-                    props[key] = this[key];
-                }
-            }
-        }
-        return props;
+        return getProps(this, KupTextFieldProps, descriptions);
+    }
+    /**
+     * Sets the props to the component.
+     * @param {GenericObject} props - Object containing props that will be set to the component.
+     */
+    @Method()
+    async setProps(props: GenericObject): Promise<void> {
+        setProps(this, KupTextFieldProps, props);
     }
     /**
      * Returns the component's internal value.
@@ -420,11 +409,8 @@ export class KupTextField {
         if (root) {
             const f: HTMLElement = root.querySelector('.f-text-field--wrapper');
             if (f) {
-                const inputEl:
-                    | HTMLInputElement
-                    | HTMLTextAreaElement = f.querySelector(
-                    '.mdc-text-field__input'
-                );
+                const inputEl: HTMLInputElement | HTMLTextAreaElement =
+                    f.querySelector('.mdc-text-field__input');
                 const icon: HTMLElement = f.querySelector('.action');
                 const clearIcon: HTMLElement = f.querySelector('.clear');
                 if (inputEl) {

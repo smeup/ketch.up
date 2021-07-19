@@ -15,10 +15,10 @@
 
 ## Events
 
-| Event            | Description | Type               |
-| ---------------- | ----------- | ------------------ |
-| `kupDrawerClose` |             | `CustomEvent<any>` |
-| `kupDrawerOpen`  |             | `CustomEvent<any>` |
+| Event            | Description | Type                           |
+| ---------------- | ----------- | ------------------------------ |
+| `kupDrawerClose` |             | `CustomEvent<KupEventPayload>` |
+| `kupDrawerOpen`  |             | `CustomEvent<KupEventPayload>` |
 
 
 ## Methods
@@ -56,6 +56,16 @@ Type: `Promise<void>`
 ### `refresh() => Promise<void>`
 
 This method is used to trigger a new render of the component.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `setProps(props: GenericObject) => Promise<void>`
+
+Sets the props to the component.
 
 #### Returns
 

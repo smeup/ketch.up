@@ -27,7 +27,12 @@ import {
 } from '../kup-list/kup-list-declarations';
 import { FTextField } from '../../f-components/f-text-field/f-text-field';
 import { FTextFieldMDC } from '../../f-components/f-text-field/f-text-field-mdc';
-import { KupComboboxProps } from './kup-combobox-declarations';
+import {
+    KupComboboxEventPayload,
+    KupComboboxProps,
+} from './kup-combobox-declarations';
+import { KupThemeIconValues } from '../../utils/kup-theme/kup-theme-declarations';
+import { getProps, setProps } from '../../utils/utils';
 
 @Component({
     tag: 'kup-combobox',
@@ -82,86 +87,68 @@ export class KupCombobox {
      */
 
     @Event({
-        eventName: 'kupComboboxBlur',
+        eventName: 'kup-combobox-blur',
         composed: true,
         cancelable: false,
         bubbles: true,
     })
-    kupBlur: EventEmitter<{
-        value: any;
-    }>;
+    kupBlur: EventEmitter<KupComboboxEventPayload>;
 
     @Event({
-        eventName: 'kupComboboxChange',
+        eventName: 'kup-combobox-change',
         composed: true,
         cancelable: false,
         bubbles: true,
     })
-    kupChange: EventEmitter<{
-        value: any;
-    }>;
+    kupChange: EventEmitter<KupComboboxEventPayload>;
 
     @Event({
-        eventName: 'kupComboboxClick',
+        eventName: 'kup-combobox-click',
         composed: true,
         cancelable: false,
         bubbles: true,
     })
-    kupClick: EventEmitter<{
-        id: string;
-        value: any;
-    }>;
+    kupClick: EventEmitter<KupComboboxEventPayload>;
 
     @Event({
-        eventName: 'kupComboboxFocus',
+        eventName: 'kup-combobox-focus',
         composed: true,
         cancelable: false,
         bubbles: true,
     })
-    kupFocus: EventEmitter<{
-        value: any;
-    }>;
+    kupFocus: EventEmitter<KupComboboxEventPayload>;
 
     @Event({
-        eventName: 'kupComboboxInput',
+        eventName: 'kup-combobox-input',
         composed: true,
         cancelable: false,
         bubbles: true,
     })
-    kupInput: EventEmitter<{
-        value: any;
-    }>;
+    kupInput: EventEmitter<KupComboboxEventPayload>;
 
     @Event({
-        eventName: 'kupComboboxIconClick',
+        eventName: 'kup-combobox-iconclick',
         composed: true,
         cancelable: false,
         bubbles: true,
     })
-    kupIconClick: EventEmitter<{
-        value: any;
-    }>;
+    kupIconClick: EventEmitter<KupComboboxEventPayload>;
 
     @Event({
-        eventName: 'kupComboboxItemClick',
+        eventName: 'kup-combobox-itemclick',
         composed: true,
         cancelable: false,
         bubbles: true,
     })
-    kupItemClick: EventEmitter<{
-        id: string;
-        value: any;
-    }>;
+    kupItemClick: EventEmitter<KupComboboxEventPayload>;
 
     @Event({
-        eventName: 'kupComboboxTextFieldSubmit',
+        eventName: 'kup-combobox-textfieldsubmit',
         composed: true,
         cancelable: false,
         bubbles: true,
     })
-    kupTextFieldSubmit: EventEmitter<{
-        value: any;
-    }>;
+    kupTextFieldSubmit: EventEmitter<KupComboboxEventPayload>;
 
     @Listen('keyup', { target: 'document' })
     listenKeyup(e: KeyboardEvent) {
@@ -202,6 +189,8 @@ export class KupCombobox {
     onKupBlur() {
         this.closeList();
         this.kupBlur.emit({
+            comp: this,
+            id: this.rootElement.id,
             value: this.value,
         });
     }
@@ -209,6 +198,8 @@ export class KupCombobox {
     onKupChange(e: UIEvent & { target: HTMLInputElement }) {
         this.consistencyCheck(null, e.target.value);
         this.kupChange.emit({
+            comp: this,
+            id: this.rootElement.id,
             value: this.value,
         });
     }
@@ -219,19 +210,15 @@ export class KupCombobox {
      */
     @Method()
     async getProps(descriptions?: boolean): Promise<GenericObject> {
-        let props: GenericObject = {};
-        if (descriptions) {
-            props = KupComboboxProps;
-        } else {
-            for (const key in KupComboboxProps) {
-                if (
-                    Object.prototype.hasOwnProperty.call(KupComboboxProps, key)
-                ) {
-                    props[key] = this[key];
-                }
-            }
-        }
-        return props;
+        return getProps(this, KupComboboxProps, descriptions);
+    }
+    /**
+     * Sets the props to the component.
+     * @param {GenericObject} props - Object containing props that will be set to the component.
+     */
+    @Method()
+    async setProps(props: GenericObject): Promise<void> {
+        setProps(this, KupComboboxProps, props);
     }
     /**
      * This method is used to trigger a new render of the component.
@@ -253,6 +240,7 @@ export class KupCombobox {
         }
 
         this.kupClick.emit({
+            comp: this,
             id: this.rootElement.id,
             value: target.value,
         });
@@ -261,6 +249,8 @@ export class KupCombobox {
     onKupFocus(e: UIEvent & { target: HTMLInputElement }) {
         const { target } = e;
         this.kupFocus.emit({
+            comp: this,
+            id: this.rootElement.id,
             value: target.value,
         });
     }
@@ -268,6 +258,8 @@ export class KupCombobox {
     onKupInput(e: UIEvent & { target: HTMLInputElement }) {
         this.consistencyCheck(null, e.target.value);
         this.kupInput.emit({
+            comp: this,
+            id: this.rootElement.id,
             value: this.value,
         });
     }
@@ -281,6 +273,8 @@ export class KupCombobox {
             this.openList();
         }
         this.kupIconClick.emit({
+            comp: this,
+            id: this.rootElement.id,
             value: target.value,
         });
     }
@@ -290,10 +284,13 @@ export class KupCombobox {
         this.closeList();
 
         this.kupChange.emit({
+            comp: this,
+            id: this.rootElement.id,
             value: this.value,
         });
 
         this.kupItemClick.emit({
+            comp: this,
             id: this.rootElement.id,
             value: this.value,
         });
@@ -341,7 +338,7 @@ export class KupCombobox {
                 {...this.data['kup-list']}
                 displayMode={this.displayMode}
                 is-menu
-                onKupListClick={(e) => this.onKupItemClick(e)}
+                onkup-list-click={(e) => this.onKupItemClick(e)}
                 ref={(el) => (this.listEl = el as any)}
             ></kup-list>
         );
@@ -442,7 +439,7 @@ export class KupCombobox {
                         disabled={this.disabled}
                         fullHeight={fullHeight}
                         fullWidth={fullWidth}
-                        icon="--kup-expanded-icon"
+                        icon={KupThemeIconValues.EXPANDED}
                         trailingIcon={true}
                         value={this.displayedValue}
                     />

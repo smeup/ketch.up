@@ -22,15 +22,15 @@ export default {
       demoComp: createComp(),
       demoEvents: [
         {
-          name: 'kupCheckboxChange',
+          name: 'kup-checkbox-change',
           type: 'change',
         },
         {
-          name: 'kupCheckboxFocus',
+          name: 'kup-checkbox-focus',
           type: 'focus',
         },
         {
-          name: 'kupCheckboxBlur',
+          name: 'kup-checkbox-blur',
           type: 'blur',
         },
       ],

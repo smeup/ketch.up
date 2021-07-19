@@ -230,7 +230,7 @@
       }
     }
 
-    &.kup-full-height {
+    &.#{$kup-class-full-height} {
       height: 100%;
       .mdc-text-field {
         height: 100%;
@@ -244,7 +244,7 @@
       }
     }
 
-    &.kup-full-width {
+    &.#{$kup-class-full-width} {
       width: 100%;
     }
 

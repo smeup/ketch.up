@@ -9,9 +9,9 @@ export const FSwitch: FunctionalComponent<FSwitchProps> = (
     props: FSwitchProps
 ) => {
     const classObj: Record<string, boolean> = {
-        'mdc-switch': true,
-        'mdc-switch--checked': props.checked,
-        'mdc-switch--disabled': props.disabled,
+        switch: true,
+        'switch--checked': props.checked,
+        'switch--disabled': props.disabled,
     };
 
     return (
@@ -24,17 +24,21 @@ export const FSwitch: FunctionalComponent<FSwitchProps> = (
             title={props.title}
         >
             <div
-                class={`mdc-form-field ${
-                    props.leadingLabel ? 'mdc-form-field--align-end' : ''
+                class={`form-field ${
+                    props.leadingLabel ? 'form-field--align-end' : ''
                 }`}
             >
-                <div class={classObj}>
-                    <div class="mdc-switch__track"></div>
-                    <div class="mdc-switch__thumb-underlay">
-                        <div class="mdc-switch__thumb">
+                <div
+                    class={`switch ${props.checked ? 'switch--checked' : ''} ${
+                        props.disabled ? 'switch--disabled' : ''
+                    }`}
+                >
+                    <div class="switch__track"></div>
+                    <div class="switch__thumb-underlay">
+                        <div class="switch__thumb">
                             <input
                                 type="checkbox"
-                                class="mdc-switch__native-control"
+                                class="switch__native-control"
                                 role="switch"
                                 checked={props.checked}
                                 disabled={props.disabled}

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Combobox</title>
+
+        <script type="module" src="/build/ketchup.esm.js"></script>
+        <script nomodule src="/build/ketchup.js"></script>
+
+        <link
+            href="https://cdn.materialdesignicons.com/4.5.95/css/materialdesignicons.min.css"
+            rel="stylesheet"
+            type="text/css"
+        />
+
+        <link
+            href="https://fonts.googleapis.com/css?family=Lato"
+            rel="stylesheet"
+        />
+
+        <script
+            type="text/javascript"
+            src="https://www.gstatic.com/charts/loader.js"
+        ></script>
+
+        <style>
+            html {
+                background-color: var(--kup-background-color);
+                color: var(--kup-text-color);
+                font-family: var(--kup-font-family);
+                font-size: var(--kup-font-size);
+                padding: 1rem;
+            }
+        </style>
+    </head>
+    <body>
+        <h4>Material Combobox (widget)</h4>
+        <kup-combobox
+            is-filterable="false"
+            field-id="pluto1"
+            is-select="true"
+        ></kup-combobox>
+        <kup-combobox
+            is-filterable="false"
+            field-id="pluto2"
+            is-select="true"
+            display-mode="both"
+            select-mode="code"
+        >
+        </kup-combobox>
+        <script>
+            let selectBox1 = document.getElementsByTagName('kup-combobox')[0];
+            let itemsForListBox = [
+                {
+                    text: 'Text 1',
+                    secondaryText: 'Secondary text 1',
+                    value: 'txt1',
+                    icon: '3d_rotation',
+                },
+                {
+                    text: 'Text 2',
+                    value: 'txt2',
+                    icon: 'ac_unit',
+                },
+                {
+                    text: 'Text 3',
+                    value: 'txt3',
+                    icon: 'accessibility',
+                },
+                {
+                    text: null,
+                    value: null,
+                    isSeparator: true,
+                },
+                {
+                    text: 'Text 4',
+                    value: 'txt4',
+                    icon: 'account_box',
+                },
+                {
+                    text: 'Text 5',
+                    value: 'txt5',
+                    /*selected: true,*/
+                    /*icon: 'add_alert'*/
+                },
+            ];
+            let textfieldData = {
+                trailingIcon: true,
+                icon: 'arrow_drop_down',
+            };
+            let listData = {
+                data: [...itemsForListBox],
+                selectable: true,
+            };
+            selectBox1.data = {
+                'kup-text-field': { ...textfieldData },
+                'kup-list': JSON.parse(JSON.stringify(listData)),
+            };
+            selectBox1.initialValue = 'Text 5';
+            //Object.getOwnPropertyNames(String.prototype).filter(item => typeof String.prototype[item] === 'function')
+
+            let selectBox2 = document.getElementsByTagName('kup-combobox')[1];
+            //selectBox2.textfieldData = {trailingIcon: true, icon: "arrow_drop_down",};
+            //selectBox2.listData = {data: [...itemsForListBox], selectable: true,};
+            selectBox2.data = {
+                'text-field': { ...textfieldData },
+                'kup-list': JSON.parse(JSON.stringify(listData)),
+            };
+            selectBox2.initialValue = 'Text 4';
+        </script>
+    </body>
+</html>

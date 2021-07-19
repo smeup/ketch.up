@@ -177,12 +177,14 @@ export default {
       ],
       tabbarData: [
         {
+          value: 'Tab1',
           text: 'Tab 1',
           icon: '',
           active: true,
         },
         {
-          text: 'Tab 1',
+          value: 'Tab2',
+          text: 'Tab 2',
           icon: '',
           active: false,
         },

@@ -102,8 +102,8 @@ describe('renders actions', () => {
         const actions = await firstCell.findAll('.row-action');
         expect(actions).toHaveLength(3);
 
-        const kupRowActionClicked = await page.spyOnEvent(
-            'kupRowActionClicked'
+        const kupRowActionClick = await page.spyOnEvent(
+            'kup-datatable-rowactionclick'
         );
 
         // testing default action
@@ -111,9 +111,9 @@ describe('renders actions', () => {
 
         await page.waitForChanges();
 
-        expect(kupRowActionClicked).toHaveLength(1);
+        expect(kupRowActionClick).toHaveLength(1);
 
-        const detail = kupRowActionClicked.events[0].detail;
+        const detail = kupRowActionClick.events[0].detail;
 
         expect(detail.type).toBe('default');
         expect(detail.action).toEqual({
@@ -127,9 +127,9 @@ describe('renders actions', () => {
 
         await page.waitForChanges();
 
-        expect(kupRowActionClicked).toHaveLength(2);
+        expect(kupRowActionClick).toHaveLength(2);
 
-        const detail2 = kupRowActionClicked.events[1].detail;
+        const detail2 = kupRowActionClick.events[1].detail;
 
         expect(detail2.type).toBe('expander');
     });

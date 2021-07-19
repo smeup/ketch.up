@@ -3,15 +3,16 @@ import type { KupCard } from '../kup-card';
 import type { GenericObject } from '../../../types/GenericTypes';
 import { FImage } from '../../../f-components/f-image/f-image';
 import { compList } from '../kup-card-helper';
-import { ComponentTabBarElement } from '../../kup-tab-bar/kup-tab-bar-declarations';
+import { KupTabBarData } from '../../kup-tab-bar/kup-tab-bar-declarations';
 import {
     KupLanguageColumn,
     KupLanguageGeneric,
-    KupLanguageGrouping,
 } from '../../../utils/kup-language/kup-language-declarations';
 import { FChipType } from '../../../f-components/f-chip/f-chip-declarations';
 import { KupCardCSSClasses, KupCardIds } from '../kup-card-declarations';
 import { KupColumnMenuIds } from '../../../utils/kup-column-menu/kup-column-menu-declarations';
+import { KupThemeColorValues } from '../../../utils/kup-theme/kup-theme-declarations';
+
 /**
  * 1st standard card layout, inspired by Material Design.
  * @param {KupCard} component - Card component.
@@ -288,10 +289,10 @@ export function create5(component: KupCard): VNode {
     let CSSVariables: GenericObject = {
         [`--color-0`]: colorArray[colorIndex]
             ? colorArray[colorIndex]
-            : 'var(--kup-primary-color)',
+            : `var(${KupThemeColorValues.PRIMARY})`,
         [`--color-1`]: colorArray[++colorIndex]
             ? colorArray[colorIndex]
-            : 'rgba(var(--kup-text-color-rgb),0.1)',
+            : `rgba(var(${KupThemeColorValues.PRIMARY}-rgb),0.1)`,
     };
     return (
         <div
@@ -396,7 +397,7 @@ export function create6(component: KupCard): VNode {
     let CSSVariables: GenericObject = {
         ['--color-0']: colorArray[0]
             ? colorArray[0]
-            : 'var(--kup-primary-color)',
+            : `var(${KupThemeColorValues.PRIMARY})`,
         ['--dyn-color-0']: 'white',
     };
     return (
@@ -452,7 +453,7 @@ export function create7(component: KupCard): VNode {
     let CSSVariables: GenericObject = {
         [`--color-0`]: colorArray[0]
             ? colorArray[0]
-            : 'var(--kup-primary-color)',
+            : `var(${KupThemeColorValues.PRIMARY})`,
     };
     return (
         <div
@@ -515,7 +516,7 @@ export function create8(component: KupCard): VNode {
     let CSSVariables: GenericObject = {
         [`--color-0`]: colorArray[0]
             ? colorArray[0]
-            : 'var(--kup-primary-color)',
+            : `var(${KupThemeColorValues.PRIMARY})`,
     };
     return (
         <div
@@ -585,7 +586,7 @@ export function create9(component: KupCard): VNode {
     let CSSVariables: GenericObject = {
         [`--color-0`]: colorArray[0]
             ? colorArray[0]
-            : 'var(--kup-primary-color)',
+            : `var(${KupThemeColorValues.PRIMARY})`,
     };
     return (
         <div
@@ -605,7 +606,7 @@ export function create9(component: KupCard): VNode {
                                 color={
                                     colorArray[0]
                                         ? colorArray[0]
-                                        : 'var(--kup-primary-color)'
+                                        : `var(${KupThemeColorValues.PRIMARY})`
                                 }
                                 id="image1"
                                 {...imageArray[0]}
@@ -667,7 +668,7 @@ export function create10(component: KupCard): VNode {
     let CSSVariables: GenericObject = {
         [`--color-0`]: colorArray[0]
             ? colorArray[0]
-            : 'var(--kup-primary-color)',
+            : `var(${KupThemeColorValues.PRIMARY})`,
     };
     return (
         <div
@@ -692,7 +693,7 @@ export function create10(component: KupCard): VNode {
                                 color={
                                     colorArray[0]
                                         ? colorArray[0]
-                                        : 'var(--kup-primary-color)'
+                                        : `var(${KupThemeColorValues.PRIMARY})`
                                 }
                                 id="image1"
                                 {...imageArray[0]}
@@ -749,7 +750,7 @@ export function create11(component: KupCard): VNode {
     let CSSVariables: GenericObject = {
         [`--color-0`]: colorArray[0]
             ? colorArray[0]
-            : 'var(--kup-primary-color)',
+            : `var(${KupThemeColorValues.PRIMARY})`,
     };
     return (
         <div
@@ -781,7 +782,7 @@ export function create11(component: KupCard): VNode {
                                 color={
                                     colorArray[0]
                                         ? colorArray[0]
-                                        : 'var(--kup-primary-color)'
+                                        : `var(${KupThemeColorValues.PRIMARY})`
                                 }
                                 id="image1"
                                 {...imageArray[0]}
@@ -837,13 +838,44 @@ export function create12(component: KupCard): VNode {
     const timepickerArray: GenericObject[] = component.data['timepicker']
         ? component.data['timepicker']
         : [];
+    // Setting up buttons.
+    const buttonsIds: string[] = [];
+    for (let index = 0; index < buttonArray.length; index++) {
+        const button: GenericObject = buttonArray[index];
+        if (button['id']) {
+            buttonsIds.push(button['id']);
+        }
+    }
     return (
         <div class={`standard-layout-${component.layoutNumber} `}>
-            {buttonArray.length > 0 ? (
+            {buttonsIds.includes(KupColumnMenuIds.BUTTON_REMOVE) ||
+            buttonsIds.includes(KupColumnMenuIds.BUTTON_GROUP) ||
+            buttonsIds.includes(KupColumnMenuIds.BUTTON_ADD_COLUMNS) ? (
                 <div class="section-1">
-                    {buttonArray.length > 0
-                        ? compList(buttonArray, 'button')
-                        : null}
+                    {buttonsIds.includes(KupColumnMenuIds.BUTTON_REMOVE) ? (
+                        <kup-button
+                            {...buttonArray.find(
+                                (x) => x.id === KupColumnMenuIds.BUTTON_REMOVE
+                            )}
+                        />
+                    ) : null}
+                    {buttonsIds.includes(KupColumnMenuIds.BUTTON_GROUP) ? (
+                        <kup-button
+                            {...buttonArray.find(
+                                (x) => x.id === KupColumnMenuIds.BUTTON_GROUP
+                            )}
+                        />
+                    ) : null}
+                    {buttonsIds.includes(
+                        KupColumnMenuIds.BUTTON_ADD_COLUMNS
+                    ) ? (
+                        <kup-button
+                            {...buttonArray.find(
+                                (x) =>
+                                    x.id === KupColumnMenuIds.BUTTON_ADD_COLUMNS
+                            )}
+                        />
+                    ) : null}
                 </div>
             ) : null}
             <div
@@ -967,7 +999,7 @@ export function create14(component: KupCard): VNode {
     let visibleView: number = 1;
     if (tabbarArray[0] && tabbarArray[0].data) {
         for (let index = 0; index < tabbarArray[0].data.length; index++) {
-            const tab: ComponentTabBarElement = tabbarArray[0].data[index];
+            const tab: KupTabBarData = tabbarArray[0].data[index];
             tabsValues.push(tab.value);
             if (tab.active) {
                 visibleView = index + 1;
@@ -1135,17 +1167,6 @@ export function create14(component: KupCard): VNode {
                                         (x) =>
                                             x.id ===
                                             KupColumnMenuIds.BUTTON_REMOVE
-                                    )}
-                                />
-                            ) : null}
-                            {buttonsIds.includes(
-                                KupColumnMenuIds.BUTTON_DESCRIPTION
-                            ) ? (
-                                <kup-button
-                                    {...buttonArray.find(
-                                        (x) =>
-                                            x.id ===
-                                            KupColumnMenuIds.BUTTON_DESCRIPTION
                                     )}
                                 />
                             ) : null}

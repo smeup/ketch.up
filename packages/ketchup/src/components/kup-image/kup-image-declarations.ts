@@ -1,3 +1,5 @@
+import { KupEventPayload } from "../../types/GenericTypes";
+
 /**
  * Props of the kup-image component.
  * Used to export every prop in an object.
@@ -12,4 +14,8 @@ export enum KupImageProps {
     resource = 'The resource used to fetch the image.',
     sizeX = 'The width of the icon, defaults to 100%. Accepts any valid CSS format (px, %, vh, etc.).',
     sizeY = 'The height of the icon, defaults to 100%. Accepts any valid CSS format (px, %, vh, etc.).',
+}
+
+export interface KupImageClickEventPayload extends KupEventPayload {
+    el: EventTarget;
 }

@@ -22,23 +22,23 @@ export default {
       demoComp: createComp(),
       demoEvents: [
         {
-          name: 'kupDropdownButtonClick',
+          name: 'kup-dropdownbutton-click',
           type: 'click',
         },
         {
-          name: 'kupDropdownButtonFocus',
+          name: 'kup-dropdownbutton-focus',
           type: 'focus',
         },
         {
-          name: 'kupDropdownButtonBlur',
+          name: 'kup-dropdownbutton-blur',
           type: 'blur',
         },
         {
-          name: 'kupDropdownSelectionChange',
+          name: 'kup-dropdownbutton-change',
           type: 'change',
         },
         {
-          name: 'kupDropdownSelectionItemClick',
+          name: 'kup-dropdownbutton-itemclick',
           type: 'click',
         },
       ],
@@ -73,6 +73,14 @@ export default {
           type: 'string',
           default: 'description',
           try: 'field',
+        },
+        {
+          prop: 'dropdownOnly',
+          description:
+            'Default value is false. When set to true, the arrow dropdown button is the only button displayed.',
+          type: 'boolean',
+          default: 'false',
+          try: 'switch',
         },
         {
           prop: 'icon',
@@ -127,6 +135,11 @@ export default {
           class: 'kup-danger',
           description:
             'The component will be rendered using the danger color of the app.',
+        },
+        {
+          class: 'kup-full-width',
+          description:
+            'The button will fill all the available horizontal space.',
         },
         {
           class: 'kup-info',

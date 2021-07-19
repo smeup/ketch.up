@@ -29,7 +29,7 @@ export class KupImageButton {
     @State() selectedImages: any = [];
 
     @Event({
-        eventName: 'kupImageButtonSelected',
+        eventName: 'kup-imagebutton-selected',
         composed: true,
         cancelable: true,
         bubbles: true,

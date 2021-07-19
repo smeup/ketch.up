@@ -23,11 +23,11 @@ export default {
       demoComp: createComp(),
       demoEvents: [
         {
-          name: 'kupCardClick',
+          name: 'kup-card-click',
           type: 'click',
         },
         {
-          name: 'kupCardEvent',
+          name: 'kup-card-event',
           type: 'custom',
         },
       ],

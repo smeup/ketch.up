@@ -1,6 +1,6 @@
 {
   "name": "ketchup-showcase",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "keywords": [
     "Sme.UP",
     "KetchUP showcase",
@@ -29,7 +29,7 @@
     "@vaadin/vaadin-upload": "^4.2.2",
     "caniuse-lite": "^1.0.30001239",
     "element-ui": "^2.4.8",
-    "ketchup": "^1.0.14-SNAPSHOT",
+    "ketchup": "^2.0.1-SNAPSHOT",
     "material-design-icons-iconfont": "^4.0.5",
     "style-loader": "^0.23.1",
     "stylus": "^0.54.5",

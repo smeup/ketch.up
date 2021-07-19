@@ -10,32 +10,32 @@
     ></h3>
     <div id="layout1">
       <kup-tooltip
-        @kupTooltipLoadData="onLoadData($event, 1)"
-        @kupTooltipLoadDetail="loadBornToDie"
-        @kupActionCommandClicked="actionCommandClicked"
+        @kup-tooltip-loaddata="onLoadData($event, 1)"
+        @kup-tooltip-loaddetail="loadBornToDie"
+        @kup-tooltip-actioncommandclicked="actionCommandClicked"
       >
         <img :src="images.bornToDie" width="64" height="64" />
       </kup-tooltip>
 
       <kup-tooltip
-        @kupTooltipLoadData="onLoadData($event, 2)"
-        @kupTooltipLoadDetail="loadUltraviolence"
-        @kupActionCommandClicked="actionCommandClicked"
+        @kup-tooltip-loaddata="onLoadData($event, 2)"
+        @kup-tooltip-loaddetail="loadUltraviolence"
+        @kup-tooltip-actioncommandclicked="actionCommandClicked"
       >
         <img :src="images.ultra" width="64" height="64" />
       </kup-tooltip>
 
       <kup-tooltip
-        @kupTooltipLoadData="onLoadData($event, 3)"
-        @kupTooltipLoadDetail="loadHoneymoon"
-        @kupActionCommandClicked="actionCommandClicked"
+        @kup-tooltip-loaddata="onLoadData($event, 3)"
+        @kup-tooltip-loaddetail="loadHoneymoon"
+        @kup-tooltip-actioncommandclicked="actionCommandClicked"
       >
         <img :src="images.honey" width="64" height="64" />
       </kup-tooltip>
 
       <kup-tooltip
-        @kupTooltipLoadData="onLoadData($event, 4)"
-        @kupTooltipLoadDetail="loadLust"
+        @kup-tooltip-loaddata="onLoadData($event, 4)"
+        @kup-tooltip-loaddetail="loadLust"
       >
         <img :src="images.lust" width="64" height="64" />
       </kup-tooltip>
@@ -45,36 +45,36 @@
     <div id="layout2">
       <kup-tooltip
         layout="2"
-        @kupTooltipLoadData="onLoadData($event, 1)"
-        @kupTooltipLoadDetail="loadBornToDie"
-        @kupActionCommandClicked="actionCommandClicked"
+        @kup-tooltip-loaddata="onLoadData($event, 1)"
+        @kup-tooltip-loaddetail="loadBornToDie"
+        @kup-tooltip-actioncommandclicked="actionCommandClicked"
       >
         <img :src="images.bornToDie" width="64" height="64" />
       </kup-tooltip>
 
       <kup-tooltip
         layout="2"
-        @kupTooltipLoadData="onLoadData($event, 2)"
-        @kupTooltipLoadDetail="loadUltraviolence"
-        @kupActionCommandClicked="actionCommandClicked"
+        @kup-tooltip-loaddata="onLoadData($event, 2)"
+        @kup-tooltip-loaddetail="loadUltraviolence"
+        @kup-tooltip-actioncommandclicked="actionCommandClicked"
       >
         <img :src="images.ultra" width="64" height="64" />
       </kup-tooltip>
 
       <kup-tooltip
         layout="2"
-        @kupTooltipLoadData="onLoadData($event, 3)"
-        @kupTooltipLoadDetail="loadHoneymoon"
-        @kupActionCommandClicked="actionCommandClicked"
+        @kup-tooltip-loaddata="onLoadData($event, 3)"
+        @kup-tooltip-loaddetail="loadHoneymoon"
+        @kup-tooltip-actioncommandclicked="actionCommandClicked"
       >
         <img :src="images.honey" width="64" height="64" />
       </kup-tooltip>
 
       <kup-tooltip
         layout="2"
-        @kupTooltipLoadData="onLoadData($event, 4)"
-        @kupTooltipLoadDetail="loadLust"
-        @kupActionCommandClicked="actionCommandClicked"
+        @kup-tooltip-loaddata="onLoadData($event, 4)"
+        @kup-tooltip-loaddetail="loadLust"
+        @kup-tooltip-actioncommandclicked="actionCommandClicked"
       >
         <img :src="images.lust" width="64" height="64" />
       </kup-tooltip>
@@ -84,36 +84,36 @@
     <div id="layout3">
       <kup-tooltip
         layout="3"
-        @kupTooltipLoadData="onLoadData($event, 1)"
-        @kupTooltipLoadDetail="loadBornToDie"
-        @kupActionCommandClicked="actionCommandClicked"
+        @kup-tooltip-loaddata="onLoadData($event, 1)"
+        @kup-tooltip-loaddetail="loadBornToDie"
+        @kup-tooltip-actioncommandclicked="actionCommandClicked"
       >
         <img :src="images.bornToDie" width="64" height="64" />
       </kup-tooltip>
 
       <kup-tooltip
         layout="3"
-        @kupTooltipLoadData="onLoadData($event, 2)"
-        @kupTooltipLoadDetail="loadUltraviolence"
-        @kupActionCommandClicked="actionCommandClicked"
+        @kup-tooltip-loaddata="onLoadData($event, 2)"
+        @kup-tooltip-loaddetail="loadUltraviolence"
+        @kup-tooltip-actioncommandclicked="actionCommandClicked"
       >
         <img :src="images.ultra" width="64" height="64" />
       </kup-tooltip>
 
       <kup-tooltip
         layout="3"
-        @kupTooltipLoadData="onLoadData($event, 3)"
-        @kupTooltipLoadDetail="loadHoneymoon"
-        @kupActionCommandClicked="actionCommandClicked"
+        @kup-tooltip-loaddata="onLoadData($event, 3)"
+        @kup-tooltip-loaddetail="loadHoneymoon"
+        @kup-tooltip-actioncommandclicked="actionCommandClicked"
       >
         <img :src="images.honey" width="64" height="64" />
       </kup-tooltip>
 
       <kup-tooltip
         layout="3"
-        @kupTooltipLoadData="onLoadData($event, 4)"
-        @kupTooltipLoadDetail="loadLust"
-        @kupActionCommandClicked="actionCommandClicked"
+        @kup-tooltip-loaddata="onLoadData($event, 4)"
+        @kup-tooltip-loaddetail="loadLust"
+        @kup-tooltip-actioncommandclicked="actionCommandClicked"
       >
         <img :src="images.lust" width="64" height="64" />
       </kup-tooltip>
@@ -123,8 +123,8 @@
       <kup-tooltip
         v-for="index in 10000"
         :key="index"
-        @kupTooltipLoadData="onLoadData($event, 1)"
-        @kupTooltipLoadDetail="loadBornToDie"
+        @kup-tooltip-loaddata="onLoadData($event, 1)"
+        @kup-tooltip-loaddetail="loadBornToDie"
       >
         <p>{{ index }}</p>
       </kup-tooltip>

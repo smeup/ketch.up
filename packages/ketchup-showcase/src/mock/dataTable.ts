@@ -84248,12 +84248,12 @@ export const graphicCellsDataTable = {
         },
         MSGTXT: {
           obj: {
-            k: 'D.1',
+            k: 'D.2',
             p: '',
             t: '',
           },
           options: false,
-          value: 'D.1',
+          value: 'D.2',
         },
         A_0017: {
           data: {

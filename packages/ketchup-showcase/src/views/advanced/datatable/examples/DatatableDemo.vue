@@ -23,8 +23,56 @@ export default {
       demoComp: createComp(),
       demoEvents: [
         {
-          name: 'kupDataTableDblClick',
+          name: 'kup-datatable-resetselectedrows',
+          type: 'CustomEvent',
+        },
+        {
+          name: 'kup-datatable-autorowselect',
+          type: 'CustomEvent',
+        },
+        {
+          name: 'kup-datatable-rowselected',
+          type: 'CustomEvent',
+        },
+        {
+          name: 'kup-datatable-cellupdate',
+          type: 'CustomEvent',
+        },
+        {
+          name: 'kup-datatable-click',
+          type: 'click',
+        },
+        {
+          name: 'kup-datatable-contextmenu',
+          type: 'click',
+        },
+        {
+          name: 'kup-datatable-dblclick',
           type: 'dblclick',
+        },
+        {
+          name: 'kup-datatable-columnmenu',
+          type: 'CustomEvent',
+        },
+        {
+          name: 'kup-datatable-optionclick',
+          type: 'click',
+        },
+        {
+          name: 'kup-datatable-rowactionclick',
+          type: 'click',
+        },
+        {
+          name: 'kup-datatable-loadmoreclick',
+          type: 'click',
+        },
+        {
+          name: 'kup-datatable-cellbuttonclick',
+          type: 'click',
+        },
+        {
+          name: 'kup-datatable-textfieldinput',
+          type: 'input',
         },
       ],
       demoProps: [

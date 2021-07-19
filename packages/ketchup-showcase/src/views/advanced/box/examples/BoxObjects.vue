@@ -5,7 +5,7 @@
     <kup-box
       :data.prop="btnData"
       :layout.prop="btnLayout"
-      @kupBoxClicked="onBoxClicked"
+      @kup-box-click="onBoxClick"
       data-code="small"
     ></kup-box>
     <code ref="small" />
@@ -15,7 +15,7 @@
     <kup-box
       :data.prop="largeBtnData"
       :layout.prop="btnLayout"
-      @kupBoxClicked="onBoxClicked"
+      @kup-box-click="onBoxClick"
       :columns.prop="3"
       data-code="large"
     ></kup-box>
@@ -139,7 +139,7 @@ export default {
   },
 
   methods: {
-    onBoxClicked(e) {
+    onBoxClick(e) {
       const cell = JSON.stringify(e.detail.row.cells[e.detail.column]),
         row = JSON.stringify(e.detail.row),
         column = JSON.stringify(e.detail.column);

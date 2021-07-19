@@ -1,7 +1,8 @@
 /*-------------------------------------------------*/
 /*        C o m p o n e n t   C l a s s e s        */
 /*-------------------------------------------------*/
-:host(.kup-left-aligned) {
+
+:host(.#{$kup-class-left-aligned}) {
   .box-section {
     text-align: left;
 
@@ -16,7 +17,7 @@
   }
 }
 
-:host(.kup-right-aligned) {
+:host(.#{$kup-class-right-aligned}) {
   .box-section {
     text-align: right;
 
@@ -31,49 +32,49 @@
   }
 }
 
-:host(.kup-top-aligned) {
+:host(.#{$kup-class-top-aligned}) {
   #box-container .box-wrapper .box .box-section .column {
     justify-content: flex-start;
   }
 }
 
-:host(.kup-bottom-aligned) {
+:host(.#{$kup-class-bottom-aligned}) {
   #box-container .box-wrapper .box .box-section .column {
     justify-content: flex-end;
   }
 }
 
-:host(:not(.kup-borderless)) {
+:host(:not(.#{$kup-class-borderless})) {
   .box {
     border: 1px solid var(--kup-border-color);
   }
 }
 
-:host(.kup-flat-on-hover) {
+:host(.#{$kup-class-flat-on-hover}) {
   #box-container .box-wrapper .box:hover {
     box-shadow: none;
   }
 }
 
-:host(.kup-shaped) {
+:host(.#{$kup-class-shaped}) {
   .box {
     border-radius: 10px;
   }
 }
 
-:host(.kup-round) {
+:host(.#{$kup-class-round}) {
   .box {
     border-radius: 25px;
   }
 }
 
-:host(.kup-dashed-sections) {
+:host(.#{$kup-class-dashed-sections}) {
   .box-section {
     border: 2px dashed var(--kup-text-color);
   }
 }
 
-:host(:not(.kup-paddingless)) {
+:host(:not(.#{$kup-class-paddingless})) {
   #box-container {
     .box {
       padding: 3px;
@@ -90,9 +91,11 @@
     }
   }
 }
+
 /*-------------------------------------------------*/
 /*             J S O N   C l a s s e s             */
 /*-------------------------------------------------*/
+
 :host {
   .box-section.left-aligned {
     text-align: left;

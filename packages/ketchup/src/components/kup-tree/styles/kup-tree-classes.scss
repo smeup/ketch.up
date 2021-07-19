@@ -1,21 +1,21 @@
 /*-------------------------------------------------*/
 /*        C o m p o n e n t   C l a s s e s        */
 /*-------------------------------------------------*/
-:host(.kup-full-width) {
+:host(.#{$kup-class-full-width}) {
   min-width: 100%;
   table.kup-tree {
     min-width: 100%;
   }
 }
 
-:host(.kup-layout-fixed) {
+:host(.#{$kup-class-layout-fixed}) {
   #kup-component table {
     table-layout: fixed;
     width: 100%;
   }
 }
 
-:host(.kup-shaped) {
+:host(.#{$kup-class-shaped}) {
   td.mdc-ripple-surface {
     border-radius: 0 66px 66px 0;
   }

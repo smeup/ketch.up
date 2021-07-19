@@ -97,7 +97,7 @@ export default {
       loadMoreData: {
         data: defaultDataTable,
         showLoadMore: true,
-        onKupLoadMoreClicked: (e) => {
+        onKupLoadMoreClick: (e) => {
           this.loadQuantity = e.detail.loadItems.toString();
         },
       },

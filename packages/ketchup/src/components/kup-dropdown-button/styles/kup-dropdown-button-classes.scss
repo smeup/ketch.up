@@ -1,19 +1,31 @@
 /*-------------------------------------------------*/
 /*        C o m p o n e n t   C l a s s e s        */
 /*-------------------------------------------------*/
-:host(.kup-shaped) {
-  #kup-component {
-    border-radius: 18px;
+
+:host(.#{$kup-class-shaped}) {
+  .dropdown-button__primary-action {
+    .button {
+      border-top-left-radius: 18px;
+      border-bottom-left-radius: 18px;
+    }
   }
-  .mdc-button,
-  .mdc-button__ripple {
-    border-radius: 18px;
+
+  .dropdown-button__dropdown-action {
+    .button {
+      border-top-right-radius: 18px;
+      border-bottom-right-radius: 18px;
+    }
   }
 }
 
-:host(.kup-full-width) {
+:host(.#{$kup-class-full-width}) {
   width: 100%;
-  #kup-component {
+
+  .dropdown-button__primary-action {
     width: 100%;
+
+    .button {
+      width: 100%;
+    }
   }
 }

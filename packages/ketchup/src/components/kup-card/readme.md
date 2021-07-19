@@ -19,10 +19,10 @@
 
 ## Events
 
-| Event          | Description                                                | Type                                          |
-| -------------- | ---------------------------------------------------------- | --------------------------------------------- |
-| `kupCardClick` | Triggered when the card is clicked.                        | `CustomEvent<{ card: KupCard; id: string; }>` |
-| `kupCardEvent` | Triggered when a sub-component of the card emits an event. | `CustomEvent<{ card: KupCard; event: any; }>` |
+| Event            | Description                                                | Type                               |
+| ---------------- | ---------------------------------------------------------- | ---------------------------------- |
+| `kup-card-click` | Triggered when the card is clicked.                        | `CustomEvent<KupEventPayload>`     |
+| `kup-card-event` | Triggered when a sub-component of the card emits an event. | `CustomEvent<KupCardEventPayload>` |
 
 
 ## Methods
@@ -50,6 +50,16 @@ Type: `Promise<void>`
 ### `resizeCallback() => Promise<void>`
 
 This method is invoked by KupManager whenever the component changes size.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `setProps(props: GenericObject) => Promise<void>`
+
+Sets the props to the component.
 
 #### Returns
 
@@ -126,8 +136,13 @@ graph TD;
   kup-image --> kup-spinner
   kup-image --> kup-badge
   kup-color-picker --> kup-text-field
+  kup-button-list --> kup-dropdown-button
+  kup-button-list --> kup-badge
+  kup-dropdown-button --> kup-list
+  kup-dropdown-button --> kup-badge
   kup-paginator --> kup-combobox
   kup-paginator --> kup-badge
+  kup-tab-bar --> kup-badge
   kup-box --> kup-card
   style kup-card fill:#f9f,stroke:#333,stroke-width:4px
 ```

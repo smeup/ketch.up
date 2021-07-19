@@ -3,11 +3,12 @@
  */
 export enum KupColumnMenuIds {
     BUTTON_APPLY = 'apply',
-    BUTTON_DESCRIPTION = 'description',
+    BUTTON_ADD_COLUMNS = 'add',
+    BUTTON_GROUP = 'group',
+    BUTTON_NEW = 'new',
     BUTTON_OPEN_IN_NEW = 'open-in-new',
     BUTTON_REMOVE = 'remove',
     BUTTON_SEARCH = 'search',
-    BUTTON_NEW = 'new',
     CARD_COLUMN_MENU = 'column-menu',
     CHECKBOX_GLOBAL = 'global-checkbox',
     SWITCH_GROUP = 'group',

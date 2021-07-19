@@ -17,9 +17,9 @@
 
 ## Events
 
-| Event                    | Description | Type                                   |
-| ------------------------ | ----------- | -------------------------------------- |
-| `kupImageButtonSelected` |             | `CustomEvent<{ selectedImages: []; }>` |
+| Event                      | Description | Type                                   |
+| -------------------------- | ----------- | -------------------------------------- |
+| `kup-imagebutton-selected` |             | `CustomEvent<{ selectedImages: []; }>` |
 
 
 ## CSS Custom Properties

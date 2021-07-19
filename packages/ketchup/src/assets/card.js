@@ -1,7 +1,7 @@
-addEventListener('kupCardClick', (e) => {
+addEventListener('kup-card-click', (e) => {
     console.log(e);
 });
-addEventListener('kupCardEvent', (e) => {
+addEventListener('kup-card-event', (e) => {
     console.log(e);
 });
 

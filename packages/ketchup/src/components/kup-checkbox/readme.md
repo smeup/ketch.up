@@ -22,11 +22,11 @@
 
 ## Events
 
-| Event               | Description                                       | Type                                                            |
-| ------------------- | ------------------------------------------------- | --------------------------------------------------------------- |
-| `kupCheckboxBlur`   | Triggered when the input element loses focus.     | `CustomEvent<{ id: string; checked: boolean; value: string; }>` |
-| `kupCheckboxChange` | Triggered when the input element's value changes. | `CustomEvent<{ id: string; checked: boolean; value: string; }>` |
-| `kupCheckboxFocus`  | Triggered when the input element gets focused.    | `CustomEvent<{ id: string; checked: boolean; value: string; }>` |
+| Event                 | Description                                       | Type                                   |
+| --------------------- | ------------------------------------------------- | -------------------------------------- |
+| `kup-checkbox-blur`   | Triggered when the input element loses focus.     | `CustomEvent<KupCheckboxEventPayload>` |
+| `kup-checkbox-change` | Triggered when the input element's value changes. | `CustomEvent<KupCheckboxEventPayload>` |
+| `kup-checkbox-focus`  | Triggered when the input element gets focused.    | `CustomEvent<KupCheckboxEventPayload>` |
 
 
 ## Methods
@@ -44,6 +44,16 @@ Type: `Promise<GenericObject>`
 ### `refresh() => Promise<void>`
 
 This method is used to trigger a new render of the component.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `setProps(props: GenericObject) => Promise<void>`
+
+Sets the props to the component.
 
 #### Returns
 

@@ -15,19 +15,19 @@ const dom: KupDom = document.documentElement as KupDom;
  * @module KupLanguage
  */
 export class KupLanguage {
-    list: KupLanguageJSON =
-        dom.ketchupInit &&
-        dom.ketchupInit.language &&
-        dom.ketchupInit.language.list
-            ? dom.ketchupInit.language.list
-            : languagesJson['default'];
-    managedComponents: Set<KupComponent> = new Set();
-    name: string =
-        dom.ketchupInit &&
-        dom.ketchupInit.language &&
-        dom.ketchupInit.language.name
-            ? dom.ketchupInit.language.name
-            : KupLanguageDefaults.EN;
+    list: KupLanguageJSON;
+    managedComponents: Set<KupComponent>;
+    name: string;
+    /**
+     * Initializes KupLanguage.
+     * @param {KupLanguageJSON} list - Overrides the default languages.json.
+     * @param {string} name - Starting language.
+     */
+    constructor(list?: KupLanguageJSON, name?: string) {
+        this.list = list ? list : languagesJson['default'];
+        this.managedComponents = new Set();
+        this.name = name ? name : KupLanguageDefaults.EN;
+    }
     /**
      * Translates the string to the given language.
      * When translation fails, the key will be displayed in place of the string - this way it will be easier to correct missing string <-> key bounds.

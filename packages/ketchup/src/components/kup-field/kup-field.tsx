@@ -12,8 +12,8 @@ import {
 
 import {
     KupFieldProps,
-    KupFldChangeEvent,
-    KupFldSubmitEvent,
+    KupFieldChangeEvent,
+    KupFieldSubmitEvent,
 } from './kup-field-declarations';
 import {
     KupManager,
@@ -81,23 +81,23 @@ export class KupField {
      * Launched when the value of the current FLD changes.
      */
     @Event({
-        eventName: 'kupFldChange',
+        eventName: 'kup-field-change',
         composed: true,
         cancelable: false,
         bubbles: true,
     })
-    kupChange: EventEmitter<KupFldChangeEvent>;
+    kupChange: EventEmitter<KupFieldChangeEvent>;
 
     /**
      * Launched when the FLD values are confirmed and a submit event is triggered.
      */
     @Event({
-        eventName: 'kupFldSubmit',
+        eventName: 'kup-field-submit',
         composed: true,
         cancelable: false,
         bubbles: true,
     })
-    kupSubmit: EventEmitter<KupFldSubmitEvent>;
+    kupSubmit: EventEmitter<KupFieldSubmitEvent>;
 
     //---- Methods ----
 
@@ -220,7 +220,7 @@ export class KupField {
                 <kup-button
                     class={baseClass + '__submit'}
                     label={this.submitLabel}
-                    onKupButtonClick={this.onSubmitInstance}
+                    onkup-button-click={this.onSubmitInstance}
                 />
             );
         }
@@ -263,7 +263,7 @@ export class KupField {
             switch (this.type.toLowerCase()) {
                 case 'cmb':
                     comp = 'kup-combobox';
-                    propList.onkupComboboxChange = this.onChangeInstance;
+                    propList.onKupComboboxChange = this.onChangeInstance;
                     break;
                 case 'fup':
                     comp = 'kup-upload';

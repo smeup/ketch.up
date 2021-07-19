@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Dropdown</title>
+
+        <script type="module" src="/build/ketchup.esm.js"></script>
+        <script nomodule src="/build/ketchup.js"></script>
+
+        <link
+            href="https://cdn.materialdesignicons.com/4.5.95/css/materialdesignicons.min.css"
+            rel="stylesheet"
+            type="text/css"
+        />
+
+        <link
+            href="https://fonts.googleapis.com/css?family=Lato"
+            rel="stylesheet"
+        />
+
+        <script
+            type="text/javascript"
+            src="https://www.gstatic.com/charts/loader.js"
+        ></script>
+
+        <style>
+            html {
+                background-color: var(--kup-background-color);
+                color: var(--kup-text-color);
+                font-family: var(--kup-font-family);
+                font-size: var(--kup-font-size);
+                padding: 1rem;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Dropdown button</h1>
+        <kup-dropdown-button
+            id="ddb1"
+            icon="document"
+            label="Documento"
+        ></kup-dropdown-button>
+        <kup-dropdown-button
+            id="ddb2"
+            styling="outlined"
+            icon="document"
+            label="Documento-outlined"
+        ></kup-dropdown-button>
+        <kup-dropdown-button
+            id="ddb3"
+            styling="flat"
+            icon="document"
+            label="Documento-flat"
+        ></kup-dropdown-button>
+
+        <kup-dropdown-button id="ddb4" label="Documento"></kup-dropdown-button>
+        <kup-dropdown-button
+            id="ddb5"
+            styling="outlined"
+            label="Documento-outlined"
+        ></kup-dropdown-button>
+        <kup-dropdown-button
+            id="ddb6"
+            styling="flat"
+            label="Documento-flat"
+        ></kup-dropdown-button>
+
+        <kup-dropdown-button id="ddb7" icon="document"></kup-dropdown-button>
+        <kup-dropdown-button
+            id="ddb8"
+            styling="outlined"
+            icon="document"
+        ></kup-dropdown-button>
+        <kup-dropdown-button
+            id="ddb9"
+            styling="flat"
+            icon="document"
+        ></kup-dropdown-button>
+
+        <kup-button
+            id="fab-debug"
+            styling="floating"
+            icon="bug"
+            style="position: fixed; bottom: 25px; right: 25px; z-index: 100"
+        ></kup-button>
+
+        <script>
+            let ilb = [
+                {
+                    text: 'documento1.txt',
+                    value: 'txt1',
+                    icon: '3d_rotation',
+                },
+                {
+                    text: 'document2.pdf',
+                    value: 'txt2',
+                    icon: 'ac_unit',
+                },
+                {
+                    text: 'documento3.xls',
+                    value: 'txt3',
+                    icon: 'accessibility',
+                },
+            ];
+
+            let dropDownButtons = document.getElementsByTagName(
+                'kup-dropdown-button'
+            );
+            let selIndex = 0;
+            if (dropDownButtons != null) {
+                for (let i = 0; i < dropDownButtons.length; i++) {
+                    let dropDownButton = dropDownButtons[i];
+                    let dropDownData = {
+                        data: {
+                            'kup-list': {
+                                data: {},
+                            },
+                        },
+                    };
+                    dropDownData.data['kup-list'].data = JSON.parse(
+                        JSON.stringify(ilb)
+                    );
+                    dropDownButton.initialValue = ilb[selIndex].text;
+                    dropDownButton.data = { ...dropDownData.data };
+
+                    selIndex++;
+                    if (selIndex >= ilb.length) {
+                        selIndex = 0;
+                    }
+                }
+            }
+        </script>
+    </body>
+</html>

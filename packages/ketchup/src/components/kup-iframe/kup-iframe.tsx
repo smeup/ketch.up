@@ -10,12 +10,13 @@ import {
     Prop,
 } from '@stencil/core';
 
-import type { GenericObject } from '../../types/GenericTypes';
+import type { GenericObject, KupEventPayload } from '../../types/GenericTypes';
 import { KupDebugCategory } from '../../utils/kup-debug/kup-debug-declarations';
 import {
     KupManager,
     kupManagerInstance,
 } from '../../utils/kup-manager/kup-manager';
+import { getProps, setProps } from '../../utils/utils';
 import { KupIframeProps } from './kup-iframe-declarations';
 
 @Component({
@@ -47,27 +48,27 @@ export class KupIframe {
     //---- Methods ----
 
     @Event({
-        eventName: 'kupIframeError',
+        eventName: 'kup-iframe-error',
         composed: true,
         cancelable: false,
         bubbles: true,
     })
-    kupIframeError: EventEmitter;
+    kupIframeError: EventEmitter<KupEventPayload>;
 
     onKupIframeError() {
-        this.kupIframeError.emit();
+        this.kupIframeError.emit({ comp: this, id: this.rootElement.id });
     }
 
     @Event({
-        eventName: 'kupIframeLoad',
+        eventName: 'kup-iframe-load',
         composed: true,
         cancelable: false,
         bubbles: true,
     })
-    kupIframeLoad: EventEmitter;
+    kupIframeLoad: EventEmitter<KupEventPayload>;
 
     onKupIframeLoad() {
-        this.kupIframeLoad.emit();
+        this.kupIframeLoad.emit({ comp: this, id: this.rootElement.id });
     }
 
     openInNew() {
@@ -80,17 +81,15 @@ export class KupIframe {
      */
     @Method()
     async getProps(descriptions?: boolean): Promise<GenericObject> {
-        let props: GenericObject = {};
-        if (descriptions) {
-            props = KupIframeProps;
-        } else {
-            for (const key in KupIframeProps) {
-                if (Object.prototype.hasOwnProperty.call(KupIframeProps, key)) {
-                    props[key] = this[key];
-                }
-            }
-        }
-        return props;
+        return getProps(this, KupIframeProps, descriptions);
+    }
+    /**
+     * Sets the props to the component.
+     * @param {GenericObject} props - Object containing props that will be set to the component.
+     */
+    @Method()
+    async setProps(props: GenericObject): Promise<void> {
+        setProps(this, KupIframeProps, props);
     }
     /**
      * This method is used to trigger a new render of the component.
@@ -138,7 +137,7 @@ export class KupIframe {
         }
 
         return !this.isButton ? (
-            <Host class="kup-iframe-version">
+            <Host is-iframe>
                 <iframe
                     onError={this.onKupIframeError.bind(this)}
                     onLoad={this.onKupIframeLoad.bind(this)}
@@ -146,10 +145,10 @@ export class KupIframe {
                 />
             </Host>
         ) : (
-            <Host class="kup-button-version">
+            <Host is-button>
                 <kup-button
                     {...this.buttonData}
-                    onKupButtonClick={() => this.openInNew()}
+                    onkup-button-click={() => this.openInNew()}
                 />
             </Host>
         );

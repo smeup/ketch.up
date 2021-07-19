@@ -23,6 +23,7 @@
      */
 :host {
   display: block;
+  font-family: var(--kup-font-family);
   font-size: var(--kup-font-size);
   position: relative;
 }
@@ -408,6 +409,10 @@ tbody {
           &.is-centered {
             display: flex;
           }
+
+          &.number-cell {
+            text-align: right;
+          }
         }
 
         &.is-tooltip {
@@ -592,4 +597,10 @@ th.obj:hover span:not(.overlay-action) {
   margin: 0;
   position: fixed;
   transition: none;
+  max-height: 95vh;
+  max-width: 95vw;
+
+  &.kup-resizable {
+    border: 3px outset var(--kup-title-background-color);
+  }
 }

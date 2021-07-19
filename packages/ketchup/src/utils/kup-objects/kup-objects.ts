@@ -9,10 +9,14 @@ const dom: KupDom = document.documentElement as KupDom;
  * @module KupObjects
  */
 export class KupObjects {
-    list: KupObjectsJSON =
-        dom.ketchupInit && dom.ketchupInit.obj && dom.ketchupInit.obj.list
-            ? dom.ketchupInit.obj.list
-            : objJson['default'];
+    list: KupObjectsJSON;
+    /**
+     * Initializes KupObjects.
+     * @param {KupObjectsJSON} list - Overrides the default obj.json.
+     */
+    constructor(list?: KupObjectsJSON) {
+        this.list = list ? list : objJson['default'];
+    }
     /**
      * Checks whether the object can automatically derive columns.
      * @param {KupObj} obj - Object to check.

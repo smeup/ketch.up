@@ -5,26 +5,26 @@
 
 ## Properties
 
-| Property       | Attribute       | Description                                                                                                                 | Type                                                                      | Default                 |
-| -------------- | --------------- | --------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ----------------------- |
-| `checked`      | `checked`       | When set to true, the icon button state will be on.                                                                         | `boolean`                                                                 | `false`                 |
-| `customStyle`  | `custom-style`  | Custom style of the component.                                                                                              | `string`                                                                  | `''`                    |
-| `disabled`     | `disabled`      | Defaults at false. When set to true, the component is disabled.                                                             | `boolean`                                                                 | `false`                 |
-| `icon`         | `icon`          | When set, the button will show this icon.                                                                                   | `string`                                                                  | `null`                  |
-| `iconOff`      | `icon-off`      | When set, the icon button off state will show this icon. Otherwise, an outlined version of the icon prop will be displayed. | `string`                                                                  | `null`                  |
-| `label`        | `label`         | When set, the button will show this text.                                                                                   | `string`                                                                  | `null`                  |
-| `styling`      | `styling`       | Defines the style of the button. Styles available: "flat", "outlined" and "raised" which is also the default.               | `FButtonStyling.FLAT \| FButtonStyling.OUTLINED \| FButtonStyling.RAISED` | `FButtonStyling.RAISED` |
-| `toggable`     | `toggable`      | When set to true, the icon button will be toggable on/off.                                                                  | `boolean`                                                                 | `false`                 |
-| `trailingIcon` | `trailing-icon` | When set, the icon will be shown after the text.                                                                            | `boolean`                                                                 | `false`                 |
+| Property       | Attribute       | Description                                                                                                                 | Type                                                                                                                        | Default                 |
+| -------------- | --------------- | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | ----------------------- |
+| `checked`      | `checked`       | When set to true, the icon button state will be on.                                                                         | `boolean`                                                                                                                   | `false`                 |
+| `customStyle`  | `custom-style`  | Custom style of the component.                                                                                              | `string`                                                                                                                    | `''`                    |
+| `disabled`     | `disabled`      | Defaults at false. When set to true, the component is disabled.                                                             | `boolean`                                                                                                                   | `false`                 |
+| `icon`         | `icon`          | When set, the button will show this icon.                                                                                   | `string`                                                                                                                    | `null`                  |
+| `iconOff`      | `icon-off`      | When set, the icon button off state will show this icon. Otherwise, an outlined version of the icon prop will be displayed. | `string`                                                                                                                    | `null`                  |
+| `label`        | `label`         | When set, the button will show this text.                                                                                   | `string`                                                                                                                    | `null`                  |
+| `styling`      | `styling`       | Defines the style of the button. Styles available: "flat", "outlined" and "raised" which is also the default.               | `FButtonStyling.FLAT \| FButtonStyling.FLOATING \| FButtonStyling.ICON \| FButtonStyling.OUTLINED \| FButtonStyling.RAISED` | `FButtonStyling.RAISED` |
+| `toggable`     | `toggable`      | When set to true, the icon button will be toggable on/off.                                                                  | `boolean`                                                                                                                   | `false`                 |
+| `trailingIcon` | `trailing-icon` | When set, the icon will be shown after the text.                                                                            | `boolean`                                                                                                                   | `false`                 |
 
 
 ## Events
 
-| Event            | Description | Type                                          |
-| ---------------- | ----------- | --------------------------------------------- |
-| `kupButtonBlur`  |             | `CustomEvent<{ id: string; value: string; }>` |
-| `kupButtonClick` |             | `CustomEvent<{ id: string; value: string; }>` |
-| `kupButtonFocus` |             | `CustomEvent<{ id: string; value: string; }>` |
+| Event              | Description                            | Type                                      |
+| ------------------ | -------------------------------------- | ----------------------------------------- |
+| `kup-button-blur`  | Triggered when the button loses focus. | `CustomEvent<KupButtonClickEventPayload>` |
+| `kup-button-click` | Triggered when the button is clicked.  | `CustomEvent<KupButtonClickEventPayload>` |
+| `kup-button-focus` | Triggered when the button is focused.  | `CustomEvent<KupButtonClickEventPayload>` |
 
 
 ## Methods
@@ -42,6 +42,16 @@ Type: `Promise<GenericObject>`
 ### `refresh() => Promise<void>`
 
 This method is used to trigger a new render of the component.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `setProps(props: GenericObject) => Promise<void>`
+
+Sets the props to the component.
 
 #### Returns
 

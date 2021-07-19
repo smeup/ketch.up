@@ -15,12 +15,12 @@
 
 ## Events
 
-| Event              | Description                                                | Type                                                                      |
-| ------------------ | ---------------------------------------------------------- | ------------------------------------------------------------------------- |
-| `kupChipBlur`      | Triggered when a chip loses focus.                         | `CustomEvent<{ id: string; index: number; obj: KupObj; value: string; }>` |
-| `kupChipClick`     | Triggered when a chip is clicked.                          | `CustomEvent<{ id: string; index: number; obj: KupObj; value: string; }>` |
-| `kupChipFocus`     | Triggered when a chip gets focused.                        | `CustomEvent<{ id: string; index: number; obj: KupObj; value: string; }>` |
-| `kupChipIconClick` | Triggered when the removal icon on input chips is clicked. | `CustomEvent<{ id: string; index: number; obj: KupObj; value: string; }>` |
+| Event                | Description                                                | Type                               |
+| -------------------- | ---------------------------------------------------------- | ---------------------------------- |
+| `kup-chip-blur`      | Triggered when a chip loses focus.                         | `CustomEvent<KupChipEventPayload>` |
+| `kup-chip-click`     | Triggered when a chip is clicked.                          | `CustomEvent<KupChipEventPayload>` |
+| `kup-chip-focus`     | Triggered when a chip gets focused.                        | `CustomEvent<KupChipEventPayload>` |
+| `kup-chip-iconclick` | Triggered when the removal icon on input chips is clicked. | `CustomEvent<KupChipEventPayload>` |
 
 
 ## Methods
@@ -38,6 +38,16 @@ Type: `Promise<GenericObject>`
 ### `refresh() => Promise<void>`
 
 This method is used to trigger a new render of the component.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `setProps(props: GenericObject) => Promise<void>`
+
+Sets the props to the component.
 
 #### Returns
 

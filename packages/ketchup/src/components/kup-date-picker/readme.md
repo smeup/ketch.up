@@ -16,17 +16,17 @@
 
 ## Events
 
-| Event                          | Description | Type                                    |
-| ------------------------------ | ----------- | --------------------------------------- |
-| `kupDatePickerBlur`            |             | `CustomEvent<{ id: any; value: any; }>` |
-| `kupDatePickerChange`          |             | `CustomEvent<{ id: any; value: any; }>` |
-| `kupDatePickerClearIconClick`  |             | `CustomEvent<{ id: any; }>`             |
-| `kupDatePickerClick`           |             | `CustomEvent<{ id: any; value: any; }>` |
-| `kupDatePickerFocus`           |             | `CustomEvent<{ id: any; value: any; }>` |
-| `kupDatePickerIconClick`       |             | `CustomEvent<{ id: any; value: any; }>` |
-| `kupDatePickerInput`           |             | `CustomEvent<{ id: any; value: any; }>` |
-| `kupDatePickerItemClick`       |             | `CustomEvent<{ id: any; value: any; }>` |
-| `kupDatePickerTextFieldSubmit` |             | `CustomEvent<{ id: any; value: any; }>` |
+| Event                            | Description | Type                                     |
+| -------------------------------- | ----------- | ---------------------------------------- |
+| `kup-datepicker-blur`            |             | `CustomEvent<KupDatePickerEventPayload>` |
+| `kup-datepicker-change`          |             | `CustomEvent<KupDatePickerEventPayload>` |
+| `kup-datepicker-cleariconclick`  |             | `CustomEvent<KupEventPayload>`           |
+| `kup-datepicker-click`           |             | `CustomEvent<KupDatePickerEventPayload>` |
+| `kup-datepicker-focus`           |             | `CustomEvent<KupDatePickerEventPayload>` |
+| `kup-datepicker-iconclick`       |             | `CustomEvent<KupDatePickerEventPayload>` |
+| `kup-datepicker-input`           |             | `CustomEvent<KupDatePickerEventPayload>` |
+| `kup-datepicker-itemclick`       |             | `CustomEvent<KupDatePickerEventPayload>` |
+| `kup-datepicker-textfieldsubmit` |             | `CustomEvent<KupDatePickerEventPayload>` |
 
 
 ## Methods

@@ -20,17 +20,17 @@
 
 ## Events
 
-| Event                            | Description    | Type                                                                                            |
-| -------------------------------- | -------------- | ----------------------------------------------------------------------------------------------- |
-| `kupAutocompleteBlur`            | Event example. | `CustomEvent<{ value: any; id: string; comp: KupAutocomplete; }>`                               |
-| `kupAutocompleteChange`          |                | `CustomEvent<{ value: any; id: string; comp: KupAutocomplete; }>`                               |
-| `kupAutocompleteClick`           |                | `CustomEvent<{ value: any; id: string; comp: KupAutocomplete; }>`                               |
-| `kupAutocompleteFilterChanged`   |                | `CustomEvent<{ filter: string; matchesMinimumCharsRequired: boolean; comp: KupAutocomplete; }>` |
-| `kupAutocompleteFocus`           |                | `CustomEvent<{ value: any; id: string; comp: KupAutocomplete; }>`                               |
-| `kupAutocompleteIconClick`       |                | `CustomEvent<{ value: any; id: string; comp: KupAutocomplete; }>`                               |
-| `kupAutocompleteInput`           |                | `CustomEvent<{ value: any; id: string; comp: KupAutocomplete; }>`                               |
-| `kupAutocompleteItemClick`       |                | `CustomEvent<{ value: any; id: string; comp: KupAutocomplete; }>`                               |
-| `kupAutocompleteTextFieldSubmit` |                | `CustomEvent<{ value: any; id: string; comp: KupAutocomplete; }>`                               |
+| Event                              | Description    | Type                                                    |
+| ---------------------------------- | -------------- | ------------------------------------------------------- |
+| `kup-autocomplete-blur`            | Event example. | `CustomEvent<KupAutocompleteEventPayload>`              |
+| `kup-autocomplete-change`          |                | `CustomEvent<KupAutocompleteEventPayload>`              |
+| `kup-autocomplete-click`           |                | `CustomEvent<KupAutocompleteEventPayload>`              |
+| `kup-autocomplete-filterchanged`   |                | `CustomEvent<kupAutocompleteFilterChangedEventPayload>` |
+| `kup-autocomplete-focus`           |                | `CustomEvent<KupAutocompleteEventPayload>`              |
+| `kup-autocomplete-iconclick`       |                | `CustomEvent<KupAutocompleteEventPayload>`              |
+| `kup-autocomplete-input`           |                | `CustomEvent<KupAutocompleteEventPayload>`              |
+| `kup-autocomplete-itemclick`       |                | `CustomEvent<KupAutocompleteEventPayload>`              |
+| `kup-autocomplete-textfieldsubmit` |                | `CustomEvent<KupAutocompleteEventPayload>`              |
 
 
 ## Methods
@@ -68,6 +68,16 @@ Type: `Promise<void>`
 ### `setFocus() => Promise<void>`
 
 
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `setProps(props: GenericObject) => Promise<void>`
+
+Sets the props to the component.
 
 #### Returns
 

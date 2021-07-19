@@ -1,9 +1,11 @@
 /*-------------------------------------------------*/
 /*        C o m p o n e n t   C l a s s e s        */
 /*-------------------------------------------------*/
-:host(.kup-full-width) {
+
+:host(.#{$kup-class-full-width}) {
   .flex-layout__inner {
     width: 100%;
+
     & * {
       margin: auto;
     }

@@ -217,7 +217,7 @@ describe('kup-tree with data', () => {
     describe.each([['tree'], ['table']])('in %s mode', (displayMode) => {
         beforeEach(async () => {
             expandedListener = await treeElement.spyOnEvent(
-                'kupTreeNodeExpand'
+                'kup-tree-nodeexpand'
             );
 
             switch (displayMode) {
@@ -312,7 +312,7 @@ describe('kup-tree with data', () => {
 
             test('can be selected programmatically, through prop selectedNode', async () => {
                 const selectedListener = await treeElement.spyOnEvent(
-                    'kupTreeNodeSelected'
+                    'kup-tree-nodeselected'
                 );
                 let updatedData = await treeElement.getProperty('data');
                 let flatTree = flattenTree(updatedData);
@@ -383,7 +383,7 @@ describe('kup-tree with data', () => {
 
             /*test('emits a selected event if clicked (not on the expand icon)', async () => {
                 const selectedListener = await treeElement.spyOnEvent(
-                    'kupTreeNodeSelected'
+                    'kup-tree-nodeselected'
                 );
                 let updatedData = await treeElement.getProperty('data');
                 let flatTree = flattenTree(updatedData);
@@ -507,7 +507,7 @@ describe('kup-tree with data', () => {
                 }
 
                 expandedListener = await treeElement.spyOnEvent(
-                    'kupTreeNodeExpand'
+                    'kup-tree-nodeexpand'
                 );
 
                 treeElement.setProperty('columns', columns);

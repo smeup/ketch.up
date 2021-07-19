@@ -30,9 +30,9 @@
 
 ## Events
 
-| Event             | Description                             | Type                             |
-| ----------------- | --------------------------------------- | -------------------------------- |
-| `kupChartClicked` | Triggered when a chart serie is clicked | `CustomEvent<ChartClickedEvent>` |
+| Event             | Description                             | Type                              |
+| ----------------- | --------------------------------------- | --------------------------------- |
+| `kup-chart-click` | Triggered when a chart serie is clicked | `CustomEvent<KupChartClickEvent>` |
 
 
 ## Methods
@@ -60,6 +60,16 @@ Type: `Promise<void>`
 ### `resizeCallback() => Promise<void>`
 
 This method is invoked by KupManager whenever the component changes size.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `setProps(props: GenericObject) => Promise<void>`
+
+Sets the props to the component.
 
 #### Returns
 

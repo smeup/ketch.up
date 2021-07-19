@@ -21,9 +21,9 @@
 
 ## Events
 
-| Event              | Description | Type               |
-| ------------------ | ----------- | ------------------ |
-| `kupEchartClicked` |             | `CustomEvent<any>` |
+| Event            | Description | Type                           |
+| ---------------- | ----------- | ------------------------------ |
+| `kupEchartClick` |             | `CustomEvent<KupEventPayload>` |
 
 
 ## Methods
@@ -51,6 +51,16 @@ Type: `Promise<void>`
 ### `resizeCallback() => Promise<void>`
 
 This method is invoked by KupManager whenever the component changes size.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `setProps(props: GenericObject) => Promise<void>`
+
+Sets the props to the component.
 
 #### Returns
 

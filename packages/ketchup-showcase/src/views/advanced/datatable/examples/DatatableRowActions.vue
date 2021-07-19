@@ -35,7 +35,7 @@ export default {
             icon: 'account',
           },
         ],
-        onKupRowActionClicked: (e) => {
+        ['onkup-datatable-rowactionclick']: (e) => {
           var action, index, type, row;
           action = e.detail.action;
           index = e.detail.index;

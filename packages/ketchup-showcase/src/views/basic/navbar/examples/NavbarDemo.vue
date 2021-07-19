@@ -22,11 +22,11 @@ export default {
       demoComp: createComp(),
       demoEvents: [
         {
-          name: 'kupNavbarMenuItemClick',
+          name: 'kup-navbar-menuitemclick',
           type: 'click',
         },
         {
-          name: 'kupNavbarOptionItemClick',
+          name: 'kup-navbar-optionitemclick',
           type: 'change',
         },
       ],

@@ -13,6 +13,7 @@ import {
     KupManager,
     kupManagerInstance,
 } from '../../utils/kup-manager/kup-manager';
+import { getProps, setProps } from '../../utils/utils';
 import { KupSpinnerProps } from './kup-spinner-declarations';
 
 @Component({
@@ -71,19 +72,15 @@ export class KupSpinner {
      */
     @Method()
     async getProps(descriptions?: boolean): Promise<GenericObject> {
-        let props: GenericObject = {};
-        if (descriptions) {
-            props = KupSpinnerProps;
-        } else {
-            for (const key in KupSpinnerProps) {
-                if (
-                    Object.prototype.hasOwnProperty.call(KupSpinnerProps, key)
-                ) {
-                    props[key] = this[key];
-                }
-            }
-        }
-        return props;
+        return getProps(this, KupSpinnerProps, descriptions);
+    }
+    /**
+     * Sets the props to the component.
+     * @param {GenericObject} props - Object containing props that will be set to the component.
+     */
+    @Method()
+    async setProps(props: GenericObject): Promise<void> {
+        setProps(this, KupSpinnerProps, props);
     }
     /**
      * This method is used to trigger a new render of the component.

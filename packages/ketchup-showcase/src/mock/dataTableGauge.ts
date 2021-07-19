@@ -22,7 +22,6 @@ export const gaugeShapesDataTable = {
             k: '',
           },
           shape: 'Gau',
-          options: false,
         },
         DESCR: {
           value: 'No data',

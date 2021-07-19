@@ -36,7 +36,6 @@ export default JSON.parse(`
           "cells": {
             "FLD1": {
               "readOnly": true,
-              "options (sarebbe il tasto destro)": true,
               "obj": {
                 "t": "CN",
                 "p": "COL",

@@ -1628,7 +1628,7 @@ export function createData(rows: number) {
             p: '',
             k: '187.59',
           },
-          value: '187.59',
+          value: '181.59',
         },
         FLD4: {
           obj: {

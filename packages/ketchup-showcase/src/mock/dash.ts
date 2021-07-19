@@ -16,11 +16,11 @@ export const mockedDefaultData = {
         },
         INTVAL: {
           obj: {
-            k: '2520,',
+            k: '2530,',
             p: '',
             t: 'NR',
           },
-          value: '2,520',
+          value: '2,530',
         },
         UM: {
           obj: {

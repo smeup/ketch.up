@@ -18,10 +18,10 @@
 
 ## Events
 
-| Event                  | Description | Type                           |
-| ---------------------- | ----------- | ------------------------------ |
-| `kupColorPickerChange` |             | `CustomEvent<{ value: any; }>` |
-| `kupColorPickerInput`  |             | `CustomEvent<{ value: any; }>` |
+| Event                    | Description | Type                                      |
+| ------------------------ | ----------- | ----------------------------------------- |
+| `kup-colorpicker-change` |             | `CustomEvent<KupColorPickerEventPayload>` |
+| `kup-colorpicker-input`  |             | `CustomEvent<KupColorPickerEventPayload>` |
 
 
 ## Methods
@@ -59,6 +59,16 @@ Type: `Promise<void>`
 ### `setFocus() => Promise<void>`
 
 
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `setProps(props: GenericObject) => Promise<void>`
+
+Sets the props to the component.
 
 #### Returns
 

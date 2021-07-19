@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Text Field</title>
+
+        <script type="module" src="/build/ketchup.esm.js"></script>
+        <script nomodule src="/build/ketchup.js"></script>
+
+        <link
+            href="https://cdn.materialdesignicons.com/4.5.95/css/materialdesignicons.min.css"
+            rel="stylesheet"
+            type="text/css"
+        />
+
+        <link
+            href="https://fonts.googleapis.com/css?family=Lato"
+            rel="stylesheet"
+        />
+
+        <script
+            type="text/javascript"
+            src="https://www.gstatic.com/charts/loader.js"
+        ></script>
+
+        <style>
+            html {
+                background-color: var(--kup-background-color);
+                color: var(--kup-text-color);
+                font-family: var(--kup-font-family);
+                font-size: var(--kup-font-size);
+                padding: 1rem;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Simple text field</h1>
+        <kup-text-field
+            id="int1"
+            is-clearable
+            initial-value="ciao"
+        ></kup-text-field>
+        <h4>Input text type password</h4>
+        <kup-text-field
+            input-type="password"
+            initial-value="pippo"
+            is-clearable
+        ></kup-text-field>
+        <h4>Material Text Field (widget)</h4>
+        <kup-text-field
+            icon="favorite"
+            outlined
+            label="I am a label"
+        ></kup-text-field>
+        <kup-text-field></kup-text-field>
+        <kup-text-field label="I am a label"></kup-text-field>
+        <kup-text-field outlined label="I am a label"></kup-text-field>
+        <kup-text-field disabled label="I am a label"></kup-text-field>
+        <kup-text-field icon="favorite"></kup-text-field>
+        <kup-text-field shaped icon="favorite"></kup-text-field>
+        <kup-text-field is-clearable icon="favorite"></kup-text-field>
+        <kup-text-field
+            trailing-icon
+            is-clearable
+            icon="favorite"
+        ></kup-text-field>
+        <kup-text-field trailing-icon icon="favorite"></kup-text-field>
+        <kup-text-field helper="I am a helper text"></kup-text-field>
+        <kup-text-field
+            helper-when-focused
+            helper="I am a helper text"
+        ></kup-text-field>
+        <kup-text-field
+            helper-when-focused
+            max-length="10"
+            helper="I am a helper text"
+        ></kup-text-field>
+        <kup-text-field
+            max-length="10"
+            helper="I am a helper text"
+        ></kup-text-field>
+        <kup-text-field full-width text-area></kup-text-field>
+        <kup-text-field max-length="10" full-width text-area></kup-text-field>
+        <kup-text-field
+            leading-label
+            label="I am a label left"
+        ></kup-text-field>
+        <kup-text-field
+            trailing-label
+            label="I am a label right"
+        ></kup-text-field>
+        <kup-text-field label="I am a label"></kup-text-field>
+        <kup-text-field outlined label="I am a label"></kup-text-field>
+        <kup-text-field outlined shaped label="I am a label"></kup-text-field>
+        <kup-text-field text-area></kup-text-field>
+        <kup-text-field text-area label="I am a label"></kup-text-field>
+        <kup-text-field full-width label="I am a label"></kup-text-field>
+        <kup-text-field disabled label="I am a label"></kup-text-field>
+        <kup-text-field
+            disabled
+            label="I am a label"
+            initial-value="yooooo"
+        ></kup-text-field>
+        <kup-text-field
+            label="I am a label"
+            initial-value="yooooo"
+        ></kup-text-field>
+        <kup-text-field
+            input-type="number"
+            label="I'm a numeric text field"
+            initial-value="22"
+            step="0.01"
+        ></kup-text-field>
+        <script>
+            // For the password field
+            const inPassword = document.querySelector(
+                'kup-text-field[input-type="password"]'
+            );
+            inPassword.addEventListener('ketchupTextInputFocused', (e) => {
+                console.log('Password has been FOCUSED', e);
+            });
+            inPassword.addEventListener('ketchupTextInputBlurred', (e) => {
+                console.log('#Password has been BLURRED', e);
+            });
+            inPassword.addEventListener('ketchupTextInputUpdated', (e) => {
+                console.log('Password has been UPDATED', e);
+            });
+        </script></body
+    >
+</html>

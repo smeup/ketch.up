@@ -22,7 +22,7 @@ export default {
       demoComp: createComp(),
       demoEvents: [
         {
-          name: 'kupImageClick',
+          name: 'kup-image-click',
           type: 'click',
         },
       ],

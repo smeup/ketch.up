@@ -17,11 +17,13 @@
 ### Used by
 
  - [kup-box](../kup-box)
+ - [kup-hypermenu](../kup-hypermenu)
 
 ### Graph
 ```mermaid
 graph TD;
   kup-box --> kup-editor
+  kup-hypermenu --> kup-editor
   style kup-editor fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

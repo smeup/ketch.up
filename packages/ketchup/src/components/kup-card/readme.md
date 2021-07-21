@@ -74,6 +74,7 @@ Type: `Promise<void>`
 
  - [kup-box](../kup-box)
  - [kup-data-table](../kup-data-table)
+ - [kup-hypermenu](../kup-hypermenu)
  - [kup-tooltip](../kup-tooltip)
  - [kup-tree](../kup-tree)
 
@@ -144,6 +145,7 @@ graph TD;
   kup-paginator --> kup-badge
   kup-tab-bar --> kup-badge
   kup-box --> kup-card
+  kup-hypermenu --> kup-card
   style kup-card fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

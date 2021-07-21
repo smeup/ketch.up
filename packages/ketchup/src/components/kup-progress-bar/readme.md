@@ -57,6 +57,7 @@ Type: `Promise<void>`
  - [kup-card](../kup-card)
  - [kup-data-table](../kup-data-table)
  - [kup-form](../kup-form)
+ - [kup-hypermenu](../kup-hypermenu)
  - [kup-tree](../kup-tree)
 
 ### Graph
@@ -66,6 +67,7 @@ graph TD;
   kup-card --> kup-progress-bar
   kup-data-table --> kup-progress-bar
   kup-form --> kup-progress-bar
+  kup-hypermenu --> kup-progress-bar
   kup-tree --> kup-progress-bar
   style kup-progress-bar fill:#f9f,stroke:#333,stroke-width:4px
 ```

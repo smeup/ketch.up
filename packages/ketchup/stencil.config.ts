@@ -37,6 +37,7 @@ export const config: Config = {
                 { src: 'dropdown.html' },
                 { src: 'echart.html' },
                 { src: 'gauge.html' },
+                { src: 'hypermenu.html' },
                 { src: 'layout-component.html' },
                 { src: 'list-box.html' },
                 { src: 'magic-box.html' },

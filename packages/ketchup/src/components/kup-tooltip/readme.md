@@ -94,6 +94,7 @@ Type: `Promise<void>`
 
  - [kup-box](../kup-box)
  - [kup-data-table](../kup-data-table)
+ - [kup-hypermenu](../kup-hypermenu)
  - [kup-tree](../kup-tree)
 
 ### Depends on
@@ -151,6 +152,7 @@ graph TD;
   kup-tab-bar --> kup-badge
   kup-tree --> kup-tooltip
   kup-box --> kup-tooltip
+  kup-hypermenu --> kup-tooltip
   style kup-tooltip fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

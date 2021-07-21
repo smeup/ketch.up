@@ -116,6 +116,7 @@ Type: `Promise<void>`
  - [kup-color-picker](../kup-color-picker)
  - [kup-date-picker](../kup-date-picker)
  - [kup-form](../kup-form)
+ - [kup-hypermenu](../kup-hypermenu)
  - [kup-search](../kup-search)
  - [kup-time-picker](../kup-time-picker)
  - [kup-tree](../kup-tree)
@@ -128,6 +129,7 @@ graph TD;
   kup-color-picker --> kup-text-field
   kup-date-picker --> kup-text-field
   kup-form --> kup-text-field
+  kup-hypermenu --> kup-text-field
   kup-search --> kup-text-field
   kup-time-picker --> kup-text-field
   kup-tree --> kup-text-field

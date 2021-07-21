@@ -184,6 +184,7 @@ Type: `Promise<void>`
 ### Used by
 
  - [kup-card](../kup-card)
+ - [kup-hypermenu](../kup-hypermenu)
  - [kup-tooltip](../kup-tooltip)
 
 ### Depends on
@@ -263,6 +264,7 @@ graph TD;
   kup-paginator --> kup-combobox
   kup-paginator --> kup-badge
   kup-tab-bar --> kup-badge
+  kup-hypermenu --> kup-tree
   style kup-tree fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

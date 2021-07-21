@@ -1,0 +1,141 @@
+/*-------------------------------------------------*/
+/*        C o m p o n e n t   C l a s s e s        */
+/*-------------------------------------------------*/
+
+:host(.#{$kup-class-left-aligned}) {
+  .box-section {
+    text-align: left;
+
+    .f-image--wrapper {
+      margin-left: 0;
+      margin-right: auto;
+    }
+
+    kup-checkbox {
+      justify-content: flex-start;
+    }
+  }
+}
+
+:host(.#{$kup-class-right-aligned}) {
+  .box-section {
+    text-align: right;
+
+    .f-image--wrapper {
+      margin-left: auto;
+      margin-right: 0;
+    }
+
+    kup-checkbox {
+      justify-content: flex-end;
+    }
+  }
+}
+
+:host(.#{$kup-class-top-aligned}) {
+  #box-container .box-wrapper .box .box-section .column {
+    justify-content: flex-start;
+  }
+}
+
+:host(.#{$kup-class-bottom-aligned}) {
+  #box-container .box-wrapper .box .box-section .column {
+    justify-content: flex-end;
+  }
+}
+
+:host(:not(.#{$kup-class-borderless})) {
+  .box {
+    border: 1px solid var(--kup-border-color);
+  }
+}
+
+:host(.#{$kup-class-flat-on-hover}) {
+  #box-container .box-wrapper .box:hover {
+    box-shadow: none;
+  }
+}
+
+:host(.#{$kup-class-shaped}) {
+  .box {
+    border-radius: 10px;
+  }
+}
+
+:host(.#{$kup-class-round}) {
+  .box {
+    border-radius: 25px;
+  }
+}
+
+:host(.#{$kup-class-dashed-sections}) {
+  .box-section {
+    border: 2px dashed var(--kup-text-color);
+  }
+}
+
+:host(:not(.#{$kup-class-paddingless})) {
+  #box-container {
+    .box {
+      padding: 3px;
+
+      .box-section {
+        .box-object {
+          padding: 1px 4px;
+        }
+
+        &.last-child {
+          margin: 3px 4px;
+        }
+      }
+    }
+  }
+}
+
+/*-------------------------------------------------*/
+/*             J S O N   C l a s s e s             */
+/*-------------------------------------------------*/
+
+:host {
+  .box-section.left-aligned {
+    text-align: left;
+
+    .f-image--wrapper {
+      margin-left: 0;
+      margin-right: auto;
+    }
+
+    kup-checkbox {
+      justify-content: flex-start;
+    }
+  }
+}
+
+:host {
+  .box-section.right-aligned {
+    text-align: right;
+
+    .f-image--wrapper {
+      margin-left: auto;
+      margin-right: 0;
+    }
+
+    kup-checkbox {
+      justify-content: flex-end;
+    }
+  }
+}
+
+:host {
+  .box-section.center-aligned {
+    text-align: center;
+
+    .f-image--wrapper {
+      margin: auto;
+    }
+
+    kup-checkbox {
+      justify-content: center;
+    }
+  }
+}

@@ -307,6 +307,15 @@ export function isKnob(cell: Cell, boxObject: BoxObject) {
     return 'KNB' === shape;
 }
 
+// -------------
+// TRE
+// -------------
+
+export function isTree(cell: Cell, boxObject: BoxObject) {
+    let shape = getShape(cell, boxObject);
+    return 'TRE' === shape;
+}
+
 export function getCellType(cell: Cell) {
     let obj = cell.obj;
     if (kupObjects.isBar(obj)) {

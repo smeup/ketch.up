@@ -137,6 +137,7 @@ Type: `Promise<void>`
 
  - [kup-box](../kup-box)
  - [kup-data-table](../kup-data-table)
+ - [kup-hypermenu](../kup-hypermenu)
  - [kup-tree](../kup-tree)
 
 ### Graph
@@ -144,6 +145,7 @@ Type: `Promise<void>`
 graph TD;
   kup-box --> kup-gauge
   kup-data-table --> kup-gauge
+  kup-hypermenu --> kup-gauge
   kup-tree --> kup-gauge
   style kup-gauge fill:#f9f,stroke:#333,stroke-width:4px
 ```

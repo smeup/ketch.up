@@ -1705,7 +1705,6 @@ let accordionWithTreesData = {
                 FLD2: {
                     data: {
                         data: f2Data,
-                        expanded: true,
                     },
                     shape: 'TRE',
                 },

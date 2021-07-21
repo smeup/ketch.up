@@ -203,6 +203,11 @@ let advancedRoutes = [
     component: () => import(`@/views/advanced/form/Form.vue`),
   },
   {
+    path: `/hypermenu`,
+    name: 'hypermenu',
+    component: () => import(`@/views/advanced/hypermenu/Hypermenu.vue`),
+  },
+  {
     path: `/search`,
     name: 'search',
     component: () => import(`@/views/advanced/search/Search.vue`),

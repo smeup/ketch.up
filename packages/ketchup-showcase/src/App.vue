@@ -475,6 +475,12 @@ export default {
                 },
               },
               {
+                title: 'Hypermenu',
+                to: {
+                  name: 'hypermenu',
+                },
+              },
+              {
                 title: 'Search',
                 to: {
                   name: 'search',

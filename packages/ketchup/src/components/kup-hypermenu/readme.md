@@ -7,52 +7,20 @@
 
 ## Properties
 
-| Property                  | Attribute                     | Description                                                                                                     | Type                                       | Default     |
-| ------------------------- | ----------------------------- | --------------------------------------------------------------------------------------------------------------- | ------------------------------------------ | ----------- |
-| `cardData`                | --                            | Data of the card linked to the box when the latter's layout must be a premade template.                         | `GenericObject`                            | `undefined` |
-| `columns`                 | `columns`                     | Number of columns                                                                                               | `number`                                   | `1`         |
-| `customStyle`             | `custom-style`                | Custom style of the component. For more information: https://ketchup.smeup.com/ketchup-showcase/#/customization | `string`                                   | `''`        |
-| `data`                    | --                            | Data                                                                                                            | `{ columns?: Column[]; rows?: BoxRow[]; }` | `undefined` |
-| `dragEnabled`             | `drag-enabled`                | Enable dragging                                                                                                 | `boolean`                                  | `false`     |
-| `dropEnabled`             | `drop-enabled`                | Enable dropping                                                                                                 | `boolean`                                  | `false`     |
-| `dropOnSection`           | `drop-on-section`             | Drop can be done in section                                                                                     | `boolean`                                  | `false`     |
-| `enableRowActions`        | `enable-row-actions`          | If enabled, a button to load / display the row actions will be displayed on the right of every box              | `boolean`                                  | `false`     |
-| `globalFilter`            | `global-filter`               | When set to true it activates the global filter.                                                                | `boolean`                                  | `false`     |
-| `globalFilterValue`       | `global-filter-value`         | The value of the global filter.                                                                                 | `string`                                   | `''`        |
-| `kanban`                  | --                            | Displays the boxlist as a Kanban.                                                                               | `BoxKanban`                                | `null`      |
-| `layout`                  | --                            | How the field will be displayed. If not present, a default one will be created.                                 | `Layout`                                   | `undefined` |
-| `multiSelection`          | `multi-selection`             | Enable multi selection                                                                                          | `boolean`                                  | `false`     |
-| `pageSelected`            | `page-selected`               | Current page number                                                                                             | `number`                                   | `1`         |
-| `pageSize`                | `page-size`                   | Number of boxes per page                                                                                        | `number`                                   | `10`        |
-| `pagination`              | `pagination`                  | Enables pagination                                                                                              | `boolean`                                  | `false`     |
-| `rowsPerPage`             | `rows-per-page`               | Number of current rows per page                                                                                 | `number`                                   | `undefined` |
-| `scrollOnHover`           | `scroll-on-hover`             | Activates the scroll on hover function.                                                                         | `boolean`                                  | `false`     |
-| `selectBox`               | `select-box`                  | Automatically selects the box at the specified index                                                            | `number`                                   | `undefined` |
-| `selectedRowsState`       | `selected-rows-state`         | Multiple selection                                                                                              | `string`                                   | `undefined` |
-| `showSelection`           | `show-selection`              | If enabled, highlights the selected box/boxes                                                                   | `boolean`                                  | `true`      |
-| `showTooltipOnRightClick` | `show-tooltip-on-right-click` | If set to true, displays tooltip on right click; if set to false, displays tooltip on mouseOver.                | `boolean`                                  | `true`      |
-| `sortBy`                  | `sort-by`                     | If sorting is enabled, specifies which column to sort                                                           | `string`                                   | `undefined` |
-| `sortEnabled`             | `sort-enabled`                | Enable sorting                                                                                                  | `boolean`                                  | `false`     |
-| `stateId`                 | `state-id`                    |                                                                                                                 | `string`                                   | `''`        |
-| `store`                   | --                            |                                                                                                                 | `KupStore`                                 | `undefined` |
-| `swipeDisabled`           | `swipe-disabled`              | Disable swipe                                                                                                   | `boolean`                                  | `false`     |
-| `tooltipDetailTimeout`    | `tooltip-detail-timeout`      | Defines the timeout for tooltip detail                                                                          | `number`                                   | `undefined` |
-| `tooltipEnabled`          | `tooltip-enabled`             | Enable show tooltip                                                                                             | `boolean`                                  | `true`      |
-| `tooltipLoadTimeout`      | `tooltip-load-timeout`        | Defines the timeout for tooltip load                                                                            | `number`                                   | `undefined` |
+| Property            | Attribute             | Description                                                                                                     | Type                                       | Default     |
+| ------------------- | --------------------- | --------------------------------------------------------------------------------------------------------------- | ------------------------------------------ | ----------- |
+| `customStyle`       | `custom-style`        | Custom style of the component. For more information: https://ketchup.smeup.com/ketchup-showcase/#/customization | `string`                                   | `''`        |
+| `data`              | --                    | Data                                                                                                            | `{ columns?: Column[]; rows?: BoxRow[]; }` | `undefined` |
+| `globalFilter`      | `global-filter`       | When set to true it activates the global filter.                                                                | `boolean`                                  | `false`     |
+| `globalFilterValue` | `global-filter-value` | The value of the global filter.                                                                                 | `string`                                   | `''`        |
 
 
 ## Events
 
-| Event                        | Description                                               | Type                                            |
-| ---------------------------- | --------------------------------------------------------- | ----------------------------------------------- |
-| `kup-box-autoselect`         | Triggered when a box is auto selected via selectBox prop  | `CustomEvent<KupBoxAutoSelectEventPayload>`     |
-| `kup-box-click`              | Triggered when a box is clicked                           | `CustomEvent<KupBoxClickEventPayload>`          |
-| `kup-box-contextmenu`        | Generic right click event on box.                         | `CustomEvent<KupBoxContextMenuEventPayload>`    |
-| `kup-box-didload`            |                                                           | `CustomEvent<KupEventPayload>`                  |
-| `kup-box-didunload`          | Triggered when stop propagation event                     | `CustomEvent<KupEventPayload>`                  |
-| `kup-box-rowactionclick`     | When the row menu action icon is click                    | `CustomEvent<KupBoxRowActionClickEventPayload>` |
-| `kup-box-rowactionmenuclick` | When the row menu action icon is click                    | `CustomEvent<KupBoxAutoSelectEventPayload>`     |
-| `kup-box-selected`           | Triggered when the multi selection checkbox changes value | `CustomEvent<KupBoxSelectedEventPayload>`       |
+| Event                     | Description | Type                           |
+| ------------------------- | ----------- | ------------------------------ |
+| `kup-hypermenu-didload`   |             | `CustomEvent<KupEventPayload>` |
+| `kup-hypermenu-didunload` |             | `CustomEvent<KupEventPayload>` |
 
 
 ## Methods
@@ -64,16 +32,6 @@ Used to retrieve component's props values.
 #### Returns
 
 Type: `Promise<GenericObject>`
-
-
-
-### `loadRowActions(row: BoxRow, actions: RowAction[]) => Promise<void>`
-
-
-
-#### Returns
-
-Type: `Promise<void>`
 
 
 
@@ -102,36 +60,51 @@ Type: `Promise<void>`
 
 ### Depends on
 
-- [kup-card](../kup-card)
-- [kup-checkbox](../kup-checkbox)
 - [kup-badge](../kup-badge)
 - [kup-chart](../kup-chart)
+- [kup-checkbox](../kup-checkbox)
 - [kup-editor](../kup-editor)
 - [kup-text-field](../kup-text-field)
 - [kup-progress-bar](../kup-progress-bar)
 - [kup-radio](../kup-radio)
 - [kup-gauge](../kup-gauge)
 - [kup-tree](../kup-tree)
-- [kup-tooltip](../kup-tooltip)
-- [kup-combobox](../kup-combobox)
-- [kup-paginator](../kup-paginator)
 
 ### Graph
 ```mermaid
 graph TD;
-  kup-hypermenu --> kup-card
-  kup-hypermenu --> kup-checkbox
   kup-hypermenu --> kup-badge
   kup-hypermenu --> kup-chart
+  kup-hypermenu --> kup-checkbox
   kup-hypermenu --> kup-editor
   kup-hypermenu --> kup-text-field
   kup-hypermenu --> kup-progress-bar
   kup-hypermenu --> kup-radio
   kup-hypermenu --> kup-gauge
   kup-hypermenu --> kup-tree
-  kup-hypermenu --> kup-tooltip
-  kup-hypermenu --> kup-combobox
-  kup-hypermenu --> kup-paginator
+  kup-badge --> kup-badge
+  kup-tree --> kup-image
+  kup-tree --> kup-button
+  kup-tree --> kup-chart
+  kup-tree --> kup-checkbox
+  kup-tree --> kup-chip
+  kup-tree --> kup-color-picker
+  kup-tree --> kup-gauge
+  kup-tree --> kup-progress-bar
+  kup-tree --> kup-rating
+  kup-tree --> kup-radio
+  kup-tree --> kup-tooltip
+  kup-tree --> kup-list
+  kup-tree --> kup-text-field
+  kup-tree --> kup-card
+  kup-image --> kup-spinner
+  kup-image --> kup-badge
+  kup-button --> kup-badge
+  kup-chip --> kup-badge
+  kup-color-picker --> kup-text-field
+  kup-tooltip --> kup-button
+  kup-tooltip --> kup-card
+  kup-tooltip --> kup-tree
   kup-card --> kup-chip
   kup-card --> kup-badge
   kup-card --> kup-autocomplete
@@ -149,13 +122,10 @@ graph TD;
   kup-card --> kup-tab-bar
   kup-card --> kup-tree
   kup-card --> kup-switch
-  kup-chip --> kup-badge
-  kup-badge --> kup-badge
   kup-autocomplete --> kup-list
   kup-list --> kup-radio
   kup-list --> kup-checkbox
   kup-list --> kup-badge
-  kup-button --> kup-badge
   kup-combobox --> kup-list
   kup-date-picker --> kup-text-field
   kup-date-picker --> kup-button
@@ -180,26 +150,6 @@ graph TD;
   kup-data-table --> kup-switch
   kup-data-table --> kup-combobox
   kup-data-table --> kup-badge
-  kup-tooltip --> kup-button
-  kup-tooltip --> kup-card
-  kup-tooltip --> kup-tree
-  kup-tree --> kup-image
-  kup-tree --> kup-button
-  kup-tree --> kup-chart
-  kup-tree --> kup-checkbox
-  kup-tree --> kup-chip
-  kup-tree --> kup-color-picker
-  kup-tree --> kup-gauge
-  kup-tree --> kup-progress-bar
-  kup-tree --> kup-rating
-  kup-tree --> kup-radio
-  kup-tree --> kup-tooltip
-  kup-tree --> kup-list
-  kup-tree --> kup-text-field
-  kup-tree --> kup-card
-  kup-image --> kup-spinner
-  kup-image --> kup-badge
-  kup-color-picker --> kup-text-field
   kup-button-list --> kup-dropdown-button
   kup-button-list --> kup-badge
   kup-dropdown-button --> kup-list

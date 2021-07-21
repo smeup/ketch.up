@@ -31,7 +31,6 @@ import { KupDatePickerEventPayload } from "./components/kup-date-picker/kup-date
 import { KupDropdownButtonEventPayload } from "./components/kup-dropdown-button/kup-dropdown-button-declarations";
 import { EchartTitle } from "./components/kup-echart/kup-echart-declarations";
 import { KupFieldChangeEvent, KupFieldSubmitEvent } from "./components/kup-field/kup-field-declarations";
-import { BoxKanban as BoxKanban1, BoxRow as BoxRow1, KupBoxAutoSelectEventPayload as KupBoxAutoSelectEventPayload1, KupBoxClickEventPayload as KupBoxClickEventPayload1, KupBoxContextMenuEventPayload as KupBoxContextMenuEventPayload1, KupBoxRowActionClickEventPayload as KupBoxRowActionClickEventPayload1, KupBoxSelectedEventPayload as KupBoxSelectedEventPayload1, Layout as Layout1 } from "./components/kup-hypermenu/kup-hypermenu-declarations";
 import { KupBadge } from "./components/kup-badge/kup-badge";
 import { FImageData } from "./f-components/f-image/f-image-declarations";
 import { KupImageClickEventPayload } from "./components/kup-image/kup-image-declarations";
@@ -1458,14 +1457,6 @@ export namespace Components {
     }
     interface KupHypermenu {
         /**
-          * Data of the card linked to the box when the latter's layout must be a premade template.
-         */
-        "cardData": GenericObject;
-        /**
-          * Number of columns
-         */
-        "columns": number;
-        /**
           * Custom style of the component. For more information: https://ketchup.smeup.com/ketchup-showcase/#/customization
          */
         "customStyle": string;
@@ -1473,22 +1464,6 @@ export namespace Components {
           * Data
          */
         "data": { columns?: Column[]; rows?: BoxRow[] };
-        /**
-          * Enable dragging
-         */
-        "dragEnabled": boolean;
-        /**
-          * Enable dropping
-         */
-        "dropEnabled": boolean;
-        /**
-          * Drop can be done in section
-         */
-        "dropOnSection": boolean;
-        /**
-          * If enabled, a button to load / display the row actions will be displayed on the right of every box
-         */
-        "enableRowActions": boolean;
         /**
           * Used to retrieve component's props values.
           * @param descriptions - When provided and true, the result will be the list of props with their description.
@@ -1504,89 +1479,14 @@ export namespace Components {
          */
         "globalFilterValue": string;
         /**
-          * Displays the boxlist as a Kanban.
-         */
-        "kanban": BoxKanban;
-        /**
-          * How the field will be displayed. If not present, a default one will be created.
-         */
-        "layout": Layout;
-        "loadRowActions": (row: BoxRow, actions: RowAction[]) => Promise<void>;
-        /**
-          * Enable multi selection
-         */
-        "multiSelection": boolean;
-        /**
-          * Current page number
-         */
-        "pageSelected": number;
-        /**
-          * Number of boxes per page
-         */
-        "pageSize": number;
-        /**
-          * Enables pagination
-         */
-        "pagination": boolean;
-        /**
           * This method is used to trigger a new render of the component.
          */
         "refresh": () => Promise<void>;
-        /**
-          * Number of current rows per page
-         */
-        "rowsPerPage": number;
-        /**
-          * Activates the scroll on hover function.
-         */
-        "scrollOnHover": boolean;
-        /**
-          * Automatically selects the box at the specified index
-         */
-        "selectBox": number;
-        /**
-          * Multiple selection
-         */
-        "selectedRowsState": string;
         /**
           * Sets the props to the component.
           * @param props - Object containing props that will be set to the component.
          */
         "setProps": (props: GenericObject) => Promise<void>;
-        /**
-          * If enabled, highlights the selected box/boxes
-         */
-        "showSelection": boolean;
-        /**
-          * If set to true, displays tooltip on right click; if set to false, displays tooltip on mouseOver.
-         */
-        "showTooltipOnRightClick": boolean;
-        /**
-          * If sorting is enabled, specifies which column to sort
-         */
-        "sortBy": string;
-        /**
-          * Enable sorting
-         */
-        "sortEnabled": boolean;
-        "stateId": string;
-        "store": KupStore;
-        /**
-          * Disable swipe
-         */
-        "swipeDisabled": boolean;
-        /**
-          * Defines the timeout for tooltip detail
-         */
-        "tooltipDetailTimeout": number;
-        /**
-          * Enable show tooltip
-         */
-        "tooltipEnabled": boolean;
-        /**
-          * Defines the timeout for tooltip load
-         */
-        "tooltipLoadTimeout": number;
     }
     interface KupIframe {
         /**
@@ -4259,14 +4159,6 @@ declare namespace LocalJSX {
     }
     interface KupHypermenu {
         /**
-          * Data of the card linked to the box when the latter's layout must be a premade template.
-         */
-        "cardData"?: GenericObject;
-        /**
-          * Number of columns
-         */
-        "columns"?: number;
-        /**
           * Custom style of the component. For more information: https://ketchup.smeup.com/ketchup-showcase/#/customization
          */
         "customStyle"?: string;
@@ -4275,22 +4167,6 @@ declare namespace LocalJSX {
          */
         "data"?: { columns?: Column[]; rows?: BoxRow[] };
         /**
-          * Enable dragging
-         */
-        "dragEnabled"?: boolean;
-        /**
-          * Enable dropping
-         */
-        "dropEnabled"?: boolean;
-        /**
-          * Drop can be done in section
-         */
-        "dropOnSection"?: boolean;
-        /**
-          * If enabled, a button to load / display the row actions will be displayed on the right of every box
-         */
-        "enableRowActions"?: boolean;
-        /**
           * When set to true it activates the global filter.
          */
         "globalFilter"?: boolean;
@@ -4298,109 +4174,8 @@ declare namespace LocalJSX {
           * The value of the global filter.
          */
         "globalFilterValue"?: string;
-        /**
-          * Displays the boxlist as a Kanban.
-         */
-        "kanban"?: BoxKanban;
-        /**
-          * How the field will be displayed. If not present, a default one will be created.
-         */
-        "layout"?: Layout;
-        /**
-          * Enable multi selection
-         */
-        "multiSelection"?: boolean;
-        /**
-          * Triggered when a box is auto selected via selectBox prop
-         */
-        "onKup-box-autoselect"?: (event: CustomEvent<KupBoxAutoSelectEventPayload>) => void;
-        /**
-          * Triggered when a box is clicked
-         */
-        "onKup-box-click"?: (event: CustomEvent<KupBoxClickEventPayload>) => void;
-        /**
-          * Generic right click event on box.
-         */
-        "onKup-box-contextmenu"?: (event: CustomEvent<KupBoxContextMenuEventPayload>) => void;
-        "onKup-box-didload"?: (event: CustomEvent<KupEventPayload>) => void;
-        /**
-          * Triggered when stop propagation event
-         */
-        "onKup-box-didunload"?: (event: CustomEvent<KupEventPayload>) => void;
-        /**
-          * When the row menu action icon is click
-         */
-        "onKup-box-rowactionclick"?: (event: CustomEvent<KupBoxRowActionClickEventPayload>) => void;
-        /**
-          * When the row menu action icon is click
-         */
-        "onKup-box-rowactionmenuclick"?: (event: CustomEvent<KupBoxAutoSelectEventPayload>) => void;
-        /**
-          * Triggered when the multi selection checkbox changes value
-         */
-        "onKup-box-selected"?: (event: CustomEvent<KupBoxSelectedEventPayload>) => void;
-        /**
-          * Current page number
-         */
-        "pageSelected"?: number;
-        /**
-          * Number of boxes per page
-         */
-        "pageSize"?: number;
-        /**
-          * Enables pagination
-         */
-        "pagination"?: boolean;
-        /**
-          * Number of current rows per page
-         */
-        "rowsPerPage"?: number;
-        /**
-          * Activates the scroll on hover function.
-         */
-        "scrollOnHover"?: boolean;
-        /**
-          * Automatically selects the box at the specified index
-         */
-        "selectBox"?: number;
-        /**
-          * Multiple selection
-         */
-        "selectedRowsState"?: string;
-        /**
-          * If enabled, highlights the selected box/boxes
-         */
-        "showSelection"?: boolean;
-        /**
-          * If set to true, displays tooltip on right click; if set to false, displays tooltip on mouseOver.
-         */
-        "showTooltipOnRightClick"?: boolean;
-        /**
-          * If sorting is enabled, specifies which column to sort
-         */
-        "sortBy"?: string;
-        /**
-          * Enable sorting
-         */
-        "sortEnabled"?: boolean;
-        "stateId"?: string;
-        "store"?: KupStore;
-        /**
-          * Disable swipe
-         */
-        "swipeDisabled"?: boolean;
-        /**
-          * Defines the timeout for tooltip detail
-         */
-        "tooltipDetailTimeout"?: number;
-        /**
-          * Enable show tooltip
-         */
-        "tooltipEnabled"?: boolean;
-        /**
-          * Defines the timeout for tooltip load
-         */
-        "tooltipLoadTimeout"?: number;
+        "onKup-hypermenu-didload"?: (event: CustomEvent<KupEventPayload>) => void;
+        "onKup-hypermenu-didunload"?: (event: CustomEvent<KupEventPayload>) => void;
     }
     interface KupIframe {
         /**

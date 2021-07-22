@@ -178,6 +178,7 @@ export class KupHypermenu {
         this.kupManager.debug.logRender(this, true);
     }
 
+    @Watch('globalFilterValue')
     @Watch('data')
     onDataChanged() {
         identify(this.getRows());
@@ -684,7 +685,9 @@ export class KupHypermenu {
                         boContent = undefined;
                     }
                 } else if (isTree(cell, boxObject)) {
-                    boContent = <kup-tree {...props}></kup-tree>;
+                    let propsTree = { ...props };
+                    propsTree['globalFilterValue'] = this.globalFilterValue;
+                    boContent = <kup-tree {...propsTree}></kup-tree>;
                 } else {
                     boContent = getCellValueForDisplay(column, cell);
                 }

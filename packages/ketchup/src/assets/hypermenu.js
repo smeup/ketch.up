@@ -1705,6 +1705,7 @@ let accordionWithTreesData = {
                 FLD2: {
                     data: {
                         data: f2Data,
+                        expanded: true,
                     },
                     shape: 'TRE',
                 },
@@ -1759,7 +1760,6 @@ let accordionWithTreesData = {
 const accordionWithTrees = document.getElementById('accordion-with-trees');
 if (accordionWithTrees != null) {
     accordionWithTrees.data = accordionWithTreesData;
-    console.log(JSON.stringify(accordionWithTreesData));
     accordionWithTrees.globalFilter = true;
     accordionWithTrees.globalFilterValue = '';
 }
